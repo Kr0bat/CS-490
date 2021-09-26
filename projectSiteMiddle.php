@@ -1,13 +1,3 @@
-<!Doctype html>
-<html>
-	<head>
- 		<title> PPP Records </title>
-		<link rel = "stylesheet" type = "text/css" href = "ppp.css">
- 		<meta charset="UTF-8" />
- 
- 	</head>
-<body>
-    <p>
 <?php
 // checking username
 // checking password_get_info
@@ -18,22 +8,22 @@ $dbc = null;
 
 function connectDb(){
 $db_host = "sql1.njit.edu";
-$db_name = "kg448";
-$db_user = "kg448";
-$db_password = "Temppass1!";
+$db_name = "jpr47";
+$db_user = "jpr47";
+$db_password = "CompSci490**";
 GLOBAL $dbc;
 $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Could not connect to MySQL: '.mysqli_connect_error() ); 
 }
 
-function validateUser($user, $password){
-    if (empty($user)){
+function validateUser($user, $password) {
+  if (empty($user)) {
       return false;
-    }
-    if (password_verify($password, $user[password])){ # 
-        return true;
-    }
-    
-    return false;
+  }
+  if ($password == $user[password]) { #change to password_verify
+      return true;
+  }
+      
+  return false;
 }
 
 function retrieveUser($username, $password){
@@ -58,9 +48,11 @@ function retrieveUser($username, $password){
     echo $user;
     */
     
-    $sql = "SELECT * FROM `users` WHERE username='$username'";
+    $sql = "SELECT * FROM `person` WHERE username='$username'";
+    echo $sql;
     $result = mysqli_query($dbc, $sql);
     $user = mysqli_fetch_array($result);
+    echo "User: $user";
     
     if (validateUser($user, $password)){
       $clean_user = array(
@@ -71,8 +63,5 @@ function retrieveUser($username, $password){
     }
     return null;
 }
+#echo retrieveUser("Karim", "pass")['type'];
 ?>
-    </p>
-</body>
-
-</html>
