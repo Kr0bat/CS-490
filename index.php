@@ -93,7 +93,7 @@ if (isset($_POST['btn_login_update'])) {
 </head>
 
 <footer class="footer2" style="width: 100%; bottom: 0; height: 20vh; background-color: #2f3a41; text-align: center">
-    <img src="/assets/logo_NJIT.png" class="imgFitMid" style="height: 17vh; margin-left: 50%; transform: translate(-50%, 0.75vh);" />
+    <img src="assets/logo_NJIT.png" class="imgFitMid" style="height: 17vh; margin-left: 50%; transform: translate(-50%, 0.75vh);" />
 </footer>
 
 <body style="background-color: #2f3a41">
