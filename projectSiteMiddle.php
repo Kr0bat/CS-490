@@ -48,11 +48,11 @@ function retrieveUser($username, $password){
     echo $user;
     */
     
-    $sql = "SELECT * FROM `person` WHERE username='$username'";
-    echo $sql;
+    $sql = "SELECT * FROM `user` WHERE username='$username'";
+    #echo $sql;
     $result = mysqli_query($dbc, $sql);
     $user = mysqli_fetch_array($result);
-    echo "User: $user";
+    #echo "User: $user";
     
     if (validateUser($user, $password)){
       $clean_user = array(

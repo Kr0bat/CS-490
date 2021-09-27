@@ -22,7 +22,7 @@ function checkLogin( $name, $pass ) {
             $_SESSION['role'] = "basic";
         }
         print($role);
-        echo "Role found: $role";
+        #echo "Role found: $role";
         return true;
     }
 
@@ -58,8 +58,8 @@ if (isset($_POST['btn_login_update'])) {
     $passwordClean = str_replace('\n', '', $_POST['password_input']);
     $passwordClean2 = str_replace(' ', '', $passwordClean);
     $password = $passwordClean2;
-    echo "<p> THIS IS THE USERNAME $user</br>THIS IS THE PASSWORD $password</p>";
-    echo "<p> </br> $_SERVER[REMOTE_ADDR] </p>";
+    #echo "<p> THIS IS THE USERNAME $user</br>THIS IS THE PASSWORD $password</p>";
+    #echo "<p> </br> $_SERVER[REMOTE_ADDR] </p>";
     //print_r($_SESSION);
 
     print_r(checkLogin($user,$password));
