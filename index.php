@@ -73,10 +73,10 @@ if (isset($_POST['btn_login_update'])) {
             header("Location: userDash.php");
         }
     
-    } else {
+   } else {
         print('
         <header>
-            <div class="headerText" style="width: 100%; margin: 0 0 2vh 0; padding: 2vh 0; text-align: center; font-size: 1.35vw; color: #eaeaea; background-color: #9c5151ff">
+            <div class="headerText" style="width: 100%; margin: 0 0 2vh 0; padding: 2vh 0; text-align: center; font-size: max(1.35vw, 2.5vh); color: #eaeaea; background-color: #9c5151ff">
                 User or Password not recognized
             </div>
         </header>');
@@ -88,7 +88,7 @@ if (isset($_POST['btn_login_update'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>G7 Portal</title>
+    <title>Group 7 Portal - CS490</title>
     <link rel="stylesheet" href="./style.css" />
 </head>
 
@@ -97,14 +97,22 @@ if (isset($_POST['btn_login_update'])) {
 </footer>
 
 <body style="background-color: #2f3a41">
-    <div class="col-12 bodyText" style="font-size: 75px; background-color: #2f3a41; text-align: center; padding-top: 5vh; overflow: visible; color: #e8e8e8;">
-        G7 Portal
+    <div class="col-12 bodyText" style="font-size: max(3vw, 3.5vh); background-color: #2f3a41; text-align: center; padding-top: 5vh; overflow: visible; color: #e8e8e8;">
+        Group 7 Portal
     </div>
-    <div class="col-12" style="height: 50vh; padding-top: 25vh; background-color: #2f3a41; text-align: center">
+    <div class="col-12" style="height: 50vh; padding-top: 15vh; background-color: #2f3a41; text-align: center">
         <form method="POST">
-            <input type="text" name="username_input" placeholder="Username" value="<?php echo $_SESSION['username']; ?>" style="background-color: #32424b; border-color: #597687; border-style: solid; color: #e8e8e8; padding: 1vh 1vw; border-radius: 1vh; font-size: max(2vw, 2vh)" required />
-            <input type="password" name="password_input" placeholder="Password" value="<?php echo $_SESSION['password']; ?>" style="background-color: #32424b; border-color: #597687; border-style: solid; color: #e8e8e8; padding: 1vh 1vw; border-radius: 1vh; font-size: max(2vw, 2vh)" required />
-            <button type="submit" name="btn_login_update" style="background-color: #32424b; border-color: #597687; border-style: solid; color: #e8e8e8; padding: 1vh 1vw; border-radius: 1vh; font-size: max(2vw, 2vh)"><strong>Login</strong></button>
+            <div class="col-6 push-3 colsm-10 pushsm-1">
+                <div class="col-6 colsm-12">
+                    <input type="text" name="username_input" placeholder="Username" value="<?php echo $_SESSION['username']; ?>" style="width: 100%; margin: 2px 0; background-color: #32424b; border-color: #597687; border-style: solid; color: #e8e8e8; padding: 1vh 1vw; border-radius: 1vh; font-size: max(2vw, 2vh)" required />
+                </div>
+                <div class="col-6 colsm-12">
+                    <input type="password" name="password_input" placeholder="Password" value="<?php echo $_SESSION['password']; ?>" style="width: 100%; margin: 2px 0; background-color: #32424b; border-color: #597687; border-style: solid; color: #e8e8e8; padding: 1vh 1vw; border-radius: 1vh; font-size: max(2vw, 2vh)" required />
+                </div>
+            </div>
+            <div class="col-12">
+                <button type="submit" name="btn_login_update" style="width: 30%; margin: 2px 0; background-color: #32424b; border-color: #597687; border-style: solid; color: #e8e8e8; padding: 1vh 1vw; border-radius: 1vh; font-size: max(2vw, 2vh)"><strong>Login</strong></button>
+            </div>
         </form>
     </div>
     
