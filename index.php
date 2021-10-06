@@ -81,6 +81,14 @@ function checkAdmin( $name ) {
 
 
 ?>
+<style>
+input {
+    cursor: pointer;
+}
+button {
+    cursor: pointer;
+}
+</style>
 
 <head>
     <meta charset="UTF-8">
