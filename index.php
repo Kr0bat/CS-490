@@ -48,7 +48,7 @@ function checkLogin( $name, $pass ) {
         } else if ($role == "basic") {
             $_SESSION['role'] = "basic";
         }
-        print($role);
+        //print($role);
         #echo "Role found: $role";
         return true;
     }
