@@ -98,7 +98,7 @@ function checkAdmin( $name ) {
 </footer>
 
 <body style="background-color: #161616; font-family: 'Montserrat', sans-serif;">
-    <div class="col-12 bodyText" style="font-size: max(3vw, 3.5vh); background-color: #161616; text-align: center; padding-top: 5vh; overflow: visible; color: #e8e8e8;">
+    <div class="col-12 bodyText" style="font-size: clamp(1rem, max(5vh, 5vw), 4rem); background-color: #161616; text-align: center; padding-top: 5vh; overflow: visible; color: #e8e8e8;">
         Spotifeed
     </div>
     <div class="col-12" style="height: 50vh; padding-top: 15vh; background-color: #161616; text-align: center">
