@@ -26,8 +26,8 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
     // -------
     // BASIC USER
     // -------
-    include("sidebar-basic.php");
-    include("content-account.php");
+    include("https://maxedward.com/~kg448/sidebar-basic.php");
+    include("https://maxedward.com/~kg448/content-account.php");
     $role = "basic";
 
 
@@ -39,8 +39,8 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
             // -------
             // ADMINISTRATOR
             // -------
-            include("sidebar-admin.php");
-            include("content-account.php");
+            include("https://maxedward.com/~kg448/sidebar-admin.php");
+            include("https://maxedward.com/~kg448/content-account.php");
             $role = "admin";
 
         } else if ($_SESSION['role'] == "basic") {
@@ -48,8 +48,8 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
             // -------
             // BASIC USER
             // -------
-            include("sidebar-basic.php");
-            include("content-account.php");
+            include("https://maxedward.com/~kg448/sidebar-basic.php");
+            include("https://maxedward.com/~kg448/content-account.php");
             $role = "basic";
 
         } else {
