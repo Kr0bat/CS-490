@@ -2,9 +2,36 @@
 <html lang="en">
 
 <?php
+session_start();
 include("projectSiteMiddle.php");
 
-session_start();
+if (isset($_POST['btn_login_update'])) {
+    $userClean = (str_replace(' ', '', $_POST['username_input']));
+    $user = $userClean;
+    $passwordClean = str_replace('\n', '', $_POST['password_input']);
+    $passwordClean2 = str_replace(' ', '', $passwordClean);
+    $password = $passwordClean2;
+    #echo "<p> THIS IS THE USERNAME $user</br>THIS IS THE PASSWORD $password</p>";
+    #echo "<p> </br> $_SERVER[REMOTE_ADDR] </p>";
+    //print_r($_SESSION);
+
+    print_r(checkLogin($user,$password));
+    print('<br/><br/>'.$_SESSION['role']);
+
+    if ( checkLogin($user,$password) != false )  {
+        if ($_SESSION['role'] == "admin" || $_SESSION['role'] == "basic") {
+            //header("Location: /~kg448/feed.php");
+        }
+   } else {
+        print('
+        <header>
+            <div class="headerText" style="width: 100%; margin: 0 0 2vh 0; padding: 2vh 0; text-align: center; font-size: max(1.35vw, 2.5vh); color: #eaeaea; background-color: #9c5151ff">
+                User or Password not recognized
+            </div>
+        </header>');
+    }
+
+}
 
 function checkLogin( $name, $pass ) {
 
@@ -52,35 +79,7 @@ function checkAdmin( $name ) {
     return false;
 }*/
 
-if (isset($_POST['btn_login_update'])) {
-    $userClean = (str_replace(' ', '', $_POST['username_input']));
-    $user = $userClean;
-    $passwordClean = str_replace('\n', '', $_POST['password_input']);
-    $passwordClean2 = str_replace(' ', '', $passwordClean);
-    $password = $passwordClean2;
-    #echo "<p> THIS IS THE USERNAME $user</br>THIS IS THE PASSWORD $password</p>";
-    #echo "<p> </br> $_SERVER[REMOTE_ADDR] </p>";
-    //print_r($_SESSION);
 
-    print_r(checkLogin($user,$password));
-
-    if ( checkLogin($user,$password) != false )  {
-        $loginInfo = checkLogin($user,$password);
-
-        if ($_SESSION['role'] == "admin" || $_SESSION['role'] == "basic") {
-            header("Location: /~kg448/feed.php");
-        }
-    
-   } else {
-        print('
-        <header>
-            <div class="headerText" style="width: 100%; margin: 0 0 2vh 0; padding: 2vh 0; text-align: center; font-size: max(1.35vw, 2.5vh); color: #eaeaea; background-color: #9c5151ff">
-                User or Password not recognized
-            </div>
-        </header>');
-    }
-
-}
 ?>
 
 <head>
