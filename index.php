@@ -67,10 +67,8 @@ if (isset($_POST['btn_login_update'])) {
     if ( checkLogin($user,$password) != false )  {
         $loginInfo = checkLogin($user,$password);
 
-        if ($_SESSION['role'] == "admin") {
-            header("Location: adminDash.php");
-        } else if ($_SESSION['role'] == "basic") {
-            header("Location: userDash.php");
+        if ($_SESSION['role'] == "admin" || $_SESSION['role'] == "basic") {
+            header("Location: /~kg448/feed.php");
         }
     
    } else {
