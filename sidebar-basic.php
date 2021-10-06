@@ -106,7 +106,7 @@ if (isset($_GET['logout'])) {
 }
 
 
-$url = $_SERVER[REQUEST_URI];
+$url = strtok($_SERVER[REQUEST_URI],'?');
 
 $precursor = '/~kg448';
 $currPage = "feed";
