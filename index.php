@@ -15,12 +15,12 @@ if (isset($_POST['btn_login_update'])) {
     #echo "<p> </br> $_SERVER[REMOTE_ADDR] </p>";
     //print_r($_SESSION);
 
-    print_r(checkLogin($user,$password));
-    print('<br/><br/>'.$_SESSION['role']);
+    //print_r(checkLogin($user,$password));
+    //print('<br/><br/>'.$_SESSION['role']);
 
     if ( checkLogin($user,$password) != false )  {
         if ($_SESSION['role'] == "admin" || $_SESSION['role'] == "basic") {
-            //header("Location: /~kg448/feed.php");
+            header("Location: /~kg448/feed.php");
         }
    } else {
         print('
