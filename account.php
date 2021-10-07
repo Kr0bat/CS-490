@@ -30,7 +30,6 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
     include("content-account.php");
     $role = "basic";
 
-
 } else {
     $role = false;
     if (isset($_SESSION['role'])) {
