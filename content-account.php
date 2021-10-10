@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="col-12" style="margin-top: 1vh">
-        <div class="col-10 push-1 subtitleLight" style="">
+        <div class="col-10 push-1 subtitleLight" style="font-size: 22.5px">
             This information is public to all users
         </div>
     </div>
