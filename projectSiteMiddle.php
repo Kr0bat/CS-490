@@ -19,7 +19,7 @@ function validateUser($user, $password) {
   if (empty($user)) {
       return false;
   }
-  if ($password == $user[password]) { #change to password_verify
+  if (password_verify($password, $user[password])) {
       return true;
   }
       
@@ -29,30 +29,10 @@ function validateUser($user, $password) {
 function retrieveUser($username, $password){
   connectDB();
   GLOBAL $dbc;
-
-  //echo "Begin db query!";
-  /*
-    $select_user = $dbc->prepare("SELECT * FROM photographer WHERE pID = ?");
-    #gettype($select_user);
-    $select_user->bind_param("i", $username);
-    $select_user->execute();
-
-    #echo $select_user;
-    echo "statement executed";
-    $result = $select_user->get_result();
-    echo "result found";
-
-    $user = $result->fetch_assoc();
-    echo "user found";
-    echo gettype($user);
-    echo $user;
-    */
     
     $sql = "SELECT * FROM `user` WHERE username='$username'";
-    #echo $sql;
     $result = mysqli_query($dbc, $sql);
     $user = mysqli_fetch_array($result);
-    #echo "User: $user";
     
     if (validateUser($user, $password)){
       $clean_user = array(
@@ -63,5 +43,4 @@ function retrieveUser($username, $password){
     }
     return null;
 }
-#echo retrieveUser("Karim", "pass")['type'];
 ?>
