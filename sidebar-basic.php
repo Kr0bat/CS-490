@@ -147,9 +147,11 @@ if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
                 </tr>
                 <tr class="lightTableTr">
                     <td>
-                        <a href="/~kg448/newPost.php" class="linkLightPost">
+                        <a href="/~kg448/newPost.php" class="linkLight">
                             <div>
-                                New Post
+                                <a style="border: 1px solid white; border-radius: 1ch;">
+                                    New Post
+                                </a>
                             </div>
                         </a>
                     </td>
