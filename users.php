@@ -1,9 +1,4 @@
-<html>
-	<head>
-		<title>Sample PHP</title>
-	</head>
-	<body>
- <?php
+<?php
 
 function getPass($username)
 {
@@ -32,7 +27,7 @@ function getPass($username)
   }
   else
   {
-    return 'query failed';
+    return 0;
   }
   
   
@@ -67,7 +62,7 @@ function getProfile($username)
   }
   else
   {
-    return 'query failed';
+    return 0;
   }
   
   
@@ -76,5 +71,3 @@ function getProfile($username)
 }
 
  ?>
- </body>
- </html>
