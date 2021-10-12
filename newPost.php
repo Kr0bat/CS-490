@@ -16,8 +16,6 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
     // -------
     // BASIC USER
     // -------
-    include("sidebar-basic.php");
-    include("content-feed.php");
     $role = "basic";
 
 } else {
@@ -28,8 +26,6 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
             // -------
             // ADMINISTRATOR
             // -------
-            include("sidebar-admin.php");
-            include("content-feed.php");
             $role = "admin";
 
         } else if ($_SESSION['role'] == "basic") {
@@ -37,8 +33,6 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
             // -------
             // BASIC USER
             // -------
-            include("sidebar-basic.php");
-            include("content-feed.php");
             $role = "basic";
 
         } else {
