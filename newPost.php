@@ -3,6 +3,61 @@
 
 <?php
 session_start();
+
+//
+// =======
+// =========================
+// CHECK SESSION INFORMATION
+// =========================
+// =======
+//
+if ($_SERVER[HTTP_HOST] == "maxedward.com") {
+
+    // -------
+    // BASIC USER
+    // -------
+    include("sidebar-basic.php");
+    include("content-feed.php");
+    $role = "basic";
+
+} else {
+    $role = false;
+    if (isset($_SESSION['role'])) {
+        if ($_SESSION['role'] == "admin") {
+
+            // -------
+            // ADMINISTRATOR
+            // -------
+            include("sidebar-admin.php");
+            include("content-feed.php");
+            $role = "admin";
+
+        } else if ($_SESSION['role'] == "basic") {
+            
+            // -------
+            // BASIC USER
+            // -------
+            include("sidebar-basic.php");
+            include("content-feed.php");
+            $role = "basic";
+
+        } else {
+
+            // xxxxxxx
+            // REDIRECT TO LOGIN
+            // xxxxxxx
+            header("Location: /~kg448/index.php");
+
+        }
+    } else {
+
+        // xxxxxxx
+        // REDIRECT TO LOGIN
+        // xxxxxxx
+        header("Location: /~kg448/index.php"); 
+
+    }
+}
 ?>
 
 <style>
