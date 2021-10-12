@@ -81,13 +81,22 @@ function checkAdmin( $name ) {
 
 
 ?>
+<style>
+input {
+    cursor: pointer;
+}
+button {
+    cursor: pointer;
+}
+</style>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spotifeed | Your Spotify Feed</title>
     <link rel="stylesheet" href="./style.css" />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="shortcut icon" type="image/jpg" href="assets/favicon.ico">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -98,7 +107,7 @@ function checkAdmin( $name ) {
 </footer>
 
 <body style="background-color: #161616; font-family: 'Montserrat', sans-serif;">
-    <div class="col-12 bodyText" style="font-size: max(3vw, 3.5vh); background-color: #161616; text-align: center; padding-top: 5vh; overflow: visible; color: #e8e8e8;">
+    <div class="col-12 bodyText" style="font-size: clamp(1rem, max(5vh, 5vw), 4rem); background-color: #161616; text-align: center; padding-top: 5vh; overflow: visible; color: #e8e8e8;">
         Spotifeed
     </div>
     <div class="col-12" style="height: 50vh; padding-top: 15vh; background-color: #161616; text-align: center">
