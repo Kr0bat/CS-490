@@ -11,7 +11,7 @@
     height: var(--sidebarHeight); 
     z-index: 50; 
     font-size: 22.5px;
-    width: 10ch;
+    width: 10.1ch;
 }
 
 .lightTable {
@@ -40,6 +40,11 @@
 
 .linkLight {
     color: #fff;
+    text-decoration: none;
+}
+
+.linkLightPost {
+    color: #bfb46b;
     text-decoration: none;
 }
 
@@ -139,6 +144,15 @@ if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
                     </td>
                 </tr>
                 <tr class="lightTableTrSpacerSmall">
+                </tr>
+                <tr class="lightTableTr">
+                    <td>
+                        <a href="/~kg448/newPost.php" class="linkLightPost">
+                            <div>
+                                New Post
+                            </div>
+                        </a>
+                    </td>
                 </tr>
                 <tr class="lightTableTr">
                     <td>
