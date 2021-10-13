@@ -14,69 +14,61 @@ td.gridSize {
     border-style: solid;
     height: 20vw;
     opacity 1;
+    animation: pulse 1s ease forwards;
 }
 
 td.emptyGrid1 {
     border-color: #ffffff45;
     background: #ffffff15;
-    transition: opacity 700ms, transform 700ms;
-    animation: pulse 1.4s ease forwards;
+    animation-delay: 0s;
     animation-iteration-count: infinite;
 }
 td.emptyGrid12 {
-    border-color: #ffffff30;
-    background: #ffffff09;
-    transition: opacity 500ms, transform 500ms;
-    animation: pulse 1.3s ease forwards;
+    border-color: #ffffff37;
+    background: #ffffff13;
+    animation-delay: 0.2s;
     animation-iteration-count: infinite;
 }
 td.emptyGrid13 {
-    border-color: #ffffff37;
-    background: #ffffff12;
-    transition: opacity 400ms, transform 600ms;
-    animation: pulse 1.6s ease forwards;
+    border-color: #ffffff30;
+    background: #ffffff11;
+    animation-delay: 0.4s;
     animation-iteration-count: infinite;
 }
 td.emptyGrid2 {
-    border-color: #ffffff10;
-    background: #ffffff02;
-    transition: opacity 800ms, transform 700ms;
-    animation: pulse 1.25s ease forwards;
+    border-color: #ffffff18;
+    background: #ffffff09;
+    animation-delay: 0.2s;
     animation-iteration-count: infinite;
 }
 td.emptyGrid22 {
-    border-color: #ffffff20;
-    background: #ffffff07;
-    transition: opacity 600ms, transform 600ms;
-    animation: pulse 1.1s ease forwards;
+    border-color: #ffffff15;
+    background: #ffffff08;
+    animation-delay: 0.4s;
     animation-iteration-count: infinite;
 }
 td.emptyGrid23 {
-    border-color: #ffffff15;
-    background: #ffffff06;
-    transition: opacity 700ms, transform 700ms;
-    animation: pulse 1.35s ease forwards;
+    border-color: #ffffff12;
+    background: #ffffff07;
+    animation-delay: 0.6s;
     animation-iteration-count: infinite;
 }
 td.emptyGrid3 {
-    border-color: #ffffff07;
-    background: #ffffff02;
-    transition: opacity 400ms, transform 700ms;
-    animation: pulse 0.9s ease forwards;
+    border-color: #ffffff08;
+    background: #ffffff07;
+    animation-delay: 0.4s;
     animation-iteration-count: infinite;
 }
 td.emptyGrid32 {
-    border-color: #ffffff03;
-    background: #ffffff01;
-    transition: opacity 900ms, transform 700ms;
-    animation: pulse 1.4s ease forwards;
+    border-color: #ffffff06;
+    background: #ffffff05;
+    animation-delay: 0.6s;
     animation-iteration-count: infinite;
 }
 td.emptyGrid33 {
-    border-color: #ffffff01;
-    background: #ffffff01;
-    transition: opacity 700ms, transform 700ms;
-    animation: pulse 1.2s ease forwards;
+    border-color: #ffffff03;
+    background: #ffffff03;
+    animation-delay: 0.8s;
     animation-iteration-count: infinite;
 }
 
@@ -182,9 +174,9 @@ td.emptyGrid33 {
                     <td class="gridSize emptyGrid13"></td>
                 </tr>
                 <tr class="emptyGrid2">
-                    <td class="gridSize emptyGrid23"></td>
-                    <td class="gridSize emptyGrid22"></td>
                     <td class="gridSize emptyGrid2"></td>
+                    <td class="gridSize emptyGrid22"></td>
+                    <td class="gridSize emptyGrid23"></td>
                 </tr>
                 <tr class="emptyGrid3">
                     <td class="gridSize emptyGrid3"></td>
