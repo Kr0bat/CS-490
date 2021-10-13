@@ -137,15 +137,15 @@ if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
                     <td>
                         <a href="/~kg448/account.php" class="linkLight">
                             <div>
-                                <img src="assets/profPic.jpeg" class="imgFitMid logoImg" style="border-radius: 100%; height: 5ch; border-style: solid; border-color: <?php if ($currPage == 'account') { print("#56b35e; border-width: 0.5ch;"); } else { print("rgba(255, 255, 255, 0.15)"); } ?>; margin-left: 50%; transform: translate(-50%, 0);" />
+                                <img src="assets/profPic.jpeg" class="imgFitMid logoImg" style="border-radius: 100%; height: 5ch; border-style: solid; border-color: <?php if ($currPage == 'account') { print("#56b35e; border-width: 0.2ch;"); } else { print("rgba(255, 255, 255, 0.15)"); } ?>; margin-left: 50%; transform: translate(-50%, 0);" />
                             </div>
                         </a>
                     </td>
                 </tr>
                 <tr class="lightTableTrSpacerSmall"></tr>
                 <tr class="lightTableTr">
-                    <td>
-                        <div style="margin-left: 1ch;">
+                    <td style="text-align: center">
+                        <div style="">
                             <a href="/~kg448/newPost.php" class="linkLight" style="border: 0.15ch solid white; border-radius: 0.5ch; padding: 4px; margin-left: -4px;">
                                 New Post
                             </a>
