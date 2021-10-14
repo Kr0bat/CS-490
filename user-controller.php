@@ -11,6 +11,7 @@
 </head>
 <body>
 <?php
+/*
 session_start();
 #include("users.php"); TODO include backend functions
 
@@ -31,11 +32,6 @@ function updateUser(){
     $fname = $_REQUEST['edit_account_name_first'];
     $lname = $_REQUEST['edit_account_name_last'];
     $desc = $_REQUEST['edit_account_description'];
-    echo "<p>";
-    echo $fname + "\n";
-    echo $lname + "\n";
-    echo $desc + "\n";
-    echo "</p>"
     //TODO: Call post functions in user.php
 }
 
@@ -43,7 +39,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     updateUser();
     header("Location: /~kg448/account.php");
 }
-else {echo "somethings wrong...";}
 ?>
 </body>
 </html>

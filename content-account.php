@@ -106,7 +106,7 @@ td.emptyGrid33 {
     ?>
 
         <div class="col-10 push-1 bodyLight" style="">
-            <form method="POST">
+            <form method="POST" action="user-controller.php">
                 <div class="col-2">
                     <img src="assets/profPic.jpeg" class="imgFitMid logoImg" style="border-radius: 100%; height: min(10ch, 10vw); border-style: solid; border-color: rgba(255, 255, 255, 0.15);" />
                 </div>
