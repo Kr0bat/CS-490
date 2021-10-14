@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     updateUser();
     header("Location: /~kg448/account.php");
 }
-else{echo "somethings wrong...";}
+else {echo "somethings wrong...";}
 ?>
 </body>
 </html>

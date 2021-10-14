@@ -86,7 +86,7 @@ td.emptyGrid33 {
     }
 }
 </style>
-<div class="col-12" style="font-size: 22.5px; padding-left: 9ch">
+<div class="col-12" style="font-size: 22.5px; padding-left: 10ch">
     <div class="col-12" style="margin-top: 5vh">
         <div class="col-10 push-1 titleBold" style="">
             Account
@@ -106,7 +106,7 @@ td.emptyGrid33 {
         <div class="col-10 push-1 bodyLight" style="">
             <form method="POST">
                 <div class="col-2">
-                    <img src="assets/profPic.jpeg" class="imgFitMid logoImg" style="border-radius: 100%; height: 10vw; border-style: solid; border-color: rgba(255, 255, 255, 0.15);" />
+                    <img src="assets/profPic.jpeg" class="imgFitMid logoImg" style="border-radius: 100%; height: 10ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15);" />
                 </div>
                 <div class="col-8 push-05">
                     <div class="col-6 titleLight">
@@ -119,11 +119,7 @@ td.emptyGrid33 {
                         <input type="text" name="edit_account_description" placeholder="Describe yourself and your music taste!" value="" style="font-size: 20px; width: 100%; min-height: 3ch; margin: 2px 0; background-color: #00000000; border-color: #56b35e32; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 10px; text-align: left;" required />
                     </div>
                     <div class="col-12 bodyLight" style="margin-top: 2ch">
-                        <a href="/~kg448/account.php" style="text-decoration: none;">
-                            <span class="subtitleBold" style="font-size: 17.5px;">
-                                save profile
-                            </span>
-                        </a>
+                        <button type="submit" name="edit_account_submit" class="subtitleBold" style="font-size: 17.5px;">save profile</button>
                     </div>
                 </div>
             </form>

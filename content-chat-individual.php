@@ -2,7 +2,7 @@
 <html lang="en">
 <style>
 .chatBoxBack {
-    background-color: #090909;
+    background-color: #111;
     border-radius: 1ch 1ch 0 0;
     height: 85vh;
 }
@@ -28,7 +28,7 @@ session_start();
 
 ?>
 <body>
-    <div class="col-12" style="font-size: 22.5px; padding-left: 9ch">
+    <div class="col-12" style="font-size: 22.5px; padding-left: 10ch">
         <div class="col-12" style="margin-top: 5vh; height: 10vh;">
             <div class="col-10 push-1 titleBold" style="font-size: min(40px, 5vh); z-index: 10;">
                 <table>
