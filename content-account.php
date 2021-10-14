@@ -86,7 +86,7 @@ td.emptyGrid33 {
     }
 }
 </style>
-<div class="col-12" style="font-size: 22.5px; padding-left: 11ch">
+<div class="col-12" style="font-size: 22.5px; padding-left: 9ch">
     <div class="col-12" style="margin-top: 5vh">
         <div class="col-10 push-1 titleBold" style="">
             Account
