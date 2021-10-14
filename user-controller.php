@@ -35,6 +35,7 @@ function updateUser(){
     echo $fname + "\n";
     echo $lname + "\n";
     echo $desc + "\n";
+    echo "</p>"
     //TODO: Call post functions in user.php
 }
 
