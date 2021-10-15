@@ -31,7 +31,7 @@ function getPass($username)
   }
   
   
-  msqli_close($dbc);
+  mysqli_close($dbc);
   
 }
 
@@ -66,7 +66,7 @@ function getProfile($username)
   }
   
   
-  msqli_close($dbc);
+  mysqli_close($dbc);
   
 }
 
@@ -89,7 +89,7 @@ function updateFname($fname, $username)
   $q1 = "UPDATE user SET first_name = '$fname' WHERE username = '$username' ";
   $r = @mysqli_query ($dbc, $q1); 
   
-  msqli_close($dbc);
+  mysqli_close($dbc);
   
 }
 
@@ -112,7 +112,7 @@ function updateLname($lname, $username)
   $q1 = "UPDATE user SET last_name = '$lname' WHERE username = '$username' ";
   $r = @mysqli_query ($dbc, $q1); 
   
-  msqli_close($dbc);
+  mysqli_close($dbc);
   
 }
 
@@ -135,7 +135,7 @@ function updateDesc($desc, $username)
   $q1 = "UPDATE user SET description = '$desc' WHERE username = '$username' ";
   $r = @mysqli_query ($dbc, $q1); 
   
-  msqli_close($dbc);
+  mysqli_close($dbc);
   
 }
 
@@ -143,5 +143,3 @@ function updateDesc($desc, $username)
 
 
  ?>
- </body>
- </html>
