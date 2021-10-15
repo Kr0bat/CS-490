@@ -69,16 +69,14 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
     }
 }
 
-include("users.php");
-
 // =======
 // =======================
 // = UPDATE PROFILE FORM =
 // =======================
 // =======
 if (isset($_POST['edit_account_submit'])) {
-    $fname = $_POST['edit_account_first'];
-    $lname = $_POST['edit_account_last'];
+    $fname = $_POST['edit_account_name_first'];
+    $lname = $_POST['edit_account_name_last'];
     $desc = $_POST['edit_account_description'];
     $user = $_SESSION['username'];
 
