@@ -21,6 +21,7 @@ session_start();
 // =========================
 // =======
 //
+
 if ($_SERVER[HTTP_HOST] == "maxedward.com") {
 
     // -------
@@ -33,6 +34,28 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
 } else {
     $role = false;
     if (isset($_SESSION['role'])) {
+        
+        // =======
+        // =======================
+        // = UPDATE PROFILE FORM =
+        // =======================
+        // =======
+        if ( (isset($_POST['edit_account_submit'])) && ( $_SESSION['role'] == "admin" || $_SESSION['role'] == "basic" ) )  {
+            include("users.php");
+            $fname = $_POST['edit_account_name_first'];
+            $lname = $_POST['edit_account_name_last'];
+            $desc = $_POST['edit_account_description'];
+            $user = $_SESSION['username'];
+
+            
+            updateFname($fname, $user);
+            updateLname($lname, $user);
+            updateDesc($desc, $user);
+            
+
+            header("Location: /~kg448/account.php");
+        }
+
         if ($_SESSION['role'] == "admin") {
 
             // -------
@@ -69,25 +92,7 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
     }
 }
 
-// =======
-// =======================
-// = UPDATE PROFILE FORM =
-// =======================
-// =======
-if (isset($_POST['edit_account_submit'])) {
-    $fname = $_POST['edit_account_name_first'];
-    $lname = $_POST['edit_account_name_last'];
-    $desc = $_POST['edit_account_description'];
-    $user = $_SESSION['username'];
 
-    /* THESE DONT WORK IDK WHY
-    updateFname($fname, $user);
-    updateLname($lname, $user);
-    updateDesc($desc, $user);
-    */
-
-    header("Location: /~kg448/account.php");
-}
 ?>
 </body>
 </html>

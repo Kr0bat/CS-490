@@ -139,6 +139,7 @@ function updateDesc($desc, $username)
   
 }
 
+//updateDesc("GAS TANK ON E", "Karim");
 
 
 
