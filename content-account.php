@@ -97,67 +97,29 @@ td.emptyGrid33 {
             This information is public to all users
         </div>
     </div>
-    <div class="col-12" style="margin: 10vh 0">
+    
     <?php
         include("factory.php");
         include("users.php");
 
-        if (isset($_GET['editProfile'])) {
-            // DISPLAY EDIT PROFILE FORM
+        if (isset($_GET['viewing'])) {
+            // SHOW SOMEONE ELSE'S PROFILE
     ?>
 
-        <div class="col-10 push-1 bodyLight" style="">
-            <form method="POST">
-                <div class="col-2">
-                    <img src="assets/profPic.jpeg" class="imgFitMid logoImg" style="border-radius: 100%; height: min(10ch, 10vw); border-style: solid; border-color: rgba(255, 255, 255, 0.15);" />
-                </div>
-                <div class="col-8 push-05">
-                    <div class="col-5 titleLight">
-                        <input type="text" name="edit_account_name_first" placeholder="First" value="<?php echo getProfile($_SESSION['username'])["fname"] ?>" style="font-size: 20px; width: 100%; margin: 2px 0; background-color: #00000000; border-color: #56b35e32; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 10px; text-align: left;" required />
-                    </div>
-                    <div class="col-5 push-1 titleLight">
-                        <input type="text" name="edit_account_name_last" placeholder="Last" value="<?php echo getProfile($_SESSION['username'])["lname"] ?>" style="font-size: 20px; width: 100%; margin: 2px 0; background-color: #00000000; border-color: #56b35e32; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 10px; text-align: left;" required />
-                    </div>
-                    <div class="col-11 bodyLight" style="margin-top: 1ch">
-                        <input type="text" name="edit_account_description" placeholder="Describe yourself and your music taste!" value="<?php echo getProfile($_SESSION['username'])["profile_description"] ?>" style="font-size: 20px; width: 100%; min-height: 3ch; margin: 2px 0; background-color: #00000000; border-color: #56b35e32; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 10px; text-align: left;" required />
-                    </div>
-                    <div class="col-12 bodyLight" style="margin-top: 2ch">
-                        <button type="submit" name="edit_account_submit" class="subtitleBold" style="font-size: 17.5px; background-color: #ffffff00; border-color: #ffffff00;">save profile</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    
-    <?php
-        } else {
-            // DISPLAY REGULAR PROFILE
-    ?>
-
+    <div class="col-12" style="margin: 10vh 0">
         <div class="col-10 push-1 bodyLight" style="">
             <div class="col-2">
                 <img src="assets/profPic.jpeg" class="imgFitMid logoImg" style="border-radius: 100%; height: min(10ch, 10vw); border-style: solid; border-color: rgba(255, 255, 255, 0.15);" />
             </div>
             <div class="col-8 push-05">
                 <div class="col-12 titleLight">
-                    <?php echo getProfile($_SESSION['username'])["fname"].' '.getProfile($_SESSION['username'])["lname"]; ?>
+                    <?php echo getProfile($_GET['viewing'])["fname"].' '.getProfile($_GET['viewing'])["lname"]; ?> <span class="subtitleLight" style="font-size: 20px">(<?php echo $_GET['viewing']; ?>)</span>
                 </div>
                 <div class="col-12 bodyLight" style="margin-top: 2ch">
-                    <?php echo getProfile($_SESSION['username'])["profile_description"]; ?>
-                </div>
-                <div class="col-12 bodyLight" style="margin-top: 2ch">
-                    <a href="?editProfile=true" style="text-decoration: none;">
-                        <span class="subtitleBold" style="font-size: 17.5px;">
-                            edit profile
-                        </span>
-                    </a>
+                    <?php echo getProfile($_GET['viewing'])["profile_description"]; ?>
                 </div>
             </div>
         </div>
-    
-    <?php
-        }
-    ?>
-
     </div>
     <div class="col-12" style="margin-top: 1vh">
         <div class="col-10 push-1 titleBold" style="font-size: 22.5px">
@@ -185,4 +147,92 @@ td.emptyGrid33 {
             </tbody>
         </table>
     </div>
+
+    <?php
+        } else if (isset($_GET['editProfile'])) {
+            // DISPLAY EDIT PROFILE FORM
+    ?>
+
+    <div class="col-12" style="margin: 10vh 0">
+        <div class="col-10 push-1 bodyLight" style="">
+            <form method="POST">
+                <div class="col-2">
+                    <img src="assets/profPic.jpeg" class="imgFitMid logoImg" style="border-radius: 100%; height: min(10ch, 10vw); border-style: solid; border-color: rgba(255, 255, 255, 0.15);" />
+                </div>
+                <div class="col-8 push-05">
+                    <div class="col-5 titleLight">
+                        <input type="text" name="edit_account_name_first" placeholder="First" value="<?php echo getProfile($_SESSION['username'])["fname"] ?>" style="font-size: 20px; width: 100%; margin: 2px 0; background-color: #00000000; border-color: #56b35e32; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 10px; text-align: left;" required />
+                    </div>
+                    <div class="col-5 push-1 titleLight">
+                        <input type="text" name="edit_account_name_last" placeholder="Last" value="<?php echo getProfile($_SESSION['username'])["lname"] ?>" style="font-size: 20px; width: 100%; margin: 2px 0; background-color: #00000000; border-color: #56b35e32; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 10px; text-align: left;" required />
+                    </div>
+                    <div class="col-11 bodyLight" style="margin-top: 1ch">
+                        <input type="text" name="edit_account_description" placeholder="Describe yourself and your music taste!" value="<?php echo getProfile($_SESSION['username'])["profile_description"] ?>" style="font-size: 20px; width: 100%; min-height: 3ch; margin: 2px 0; background-color: #00000000; border-color: #56b35e32; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 10px; text-align: left;" required />
+                    </div>
+                    <div class="col-12 bodyLight" style="margin-top: 2ch">
+                        <button type="submit" name="edit_account_submit" class="subtitleBold" style="font-size: 17.5px; background-color: #ffffff00; border-color: #ffffff00;">save profile</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <?php
+        } else {
+            // DISPLAY REGULAR PROFILE
+    ?>
+
+    <div class="col-12" style="margin: 10vh 0">
+        <div class="col-10 push-1 bodyLight" style="">
+            <div class="col-2">
+                <img src="assets/profPic.jpeg" class="imgFitMid logoImg" style="border-radius: 100%; height: min(10ch, 10vw); border-style: solid; border-color: rgba(255, 255, 255, 0.15);" />
+            </div>
+            <div class="col-8 push-05">
+                <div class="col-12 titleLight">
+                    <?php echo getProfile($_SESSION['username'])["fname"].' '.getProfile($_SESSION['username'])["lname"]; ?> <span class="subtitleLight" style="font-size: 20px">(<?php echo $_SESSION['username']; ?>)</span>
+                </div>
+                <div class="col-12 bodyLight" style="margin-top: 2ch">
+                    <?php echo getProfile($_SESSION['username'])["profile_description"]; ?>
+                </div>
+                <div class="col-12 bodyLight" style="margin-top: 2ch">
+                    <a href="?editProfile=true" style="text-decoration: none;">
+                        <span class="subtitleBold" style="font-size: 17.5px;">
+                            edit profile
+                        </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12" style="margin-top: 1vh">
+        <div class="col-10 push-1 titleBold" style="font-size: 22.5px">
+            Post History
+        </div>
+    </div>
+    <div class="col-12" style="margin-top: 1vh">
+        <table class="col-10 push-1 emptyGrid" cellspacing="15" cellpadding="0">
+            <tbody style="width: 100%">
+                <tr style="width: 100%">
+                    <td class="gridSize emptyGrid1"></td>
+                    <td class="gridSize emptyGrid12"></td>
+                    <td class="gridSize emptyGrid13"></td>
+                </tr>
+                <tr class="emptyGrid2">
+                    <td class="gridSize emptyGrid2"></td>
+                    <td class="gridSize emptyGrid22"></td>
+                    <td class="gridSize emptyGrid23"></td>
+                </tr>
+                <tr class="emptyGrid3">
+                    <td class="gridSize emptyGrid3"></td>
+                    <td class="gridSize emptyGrid32"></td>
+                    <td class="gridSize emptyGrid33"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <?php
+        }
+    ?>
+
 </div>
