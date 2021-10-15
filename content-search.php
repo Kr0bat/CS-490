@@ -6,6 +6,25 @@
 
 ?>
 <style>
+.dmContainer {
+    width: 65vw;
+    border-radius: 1ch;
+    padding: 1ch;
+    background: #ffffff17;
+    border-style: solid;
+    border-color: #ffffff17;
+}
+.blueDot::before {
+    content: '';
+    position: absolute;
+    width: 1ch;
+    height: 1ch;
+    background-color: #56b35e;
+    border-radius: 100%;
+    margin-left: -1.5ch;
+    margin-top: 0.69ch;
+}
+
 table.emptyGrid {
     width: 65vw;
 }
@@ -104,29 +123,47 @@ td.emptyGrid33 {
                 Results
             </div>
         </div>
-        <div class="col-12" style="margin-top: 1vh">
-            <table class="col-10 push-1 emptyGrid" cellspacing="15" cellpadding="0">
-                <tbody style="width: 100%">
-                    <tr style="width: 100%">
-                        <td class="gridSize emptyGrid1"></td>
-                    </tr>
-                    <tr class="emptyGrid2">
-                        <td class="gridSize emptyGrid12"></td>
-                    </tr>
-                    <tr class="emptyGrid3">
-                        <td class="gridSize emptyGrid2"></td>
-                    </tr>
-                    <tr style="width: 100%">
-                        <td class="gridSize emptyGrid22"></td>
-                    </tr>
-                    <tr class="emptyGrid2">
-                        <td class="gridSize emptyGrid3"></td>
-                    </tr>
-                    <tr class="emptyGrid3">
-                        <td class="gridSize emptyGrid32"></td>
-                    </tr>
-                </tbody>
-            </table>
+        <div class="col-12" style="margin-top: 0vh">
+
+            <?php
+
+            $userList = [
+                "Karim" => ["fname" => "Karim", "lname" => "Karim", "profile_description" => "Karim Karim Karim Karim Karim"],
+                "Jose" => ["fname" => "Jose", "lname" => "Jose", "profile_description" => "Jose Jose Jose Jose Jose"],
+                "user12345" => ["fname" => "First", "lname" => "Last", "profile_description" => "Here's my description baby!"],
+                "user420" => ["fname" => "Blaze", "lname" => "It", "profile_description" => "baby"],
+                "user69" => ["fname" => "Sexy", "lname" => "Sexy", "profile_description" => "uwu"],];
+            foreach ($userList as $username => $info) { ?>
+
+            <div class="col-12" style="margin-top: 1vh">
+                <a href="/~kg448/account.php?viewing=<?php echo $specifiedUser; ?>">
+                    <div class="col-10 push-1 bodyBold dmContainer" style="margin: 0.5ch 0">
+                        <div class="col-12">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td style="max-width: fit-content;">
+                                            <span class="">
+                                                <img src="assets/profPic.jpeg" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 3ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                            </span>
+                                        </td>
+                                        <td style="padding-left: 1.69ch">
+                                            <?php echo $info['fname'].' '.$info['lname']; ?> <span class="subtitleLight" style="font-size: 20px">(<?php echo $username; ?>)</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-12 subtitleLight" style="font-size: 18px; margin-top: 1.5ch; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;"><?php echo $info['profile_description']; ?></div>
+                    </div>
+                </a>
+            </div>
+
+            <?php
+            }
+
+            ?>
+
         </div>
     </div>
 </body>
