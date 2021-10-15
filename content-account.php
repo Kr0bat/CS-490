@@ -102,8 +102,6 @@ td.emptyGrid33 {
         include("factory.php");
         include("users.php");
 
-        print_r(getProfile($_SESSION['username']));
-
         if (isset($_GET['editProfile'])) {
             // DISPLAY EDIT PROFILE FORM
     ?>
@@ -115,13 +113,13 @@ td.emptyGrid33 {
                 </div>
                 <div class="col-8 push-05">
                     <div class="col-5 titleLight">
-                        <input type="text" name="edit_account_name_first" placeholder="First" value="<?php echo dummyUser()["fname"] ?>" style="font-size: 20px; width: 100%; margin: 2px 0; background-color: #00000000; border-color: #56b35e32; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 10px; text-align: left;" required />
+                        <input type="text" name="edit_account_name_first" placeholder="First" value="<?php echo getProfile($_SESSION['username'])["fname"] ?>" style="font-size: 20px; width: 100%; margin: 2px 0; background-color: #00000000; border-color: #56b35e32; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 10px; text-align: left;" required />
                     </div>
                     <div class="col-5 push-1 titleLight">
-                        <input type="text" name="edit_account_name_last" placeholder="Last" value="<?php echo dummyUser()["lname"] ?>" style="font-size: 20px; width: 100%; margin: 2px 0; background-color: #00000000; border-color: #56b35e32; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 10px; text-align: left;" required />
+                        <input type="text" name="edit_account_name_last" placeholder="Last" value="<?php echo getProfile($_SESSION['username'])["lname"] ?>" style="font-size: 20px; width: 100%; margin: 2px 0; background-color: #00000000; border-color: #56b35e32; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 10px; text-align: left;" required />
                     </div>
                     <div class="col-11 bodyLight" style="margin-top: 1ch">
-                        <input type="text" name="edit_account_description" placeholder="Describe yourself and your music taste!" value="<?php echo dummyUser()["description"] ?>" style="font-size: 20px; width: 100%; min-height: 3ch; margin: 2px 0; background-color: #00000000; border-color: #56b35e32; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 10px; text-align: left;" required />
+                        <input type="text" name="edit_account_description" placeholder="Describe yourself and your music taste!" value="<?php echo getProfile($_SESSION['username'])["profile_description"] ?>" style="font-size: 20px; width: 100%; min-height: 3ch; margin: 2px 0; background-color: #00000000; border-color: #56b35e32; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 10px; text-align: left;" required />
                     </div>
                     <div class="col-12 bodyLight" style="margin-top: 2ch">
                         <button type="submit" name="edit_account_submit" class="subtitleBold" style="font-size: 17.5px; background-color: #ffffff00; border-color: #ffffff00;">save profile</button>
@@ -141,10 +139,10 @@ td.emptyGrid33 {
             </div>
             <div class="col-8 push-05">
                 <div class="col-12 titleLight">
-                    <?php echo dummyUser()["fname"].' '.dummyUser()["lname"]; ?>
+                    <?php echo getProfile($_SESSION['username'])["fname"].' '.getProfile($_SESSION['username'])["lname"]; ?>
                 </div>
                 <div class="col-12 bodyLight" style="margin-top: 2ch">
-                    <?php echo dummyUser()["description"]; ?>
+                    <?php echo getProfile($_SESSION['username'])["profile_description"]; ?>
                 </div>
                 <div class="col-12 bodyLight" style="margin-top: 2ch">
                     <a href="?editProfile=true" style="text-decoration: none;">
