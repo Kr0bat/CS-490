@@ -13,6 +13,7 @@
 <body  style="background-color: #161616; font-family: 'Montserrat', sans-serif;">
 <?php
 session_start();
+
 //
 // =======
 // =========================
@@ -20,7 +21,6 @@ session_start();
 // =========================
 // =======
 //
-
 if ($_SERVER[HTTP_HOST] == "maxedward.com") {
 
     // -------
@@ -69,6 +69,25 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
     }
 }
 
+include("users.php");
+
+// =======
+// =======================
+// = UPDATE PROFILE FORM =
+// =======================
+// =======
+if (isset($_POST['edit_account_submit'])) {
+    $fname = $_POST['edit_account_first'];
+    $lname = $_POST['edit_account_last'];
+    $desc = $_POST['edit_account_description'];
+    $user = $_SESSION['username'];
+
+    updateFname($fname, $user);
+    updateLname($lname, $user);
+    updateDesc($desc, $user);
+
+    header("Location: /~kg448/account.php");
+}
 ?>
 </body>
 </html>
