@@ -82,9 +82,11 @@ if (isset($_POST['edit_account_submit'])) {
     $desc = $_POST['edit_account_description'];
     $user = $_SESSION['username'];
 
+    /* THESE DONT WORK IDK WHY
     updateFname($fname, $user);
     updateLname($lname, $user);
     updateDesc($desc, $user);
+    */
 
     header("Location: /~kg448/account.php");
 }
