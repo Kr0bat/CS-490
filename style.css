@@ -398,7 +398,7 @@ body {
     padding-bottom: 100%;
 }
 
-.col-05, .col-1, .col-15, .col-2, .col-25, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12, .col-65 {
+.col-05, .col-1, .col-15, .col-2, .col-25, .col-3, .col-4, .col-5, .col-55, .col-6, .col-65, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
     position: relative;
     min-height: 1px;
     float: left;
@@ -426,6 +426,9 @@ body {
 }
 .col-5 {
     width: 41.666666666%;
+}
+.col-55 {
+    width: 45.833333333%;
 }
 .col-6 {
     width: 50%;

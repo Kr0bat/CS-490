@@ -13,9 +13,11 @@ $db_user = "jpr47";
 $db_password = "CompSci490**";
 GLOBAL $dbc;
 $dbc = @mysqli_connect ($db_host, $db_user, $db_password, $db_name) OR die ('Could not connect to MySQL: '.mysqli_connect_error() ); 
+return $dbc;
 }
 
 function validateUser($user, $password) {
+
   if (empty($user)) {
       return false;
   }
@@ -24,6 +26,7 @@ function validateUser($user, $password) {
   }
       
   return false;
+  
 }
 
 function retrieveUser($username, $password){

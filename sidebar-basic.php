@@ -7,7 +7,7 @@
     position: fixed; 
     left: 0; 
     margin-top: 20px; 
-    border-radius: 0 50px 0 0; 
+    border-radius: 0 3.75ch 0 0; 
     height: var(--sidebarHeight); 
     z-index: 50; 
     font-size: 22.5px;
@@ -18,7 +18,6 @@
     color: #fff;
     line-height: 3ch;
     width: 100%;
-    margin-left: 1ch;
 }
 
 .lightTableTr {
@@ -131,67 +130,73 @@ if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
 ?>
 
 <div class="sidebar-style" style="font-family: 'Montserrat', sans-serif;">
-    <div class="col-12" style="padding: 50px 0;">
+    <div class="col-12" style="padding: 1.7ch 0;">
         <table class="lightTable">
             <tbody>
                 <tr class="lightTableTr">
                     <td>
                         <a href="/~kg448/account.php" class="linkLight">
-                            <div class=<?php if ($currPage == 'account') { print("trSelected"); } ?> >
-                                Account
-                            </div>
-                        </a>
-                    </td>
-                </tr>
-                <tr class="lightTableTrSpacerSmall">
-                </tr>
-                <tr class="lightTableTr">
-                    <td>
-                        <a href="/~kg448/newPost.php" class="linkLight">
                             <div>
-                                <a style="border: 1px solid white; border-radius: 1ch;">
-                                    New Post
-                                </a>
+                                <img src="assets/profPic.jpeg" class="imgFitMid logoImg" style="border-radius: 100%; height: 5ch; border-style: solid; border-color: <?php if ($currPage == 'account') { print("#56b35e; border-width: 0.2ch;"); } else { print("rgba(255, 255, 255, 0.15)"); } ?>; margin-left: 50%; transform: translate(-50%, 0);" />
                             </div>
                         </a>
                     </td>
                 </tr>
+                <tr class="lightTableTrSpacerSmall"></tr>
+                <tr class="lightTableTr">
+                    <td style="text-align: center">
+                        <div style="">
+                            <a href="/~kg448/newPost.php" class="linkLight" style="border: 0.15ch solid white; border-radius: 0.5ch; padding: 4px; margin-left: -4px;">
+                                New Post
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="lightTableTrSpacerSmall"></tr>
                 <tr class="lightTableTr">
                     <td>
-                        <a href="/~kg448/feed.php" class="linkLight">
-                            <div class=<?php if ($currPage == 'feed') { print("trSelected"); } ?>>
-                                Feed
-                            </div>
-                        </a>
+                        <div style="margin-left: 1ch;">
+                            <a href="/~kg448/feed.php" class="linkLight">
+                                <div class=<?php if ($currPage == 'feed') { print("trSelected"); } ?>>
+                                    Feed
+                                </div>
+                            </a>
+                        </div>
                     </td>
                 </tr>
                 <tr class="lightTableTr">
                     <td>
-                        <a href="/~kg448/chat.php" class="linkLight">
-                            <div class=<?php if ($currPage == 'chat') { print("trSelected"); } ?>>
-                                Chat
-                            </div>
-                        </a>
+                        <div style="margin-left: 1ch;">
+                            <a href="/~kg448/chat.php" class="linkLight">
+                                <div class=<?php if ($currPage == 'chat') { print("trSelected"); } ?>>
+                                    Chat
+                                </div>
+                            </a>
+                        </div>
                     </td>
                 </tr>
                 <tr class="lightTableTr">
                     <td>
-                        <a href="/~kg448/search.php" class="linkLight">
-                            <div class=<?php if ($currPage == 'search') { print("trSelected"); } ?>>
-                                Search
-                            </div>
-                        </a>
+                        <div style="margin-left: 1ch;">
+                            <a href="/~kg448/search.php" class="linkLight">
+                                <div class=<?php if ($currPage == 'search') { print("trSelected"); } ?>>
+                                    Search
+                                </div>
+                            </a>
+                        </div>
                     </td>
                 </tr>
                 <tr class="lightTableTrSpacerLarge">
                 </tr>
                 <tr class="lightTableTr">
                     <td>
-                        <a href="?logout=true" class="linkLight">
-                            <div class=<?php if ($currPage == 'settings') { print("trSelected"); } ?>>
-                                Log Out
-                            </div>
-                        </a>
+                        <div style="margin-left: 1ch;">
+                            <a href="?logout=true" class="linkLight">
+                                <div class=<?php if ($currPage == 'settings') { print("trSelected"); } ?>>
+                                    Log Out
+                                </div>
+                            </a>
+                        </div>
                     </td>
                 </tr>
             </tbody>

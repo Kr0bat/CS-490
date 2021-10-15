@@ -23,16 +23,29 @@ session_start();
 
 if ($_SERVER[HTTP_HOST] == "maxedward.com") {
 
-    
     // -------
-    // BASIC USER
+    // ADMIN USER
     // -------
-    include("sidebar-basic.php");
-    include("content-chat.php");
-    $role = "basic";
+    include("sidebar-admin.php");
+    $role = "admin";
+    $showIndividual = false;
 
+    if (isset($_GET['chatWith'])) {
+        
+        // TODO: VERIFY USER EXISTS IN DATABASE
+        $userExists = true;
+        if ($userExists) {
+            $showIndividual = true;
+        }
+        
+    }
 
-
+    if ($showIndividual) {
+        $_SESSION['chatWith'] = $_GET['chatWith'];
+        include("content-chat-individual.php");
+    } else {
+        include("content-chat.php");
+    }
 
 } else {
     $role = false;
@@ -43,8 +56,25 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
             // ADMINISTRATOR
             // -------
             include("sidebar-admin.php");
-            include("content-chat.php");
             $role = "admin";
+            $showIndividual = false;
+
+            if (isset($_GET['chatWith'])) {
+                
+                // TODO: VERIFY USER EXISTS IN DATABASE
+                $userExists = true;
+                if ($userExists) {
+                    $showIndividual = true;
+                }
+
+            }
+
+            if ($showIndividual) {
+                $_SESSION['chatWith'] = $_GET['chatWith'];
+                include("content-chat-individual.php");
+            } else {
+                include("content-chat.php");
+            }
 
         } else if ($_SESSION['role'] == "basic") {
             
@@ -52,8 +82,25 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
             // BASIC USER
             // -------
             include("sidebar-basic.php");
-            include("content-chat.php");
             $role = "basic";
+            $showIndividual = false;
+
+            if (isset($_GET['chatWith'])) {
+                
+                // TODO: VERIFY USER EXISTS IN DATABASE
+                $userExists = true;
+                if ($userExists) {
+                    $showIndividual = true;
+                }
+
+            }
+
+            if ($showIndividual) {
+                $_SESSION['chatWith'] = $_GET['chatWith'];
+                include("content-chat-individual.php");
+            } else {
+                include("content-chat.php");
+            }
 
         } else {
 
@@ -63,6 +110,7 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
             header("Location: /~kg448/index.php");
 
         }
+        
     } else {
 
         // xxxxxxx
