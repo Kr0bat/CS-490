@@ -136,7 +136,7 @@ td.emptyGrid33 {
             foreach ($userList as $username => $info) { ?>
 
             <div class="col-12" style="margin-top: 1vh">
-                <a href="/~kg448/account.php?viewing=<?php echo $specifiedUser; ?>">
+                <a href="/~kg448/account.php?viewing=<?php echo $username; ?>">
                     <div class="col-10 push-1 bodyBold dmContainer" style="margin: 0.5ch 0">
                         <div class="col-12">
                             <table>
