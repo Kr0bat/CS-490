@@ -100,6 +100,9 @@ td.emptyGrid33 {
     <div class="col-12" style="margin: 10vh 0">
     <?php
         include("factory.php");
+        include("users.php");
+
+        print_r(getProfile($_SESSION['username']));
 
         if (isset($_GET['editProfile'])) {
             // DISPLAY EDIT PROFILE FORM
