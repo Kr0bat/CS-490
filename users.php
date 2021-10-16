@@ -1,9 +1,4 @@
-<html>
-	<head>
-		<title>Sample PHP</title>
-	</head>
-	<body>
- <?php
+<?php
 
 function getPass($username)
 {
@@ -26,7 +21,7 @@ function getPass($username)
   }
   
   //close database connection
-  msqli_close($dbc);
+  mysqli_close($dbc);
   
 }
 
@@ -62,7 +57,7 @@ function updateFname($fname, $username)
   $r = @mysqli_query ($dbc, $q1); 
   
   //close database connection
-  msqli_close($dbc);
+  mysqli_close($dbc);
   
 }
 
@@ -76,7 +71,7 @@ function updateLname($lname, $username)
   $r = @mysqli_query ($dbc, $q1); 
   
   //close database connection
-  msqli_close($dbc);
+  mysqli_close($dbc);
   
 }
 
@@ -91,10 +86,8 @@ function updateDesc($desc, $username)
   $r = @mysqli_query ($dbc, $q1); 
   
   //close database connection
-  msqli_close($dbc);
+  mysqli_close($dbc);
   
 }
 
  ?>
- </body>
- </html>
