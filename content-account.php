@@ -87,16 +87,6 @@ td.emptyGrid33 {
 }
 </style>
 <div class="col-12" style="font-size: 22.5px; padding-left: 10ch">
-    <div class="col-12" style="margin-top: 5vh">
-        <div class="col-10 push-1 titleBold" style="">
-            Account
-        </div>
-    </div>
-    <div class="col-12" style="margin-top: 1vh">
-        <div class="col-10 push-1 subtitleLight" style="font-size: 22.5px">
-            This information is public to all users
-        </div>
-    </div>
     
     <?php
         include("factory.php");
@@ -106,6 +96,13 @@ td.emptyGrid33 {
             // SHOW SOMEONE ELSE'S PROFILE
     ?>
 
+    <div class="col-12" style="margin-top: 5vh">
+        <a href="/~kg448/<?php if (isset($_GET['redirectFrom'])) { echo $_GET['redirectFrom']; } else { echo "search"; } ?>.php">
+            <div class="col-10 push-1 subtitleBold" style="font-size: 22.5px">
+                Back
+            </div>
+        </a>
+    </div>
     <div class="col-12" style="margin: 10vh 0">
         <div class="col-10 push-1 bodyLight" style="">
             <div class="col-2">
@@ -113,10 +110,10 @@ td.emptyGrid33 {
             </div>
             <div class="col-8 push-05">
                 <div class="col-12 titleLight">
-                    <?php echo getProfile($_GET['viewing'])["fname"].' '.getProfile($_GET['viewing'])["lname"]; ?> <span class="subtitleLight" style="font-size: 20px">(<?php echo $_GET['viewing']; ?>)</span>
+                    <?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_GET['viewing'])["fname"].' '.getProfile($_GET['viewing'])["lname"]; } ?> <span class="subtitleLight" style="font-size: 20px">(<?php echo $_GET['viewing']; ?>)</span>
                 </div>
                 <div class="col-12 bodyLight" style="margin-top: 2ch">
-                    <?php echo getProfile($_GET['viewing'])["profile_description"]; ?>
+                    <?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_GET['viewing'])["profile_description"]; } ?>
                 </div>
             </div>
         </div>
@@ -153,6 +150,16 @@ td.emptyGrid33 {
             // DISPLAY EDIT PROFILE FORM
     ?>
 
+    <div class="col-12" style="margin-top: 5vh">
+        <div class="col-10 push-1 titleBold" style="">
+            Account
+        </div>
+    </div>
+    <div class="col-12" style="margin-top: 1vh">
+        <div class="col-10 push-1 subtitleLight" style="font-size: 22.5px">
+            This information is public to all users
+        </div>
+    </div>
     <div class="col-12" style="margin: 10vh 0">
         <div class="col-10 push-1 bodyLight" style="">
             <form method="POST">
@@ -161,13 +168,13 @@ td.emptyGrid33 {
                 </div>
                 <div class="col-8 push-05">
                     <div class="col-5 titleLight">
-                        <input type="text" name="edit_account_name_first" placeholder="First" value="<?php echo getProfile($_SESSION['username'])["fname"] ?>" style="font-size: 20px; width: 100%; margin: 2px 0; background-color: #00000000; border-color: #56b35e32; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 10px; text-align: left;" required />
+                        <input type="text" name="edit_account_name_first" placeholder="First" value="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["fname"]; } ?>" style="font-size: 20px; width: 100%; margin: 2px 0; background-color: #00000000; border-color: #56b35e32; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 10px; text-align: left;" required />
                     </div>
                     <div class="col-5 push-1 titleLight">
-                        <input type="text" name="edit_account_name_last" placeholder="Last" value="<?php echo getProfile($_SESSION['username'])["lname"] ?>" style="font-size: 20px; width: 100%; margin: 2px 0; background-color: #00000000; border-color: #56b35e32; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 10px; text-align: left;" required />
+                        <input type="text" name="edit_account_name_last" placeholder="Last" value="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["lname"]; } ?>" style="font-size: 20px; width: 100%; margin: 2px 0; background-color: #00000000; border-color: #56b35e32; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 10px; text-align: left;" required />
                     </div>
                     <div class="col-11 bodyLight" style="margin-top: 1ch">
-                        <input type="text" name="edit_account_description" placeholder="Describe yourself and your music taste!" value="<?php echo getProfile($_SESSION['username'])["profile_description"] ?>" style="font-size: 20px; width: 100%; min-height: 3ch; margin: 2px 0; background-color: #00000000; border-color: #56b35e32; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 10px; text-align: left;" required />
+                        <input type="text" name="edit_account_description" placeholder="Describe yourself and your music taste!" value="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["profile_description"]; } ?>" style="font-size: 20px; width: 100%; min-height: 3ch; margin: 2px 0; background-color: #00000000; border-color: #56b35e32; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 10px; text-align: left;" required />
                     </div>
                     <div class="col-12 bodyLight" style="margin-top: 2ch">
                         <button type="submit" name="edit_account_submit" class="subtitleBold" style="font-size: 17.5px; background-color: #ffffff00; border-color: #ffffff00;">save profile</button>
@@ -182,6 +189,16 @@ td.emptyGrid33 {
             // DISPLAY REGULAR PROFILE
     ?>
 
+    <div class="col-12" style="margin-top: 5vh">
+        <div class="col-10 push-1 titleBold" style="">
+            Account
+        </div>
+    </div>
+    <div class="col-12" style="margin-top: 1vh">
+        <div class="col-10 push-1 subtitleLight" style="font-size: 22.5px">
+            This information is public to all users
+        </div>
+    </div>
     <div class="col-12" style="margin: 10vh 0">
         <div class="col-10 push-1 bodyLight" style="">
             <div class="col-2">
@@ -189,10 +206,10 @@ td.emptyGrid33 {
             </div>
             <div class="col-8 push-05">
                 <div class="col-12 titleLight">
-                    <?php echo getProfile($_SESSION['username'])["fname"].' '.getProfile($_SESSION['username'])["lname"]; ?> <span class="subtitleLight" style="font-size: 20px">(<?php echo $_SESSION['username']; ?>)</span>
+                    <?php if ($_SERVER[HTTP_HOST] != "maxedward.com") {  echo getProfile($_SESSION['username'])["fname"].' '.getProfile($_SESSION['username'])["lname"]; } ?> <span class="subtitleLight" style="font-size: 20px">(<?php echo $_SESSION['username']; ?>)</span>
                 </div>
                 <div class="col-12 bodyLight" style="margin-top: 2ch">
-                    <?php echo getProfile($_SESSION['username'])["profile_description"]; ?>
+                    <?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["profile_description"]; } ?>
                 </div>
                 <div class="col-12 bodyLight" style="margin-top: 2ch">
                     <a href="?editProfile=true" style="text-decoration: none;">

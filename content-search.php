@@ -132,11 +132,12 @@ td.emptyGrid33 {
                 "Jose" => ["fname" => "Jose", "lname" => "Jose", "profile_description" => "Jose Jose Jose Jose Jose"],
                 "user12345" => ["fname" => "First", "lname" => "Last", "profile_description" => "Here's my description baby!"],
                 "user420" => ["fname" => "Blaze", "lname" => "It", "profile_description" => "baby"],
-                "user69" => ["fname" => "Sexy", "lname" => "Sexy", "profile_description" => "uwu"],];
+                "user69" => ["fname" => "Sexy", "lname" => "Sexy", "profile_description" => "uwu"]];
+                
             foreach ($userList as $username => $info) { ?>
 
             <div class="col-12" style="margin-top: 1vh">
-                <a href="/~kg448/account.php?viewing=<?php echo $username; ?>">
+                <a href="/~kg448/account.php?viewing=<?php echo $username; ?>&redirectFrom=search">
                     <div class="col-10 push-1 bodyBold dmContainer" style="margin: 0.5ch 0">
                         <div class="col-12">
                             <table>

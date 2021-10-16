@@ -116,7 +116,11 @@ $precursor = '/~kg448';
 $currPage = "feed";
 
 if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
-    $currPage = 'account';
+    if (isset($_GET['viewing'])) {
+        $currPage = "none";
+    } else {
+        $currPage = 'account';
+    }
 } else if ($url == $precursor.'/feed' || $url == $precursor.'/feed.php') {
     $currPage = 'feed';
 } else if ($url == $precursor.'/chat' || $url == $precursor.'/chat.php') {
