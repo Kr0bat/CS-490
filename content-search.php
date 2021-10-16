@@ -14,6 +14,13 @@
     border-style: solid;
     border-color: #ffffff17;
 }
+.postContainer {
+    border-radius: 1ch;
+    padding: 1ch;
+    background: #ffffff17;
+    border-style: solid;
+    border-color: #ffffff17;
+}
 .blueDot::before {
     content: '';
     position: absolute;
@@ -119,51 +126,161 @@ td.emptyGrid33 {
             </div>
         </div>
         <div class="col-12" style="margin-top: 5vh">
-            <div class="col-10 push-1 subtitleLight" style="font-size: 22.5px">
+            <div class="col-10 push-1 subtitleBold" style="font-size: 22.5px">
                 Results
             </div>
         </div>
         <div class="col-12" style="margin-top: 0vh">
 
-            <?php
+        <?php
 
-            $userList = [
-                "Karim" => ["fname" => "Karim", "lname" => "Karim", "profile_description" => "Karim Karim Karim Karim Karim"],
-                "Jose" => ["fname" => "Jose", "lname" => "Jose", "profile_description" => "Jose Jose Jose Jose Jose"],
-                "user12345" => ["fname" => "First", "lname" => "Last", "profile_description" => "Here's my description baby!"],
-                "user420" => ["fname" => "Blaze", "lname" => "It", "profile_description" => "baby"],
-                "user69" => ["fname" => "Sexy", "lname" => "Sexy", "profile_description" => "uwu"]];
-                
-            foreach ($userList as $username => $info) { ?>
+        // ----------
+        // ====================
+        // PRINTS TOP 4 USER RESULTS, 
+        // THEN "ALL USERS" LINK,
+        // THEN TOP 5 POSTS,
+        // FINALLY "ALL POSTS" LINK
+        // ====================
+        // ----------
+
+        // $userList is updated by Middle End. Only top four (4) results are added to $userList
+        $userList = [ 
+            "Karim" => ["fname" => "Karim", "lname" => "Karim", "profile_description" => "Karim Karim Karim Karim Karim"],
+            "Jose" => ["fname" => "Jose", "lname" => "Jose", "profile_description" => "Jose Jose Jose Jose Jose"],
+            "User12345" => ["fname" => "First", "lname" => "Last", "profile_description" => "Here's my description baby!"],
+            "User42069" => ["fname" => "Blaze", "lname" => "It", "profile_description" => "Click me uwu"]];
+
+        // $postList is updated by Middle End. Only top five (5) results are added to $postList
+        $postList = [ 
+            "001" => ["username" => "Karim", "post_title" => "Best Song <3", "post_description" => "I love this song!", "post_link" => "https://maxedward.com"],
+            "002" => ["username" => "Jose", "post_title" => "My Jams", "post_description" => "Best album in the universeeee", "post_link" => "https://maxedward.com"],
+            "003" => ["username" => "User42069", "post_title" => "NEW SHIT !!!", "post_description" => "Listen to this shit!!!", "post_link" => "https://maxedward.com"],
+            "004" => ["username" => "User12345", "post_title" => "😍😍😍", "post_description" => "OMG NO WAYY", "post_link" => "https://maxedward.com"],
+            "005" => ["username" => "Max", "post_title" => "Jeeeeeez", "post_description" => "Im crying rn", "post_link" => "https://maxedward.com"]];
+        
+            
+        foreach ($userList as $username => $info) { ?>
 
             <div class="col-12" style="margin-top: 1vh">
-                <a href="/~kg448/account.php?viewing=<?php echo $username; ?>&redirectFrom=search">
-                    <div class="col-10 push-1 bodyBold dmContainer" style="margin: 0.5ch 0">
+                <a href="/~kg448/account.php?viewing=<?php echo $username; ?>&redirectFrom=search" title="View <?php echo $username; ?>'s Profile">
+                    <div class="col-10 push-1 bodyBold dmContainer" style="margin: 0.25ch 0">
                         <div class="col-12">
                             <table>
                                 <tbody>
                                     <tr>
                                         <td style="max-width: fit-content;">
                                             <span class="">
-                                                <img src="assets/profPic.jpeg" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 3ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                                <img src="assets/profPic.jpeg" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
                                             </span>
                                         </td>
                                         <td style="padding-left: 1.69ch">
-                                            <?php echo $info['fname'].' '.$info['lname']; ?> <span class="subtitleLight" style="font-size: 20px">(<?php echo $username; ?>)</span>
+                                            <div class="col-12">
+                                                <?php echo $info['fname'].' '.$info['lname']; ?> <span class="subtitleLight" style="font-size: 20px">(<?php echo $username; ?>)</span>
+                                            </div>
+                                            <div class="col-12 subtitleLight" style="font-size: 18px; margin-top: 0.5ch; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
+                                                <?php echo $info['profile_description']; ?>
+                                            </div>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <div class="col-12 subtitleLight" style="font-size: 18px; margin-top: 1.5ch; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;"><?php echo $info['profile_description']; ?></div>
                     </div>
                 </a>
             </div>
 
-            <?php
-            }
+        <?php
+        }
+        ?>
 
-            ?>
+            <div class="col-12" style="margin-top: 0.5vh">
+                <a href="">
+                    <div class="col-10 push-15 subtitleLight" style="margin-top: 1vh; font-size: 20px; text-decoration: none;">
+                        View all Users ↗
+                    </div>
+                </a>
+            </div>
+            <div class="col-12" style="margin-top: 3.5vh">
+                <div class="col-10 push-1">
+
+                <?php
+                foreach ($postList as $postID => $info) { 
+                ?>
+
+                    <div class="col-4" style="margin: 0 1vw 1vw 0; width: 21vw;">
+                        <div class="col-12 bodyBold postContainer" style="margin: 0 0.25ch">
+                            <div class="col-12">
+                                <a href="/~kg448/account.php?viewing=<?php echo $info['username']; ?>&redirectFrom=search" title="View <?php echo $info['username']; ?>'s Profile">
+                                    <table class="bodyLight">
+                                        <tbody>
+                                            <tr>
+                                                <td style="max-width: fit-content;">
+                                                    <span class="">
+                                                        <img src="assets/profPic.jpeg" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 2.5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                                    </span>
+                                                </td>
+                                                <td style="padding-left: 0.5ch">
+                                                    <div class="col-12">
+                                                        <?php echo $info['username']; ?>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </a>
+                                <table style="margin: 0.25ch 0;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="max-width: fit-content;">
+                                                <span class="">
+                                                    <img src="assets/profPic.jpeg" class="logoImg" style="border-width: 0.05px; border-radius: 0.35ch; height: 7.5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                                </span>
+                                            </td>
+                                            <td style="padding-left: 1.69ch">
+                                                <div class="col-12">
+                                                    <?php echo $info['post_title']; ?>
+                                                </div>
+                                                <a href="<?php echo $info['post_link']; ?>">
+                                                    <div class="col-12 subtitleLight" style="font-size: 20px; margin-top: 0.2ch; text-decoration: none;" title="Open song link">
+                                                        Go to song ↗
+                                                    </div>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="col-12 subtitleLight" style="font-size: 18px; margin-top: 0.5ch; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
+                                    <?php echo $info['post_description']; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <?php
+                }
+                ?>
+
+                    <div class="col-4" style="margin: 0 1vw 1vw 0; width: 21vw;">
+                        <a href="">
+                            <div class="col-12 bodyBold postContainer" style="margin: 0 0.25ch">
+                                <div class="col-12">
+                                    <table style="margin: 1.5ch 0;">
+                                        <tbody>
+                                            <tr>
+                                                <td style="padding-left: 1.69ch">
+                                                    <div class="col-12">
+                                                        View all Posts ↗
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
 
         </div>
     </div>
