@@ -159,7 +159,11 @@ td.emptyGrid33 {
             "Jose" => ["fname" => "Jose", "lname" => "Jose", "profile_description" => "Jose Jose Jose Jose Jose"],
             "User12345" => ["fname" => "First", "lname" => "Last", "profile_description" => "Here's my description baby!"],
             "User42069" => ["fname" => "Blaze", "lname" => "It", "profile_description" => "Click me uwu"],
-            "User32" => ["fname" => "Gang", "lname" => "Goon", "profile_description" => "LfgG AC Goon Voyage"]];
+            "User32" => ["fname" => "Gang", "lname" => "Goon", "profile_description" => "LfgG AC Goon Voyage"],
+            "User33" => ["fname" => "Gang", "lname" => "Goon", "profile_description" => "LfgG AC Goon Voyage"],
+            "User34" => ["fname" => "Gang", "lname" => "Goon", "profile_description" => "LfgG AC Goon Voyage"],
+            "User35" => ["fname" => "Gang", "lname" => "Goon", "profile_description" => "LfgG AC Goon Voyage"],
+            "User36" => ["fname" => "Gang", "lname" => "Goon", "profile_description" => "LfgG AC Goon Voyage"]];
 
         // $postList is updated by Middle End. Only top five (5) results are added to $postList
         $postList = [ 
@@ -186,7 +190,7 @@ td.emptyGrid33 {
             <?php
             $userIndex = 1;
             foreach ($userList as $username => $info) { 
-                if ($userIndex < 5) {
+                if (($userIndex < 5) || (isset($_GET['viewAll']) && $_GET['viewAll'] == "users")) {
             ?>
 
             <div class="col-12 fadeIn" style="margin-top: 1vh; animation-delay: <?php echo $delayTime; ?>s;">
@@ -223,14 +227,26 @@ td.emptyGrid33 {
             $userIndex += 1;
             }
         }
-
-        if (count($userList) > 4) {
+        if (isset($_GET['viewAll']) && $_GET['viewAll'] == "users") {
         ?>
 
-            <div class="col-12 fadeIn" style="margin-top: 0.5vh; animation-delay: <?php echo $delayTime; ?>s;">
-                <a href="">
+            <div class="col-12 fadeIn" style="margin: 0.5vh 0 5vh 0; animation-delay: <?php echo $delayTime; ?>s;">
+                <a href="?viewAll=none">
                     <div class="col-10 push-15 subtitleLight" style="margin-top: 1vh; font-size: 20px; text-decoration: none;">
-                        View all Users ↗
+                        View less
+                    </div>
+                </a>
+            </div>
+
+        <?php
+        } 
+        else if (count($userList) > 4) {
+        ?>
+
+            <div class="col-12 fadeIn" style="margin: 0.5vh 0 5vh 0; animation-delay: <?php echo $delayTime; ?>s;">
+                <a href="?viewAll=users">
+                    <div class="col-10 push-15 subtitleLight" style="margin-top: 1vh; font-size: 20px; text-decoration: none;">
+                        View more
                     </div>
                 </a>
             </div>
@@ -241,7 +257,7 @@ td.emptyGrid33 {
         if (count($postList) > 0) {
         ?>
 
-            <div class="col-12 fadeIn" style="margin-top: 5vh; animation-delay: <?php echo $delayTime; ?>s;">
+            <div class="col-12 fadeIn" style="margin-top: 0vh; animation-delay: <?php echo $delayTime; ?>s;">
                 <div class="col-10 push-1 subtitleBold" style="font-size: 22.5px">
                     Post Results
                 </div>
