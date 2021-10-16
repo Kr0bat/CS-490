@@ -127,7 +127,7 @@ td.emptyGrid33 {
         </div>
         <div class="col-12" style="margin-top: 5vh">
             <div class="col-10 push-1 subtitleBold" style="font-size: 22.5px">
-                Results
+                User Results
             </div>
         </div>
         <div class="col-12" style="margin-top: 0vh">
@@ -200,7 +200,12 @@ td.emptyGrid33 {
                     </div>
                 </a>
             </div>
-            <div class="col-12" style="margin-top: 3.5vh">
+            <div class="col-12" style="margin-top: 5vh">
+                <div class="col-10 push-1 subtitleBold" style="font-size: 22.5px">
+                    Post Results
+                </div>
+            </div>
+            <div class="col-12" style="margin-top: 1vh">
                 <div class="col-10 push-1">
 
                 <?php
