@@ -113,6 +113,22 @@ td.emptyGrid33 {
         opacity: 1;
     }
 }
+
+.fadeIn {
+    opacity: 0;
+    animation: fadeInDiv 0.35s ease forwards;
+    animation-iteration-count: 1;
+}
+
+@keyframes fadeInDiv {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
 </style>
 <body>
     <div class="col-12" style="font-size: 22.5px; padding-left: 10ch">
@@ -125,12 +141,6 @@ td.emptyGrid33 {
                 </form>
             </div>
         </div>
-        <div class="col-12" style="margin-top: 5vh">
-            <div class="col-10 push-1 subtitleBold" style="font-size: 22.5px">
-                User Results
-            </div>
-        </div>
-        <div class="col-12" style="margin-top: 0vh">
 
         <?php
 
@@ -148,7 +158,8 @@ td.emptyGrid33 {
             "Karim" => ["fname" => "Karim", "lname" => "Karim", "profile_description" => "Karim Karim Karim Karim Karim"],
             "Jose" => ["fname" => "Jose", "lname" => "Jose", "profile_description" => "Jose Jose Jose Jose Jose"],
             "User12345" => ["fname" => "First", "lname" => "Last", "profile_description" => "Here's my description baby!"],
-            "User42069" => ["fname" => "Blaze", "lname" => "It", "profile_description" => "Click me uwu"]];
+            "User42069" => ["fname" => "Blaze", "lname" => "It", "profile_description" => "Click me uwu"],
+            "User32" => ["fname" => "Gang", "lname" => "Goon", "profile_description" => "LfgG AC Goon Voyage"]];
 
         // $postList is updated by Middle End. Only top five (5) results are added to $postList
         $postList = [ 
@@ -158,10 +169,27 @@ td.emptyGrid33 {
             "004" => ["username" => "User12345", "post_title" => "😍😍😍", "post_description" => "OMG NO WAYY", "post_link" => "https://maxedward.com"],
             "005" => ["username" => "Max", "post_title" => "Jeeeeeez", "post_description" => "Im crying rn", "post_link" => "https://maxedward.com"]];
         $postList = [];
+        //$userList = [];
             
-        foreach ($userList as $username => $info) { ?>
+        $additionDelay = 0.1;
+        $delayTime = 0;
+            
+        if (count($userList) > 0) { ?>
 
-            <div class="col-12" style="margin-top: 1vh">
+        <div class="col-12 fadeIn" style="margin-top: 5vh; animation-delay: <?php echo $delayTime; ?>s;">
+            <div class="col-10 push-1 subtitleBold" style="font-size: 22.5px">
+                User Results
+            </div>
+        </div>
+        <div class="col-12" style="margin-top: 0vh">
+
+            <?php
+            $userIndex = 1;
+            foreach ($userList as $username => $info) { 
+                if ($userIndex < 5) {
+            ?>
+
+            <div class="col-12 fadeIn" style="margin-top: 1vh; animation-delay: <?php echo $delayTime; ?>s;">
                 <a href="/~kg448/account.php?viewing=<?php echo $username; ?>&redirectFrom=search" title="View <?php echo $username; ?>'s Profile">
                     <div class="col-10 push-1 bodyBold dmContainer" style="margin: 0.25ch 0">
                         <div class="col-12">
@@ -190,10 +218,16 @@ td.emptyGrid33 {
             </div>
 
         <?php
+                $delayTime += $additionDelay;
+                }
+            $userIndex += 1;
+            }
         }
+
+        if (count($userList) > 4) {
         ?>
 
-            <div class="col-12" style="margin-top: 0.5vh">
+            <div class="col-12 fadeIn" style="margin-top: 0.5vh; animation-delay: <?php echo $delayTime; ?>s;">
                 <a href="">
                     <div class="col-10 push-15 subtitleLight" style="margin-top: 1vh; font-size: 20px; text-decoration: none;">
                         View all Users ↗
@@ -202,10 +236,12 @@ td.emptyGrid33 {
             </div>
 
         <?php 
+        }
+
         if (count($postList) > 0) {
         ?>
 
-            <div class="col-12" style="margin-top: 5vh">
+            <div class="col-12 fadeIn" style="margin-top: 5vh; animation-delay: <?php echo $delayTime; ?>s;">
                 <div class="col-10 push-1 subtitleBold" style="font-size: 22.5px">
                     Post Results
                 </div>
@@ -217,7 +253,7 @@ td.emptyGrid33 {
                 foreach ($postList as $postID => $info) { 
                 ?>
 
-                    <div class="col-4" style="margin: 0 1vw 1vw 0; width: 21vw;">
+                    <div class="col-4 fadeIn" style="margin: 0 1vw 1vw 0; width: 21vw; animation-delay: <?php echo $delayTime; ?>s;">
                         <div class="col-12 bodyBold postContainer" style="margin: 0 0.25ch">
                             <div class="col-12">
                                 <a href="/~kg448/account.php?viewing=<?php echo $info['username']; ?>&redirectFrom=search" title="View <?php echo $info['username']; ?>'s Profile">
@@ -267,10 +303,11 @@ td.emptyGrid33 {
                     </div>
 
                 <?php
+                $delayTime += $additionDelay;
                 }
                 ?>
 
-                    <div class="col-4" style="margin: 0 1vw 1vw 0; width: 21vw;">
+                    <div class="col-4 fadeIn" style="margin: 0 1vw 1vw 0; width: 21vw; animation-delay: <?php echo $delayTime; ?>s;">
                         <a href="">
                             <div class="col-12 bodyBold postContainer" style="margin: 0 0.25ch">
                                 <div class="col-12">
