@@ -120,7 +120,7 @@ td.emptyGrid33 {
             <div class="col-10 push-1 titleBold" style="">
                 <form method="post">
                     <div class="col-10">
-                        <input maxlength="280" type="text" name="search_msg" placeholder="Search for Users..." value="" style="width: 65vw; background-color: #212121; border-color: #212121; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px; word-break: break-word; vertical-align: top;" required />
+                        <input maxlength="280" type="text" name="search_msg" placeholder="Search for users..." value="" style="width: 65vw; background-color: #212121; border-color: #212121; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px; word-break: break-word; vertical-align: top;" required />
                     </div>
                 </form>
             </div>
@@ -157,7 +157,7 @@ td.emptyGrid33 {
             "003" => ["username" => "User42069", "post_title" => "NEW SHIT !!!", "post_description" => "Listen to this shit!!!", "post_link" => "https://maxedward.com"],
             "004" => ["username" => "User12345", "post_title" => "😍😍😍", "post_description" => "OMG NO WAYY", "post_link" => "https://maxedward.com"],
             "005" => ["username" => "Max", "post_title" => "Jeeeeeez", "post_description" => "Im crying rn", "post_link" => "https://maxedward.com"]];
-        
+        $postList = [];
             
         foreach ($userList as $username => $info) { ?>
 
@@ -200,6 +200,11 @@ td.emptyGrid33 {
                     </div>
                 </a>
             </div>
+
+        <?php 
+        if (count($postList) > 0) {
+        ?>
+
             <div class="col-12" style="margin-top: 5vh">
                 <div class="col-10 push-1 subtitleBold" style="font-size: 22.5px">
                     Post Results
@@ -284,6 +289,11 @@ td.emptyGrid33 {
                             </div>
                         </a>
                     </div>
+
+            <?php
+            }
+            ?>
+
                 </div>
             </div>
 
