@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
-
+include("users.php");
 
 
 ?>
@@ -173,7 +173,22 @@ td.emptyGrid33 {
             "004" => ["username" => "User12345", "post_title" => "😍😍😍", "post_description" => "OMG NO WAYY", "post_link" => "https://maxedward.com"],
             "005" => ["username" => "Max", "post_title" => "Jeeeeeez", "post_description" => "Im crying rn", "post_link" => "https://maxedward.com"]];
         $postList = [];
-        //$userList = [];
+        $userList = [];
+
+        if (isset($_REQUEST['search_msg'])){
+            $search = $_REQUEST['search_msg'];
+            
+            if( $user = searchProfiles($search)) {
+
+            $username = $user['username'];
+            unset($user[$username]);
+            $userList[$username] = $user;
+            }
+            //echo "<p style='color:white'> SEARCH MADE for: $username </p>";
+        }
+        
+            //echo "<p style='color:white'> NO RESULTS FOUND for: $_REQUEST[search_msg] </p>";
+        
             
         $additionDelay = 0.1;
         $delayTime = 0;
