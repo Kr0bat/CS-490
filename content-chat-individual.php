@@ -67,6 +67,14 @@
 </style>
 <?php
 session_start();
+include("chats.php");
+
+$sender = $_SESSION['chatWith'];
+$recipient = $_SESSION['username'];
+$chatlist = getChats($recipient, $sender);
+
+setRead($recipient, $sender);
+
 
 $msgList = [
     0 => ["msg_content" => "most recent message", "sender" => $_SESSION['chatWith'], "timestamp" => "1 min ago"],

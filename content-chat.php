@@ -55,14 +55,30 @@ session_start();
             <?php
 
 
-            // $chatlist is updated by Middle End. Has three parameters: "last_msg", "new", and "timestamp".
+            // $chatlist is updated by Middle End. Has three parameters: "msg", "new", and "timestamp".
             $chatlist = [
-                "Karim" => ["last_msg" => "Lorem ipsum dolor sit amet", "new" => "true", "timestamp" => "32 min ago"], 
-                "Jose" => ["last_msg" => "Lorem ipsum dolor sit amet", "new" => "true", "timestamp" => "1 hr ago"],
-                "Mom" => ["last_msg" => "Lorem ipsum dolor sit amet", "new" => "false", "timestamp" => "Fiday at 9:28am"]];
+                "Karim" => ["msg" => "Lorem ipsum dolor sit amet", "new" => "true", "timestamp" => "32 min ago"], 
+                "Jose" => ["msg" => "Lorem ipsum dolor sit amet", "new" => "true", "timestamp" => "1 hr ago"],
+                "Mom" => ["msg" => "Lorem ipsum dolor sit amet", "new" => "false", "timestamp" => "Fiday at 9:28am"]];
 
             //$chatlist = [];
 
+                        
+            include("chats.php");
+
+            $chatlist = [];
+            $recipient = $_SESSION['username'];
+            $senders = allChats($recipient);
+            
+            foreach ($senders as $sender){
+                $latestChat = getChat($recipient, $sender)[0];
+                unset($latestChat[$sender]);
+                $chatlist[$sender] = $latestChat;
+
+            }
+            //print_r($chatlist);
+            
+            //echo "<p style='color:white'> WORDS </p>";
             if (count($chatlist) == 0) {
 
                 print('
@@ -102,7 +118,7 @@ session_start();
                                                     <td style="max-width: fit-content;">
                                                         <span class="');
                                                         
-                                                        if ($content['new'] == "true") {
+                                                        if ($content['read'] == 0) {
                                                             print('blueDot" style="margin-left: 1.5ch;"');
                                                         } else {
                                                             print('"');
@@ -115,7 +131,7 @@ session_start();
                                                     <td style="padding-left: 0.35ch">
                                                     ');
                                                         
-                                                    if ($content['new'] == "true") {
+                                                    if ($content['read'] == 0) {
                                                         print('From ');
                                                     } else {
                                                         print('');
@@ -128,7 +144,7 @@ session_start();
                                         </table>
                                     
                                 </div>
-                                <div class="col-12 subtitleLight" style="font-size: 18px; margin-top: 0.25ch; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">'.$content["last_msg"].'</div>
+                                <div class="col-12 subtitleLight" style="font-size: 18px; margin-top: 0.25ch; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">'.$content["msg"].'</div>
                                 <div class="col-12 subtitleLight" style="color: #777; font-size: 14px; margin-top: 1ch; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">'.$content["timestamp"].'</div>
                             </div>
                         </div>
