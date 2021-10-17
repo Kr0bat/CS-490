@@ -69,7 +69,7 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
 
             }
 
-            if ($showIndividual) {
+            if (isset($_GET['chatWith'])) {
                 $_SESSION['chatWith'] = $_GET['chatWith'];
                 include("content-chat-individual.php");
             } else {
@@ -95,7 +95,7 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
 
             }
 
-            if ($showIndividual) {
+            if (isset($_GET['chatWith'])) {
                 $_SESSION['chatWith'] = $_GET['chatWith'];
                 include("content-chat-individual.php");
             } else {

@@ -20,6 +20,7 @@ include("users.php");
     background: #ffffff17;
     border-style: solid;
     border-color: #ffffff17;
+    overflow: scroll;
 }
 .blueDot::before {
     content: '';
