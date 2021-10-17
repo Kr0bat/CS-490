@@ -34,7 +34,7 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
         
         // TODO: VERIFY USER EXISTS IN DATABASE
         $userExists = true;
-        if ($userExists) {
+        if (true) {
             $showIndividual = true;
         }
         
@@ -63,7 +63,7 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
                 
                 // TODO: VERIFY USER EXISTS IN DATABASE
                 $userExists = true;
-                if ($userExists) {
+                if (true) {
                     $showIndividual = true;
                 }
 
@@ -89,7 +89,7 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
                 
                 // TODO: VERIFY USER EXISTS IN DATABASE
                 $userExists = true;
-                if ($userExists) {
+                if (true) {
                     $showIndividual = true;
                 }
 
