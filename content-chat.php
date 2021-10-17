@@ -57,11 +57,11 @@ session_start();
 
             // $chatlist is updated by Middle End. Has two parameters: "last_msg" and "new".
             $chatlist = [
-                "Karim" => ["last_msg" => "Lorem ipsum dolor sit amet", "new" => "true"], 
-                "Jose" => ["last_msg" => "Lorem ipsum dolor sit amet", "new" => "true"],
-                "Mom" => ["last_msg" => "Lorem ipsum dolor sit amet", "new" => "false"]];
+                "Karim" => ["last_msg" => "Lorem ipsum dolor sit amet", "new" => "true", "timestamp" => "32 min ago"], 
+                "Jose" => ["last_msg" => "Lorem ipsum dolor sit amet", "new" => "true", "timestamp" => "1 hr ago"],
+                "Mom" => ["last_msg" => "Lorem ipsum dolor sit amet", "new" => "false", "timestamp" => "Fiday at 9:28am"]];
 
-            $chatlist = [];
+            //$chatlist = [];
 
             if (count($chatlist) == 0) {
 
@@ -92,7 +92,7 @@ session_start();
                 foreach($chatlist as $user => $content) {
                     print('
                     <a href="?chatWith='.$user.'">
-                        <div class="col-12 bodyBold dmContainer" style="margin: 0.5ch 0">
+                        <div class="col-12 bodyBold dmContainer" style="margin: 0.5ch 0 0.25ch 0">
                             <div class="col-12">
                                 <div class="col-12">
                                     
@@ -128,7 +128,8 @@ session_start();
                                         </table>
                                     
                                 </div>
-                                <div class="col-12 subtitleLight" style="font-size: 18px; margin-top: 1.5ch; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">'.$content["last_msg"].'</div>
+                                <div class="col-12 subtitleLight" style="font-size: 18px; margin-top: 0.25ch; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">'.$content["last_msg"].'</div>
+                                <div class="col-12 subtitleLight" style="color: #777; font-size: 14px; margin-top: 1ch; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">'.$content["timestamp"].'</div>
                             </div>
                         </div>
                     </a>
