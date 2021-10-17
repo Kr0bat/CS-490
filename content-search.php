@@ -116,7 +116,7 @@ td.emptyGrid33 {
 
 .fadeIn {
     opacity: 0;
-    animation: fadeInDiv 0.35s ease forwards;
+    animation: fadeInDiv 0.32s ease forwards;
     animation-iteration-count: 1;
 }
 
@@ -336,6 +336,8 @@ td.emptyGrid33 {
                 <?php
                 $delayTime += $additionDelay;
                 }
+
+                if (count($postList) > 5) {
                 ?>
 
                     <div class="col-4 fadeIn" style="margin: 0 1vw 1vw 0; width: 21vw; animation-delay: <?php echo $delayTime; ?>s;">
@@ -359,6 +361,7 @@ td.emptyGrid33 {
                     </div>
 
             <?php
+                }
             }
             ?>
 
