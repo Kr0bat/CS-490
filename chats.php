@@ -11,26 +11,26 @@
      require('databaseConnect.php');
        
     //make query
-    $q1 = " SELECT message AS msg, time AS t, sender AS s FROM chat WHERE (sender = '$sender' AND recipient = '$recipient') OR (sender = '$recipient'
-    AND recipient = '$sender')";
+    $q1 = " SELECT message AS msg, time AS t, sender AS s, read_status AS r FROM chat WHERE (sender = '$sender' AND recipient = '$recipient') OR (sender = '$recipient' AND recipient = '$sender')";
     
     $r = @mysqli_query ($dbc, $q1);
     
     //get chat
-    if($r)
+    if($r) 
     { 
     
     while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
     {
         $chat[] = $row;
     }
+        
     
         return $chat; 
     
     }
     else
     {
-        return 0;
+       return 0;
     }
     
 }
@@ -52,8 +52,15 @@ function allChats($recipient)
     
         while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
         {
-             $usernames[] = $row;
-        }
+            if(in_array($row['s'], $usernames))
+            {
+                    continue;
+            }
+            else
+            {
+                    $usernames[] = $row['s'];
+            }
+        }    
         
         return $usernames; 
     }
@@ -61,6 +68,22 @@ function allChats($recipient)
     {
         return 0;
     }
+  
+}
+
+function setRead($recipient, $sender)
+{
+    //make database connection
+    require('databaseConnect.php');
+    
+    //make query
+    $q1 = " UPDATE chat SET read_status = 1  WHERE (sender = '$sender' AND recipient = '$recipient') OR (sender = '$recipient' AND recipient = '$sender')";
+    
+    //execute query
+    $r = @mysqli_query ($dbc, $q1);
+    
+    //close database connection
+    mysqli_close($dbc);
   
 }
 
