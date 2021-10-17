@@ -55,7 +55,7 @@ session_start();
             <?php
 
 
-            // $chatlist is updated by Middle End. Has two parameters: "last_msg" and "new".
+            // $chatlist is updated by Middle End. Has three parameters: "last_msg", "new", and "timestamp".
             $chatlist = [
                 "Karim" => ["last_msg" => "Lorem ipsum dolor sit amet", "new" => "true", "timestamp" => "32 min ago"], 
                 "Jose" => ["last_msg" => "Lorem ipsum dolor sit amet", "new" => "true", "timestamp" => "1 hr ago"],
