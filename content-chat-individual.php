@@ -69,38 +69,71 @@
 session_start();
 include("chats.php");
 
+
 $sender = $_SESSION['chatWith'];
 $recipient = $_SESSION['username'];
-$chatlist = getChats($recipient, $sender);
+$msgList = getChat($recipient, $sender);
+
+//ensures messages display in chronological order
+$msgList = array_reverse($msgList);
 
 setRead($recipient, $sender);
 
+///
+/* 
+// Chats over a week old retain the default timestamp
+// Younger chats gain an easier to read, less detailed timestamp
+*/
+///
 
+
+foreach ($msgList as $index => $chat){
+    $currTime = time();
+    $chatTime = strtotime($chat['t']);
+    $chatAge = $currTime - $chatTime;
+
+    print_r($chatAge);
+
+    if($chatAge <= 216000){ // One hour, print minutes
+        $msgList[$index]['t'] = date("i", $chatAge) . " min ago";
+    }
+    elseif($chatAge <= 5184000){ // One day, print hours
+        $msgList[$index]['t'] = date("H", $chatAge) . " hrs ago";
+    }
+    elseif($chatAge < 604800){ // One week, print day and time
+        $msgList[$index]['t'] = date("l", $chatTime) . " at " . date("h:ia", $chatTime);
+    }
+    
+    //print_r($Epoch);
+}
+
+
+/*
 $msgList = [
-    0 => ["msg_content" => "most recent message", "sender" => $_SESSION['chatWith'], "timestamp" => "1 min ago"],
-    1 => ["msg_content" => "second most recent", "sender" => $_SESSION['chatWith'], "timestamp" => "2 min ago"],
-    2 => ["msg_content" => "third most recent", "sender" => $_SESSION['username'], "timestamp" => "5 min ago"],
-    3 => ["msg_content" => "fourth most recent", "sender" => $_SESSION['chatWith'], "timestamp" => "10 min ago"],
-    4 => ["msg_content" => "fifth most recent", "sender" => $_SESSION['username'], "timestamp" => "13 min ago"],
-    5 => ["msg_content" => "sixth most recent", "sender" => $_SESSION['chatWith'], "timestamp" => "19 min ago"],
-    6 => ["msg_content" => "seventh most recent", "sender" => $_SESSION['chatWith'], "timestamp" => "27 min ago"],
-    7 => ["msg_content" => "eighth most recent", "sender" => $_SESSION['chatWith'], "timestamp" => "28 min ago"],
-    8 => ["msg_content" => "ninth most recent", "sender" => $_SESSION['username'], "timestamp" => "32 min ago"],
-    9 => ["msg_content" => "tenth most recent", "sender" => $_SESSION['chatWith'], "timestamp" => "35 min ago"],
-    10 => ["msg_content" => "eleventh most recent", "sender" => $_SESSION['username'], "timestamp" => "44 min ago"],
-    11 => ["msg_content" => "twelvth recent message", "sender" => $_SESSION['chatWith'], "timestamp" => "1 hr ago"],
-    12 => ["msg_content" => "thirteenth most recent", "sender" => $_SESSION['chatWith'], "timestamp" => "1 hr ago"],
-    13 => ["msg_content" => "fourteenth most recent", "sender" => $_SESSION['username'], "timestamp" => "1 hr ago"],
-    14 => ["msg_content" => "fifteenth most recent", "sender" => $_SESSION['chatWith'], "timestamp" => "2 hrs ago"],
-    15 => ["msg_content" => "sixteenth most recent", "sender" => $_SESSION['username'], "timestamp" => "2 hr ago"],
-    16 => ["msg_content" => "seventeenth most recent", "sender" => $_SESSION['chatWith'], "timestamp" => "3 hrs ago"],
-    17 => ["msg_content" => "eighteenth most recent", "sender" => $_SESSION['chatWith'], "timestamp" => "4 hrs ago"],
-    18 => ["msg_content" => "nineteenth most recent", "sender" => $_SESSION['chatWith'], "timestamp" => "4 hrs ago"],
-    19 => ["msg_content" => "twentieth most recent", "sender" => $_SESSION['username'], "timestamp" => "5 hrs ago"],
-    20 => ["msg_content" => "twentyfirst most recent", "sender" => $_SESSION['chatWith'], "timestamp" => "6 hrs ago"],
-    21 => ["msg_content" => "twentysecond most recent", "sender" => $_SESSION['username'], "timestamp" => "9 hrs ago"],
-    22 => ["msg_content" => "twentythird most recent", "sender" => $_SESSION['chatWith'], "timestamp" => "Friday at 9:36pm"],
-];
+    0 => ["msg" => "most recent message", "s" => $_SESSION['chatWith'], "t" => "1 min ago"],
+    1 => ["msg" => "second most recent", "s" => $_SESSION['chatWith'], "t" => "2 min ago"],
+    2 => ["msg" => "third most recent", "s" => $_SESSION['username'], "t" => "5 min ago"],
+    3 => ["msg" => "fourth most recent", "s" => $_SESSION['chatWith'], "t" => "10 min ago"],
+    4 => ["msg" => "fifth most recent", "s" => $_SESSION['username'], "t" => "13 min ago"],
+    5 => ["msg" => "sixth most recent", "s" => $_SESSION['chatWith'], "t" => "19 min ago"],
+    6 => ["msg" => "seventh most recent", "s" => $_SESSION['chatWith'], "t" => "27 min ago"],
+    7 => ["msg" => "eighth most recent", "s" => $_SESSION['chatWith'], "t" => "28 min ago"],
+    8 => ["msg" => "ninth most recent", "s" => $_SESSION['username'], "t" => "32 min ago"],
+    9 => ["msg" => "tenth most recent", "s" => $_SESSION['chatWith'], "t" => "35 min ago"],
+    10 => ["msg" => "eleventh most recent", "s" => $_SESSION['username'], "t" => "44 min ago"],
+    11 => ["msg" => "twelvth recent message", "s" => $_SESSION['chatWith'], "t" => "1 hr ago"],
+    12 => ["msg" => "thirteenth most recent", "s" => $_SESSION['chatWith'], "t" => "1 hr ago"],
+    13 => ["msg" => "fourteenth most recent", "s" => $_SESSION['username'], "t" => "1 hr ago"],
+    14 => ["msg" => "fifteenth most recent", "s" => $_SESSION['chatWith'], "t" => "2 hrs ago"],
+    15 => ["msg" => "sixteenth most recent", "s" => $_SESSION['username'], "t" => "2 hr ago"],
+    16 => ["msg" => "seventeenth most recent", "s" => $_SESSION['chatWith'], "t" => "3 hrs ago"],
+    17 => ["msg" => "eighteenth most recent", "s" => $_SESSION['chatWith'], "t" => "4 hrs ago"],
+    18 => ["msg" => "nineteenth most recent", "s" => $_SESSION['chatWith'], "t" => "4 hrs ago"],
+    19 => ["msg" => "twentieth most recent", "s" => $_SESSION['username'], "t" => "5 hrs ago"],
+    20 => ["msg" => "twentyfirst most recent", "s" => $_SESSION['chatWith'], "t" => "6 hrs ago"],
+    21 => ["msg" => "twentysecond most recent", "s" => $_SESSION['username'], "t" => "9 hrs ago"],
+    22 => ["msg" => "twentythird most recent", "s" => $_SESSION['chatWith'], "t" => "Friday at 9:36pm"],
+];*/
 
 ?>
 <body>
@@ -151,18 +184,18 @@ $msgList = [
                             <tr style="width: 100%;">
                                 <td style="width: 50%">');
                                 
-                            if ($info['sender'] == $_SESSION['chatWith']) {
-                                print('<div class="bubbleReceive bodyLight">'.$info['msg_content'].'</div>');
-                                print('<div class="subtitleLight" style="font-size: 14px; padding-left: 3.5ch; padding-top: 0.25ch;">'.$info['timestamp'].'</div>');
+                            if ($info['s'] == $_SESSION['chatWith']) {
+                                print('<div class="bubbleReceive bodyLight">'.$info['msg'].'</div>');
+                                print('<div class="subtitleLight" style="font-size: 14px; padding-left: 3.5ch; padding-top: 0.25ch;">'.$info['t'].'</div>');
                             }
                                 
                             print('
                                 </td>
                                 <td style="width: 50%">');
                                 
-                            if ($info['sender'] == $_SESSION['username']) {
-                                print('<div class="bubbleSend bodyLight">'.$info['msg_content'].'</div>');
-                                print('<div class="subtitleLight" style="font-size: 14px; padding-left: 1.5ch; padding-top: 0.25ch;">'.$info['timestamp'].'</div>');
+                            if ($info['s'] == $_SESSION['username']) {
+                                print('<div class="bubbleSend bodyLight">'.$info['msg'].'</div>');
+                                print('<div class="subtitleLight" style="font-size: 14px; padding-left: 1.5ch; padding-top: 0.25ch;">'.$info['t'].'</div>');
                             }
                                 
                             print('
