@@ -87,6 +87,21 @@ function setRead($recipient, $sender)
   
 }
 
+function sendChat($recipient, $sender, $message)
+{
+    //make database connection
+    require('databaseConnect.php');
+    
+    //make query
+    $q1 = "INSERT INTO chat (recipient, sender, message) VALUES ('$recipient', '$sender', '$message') ";
+    
+    //execute query
+    $r = @mysqli_query ($dbc, $q1);
+    
+    //close database connection
+     mysqli_close($dbc);
+    
+}
 
 ?>
  </body>
