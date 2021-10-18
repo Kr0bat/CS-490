@@ -71,13 +71,13 @@ session_start();
             $senders = allChats($recipient);
             
             foreach ($senders as $sender){
-                $latestChat = getChat($recipient, $sender)[0];
+                $latestChat = getChat($recipient, $sender);
+                $latestChat = $latestChat[count($latestChat) - 1];
                 unset($latestChat[$sender]);
                 $chatlist[$sender] = $latestChat;
 
             }
-            //print_r($chatlist);
-            
+
             //echo "<p style='color:white'> WORDS </p>";
             if (count($chatlist) == 0) {
 
@@ -118,7 +118,7 @@ session_start();
                                                     <td style="max-width: fit-content;">
                                                         <span class="');
                                                         
-                                                        if ($content['read'] == 0) {
+                                                        if ($content['r'] == 0) {
                                                             print('blueDot" style="margin-left: 1.5ch;"');
                                                         } else {
                                                             print('"');
@@ -131,7 +131,7 @@ session_start();
                                                     <td style="padding-left: 0.35ch">
                                                     ');
                                                         
-                                                    if ($content['read'] == 0) {
+                                                    if ($content['r'] == 0) {
                                                         print('From ');
                                                     } else {
                                                         print('');
