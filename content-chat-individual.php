@@ -67,7 +67,7 @@
 </style>
 <?php
 session_start();
-include("chats.php");
+//include("chats.php");
 
 
 $sender = $_SESSION['chatWith'];

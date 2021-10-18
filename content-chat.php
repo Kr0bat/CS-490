@@ -2,7 +2,6 @@
 <html lang="en">
 <?php
 session_start();
-
 ?>
 <style>
 .dmContainer {
@@ -64,7 +63,7 @@ session_start();
             //$chatlist = [];
 
                         
-            include("chats.php");
+            //include("chats.php");
 
             $chatlist = [];
             $recipient = $_SESSION['username'];

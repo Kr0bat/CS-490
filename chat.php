@@ -13,6 +13,8 @@
 <body  style="background-color: #161616; font-family: 'Montserrat', sans-serif;">
 <?php
 session_start();
+include("users.php");
+include("chats.php");
 //
 // =======
 // =========================
@@ -48,6 +50,14 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
     }
 
 } else {
+    if ( (isset($_POST['newdm_submit'])) && ( $_SESSION['role'] == "admin" || $_SESSION['role'] == "basic" ) ){
+        $recipient = $_SESSION['chatWith'];
+        $msg = $_POST['newdm_msg'];
+        $sender = $_SESSION['username'];
+
+        sendChat($recipient, $sender, $msg);
+    }
+
     $role = false;
     if (isset($_SESSION['role'])) {
         if ($_SESSION['role'] == "admin") {
@@ -61,9 +71,9 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
 
             if (isset($_GET['chatWith'])) {
                 
-                // TODO: VERIFY USER EXISTS IN DATABASE
+                
                 $userExists = true;
-                if (true) {
+                if ( getProfile($_GET['chatWith']) ) {
                     $showIndividual = true;
                 }
 
@@ -87,9 +97,8 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
 
             if (isset($_GET['chatWith'])) {
                 
-                // TODO: VERIFY USER EXISTS IN DATABASE
                 $userExists = true;
-                if (true) {
+                if ( getProfile($_GET['chatWith']) ) {
                     $showIndividual = true;
                 }
 
