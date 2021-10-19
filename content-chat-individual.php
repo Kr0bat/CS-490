@@ -156,9 +156,17 @@ $msgList = [
                                 </a>
                             </td>
                             <td style="padding-left: 0.35ch">
-                                <a href="/~kg448/account.php?viewing=<?php echo $_SESSION['chatWith']; ?>&redirectFrom=chat" class="bodyLight" title="Go to <?php echo $_SESSION['chatWith']; ?>'s Profile">
+                                <a href="/~kg448/account.php?viewing=<?php echo $_SESSION['chatWith']; ?>&redirectFrom=chat" class="titleBold" style="text-decoration: none;" title="Go to <?php echo $_SESSION['chatWith']; ?>'s Profile">
                                     <?php echo $_SESSION['chatWith']; ?>
                                 </a>
+                                <?php
+                                if ($_SESSION['chatWith'] == "Max") {
+                                    print('
+                                    <span class="subtitleLight" style="font-size: 30px; color: rgb(144, 85, 54); padding-left: 5px;">
+                                        Admin
+                                    </span>');
+                                }
+                                ?>
                             </td>
                         </tr>
                     </tbody>

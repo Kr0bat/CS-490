@@ -130,7 +130,7 @@ session_start();
                                                         </span>
                                                     </td>
                                                     <td style="padding-left: 0.35ch">
-                                                        <a href="/~kg448/account.php?viewing='.$user.'&redirectFrom=chat" class="bodyLight" title="Go to '.$user.'\'s Profile">
+                                                        <a href="/~kg448/account.php?viewing='.$user.'&redirectFrom=chat" class="bodyBold" style="text-decoration: none;" title="Go to '.$user.'\'s Profile">
                                                     ');
                                                         
                                                     if ($content['r'] == 0) {
@@ -143,7 +143,7 @@ session_start();
 
                                                     if ($user == "Max") {
                                                         print('
-                                                        <span class="subtitleLight" style="font-size: 14px; color: rgb(144, 85, 54);vertical-align: bottom; padding-left: 5px;">
+                                                        <span class="subtitleLight" style="font-size: 18px; color: rgb(144, 85, 54);vertical-align: bottom; padding-left: 5px;">
                                                             Admin
                                                         </span>');
                                                     }

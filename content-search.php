@@ -238,8 +238,8 @@ td.emptyGrid33 {
                                                 <?php
                                                 if ($username == "Max") {
                                                     print('
-                                                    <span class="subtitleLight" style="font-size: 20px; color: rgb(144, 85, 54); padding-left: 5px;">
-                                                        [Admin]
+                                                    <span class="subtitleLight" style="font-size: 18px; color: rgb(144, 85, 54); padding-left: 5px;">
+                                                        Admin
                                                     </span>');
                                                 }
                                                 ?>
