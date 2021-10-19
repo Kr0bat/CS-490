@@ -51,6 +51,18 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
         header("Location: /~kg448/index.php"); 
 
     }
+
+    if (isset($_POST['newpost_submit'])){
+        include("posts.php");
+        $title = $_POST['newpost_title'];
+        $link = $_POST['newpost_link'];
+        $description = $_POST['newpost_description'];
+        $user = $_SESSION['username'];
+
+        $user = ucfirst($user);
+        insertPost($user, $title, $description, $link);
+        header("Location: /~kg448/feed.php");
+    }
 }
 ?>
 
