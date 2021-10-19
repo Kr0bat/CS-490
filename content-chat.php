@@ -136,7 +136,16 @@ session_start();
                                                         print('');
                                                     }
 
-                                                    print(''.$user.'
+                                                    print(''.$user.'');
+
+                                                    if ($user == "Max") {
+                                                        print('
+                                                        <span class="subtitleLight" style="font-size: 14px; color: rgb(144, 85, 54);vertical-align: bottom; padding-left: 5px;">
+                                                            Admin
+                                                        </span>');
+                                                    }
+
+                                                    print('
                                                     </td>
                                                 </tr>
                                             </tbody>

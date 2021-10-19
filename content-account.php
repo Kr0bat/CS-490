@@ -110,7 +110,16 @@ td.emptyGrid33 {
             </div>
             <div class="col-8 push-05">
                 <div class="col-12 titleLight">
-                    <?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_GET['viewing'])["fname"].' '.getProfile($_GET['viewing'])["lname"]; } ?> <span class="subtitleLight" style="font-size: 20px">(<?php echo $_GET['viewing']; ?>)</span>
+                    <?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_GET['viewing'])["fname"].' '.getProfile($_GET['viewing'])["lname"]; } ?> 
+                    <span class="subtitleLight" style="font-size: 20px">(<?php echo $_GET['viewing']; ?>)</span>
+                    <?php
+                    if ($user == "Max") {
+                        print('
+                        <span class="subtitleLight" style="font-size: 20px; color: rgb(144, 85, 54); padding-left: 5px;">
+                            [Admin]
+                        </span>');
+                    }
+                    ?>
                 </div>
                 <div class="col-12 bodyLight" style="margin-top: 2ch">
                     <?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_GET['viewing'])["profile_description"]; } ?>
@@ -206,7 +215,16 @@ td.emptyGrid33 {
             </div>
             <div class="col-8 push-05">
                 <div class="col-12 titleLight">
-                    <?php if ($_SERVER[HTTP_HOST] != "maxedward.com") {  echo getProfile($_SESSION['username'])["fname"].' '.getProfile($_SESSION['username'])["lname"]; } ?> <span class="subtitleLight" style="font-size: 20px">(<?php echo $_SESSION['username']; ?>)</span>
+                    <?php if ($_SERVER[HTTP_HOST] != "maxedward.com") {  echo getProfile($_SESSION['username'])["fname"].' '.getProfile($_SESSION['username'])["lname"]; } ?> 
+                    <span class="subtitleLight" style="font-size: 20px">(<?php echo $_SESSION['username']; ?>)</span>
+                    <?php
+                    if ($user == "Max") {
+                        print('
+                        <span class="subtitleLight" style="font-size: 20px; color: rgb(144, 85, 54); padding-left: 5px;">
+                            [Admin]
+                        </span>');
+                    }
+                    ?>
                 </div>
                 <div class="col-12 bodyLight" style="margin-top: 2ch">
                     <?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["profile_description"]; } ?>

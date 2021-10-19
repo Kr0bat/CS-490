@@ -223,7 +223,16 @@ td.emptyGrid33 {
                                         </td>
                                         <td style="padding-left: 1.69ch">
                                             <div class="col-12">
-                                                <?php echo $info['fname'].' '.$info['lname']; ?> <span class="subtitleLight" style="font-size: 20px">(<?php echo $username; ?>)</span>
+                                                <?php echo $info['fname'].' '.$info['lname']; ?> 
+                                                <span class="subtitleLight" style="font-size: 20px">(<?php echo $username; ?>)</span>
+                                                <?php
+                                                if ($user == "Max") {
+                                                    print('
+                                                    <span class="subtitleLight" style="font-size: 20px; color: rgb(144, 85, 54); padding-left: 5px;">
+                                                        [Admin]
+                                                    </span>');
+                                                }
+                                                ?>
                                             </div>
                                             <div class="col-12 subtitleLight" style="font-size: 18px; margin-top: 0.5ch; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
                                                 <?php echo $info['profile_description']; ?>
