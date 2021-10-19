@@ -55,6 +55,9 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
         $msg = $_POST['newdm_msg'];
         $sender = $_SESSION['username'];
 
+        $recipient = ucfirst($recipient);
+        $sender = ucfirst($sender);
+
         sendChat($recipient, $sender, $msg);
     }
 
