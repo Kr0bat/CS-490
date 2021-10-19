@@ -218,7 +218,7 @@ td.emptyGrid33 {
                     <?php if ($_SERVER[HTTP_HOST] != "maxedward.com") {  echo getProfile($_SESSION['username'])["fname"].' '.getProfile($_SESSION['username'])["lname"]; } ?> 
                     <span class="subtitleLight" style="font-size: 20px">(<?php echo $_SESSION['username']; ?>)</span>
                     <?php
-                    if ($user == "Max") {
+                    if ($_SESSION['username'] == "Max") {
                         print('
                         <span class="subtitleLight" style="font-size: 20px; color: rgb(144, 85, 54); padding-left: 5px;">
                             Admin
