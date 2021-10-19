@@ -226,7 +226,7 @@ td.emptyGrid33 {
                                                 <?php echo $info['fname'].' '.$info['lname']; ?> 
                                                 <span class="subtitleLight" style="font-size: 20px">(<?php echo $username; ?>)</span>
                                                 <?php
-                                                if ($user == "Max") {
+                                                if ($username == "Max") {
                                                     print('
                                                     <span class="subtitleLight" style="font-size: 20px; color: rgb(144, 85, 54); padding-left: 5px;">
                                                         [Admin]

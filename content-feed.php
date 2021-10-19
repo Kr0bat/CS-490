@@ -105,7 +105,15 @@ $postList = [
                                                     <td style="padding-left: 0.5ch">
                                                         <div class="col-12">
                                                             <a href="/~kg448/account.php?viewing=<?php echo $info['username']; ?>&redirectFrom=feed" title="View <?php echo $info['username']; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
-                                                                <?php echo $info['username']; ?>
+                                                                <?php echo $info['username'];
+
+                                                                if ($info['username'] == "Max") {
+                                                                print('
+                                                                    <span class="subtitleLight" style="font-size: 20px; color: rgb(144, 85, 54); padding-left: 5px;">
+                                                                        [Admin]
+                                                                    </span>');
+                                                                } 
+                                                                ?>
                                                             </a>
                                                         </div>
                                                     </td>

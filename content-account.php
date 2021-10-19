@@ -113,7 +113,7 @@ td.emptyGrid33 {
                     <?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_GET['viewing'])["fname"].' '.getProfile($_GET['viewing'])["lname"]; } ?> 
                     <span class="subtitleLight" style="font-size: 20px">(<?php echo $_GET['viewing']; ?>)</span>
                     <?php
-                    if ($user == "Max") {
+                    if ($_GET['viewing'] == "Max") {
                         print('
                         <span class="subtitleLight" style="font-size: 20px; color: rgb(144, 85, 54); padding-left: 5px;">
                             [Admin]
