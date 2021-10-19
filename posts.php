@@ -40,6 +40,30 @@
     return $row;
  }
  
+ function allPostId()
+ {
+ //make database connection
+     require('databaseConnect.php');
+       
+    //make query
+    $q1 = " SELECT id AS i FROM post";
+    
+    //execute query
+    $r = @mysqli_query ($dbc, $q1);
+    
+    while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
+    {
+        $id[] = $row['i'];
+    
+    }
+    
+    //close database connection
+    mysqli_close($dbc);
+    
+    return $id;
+ }
+ 
+ 
  ?>
  </body> 
  </html>
