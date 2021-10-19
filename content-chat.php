@@ -124,10 +124,13 @@ session_start();
                                                         }
 
                                                         print('>
-                                                            <img src="assets/profPic.jpeg" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 1.53ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                                            <a href="/~kg448/account.php?viewing='.$user.'&redirectFrom=chat">
+                                                                <img src="assets/profPic.jpeg" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 1.53ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                                            </a>
                                                         </span>
                                                     </td>
                                                     <td style="padding-left: 0.35ch">
+                                                        <a href="/~kg448/account.php?viewing='.$user.'&redirectFrom=chat">
                                                     ');
                                                         
                                                     if ($content['r'] == 0) {
@@ -136,7 +139,7 @@ session_start();
                                                         print('');
                                                     }
 
-                                                    print(''.$user.'');
+                                                    print(''.$user.'</a>');
 
                                                     if ($user == "Max") {
                                                         print('

@@ -94,13 +94,16 @@ foreach ($msgList as $index => $chat){
 
     print_r($chatAge);
 
-    if($chatAge <= 216000){ // One hour, print minutes
+    if($chatAge <= 3600){ // One minute, print min without s
         $msgList[$index]['t'] = date("i", $chatAge) . " min ago";
     }
-    elseif($chatAge <= 5184000){ // One day, print hours
+    elseif($chatAge <= 216000){ // One hour, print minutes
+        $msgList[$index]['t'] = date("i", $chatAge) . " mins ago";
+    }
+    else if($chatAge <= 5184000){ // One day, print hours
         $msgList[$index]['t'] = date("H", $chatAge) . " hrs ago";
     }
-    elseif($chatAge < 604800){ // One week, print day and time
+    else if($chatAge < 604800){ // One week, print day and time
         $msgList[$index]['t'] = date("l", $chatTime) . " at " . date("h:ia", $chatTime);
     }
     
@@ -147,10 +150,15 @@ $msgList = [
                                 <a href="/~kg448/chat.php" class="subtitleBold" style="text-decoration: none; font-size: 18px">Back</a>
                             </td>
                             <td style="max-width: fit-content;">
-                                <img src="assets/profPic.jpeg" class="logoImg" style="border-radius: 100%; height: 1.53ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+
+                                <a href="/~kg448/account.php?viewing=<?php echo $_SESSION['chatWith']; ?>&redirectFrom=chat">
+                                    <img src="assets/profPic.jpeg" class="logoImg" style="border-radius: 100%; height: 1.53ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                </a>
                             </td>
                             <td style="padding-left: 0.35ch">
-                                <?php echo $_SESSION['chatWith']; ?>
+                                <a href="/~kg448/account.php?viewing=<?php echo $_SESSION['chatWith']; ?>&redirectFrom=chat">
+                                    <?php echo $_SESSION['chatWith']; ?>
+                                </a>
                             </td>
                         </tr>
                     </tbody>
