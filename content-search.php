@@ -135,7 +135,7 @@ td.emptyGrid33 {
     <div class="col-12" style="font-size: 22.5px; padding-left: 10ch">
         <div class="col-12" style="margin-top: 5vh">
             <div class="col-10 push-1 titleBold" style="">
-                <form method="post">
+                <form method="get">
                     <div class="col-10">
                         <input maxlength="280" type="text" name="search_msg" placeholder="Search for users..." value="" style="width: 65vw; background-color: #212121; border-color: #212121; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px; word-break: break-word; vertical-align: top;" required />
                     </div>
@@ -177,6 +177,7 @@ td.emptyGrid33 {
         $userList = [];
 
         if (isset($_REQUEST['search_msg'])){
+            /*
             $search = $_REQUEST['search_msg'];
             
             if( $user = searchProfiles($search)) {
@@ -185,7 +186,16 @@ td.emptyGrid33 {
             unset($user[$username]);
             $userList[$username] = $user;
             }
+            */
             //echo "<p style='color:white'> SEARCH MADE for: $username </p>";
+
+            $search = $_REQUEST['search_msg'];
+
+            $results = userSearch($search);
+
+            foreach($results as $user){
+                $userList[$user] = getProfile($user);
+            }
         }
         
             //echo "<p style='color:white'> NO RESULTS FOUND for: $_REQUEST[search_msg] </p>";
@@ -256,7 +266,7 @@ td.emptyGrid33 {
         ?>
 
             <div class="col-12 fadeIn" style="margin: 0.5vh 0 5vh 0; animation-delay: <?php echo $delayTime; ?>s;">
-                <a href="?viewAll=none">
+                <a href="?search_msg=<?php $search?>&viewAll=none">
                     <div class="col-10 push-15 subtitleLight" style="margin-top: 1vh; font-size: 20px; text-decoration: none;">
                         View less
                     </div>
@@ -269,7 +279,7 @@ td.emptyGrid33 {
         ?>
 
             <div class="col-12 fadeIn" style="margin: 0.5vh 0 5vh 0; animation-delay: <?php echo $delayTime; ?>s;">
-                <a href="?viewAll=users">
+                <a href="?search_msg=<?php $search?>&viewAll=users">
                     <div class="col-10 push-15 subtitleLight" style="margin-top: 1vh; font-size: 20px; text-decoration: none;">
                         View more
                     </div>
