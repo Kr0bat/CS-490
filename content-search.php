@@ -266,7 +266,7 @@ td.emptyGrid33 {
         ?>
 
             <div class="col-12 fadeIn" style="margin: 0.5vh 0 5vh 0; animation-delay: <?php echo $delayTime; ?>s;">
-                <a href="?search_msg=<?php $search?>&viewAll=none">
+                <a href="?search_msg=<?php echo $_GET['search_msg']; ?>&viewAll=none">
                     <div class="col-10 push-15 subtitleLight" style="margin-top: 1vh; font-size: 20px; text-decoration: none;">
                         View less
                     </div>
@@ -279,7 +279,7 @@ td.emptyGrid33 {
         ?>
 
             <div class="col-12 fadeIn" style="margin: 0.5vh 0 5vh 0; animation-delay: <?php echo $delayTime; ?>s;">
-                <a href="?search_msg=<?php $search?>&viewAll=users">
+                <a href="?search_msg=<?php echo $_GET['search_msg']; ?>&viewAll=users">
                     <div class="col-10 push-15 subtitleLight" style="margin-top: 1vh; font-size: 20px; text-decoration: none;">
                         View more
                     </div>
