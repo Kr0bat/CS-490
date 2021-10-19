@@ -92,7 +92,7 @@ foreach ($msgList as $index => $chat){
     $chatTime = strtotime($chat['t']);
     $chatAge = $currTime - $chatTime;
 
-    print_r($chatAge);
+    //print_r($chatAge);
 
     if($chatAge <= 60){ // One minute, print min without s
         $msgList[$index]['t'] = date("i", $chatAge) . " min ago";
@@ -156,7 +156,7 @@ $msgList = [
                                 </a>
                             </td>
                             <td style="padding-left: 0.35ch">
-                                <a href="/~kg448/account.php?viewing=<?php echo $_SESSION['chatWith']; ?>&redirectFrom=chat">
+                                <a href="/~kg448/account.php?viewing=<?php echo $_SESSION['chatWith']; ?>&redirectFrom=chat" class="bodyLight" title="Go to <?php echo $_SESSION['chatWith']; ?>'s Profile">
                                     <?php echo $_SESSION['chatWith']; ?>
                                 </a>
                             </td>
