@@ -26,15 +26,13 @@ include("chats.php");
 if ($_SERVER[HTTP_HOST] == "maxedward.com") {
 
     // -------
-    // ADMIN USER
+    // TEST ON FRONT END
     // -------
     include("sidebar-admin.php");
     $role = "admin";
     $showIndividual = false;
 
     if (isset($_GET['chatWith'])) {
-        
-        // TODO: VERIFY USER EXISTS IN DATABASE
         $userExists = true;
         if (true) {
             $showIndividual = true;
@@ -50,6 +48,9 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
     }
 
 } else {
+        
+    //
+    // \/ \/ \/ \/ \/ KARIM'S CODE STARTS HERE \/ \/ \/ \/ \/
     if ( (isset($_POST['newdm_submit'])) && ( $_SESSION['role'] == "admin" || $_SESSION['role'] == "basic" ) ){
         $recipient = $_SESSION['chatWith'];
         $msg = $_POST['newdm_msg'];
@@ -60,6 +61,8 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
 
         sendChat($recipient, $sender, $msg);
     }
+    // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ KARIM'S CODE ENDS HERE ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
+    //
 
     $role = false;
     if (isset($_SESSION['role'])) {

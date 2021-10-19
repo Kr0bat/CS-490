@@ -35,11 +35,8 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
     $role = false;
     if (isset($_SESSION['role'])) {
         
-        // =======
-        // =======================
-        // = UPDATE PROFILE FORM =
-        // =======================
-        // =======
+        //
+        // \/ \/ \/ \/ \/ KARIM'S CODE STARTS HERE \/ \/ \/ \/ \/
         if ( (isset($_POST['edit_account_submit'])) && ( $_SESSION['role'] == "admin" || $_SESSION['role'] == "basic" ) )  {
             include("users.php");
             $fname = $_POST['edit_account_name_first'];
@@ -55,6 +52,8 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
 
             header("Location: /~kg448/account.php");
         }
+        // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ KARIM'S CODE ENDS HERE ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
+        //
 
         if ($_SESSION['role'] == "admin") {
 

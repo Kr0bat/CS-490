@@ -70,6 +70,8 @@ session_start();
 //include("chats.php");
 
 
+//
+// \/ \/ \/ \/ \/ KARIM'S CODE STARTS HERE \/ \/ \/ \/ \/
 $sender = $_SESSION['chatWith'];
 $recipient = $_SESSION['username'];
 $msgList = getChat($recipient, $sender);
@@ -109,34 +111,9 @@ foreach ($msgList as $index => $chat){
     
     //print_r($Epoch);
 }
+// ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ KARIM'S CODE ENDS HERE ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
+//
 
-
-/*
-$msgList = [
-    0 => ["msg" => "most recent message", "s" => $_SESSION['chatWith'], "t" => "1 min ago"],
-    1 => ["msg" => "second most recent", "s" => $_SESSION['chatWith'], "t" => "2 min ago"],
-    2 => ["msg" => "third most recent", "s" => $_SESSION['username'], "t" => "5 min ago"],
-    3 => ["msg" => "fourth most recent", "s" => $_SESSION['chatWith'], "t" => "10 min ago"],
-    4 => ["msg" => "fifth most recent", "s" => $_SESSION['username'], "t" => "13 min ago"],
-    5 => ["msg" => "sixth most recent", "s" => $_SESSION['chatWith'], "t" => "19 min ago"],
-    6 => ["msg" => "seventh most recent", "s" => $_SESSION['chatWith'], "t" => "27 min ago"],
-    7 => ["msg" => "eighth most recent", "s" => $_SESSION['chatWith'], "t" => "28 min ago"],
-    8 => ["msg" => "ninth most recent", "s" => $_SESSION['username'], "t" => "32 min ago"],
-    9 => ["msg" => "tenth most recent", "s" => $_SESSION['chatWith'], "t" => "35 min ago"],
-    10 => ["msg" => "eleventh most recent", "s" => $_SESSION['username'], "t" => "44 min ago"],
-    11 => ["msg" => "twelvth recent message", "s" => $_SESSION['chatWith'], "t" => "1 hr ago"],
-    12 => ["msg" => "thirteenth most recent", "s" => $_SESSION['chatWith'], "t" => "1 hr ago"],
-    13 => ["msg" => "fourteenth most recent", "s" => $_SESSION['username'], "t" => "1 hr ago"],
-    14 => ["msg" => "fifteenth most recent", "s" => $_SESSION['chatWith'], "t" => "2 hrs ago"],
-    15 => ["msg" => "sixteenth most recent", "s" => $_SESSION['username'], "t" => "2 hr ago"],
-    16 => ["msg" => "seventeenth most recent", "s" => $_SESSION['chatWith'], "t" => "3 hrs ago"],
-    17 => ["msg" => "eighteenth most recent", "s" => $_SESSION['chatWith'], "t" => "4 hrs ago"],
-    18 => ["msg" => "nineteenth most recent", "s" => $_SESSION['chatWith'], "t" => "4 hrs ago"],
-    19 => ["msg" => "twentieth most recent", "s" => $_SESSION['username'], "t" => "5 hrs ago"],
-    20 => ["msg" => "twentyfirst most recent", "s" => $_SESSION['chatWith'], "t" => "6 hrs ago"],
-    21 => ["msg" => "twentysecond most recent", "s" => $_SESSION['username'], "t" => "9 hrs ago"],
-    22 => ["msg" => "twentythird most recent", "s" => $_SESSION['chatWith'], "t" => "Friday at 9:36pm"],
-];*/
 
 ?>
 <body>

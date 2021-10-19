@@ -176,6 +176,9 @@ td.emptyGrid33 {
         $postList = [];
         $userList = [];
 
+        //
+        // \/ \/ \/ \/ \/ KARIM'S CODE STARTS HERE \/ \/ \/ \/ \/
+
         if (isset($_REQUEST['search_msg'])){
             /*
             $search = $_REQUEST['search_msg'];
@@ -200,6 +203,8 @@ td.emptyGrid33 {
         
             //echo "<p style='color:white'> NO RESULTS FOUND for: $_REQUEST[search_msg] </p>";
         
+        // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ KARIM'S CODE ENDS HERE ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
+        //
             
         $additionDelay = 0.1;
         $delayTime = 0;

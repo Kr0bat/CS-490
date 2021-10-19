@@ -58,13 +58,10 @@ session_start();
 include("posts.php");
 
 // $postList is updated by Middle End
-$postList = [ 
-    "001" => ["creator" => "Karim", "title" => "Best Song <3", "description" => "I love this song!", "link" => "https://maxedward.com"],
-    "002" => ["creator" => "Jose", "title" => "My Jams", "description" => "Best album in the universeeee", "link" => "https://maxedward.com"],
-    "003" => ["creator" => "User42069", "title" => "NEW SHIT !!!", "description" => "Listen to this shit!!!", "link" => "https://maxedward.com"],
-    "004" => ["creator" => "User12345", "title" => "😍😍😍", "description" => "OMG NO WAYY", "link" => "https://maxedward.com"],
-    "005" => ["creator" => "Max", "title" => "Jeeeeeez", "description" => "Im crying rn", "link" => "https://maxedward.com"]];
 $postList = [];
+
+//
+// \/ \/ \/ \/ \/ KARIM'S CODE STARTS HERE \/ \/ \/ \/ \/
 
 $idList = allPostId();
 
@@ -72,6 +69,9 @@ foreach($idList as $id){
     $postList[] = getPost($id);
 }
 $postList = array_reverse($postList);
+
+// ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ KARIM'S CODE ENDS HERE ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
+//
 
 ?>
 <body>

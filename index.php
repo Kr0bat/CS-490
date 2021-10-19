@@ -5,6 +5,9 @@
 session_start();
 include("projectSiteMiddle.php");
 
+//
+// \/ \/ \/ \/ \/ KARIM'S CODE STARTS HERE \/ \/ \/ \/ \/
+
 if (isset($_POST['btn_login_update'])) {
     $userClean = (str_replace(' ', '', $_POST['username_input']));
     $user = $userClean;
@@ -56,28 +59,9 @@ function checkLogin( $name, $pass ) {
     return false;
 
 }
-/*
-function checkAdmin( $name ) {
-    $file = "490-admins.txt";
-    $fopen = fopen($file, r);
-    $fread = fread($fopen,filesize($file));
-    fclose($fopen);
-    $remove = "\n";
-    $split = explode($remove, $fread);
-    $array = array();
-    $tab = " ";
-    foreach ($split as $string) {
-        $array[] = explode($tab, $string);
-    }
-    //print_r($array);
-    //print("<br/><br/>");
-    foreach ($array as $entry => $info) {
-        if ($info[0] == $name) {
-            return true;
-        }
-    }
-    return false;
-}*/
+
+// ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ KARIM'S CODE ENDS HERE ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
+//
 
 
 ?>

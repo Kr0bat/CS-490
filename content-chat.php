@@ -60,11 +60,8 @@ session_start();
                 "Jose" => ["msg" => "Lorem ipsum dolor sit amet", "new" => "true", "timestamp" => "1 hr ago"],
                 "Mom" => ["msg" => "Lorem ipsum dolor sit amet", "new" => "false", "timestamp" => "Fiday at 9:28am"]];
 
-            //$chatlist = [];
-
-                        
-            //include("chats.php");
-
+            //
+            // \/ \/ \/ \/ \/ KARIM'S CODE STARTS HERE \/ \/ \/ \/ \/
             $chatlist = [];
             $recipient = $_SESSION['username'];
             $senders = allChats($recipient);
@@ -76,6 +73,8 @@ session_start();
                 $chatlist[$sender] = $latestChat;
 
             }
+            // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ KARIM'S CODE ENDS HERE ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
+            //
 
             //echo "<p style='color:white'> WORDS </p>";
             if (count($chatlist) == 0) {

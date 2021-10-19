@@ -52,6 +52,8 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
 
     }
 
+    //
+    // \/ \/ \/ \/ \/ KARIM'S CODE STARTS HERE \/ \/ \/ \/ \/
     if (isset($_POST['newpost_submit'])){
         include("posts.php");
         $title = $_POST['newpost_title'];
@@ -63,6 +65,8 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
         insertPost($user, $title, $description, $link);
         header("Location: /~kg448/feed.php");
     }
+    // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ KARIM'S CODE ENDS HERE ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
+    //
 }
 ?>
 
