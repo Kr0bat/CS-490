@@ -94,13 +94,13 @@ foreach ($msgList as $index => $chat){
 
     print_r($chatAge);
 
-    if($chatAge <= 3600){ // One minute, print min without s
+    if($chatAge <= 60){ // One minute, print min without s
         $msgList[$index]['t'] = date("i", $chatAge) . " min ago";
     }
-    elseif($chatAge <= 216000){ // One hour, print minutes
+    elseif($chatAge <= 3600){ // One hour, print minutes
         $msgList[$index]['t'] = date("i", $chatAge) . " mins ago";
     }
-    else if($chatAge <= 5184000){ // One day, print hours
+    else if($chatAge <= 86400){ // One day, print hours
         $msgList[$index]['t'] = date("H", $chatAge) . " hrs ago";
     }
     else if($chatAge < 604800){ // One week, print day and time
