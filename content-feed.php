@@ -55,16 +55,23 @@
 </style>
 <?php
 session_start();
-
+include("posts.php");
 
 // $postList is updated by Middle End
 $postList = [ 
-    "001" => ["username" => "Karim", "post_title" => "Best Song <3", "post_description" => "I love this song!", "post_link" => "https://maxedward.com"],
-    "002" => ["username" => "Jose", "post_title" => "My Jams", "post_description" => "Best album in the universeeee", "post_link" => "https://maxedward.com"],
-    "003" => ["username" => "User42069", "post_title" => "NEW SHIT !!!", "post_description" => "Listen to this shit!!!", "post_link" => "https://maxedward.com"],
-    "004" => ["username" => "User12345", "post_title" => "😍😍😍", "post_description" => "OMG NO WAYY", "post_link" => "https://maxedward.com"],
-    "005" => ["username" => "Max", "post_title" => "Jeeeeeez", "post_description" => "Im crying rn", "post_link" => "https://maxedward.com"]];
-//$postList = [];
+    "001" => ["creator" => "Karim", "title" => "Best Song <3", "description" => "I love this song!", "link" => "https://maxedward.com"],
+    "002" => ["creator" => "Jose", "title" => "My Jams", "description" => "Best album in the universeeee", "link" => "https://maxedward.com"],
+    "003" => ["creator" => "User42069", "title" => "NEW SHIT !!!", "description" => "Listen to this shit!!!", "link" => "https://maxedward.com"],
+    "004" => ["creator" => "User12345", "title" => "😍😍😍", "description" => "OMG NO WAYY", "link" => "https://maxedward.com"],
+    "005" => ["creator" => "Max", "title" => "Jeeeeeez", "description" => "Im crying rn", "link" => "https://maxedward.com"]];
+$postList = [];
+
+$idList = allPostId();
+
+foreach($idList as $id){
+    $postList[] = getPost($id);
+}
+$postList = array_reverse($postList);
 
 ?>
 <body>
@@ -96,7 +103,7 @@ $postList = [
                                             <tbody>
                                                 <tr>
                                                     <td style="max-width: fit-content;">
-                                                        <a href="/~kg448/account.php?viewing=<?php echo $info['username']; ?>&redirectFrom=feed" title="View <?php echo $info['username']; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
+                                                        <a href="/~kg448/account.php?viewing=<?php echo $info['creator']; ?>&redirectFrom=feed" title="View <?php echo $info['creator']; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
                                                             <span class="">
                                                                 <img src="assets/profPic.jpeg" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 2.5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
                                                             </span>
@@ -104,10 +111,10 @@ $postList = [
                                                     </td>
                                                     <td style="padding-left: 0.5ch">
                                                         <div class="col-12">
-                                                            <a href="/~kg448/account.php?viewing=<?php echo $info['username']; ?>&redirectFrom=feed" title="View <?php echo $info['username']; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
-                                                                <?php echo $info['username'];
+                                                            <a href="/~kg448/account.php?viewing=<?php echo $info['creator']; ?>&redirectFrom=feed" title="View <?php echo $info['creator']; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
+                                                                <?php echo $info['creator'];
 
-                                                                if ($info['username'] == "Max") {
+                                                                if ($info['creator'] == "Max") {
                                                                 print('
                                                                     <span class="subtitleLight" style="font-size: 20px; color: rgb(144, 85, 54); padding-left: 5px;">
                                                                         [Admin]
@@ -121,16 +128,16 @@ $postList = [
                                             </tbody>
                                         </table>
                                         <div class="col-12" style="margin-top: 2ch;">
-                                            <?php echo $info['post_title']; ?>
+                                            <?php echo $info['title']; ?>
                                         </div>
                                         <div class="col-12 subtitleLight" style="font-size: 18px; margin-top: 0.5ch; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
-                                            <?php echo $info['post_description']; ?>
+                                            <?php echo $info['description']; ?>
                                         </div>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
-                        <a href="<?php echo $info['post_link']; ?>">
+                        <a href="<?php echo $info['link']; ?>">
                             <div class="col-12 subtitleLight" style="font-size: 20px; margin-top: 0.2ch; text-decoration: none;" title="Open song link">
                                 Go to song ↗
                             </div>
