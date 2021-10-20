@@ -69,7 +69,7 @@
      require('databaseConnect.php');
        
     //make query
-    $q1 = " SELECT Title AS title, Description AS description, Link AS link, Creator AS creator  FROM post";
+    $q1 = " SELECT Title AS title, Description AS description, Link AS link, Creator AS creator FROM post ORDER BY Timestamp";
     
     //execute query
     $r = @mysqli_query ($dbc, $q1);
