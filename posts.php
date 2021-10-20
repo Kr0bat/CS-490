@@ -63,6 +63,28 @@
     return $id;
  }
  
+ function allPost()
+ {
+     //make database connection
+     require('databaseConnect.php');
+       
+    //make query
+    $q1 = " SELECT Title AS title, Description AS description, Link AS link, Creator AS creator  FROM post";
+    
+    //execute query
+    $r = @mysqli_query ($dbc, $q1);
+    
+    while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
+    {
+        $posts[] = $row;
+    }
+    
+    //close database connection
+    mysqli_close($dbc);
+    
+    return $posts;
+ }
+ 
  
  ?>
  </body> 

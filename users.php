@@ -123,6 +123,53 @@ function userSearch($username)
     }
 }
 
+function isAdmin($username)
+{
+  //make database connection
+  require('databaseConnect.php');
+    
+  //make query
+  $q1 = "SELECT type AS t FROM user WHERE username = '$username' ";
+  
+  //execute query
+  $r = @mysqli_query ($dbc, $q1);
+  
+  
+  if($r)
+  {
+      $row = mysqli_fetch_array($r,MYSQLI_ASSOC);
+      if($row['t'] == 'admin')
+      {
+          return 1;
+      }
+      else
+      {
+          return 0;
+      }
+  }
+  else
+  {
+      return 0;
+  }
+  
+}
+
+function updateProfilePic($username, $pic_url)
+{
+    //make database connection
+    require('databaseConnect.php');
+    
+    //make query
+    $q1 = "UPDATE user SET pfp_url = '$pic_url' WHERE username = '$username'";
+  
+    //execute query
+    $r = @mysqli_query ($dbc, $q1);
+    
+    //close database connection
+    mysqli_close($dbc);
+    
+}
+
 
  
 
