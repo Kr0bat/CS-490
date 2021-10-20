@@ -85,6 +85,62 @@
     return $posts;
  }
  
+ function searchPostByT($Title)
+ {
+     //make database connection
+     require('databaseConnect.php');
+     
+     //make query
+     $q1 = "SELECT Title AS title, Description AS description, Link AS link, Creator AS creator FROM post WHERE Title LIKE '%$Title%'";
+     $r = @mysqli_query ($dbc, $q1); 
+     
+     // get list of users
+     if($r)
+     { 
+    
+        while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
+        {
+           
+            $posts[] = $row;
+            
+        }    
+        
+        return $posts; 
+    }
+    else
+    {
+        return 0;
+    }
+ }
+ 
+ function searchPostByD($Description)
+ {
+     //make database connection
+     require('databaseConnect.php');
+     
+     //make query
+     $q1 = "SELECT Title AS title, Description AS description, Link AS link, Creator AS creator FROM post WHERE Description LIKE '%$Description%'";
+     $r = @mysqli_query ($dbc, $q1); 
+     
+     // get list of users
+     if($r)
+     { 
+    
+        while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
+        {
+           
+            $posts[] = $row;
+            
+        }    
+        
+        return $posts; 
+    }
+    else
+    {
+        return 0;
+    }
+ } 
+
  
  ?>
  </body> 
