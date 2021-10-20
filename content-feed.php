@@ -97,12 +97,12 @@ $postList = [
 //
 // \/ \/ \/ \/ \/ KARIM'S CODE STARTS HERE \/ \/ \/ \/ \/
 
-//$idList = allPostId();
+$idList = allPostId();
 
-//foreach($idList as $id){
-  //  $postList[] = getPost($id);
-//}
-//$postList = array_reverse($postList);
+foreach($idList as $id){
+    $postList[] = getPost($id);
+}
+$postList = array_reverse($postList);
 
 // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ KARIM'S CODE ENDS HERE ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
 //
