@@ -142,11 +142,11 @@ function isAdmin($username)
       $row = mysqli_fetch_array($r,MYSQLI_ASSOC);
       if($row['t'] == 'admin')
       {
-          return 1;
+          return true;
       }
       else
       {
-          return 0;
+          return false;
       }
   }
   else
@@ -220,11 +220,11 @@ function isBlocked($username)
       $row = mysqli_fetch_array($r,MYSQLI_ASSOC);
       if($row['bt'] == 1)
       {
-          return 1;
+          return true;
       }
       else
       {
-          return 0;
+          return false;
       }
   }
   else
