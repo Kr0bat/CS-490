@@ -182,7 +182,7 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
             </div>
         </div>
 
-        <div class="col-10 push-1" style="height: 85vh">
+        <div class="col-10 push-1" style="height: 85vh; width: 75vw; left: 7.6vw;">
             <div class="col-12 chatBoxBack">
                 
                 <div class="col-12 chatTextEntry">
@@ -230,11 +230,11 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
 
                         </tbody>
                     </table>
-                    <div style="width: 76vw; height: 50vh; margin-left: -4vw; position: fixed; bottom: 0; background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 69%, rgba(0,0,0,0) 100%); pointer-events: none;"></div>
                 </div>
 
             </div>
         </div>
+        <div style="width: 75vw; height: 59vh; margin-left: 7.6vw; position: fixed; bottom: 0; background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 69%, rgba(0,0,0,0) 100%); pointer-events: none;"></div>
     </div>
 </body>
 </html>
