@@ -15,7 +15,7 @@
 }
 .chatBoxTop {
     height: 75vh;
-    padding: 1ch 5ch 0 5ch;
+    padding: 3ch 5ch 0 5ch;
 }
 .chatTextEntry {
     background-color: #070707;
@@ -69,47 +69,71 @@
 session_start();
 //include("chats.php");
 
+$msgList = [
+    0 => ["s" => $_SESSION['chatWith'], "msg" => "newest", "t" => "6 min ago"],
+    1 => ["s" => $_SESSION['chatWith'], "msg" => "second", "t" => "7 min ago"],
+    2 => ["s" => $_SESSION['username'], "msg" => "third", "t" => "10 min ago"],
+    3 => ["s" => $_SESSION['chatWith'], "msg" => "fourth", "t" => "15 min ago"],
+    4 => ["s" => $_SESSION['username'], "msg" => "fifth", "t" => "18 min ago"],
+    5 => ["s" => $_SESSION['username'], "msg" => "sixth", "t" => "25 min ago"],
+    6 => ["s" => $_SESSION['chatWith'], "msg" => "seventh", "t" => "26 min ago"],
+    7 => ["s" => $_SESSION['username'], "msg" => "eighth", "t" => "32 min ago"],
+    8 => ["s" => $_SESSION['chatWith'], "msg" => "ninth", "t" => "36 min ago"],
+    9 => ["s" => $_SESSION['username'], "msg" => "tenth", "t" => "44 min ago"],
+    10 => ["s" => $_SESSION['chatWith'], "msg" => "eleventh", "t" => "47 min ago"],
+    11 => ["s" => $_SESSION['username'], "msg" => "twelvth", "t" => "50 min ago"],
+    12 => ["s" => $_SESSION['chatWith'], "msg" => "thirteenth", "t" => "51 min ago"],
+    13 => ["s" => $_SESSION['username'], "msg" => "fourteenth", "t" => "54 min ago"],
+    14 => ["s" => $_SESSION['chatWith'], "msg" => "fifteenth", "t" => "59 min ago"],
+];
+
 
 //
 // \/ \/ \/ \/ \/ KARIM'S CODE STARTS HERE \/ \/ \/ \/ \/
+
 $sender = $_SESSION['chatWith'];
 $recipient = $_SESSION['username'];
-$msgList = getChat($recipient, $sender);
 
-//ensures messages display in chronological order
-$msgList = array_reverse($msgList);
+if ($_SERVER[HTTP_HOST] != "maxedward.com") {
 
-setRead($recipient, $sender);
+    $msgList = getChat($recipient, $sender);
 
-///
-/* 
-// Chats over a week old retain the default timestamp
-// Younger chats gain an easier to read, less detailed timestamp
-*/
-///
+    //ensures messages display in chronological order
+    $msgList = array_reverse($msgList);
+
+    setRead($recipient, $sender);
+
+    ///
+    /* 
+    // Chats over a week old retain the default timestamp
+    // Younger chats gain an easier to read, less detailed timestamp
+    */
+    ///
 
 
-foreach ($msgList as $index => $chat){
-    $currTime = time();
-    $chatTime = strtotime($chat['t']);
-    $chatAge = $currTime - $chatTime;
+    foreach ($msgList as $index => $chat){
+        $currTime = time();
+        $chatTime = strtotime($chat['t']);
+        $chatAge = $currTime - $chatTime;
 
-    //print_r($chatAge);
+        //print_r($chatAge);
 
-    if($chatAge <= 60){ // One minute, print min without s
-        $msgList[$index]['t'] = date("i", $chatAge) . " min ago";
+        if($chatAge <= 60){ // One minute, print min without s
+            $msgList[$index]['t'] = date("i", $chatAge) . " min ago";
+        }
+        elseif($chatAge <= 3600){ // One hour, print minutes
+            $msgList[$index]['t'] = date("i", $chatAge) . " mins ago";
+        }
+        else if($chatAge <= 86400){ // One day, print hours
+            $msgList[$index]['t'] = date("H", $chatAge) . " hrs ago";
+        }
+        else if($chatAge < 604800){ // One week, print day and time
+            $msgList[$index]['t'] = date("l", $chatTime) . " at " . date("h:ia", $chatTime);
+        }
+        
+        //print_r($Epoch);
     }
-    elseif($chatAge <= 3600){ // One hour, print minutes
-        $msgList[$index]['t'] = date("i", $chatAge) . " mins ago";
-    }
-    else if($chatAge <= 86400){ // One day, print hours
-        $msgList[$index]['t'] = date("H", $chatAge) . " hrs ago";
-    }
-    else if($chatAge < 604800){ // One week, print day and time
-        $msgList[$index]['t'] = date("l", $chatTime) . " at " . date("h:ia", $chatTime);
-    }
-    
-    //print_r($Epoch);
+
 }
 // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ KARIM'S CODE ENDS HERE ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
 //
@@ -145,6 +169,13 @@ foreach ($msgList as $index => $chat){
                                 }
                                 ?>
                             </td>
+                            <td style="padding-left: 1ch; width: 50%">        
+                                <div class="col-12">
+                                    <a href="">
+                                        <button type="submit" name="newdm_submit" style="width: 80%; background-color: #545454; border-color: #262626; border-style: solid; color: #fff; border-radius: 0.75ch; font-size: 20px; margin-left: 50%; transform: translate(-50%, 0); padding: 1ch 0; margin-top: 0.55vh;">Refresh</button>
+                                    </a>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -161,7 +192,7 @@ foreach ($msgList as $index => $chat){
                                 <input maxlength="240" type="text" name="newdm_msg" placeholder="Type something to <?php echo $_SESSION['chatWith']; ?>" value="" style="width: 100%; background-color: #000; border-color: #1e4e22; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px; word-break: break-word; height: 7vh; vertical-align: top; margin-top: 0.5vh;" required />
                             </div>
                             <div class="col-3">
-                                <button type="submit" name="newdm_submit" style="width: 80%; background-color: #1e4e22; border-color: #1e4e22; border-style: outset; color: #fff; border-radius: 0.75ch; font-size: 20px; margin-left: 50%; transform: translate(-50%, 0); padding: 0.5ch 0; margin-top: 0.5vh;">Send</button>
+                                <button type="submit" name="newdm_submit" style="width: 80%; background-color: #1e4e22; border-color: #1e4e22; border-style: solid; color: #fff; border-radius: 0.75ch; font-size: 20px; margin-left: 50%; transform: translate(-50%, 0); padding: 1ch 0; margin-top: 0.55vh;">Send</button>
                             </div>
                         </form>
                     </div>
@@ -199,6 +230,7 @@ foreach ($msgList as $index => $chat){
 
                         </tbody>
                     </table>
+                    <div style="width: 76vw; height: 50vh; margin-left: -4vw; position: fixed; bottom: 0; background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 69%, rgba(0,0,0,0) 100%); pointer-events: none;"></div>
                 </div>
 
             </div>
