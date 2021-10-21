@@ -150,7 +150,7 @@ if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
                     <td>
                         <div style="margin-left: 1ch;">
                             <div style="">
-                                <?php echo getProfile($_SESSION['username'])["fname"].' '.getProfile($_SESSION['username'])["lname"]; ?>
+                                <?php echo getProfile($_SESSION['username'])["fname"]; ?>
                             </div>
                         </div>
                     </td>
