@@ -2,6 +2,7 @@
 <html lang="en">
 <?php
 session_start();
+include("users.php");
 ?>
 <style>
 .dmContainer {
@@ -124,7 +125,7 @@ session_start();
 
                                                         print('>
                                                             <a href="/~kg448/account.php?viewing='.$user.'&redirectFrom=chat" title="Go to '.$user.'\'s Profile">
-                                                                <img src="assets/profPic.jpeg" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 1.53ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                                                <img src="'.getProfile($user)["profile_picture"].'" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 1.53ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
                                                             </a>
                                                         </span>
                                                     </td>

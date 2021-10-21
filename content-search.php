@@ -233,7 +233,7 @@ td.emptyGrid33 {
                                     <tr>
                                         <td style="max-width: fit-content;">
                                             <span class="">
-                                                <img src="assets/profPic.jpeg" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                                <img src="<?php echo getProfile($username)["profile_picture"]; ?>" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
                                             </span>
                                         </td>
                                         <td style="padding-left: 1.69ch">

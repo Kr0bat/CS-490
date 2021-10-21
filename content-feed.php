@@ -64,6 +64,7 @@
 <?php
 session_start();
 include("posts.php");
+include("users.php");
 
 // $postList is updated by Middle End
 $postList = [
