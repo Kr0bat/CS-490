@@ -11,23 +11,23 @@
     width: 65vw;
     border-radius: 1ch;
     padding: 1ch;
-    background: #ffffff17;
+    background: #313131;
     border-style: solid;
-    border-color: #ffffff17;
+    border-color: #4a4a4a;
 }
 .postContainer {
     border-radius: 1ch;
     padding: 1ch;
-    background: #ffffff17;
+    background: #313131;
     border-style: solid;
-    border-color: #ffffff17;
+    border-color: #4a4a4a;
 }
 .commentContainer {
     border-radius: 0 0 1ch 1ch;
     padding: 1ch;
-    background: #ffffff17;
+    background: #313131;
     border-style: solid;
-    border-color: #ffffff17;
+    border-color: #4a4a4a;
     border-top: none;
 }
 
@@ -73,9 +73,9 @@ $postList = [
         "description" => "Description here with a lot more words than that of the title", 
         "link" => "https://maxedward.com",
         "comments" => [
-            0 => ["creator" => "Karim", "description" => "Newest Comment"],
+            0 => ["creator" => "Karim", "description" => "Oldest Comment"],
             1 => ["creator" => "Jose", "description" => "Middle Comment"],
-            2 => ["creator" => "Max", "description" => "Oldest Comment"]
+            2 => ["creator" => "Max", "description" => "Newest Comment"]
             ]
         ],
     1 => [
@@ -97,12 +97,17 @@ $postList = [
 //
 // \/ \/ \/ \/ \/ KARIM'S CODE STARTS HERE \/ \/ \/ \/ \/
 
+
+if ($_SERVER[HTTP_HOST] != "maxedward.com") {
+
 $idList = allPostId();
 
 foreach($idList as $id){
     $postList[] = getPost($id);
 }
 $postList = array_reverse($postList);
+
+}
 
 // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ KARIM'S CODE ENDS HERE ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
 //
@@ -180,7 +185,7 @@ $postList = array_reverse($postList);
                                                 <?php echo $info['description']; ?>
                                             </div>
                                         </div>
-                                        <div class="col-12" style="height: 7.5ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 2ch;">
+                                        <div class="col-8" style="height: 8ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 2.65ch;">
                                             <div class="col-12" style="margin-top: 0ch; vertical-align: bottom; font-weight: normal;">
                                                 Song Title Here
                                             </div>
@@ -189,6 +194,12 @@ $postList = array_reverse($postList);
                                             </div>
                                             <div class="col-12 subtitleLight" style="font-size: 18px; margin-top: 0.5ch; text-overflow: ellipsis; overflow: hidden;">
                                                 Artist
+                                            </div>
+                                        </div>
+                                        <div class="col-4" style="height: 8ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 5ch; text-align: right;">
+                                            <div class="col-12" style="">
+                                                <img src="assets/comment.png" onclick="openComment(<?php echo $info['post_id'] ?>)" class="" style="border-width: 0; height: 3ch; margin-top: 0; cursor: pointer;" />
+                                                <img src="assets/heart-off.png" onclick="toggleLike(<?php echo $info['post_id'] ?>)" class="" style="border-width: 0; height: 3ch; margin-left: 0.75ch; cursor: pointer;" />
                                             </div>
                                         </div>
                                     </td>
