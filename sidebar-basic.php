@@ -96,7 +96,6 @@
 </style>
 
 <?php
-include("users.php");
 
 //
 // -----

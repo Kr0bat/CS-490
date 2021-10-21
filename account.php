@@ -13,6 +13,8 @@
 <body  style="background-color: #161616; font-family: 'Montserrat', sans-serif;">
 <?php
 session_start();
+include("users.php");
+include("factory.php");
 
 //
 // =======

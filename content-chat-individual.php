@@ -66,8 +66,6 @@
 }
 </style>
 <?php
-session_start();
-//include("chats.php");
 
 $msgList = [
     0 => ["s" => $_SESSION['chatWith'], "msg" => "newest", "t" => "6 min ago"],

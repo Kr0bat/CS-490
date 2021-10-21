@@ -89,8 +89,6 @@ td.emptyGrid33 {
 <div class="col-12" style="font-size: 22.5px; padding-left: 10ch">
     
     <?php
-        include("factory.php");
-        include("users.php");
 
         if (isset($_GET['viewing'])) {
             // SHOW SOMEONE ELSE'S PROFILE
