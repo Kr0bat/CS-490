@@ -233,16 +233,16 @@ $postList = array_reverse($postList);
                                     <td style="max-width: fit-content;">
                                         <a href="/~kg448/account.php?viewing=<?php echo $commentInfo["creator"]; ?>&redirectFrom=feed" title="View <?php echo $commentInfo["creator"]; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
                                             <span class="">
-                                                <img src="assets/profPic.jpeg" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 2.5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                                <img src="<?php echo getProfile($commentInfo['creator'])["profile_picture"]; ?>" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 2.5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
                                             </span>
                                         </a>
                                     </td>
                                     <td style="padding-left: 0.5ch">
                                         <div class="col-12">
                                             <a href="/~kg448/account.php?viewing=<?php echo $commentInfo["creator"]; ?>&redirectFrom=feed" title="View <?php echo $commentInfo["creator"]; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
-                                                <?php echo $commentInfo["creator"];
+                                                <?php echo getProfile($commentInfo['creator'])["fname"];
 
-                                                if ($commentInfo["creator"] == "Max") {
+                                                if (isAdmin($commentInfo["creator"])) {
                                                 print('
                                                     <span class="subtitleLight" style="font-size: 18px; color: rgb(144, 85, 54); padding-left: 5px;">
                                                         Admin
