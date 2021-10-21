@@ -155,7 +155,7 @@ if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
                                 </div>
                             </a>
                         </div>
-                        <div class="col-12" style="margin-left: 1ch; color: rgb(144, 85, 54)">
+                        <div class="col-12" style="margin-left: 1ch; color: rgb(144, 85, 54); margin-top: -1ch;">
                             Admin
                         </div>
                     </td>
