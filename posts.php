@@ -42,7 +42,7 @@
  
  function allPostId()
  {
- //make database connection
+    //make database connection
      require('databaseConnect.php');
        
     //make query
@@ -140,6 +140,25 @@
         return 0;
     }
  } 
+ 
+ function removePost($id)
+ {
+     //make database connection
+     require('databaseConnect.php');
+       
+    //make query
+    $q1 = "DELETE FROM post WHERE id = $id";
+    
+    //execute query
+    $r = @mysqli_query ($dbc, $q1);
+    
+    //close database connection
+    mysqli_close($dbc);
+ }
+ 
+ 
+
+ 
 
  
  ?>

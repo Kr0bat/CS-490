@@ -101,7 +101,7 @@ function userSearch($username)
        require('databaseConnect.php');
    
   //make query
-  $q1 = "SELECT username AS s FROM user WHERE username LIKE '%$username%' ";
+  $q1 = "SELECT username AS s FROM user WHERE username LIKE '%$username%' OR first_name LIKE '%$username%' OR last_name LIKE '%$username%' ";
   $r = @mysqli_query ($dbc, $q1); 
   
   // get list of users
@@ -110,7 +110,7 @@ function userSearch($username)
     
         while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
         {
-           
+            echo $row[s];
             $usernames[] = $row['s'];
             
         }    
@@ -170,7 +170,66 @@ function updateProfilePic($username, $pic_url)
     
 }
 
+function createAccount($username, $password, $type, $firstName, $lastName)
+{
+    //make database connection
+    require('databaseConnect.php');
+    
+    //make query
+    $q1 = "INSERT INTO user (username, password, type, first_name, last_name) VALUES ('$username', '$password', '$type', '$firstName', '$lastName')";
+  
+    //execute query
+    $r = @mysqli_query ($dbc, $q1);
+    
+    //close database connection
+    mysqli_close($dbc);  
 
+}
+
+function blockAccount($username)
+{
+    //make database connection
+    require('databaseConnect.php');
+    
+    //make query
+    $q1 = "UPDATE user SET blocked_status = 1 WHERE username = '$username'";
+  
+    //execute query
+    $r = @mysqli_query ($dbc, $q1);
+    
+    //close database connection
+    mysqli_close($dbc);  
+}
+
+function isBlocked($username)
+{
+  //make database connection
+  require('databaseConnect.php');
+    
+  //make query
+  $q1 = "SELECT blocked_status as bt FROM user WHERE username = '$username' ";
+  
+  //execute query
+  $r = @mysqli_query ($dbc, $q1);
+  
+  
+  if($r)
+  {
+      $row = mysqli_fetch_array($r,MYSQLI_ASSOC);
+      if($row['bt'] == 1)
+      {
+          return 1;
+      }
+      else
+      {
+          return 0;
+      }
+  }
+  else
+  {
+      return 0;
+  }
+}
  
 
 
