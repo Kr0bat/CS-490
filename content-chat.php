@@ -2,7 +2,6 @@
 <html lang="en">
 <?php
 session_start();
-include("users.php");
 ?>
 <style>
 .dmContainer {

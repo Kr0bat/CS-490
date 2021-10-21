@@ -67,7 +67,6 @@
 </style>
 <?php
 session_start();
-include("users.php");
 //include("chats.php");
 
 $msgList = [

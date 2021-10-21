@@ -209,7 +209,7 @@ if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
                     <td>
                         <div style="margin-left: 1ch;">
                             <div style="color: rgb(144, 85, 54)">
-                                Admin Account
+                                Admin
                             </div>
                         </div>
                     </td>
