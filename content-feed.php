@@ -147,7 +147,7 @@ $postList = array_reverse($postList);
                                                     <td style="padding-left: 0.5ch">
                                                         <div class="col-12">
                                                             <a href="/~kg448/account.php?viewing=<?php echo $info['creator']; ?>&redirectFrom=feed" title="View <?php echo $info['creator']; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
-                                                                <?php getProfile($info['creator'])["fname"].' '.getProfile($info['creator'])["lname"];
+                                                                <?php echo getProfile($info['creator'])["fname"].' '.getProfile($info['creator'])["lname"];
 
                                                                 if (isAdmin($info['creator'])) {
                                                                 print('
