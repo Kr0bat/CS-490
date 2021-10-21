@@ -113,10 +113,10 @@ td.emptyGrid33 {
                     <?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_GET['viewing'])["fname"].' '.getProfile($_GET['viewing'])["lname"]; } ?> 
                     <span class="subtitleLight" style="font-size: 20px">(<?php echo $_GET['viewing']; ?>)</span>
                     <?php
-                    if ($_GET['viewing'] == "Max") {
+                    if (isAdmin($_GET['viewing'])) {
                         print('
                         <span class="subtitleLight" style="font-size: 20px; color: rgb(144, 85, 54); padding-left: 5px;">
-                            [Admin]
+                            Admin
                         </span>');
                     }
                     ?>
@@ -218,7 +218,7 @@ td.emptyGrid33 {
                     <?php if ($_SERVER[HTTP_HOST] != "maxedward.com") {  echo getProfile($_SESSION['username'])["fname"].' '.getProfile($_SESSION['username'])["lname"]; } ?> 
                     <span class="subtitleLight" style="font-size: 20px">(<?php echo $_SESSION['username']; ?>)</span>
                     <?php
-                    if ($_SESSION['username'] == "Max") {
+                    if (isAdmin($_SESSION['username'])) {
                         print('
                         <span class="subtitleLight" style="font-size: 20px; color: rgb(144, 85, 54); padding-left: 5px;">
                             Admin

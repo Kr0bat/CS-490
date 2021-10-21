@@ -203,6 +203,17 @@ if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
                         </div>
                     </td>
                 </tr>
+                <tr class="lightTableTrSpacerLarge">
+                </tr>
+                <tr class="lightTableTr">
+                    <td>
+                        <div style="margin-left: 1ch;">
+                            <div style="color: rgb(144, 85, 54)">
+                                Admin Account
+                            </div>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>

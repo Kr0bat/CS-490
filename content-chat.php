@@ -139,9 +139,9 @@ include("users.php");
                                                         print('');
                                                     }
 
-                                                    print(''.$user.'</a>');
+                                                    print(''.getProfile($user)["fname"].' '.getProfile($user)["lname"].'</a>');
 
-                                                    if ($user == "Max") {
+                                                    if (isAdmin($user)) {
                                                         print('
                                                         <span class="subtitleLight" style="font-size: 18px; color: rgb(144, 85, 54);vertical-align: bottom; padding-left: 5px;">
                                                             Admin

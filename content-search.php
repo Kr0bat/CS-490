@@ -241,7 +241,7 @@ td.emptyGrid33 {
                                                 <?php echo $info['fname'].' '.$info['lname']; ?> 
                                                 <span class="subtitleLight" style="font-size: 20px">(<?php echo $username; ?>)</span>
                                                 <?php
-                                                if ($username == "Max") {
+                                                if (isAdmin($username)) {
                                                     print('
                                                     <span class="subtitleLight" style="font-size: 18px; color: rgb(144, 85, 54); padding-left: 5px;">
                                                         Admin
@@ -323,8 +323,16 @@ td.emptyGrid33 {
                                                 </td>
                                                 <td style="padding-left: 0.5ch">
                                                     <div class="col-12">
-                                                        <?php echo $info['username']; ?>
+                                                        <?php echo getProfile($info['username'])["fname"].' '.getProfile($info['username'])["lname"]; ?>
                                                     </div>
+                                                    <?php
+                                                    if (isAdmin($info['username'])) {
+                                                        print('
+                                                        <span class="subtitleLight" style="font-size: 18px; color: rgb(144, 85, 54); padding-left: 5px;">
+                                                            Admin
+                                                        </span>');
+                                                    }
+                                                    ?>
                                                 </td>
                                             </tr>
                                         </tbody>
