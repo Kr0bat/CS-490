@@ -149,9 +149,11 @@ if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
                 <tr class="lightTableTr">
                     <td>
                         <div style="margin-left: 1ch;">
-                            <div style="">
-                                <?php echo getProfile($_SESSION['username'])["fname"]; ?>
-                            </div>
+                            <a href="/~kg448/account.php" class="linkLight">
+                                <div style="width: 9ch; overflow: hidden; text-overflow: ellipsis;">
+                                    <?php echo getProfile($_SESSION['username'])["fname"]; ?>
+                                </div>
+                            </a>
                         </div>
                     </td>
                 </tr>
