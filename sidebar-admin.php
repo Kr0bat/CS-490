@@ -146,6 +146,24 @@ if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
                         </a>
                     </td>
                 </tr>
+                <tr class="lightTableTr">
+                    <td>
+                        <div style="margin-left: 1ch;">
+                            <div style="">
+                                <?php echo getProfile($_SESSION['username'])["fname"].' '.getProfile($_SESSION['username'])["lname"]; ?>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="lightTableTr">
+                    <td>
+                        <div style="margin-left: 1ch;">
+                            <div style="color: rgb(144, 85, 54)">
+                                Admin
+                            </div>
+                        </div>
+                    </td>
+                </tr>
                 <tr class="lightTableTrSpacerSmall"></tr>
                 <tr class="lightTableTr">
                     <td style="text-align: center">
@@ -204,15 +222,6 @@ if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
                     </td>
                 </tr>
                 <tr class="lightTableTrSpacerLarge">
-                </tr>
-                <tr class="lightTableTr">
-                    <td>
-                        <div style="margin-left: 1ch;">
-                            <div style="color: rgb(144, 85, 54)">
-                                Admin
-                            </div>
-                        </div>
-                    </td>
                 </tr>
             </tbody>
         </table>
