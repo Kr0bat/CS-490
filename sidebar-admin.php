@@ -141,7 +141,7 @@ if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
                     <td>
                         <a href="/~kg448/account.php" class="linkLight">
                             <div>
-                                <img src="assets/profPic.jpeg" class="imgFitMid logoImg" style="border-radius: 100%; height: 5ch; border-style: solid; border-color: <?php if ($currPage == 'account') { print("#56b35e; border-width: 0.2ch;"); } else { print("rgba(255, 255, 255, 0.15)"); } ?>; margin-left: 50%; transform: translate(-50%, 0);" />
+                                <img src="<?php echo getProfile($_SESSION['username'])["profile_picture"]; ?>" class="imgFitMid logoImg" style="border-radius: 100%; height: 5ch; border-style: solid; border-color: <?php if ($currPage == 'account') { print("#56b35e; border-width: 0.2ch;"); } else { print("rgba(255, 255, 255, 0.15)"); } ?>; margin-left: 50%; transform: translate(-50%, 0);" />
                             </div>
                         </a>
                     </td>
