@@ -9,9 +9,13 @@
  {
      //make database connection
      require('databaseConnect.php');
+     
+     $new_title = mysqli_real_escape_string($dbc, $title);
+     $new_description = mysqli_real_escape_string($dbc, $description);
+     
        
     //make query
-    $q1 = " INSERT INTO post (Title, Description, Link, Creator) VALUES ('$title', '$description', '$link', '$username')";
+    $q1 = " INSERT INTO post (Title, Description, Link, Creator) VALUES ('$new_title', '$new_description', '$link', '$username')";
     
     //execute query
     $r = @mysqli_query ($dbc, $q1);
@@ -155,11 +159,6 @@
     //close database connection
     mysqli_close($dbc);
  }
- 
- 
-
- 
-
  
  ?>
  </body> 

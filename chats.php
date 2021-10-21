@@ -92,8 +92,10 @@ function sendChat($recipient, $sender, $message)
     //make database connection
     require('databaseConnect.php');
     
+    $new_message = mysqli_real_escape_string($dbc, $message);
+    
     //make query
-    $q1 = "INSERT INTO chat (recipient, sender, message) VALUES ('$recipient', '$sender', '$message') ";
+    $q1 = "INSERT INTO chat (recipient, sender, message) VALUES ('$recipient', '$sender', '$new_message') ";
     
     //execute query
     $r = @mysqli_query ($dbc, $q1);
@@ -102,6 +104,8 @@ function sendChat($recipient, $sender, $message)
      mysqli_close($dbc);
     
 }
+
+
 
 ?>
  </body>

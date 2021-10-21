@@ -83,11 +83,13 @@ function updateLname($lname, $username)
 function updateDesc($desc, $username)
 {
   
-  //make database connection
-  require('databaseConnect.php');
+   //make database connection
+   require('databaseConnect.php');
+   
+   $new_desc = mysqli_real_escape_string($dbc, $desc);
    
   //make query
-  $q1 = "UPDATE user SET description = '$desc' WHERE username = '$username' ";
+  $q1 = "UPDATE user SET description = '$new_desc' WHERE username = '$username' ";
   $r = @mysqli_query ($dbc, $q1); 
   
   //close database connection
@@ -97,8 +99,8 @@ function updateDesc($desc, $username)
 
 function userSearch($username)
 {
-        //make database connection
-       require('databaseConnect.php');
+   //make database connection
+   require('databaseConnect.php');
    
   //make query
   $q1 = "SELECT username AS s FROM user WHERE username LIKE '%$username%' OR first_name LIKE '%$username%' OR last_name LIKE '%$username%' ";
@@ -230,8 +232,6 @@ function isBlocked($username)
       return 0;
   }
 }
- 
-
 
  ?>
  </body>
