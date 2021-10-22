@@ -141,7 +141,7 @@ $postList = array_reverse($postList);
                                                             </span>
                                                         </a>
                                                     </td>
-                                                    <td style="padding-left: 0.5ch; overflow: visible; white-space: no-wrap;">
+                                                    <td style="padding-left: 0.5ch; overflow: visible; white-space: nowrap;">
                                                         <div class="col-12">
                                                             <a href="/~kg448/account.php?viewing=<?php echo $info['creator']; ?>&redirectFrom=feed" title="View <?php echo $info['creator']; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
                                                                 <?php echo getProfile($info['creator'])["fname"].' '.getProfile($info['creator'])["lname"];

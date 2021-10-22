@@ -4,6 +4,30 @@
 
 ?>
 <style>
+.dmContainer {
+    width: 65vw;
+    border-radius: 1ch;
+    padding: 1ch;
+    background: #313131;
+    border-style: solid;
+    border-color: #4a4a4a;
+}
+.postContainer {
+    border-radius: 1ch;
+    padding: 1ch;
+    background: #313131;
+    border-style: solid;
+    border-color: #4a4a4a;
+}
+.commentContainer {
+    border-radius: 0 0 1ch 1ch;
+    padding: 1ch;
+    background: #313131;
+    border-style: solid;
+    border-color: #4a4a4a;
+    border-top: none;
+}
+
 table.emptyGrid {
     width: 65vw;
 }
@@ -131,25 +155,232 @@ td.emptyGrid33 {
         </div>
     </div>
     <div class="col-12" style="margin-top: 1vh">
-        <table class="col-10 push-1 emptyGrid" cellspacing="15" cellpadding="0">
-            <tbody style="width: 100%">
-                <tr style="width: 100%">
-                    <td class="gridSize emptyGrid1"></td>
-                    <td class="gridSize emptyGrid12"></td>
-                    <td class="gridSize emptyGrid13"></td>
-                </tr>
-                <tr class="emptyGrid2">
-                    <td class="gridSize emptyGrid2"></td>
-                    <td class="gridSize emptyGrid22"></td>
-                    <td class="gridSize emptyGrid23"></td>
-                </tr>
-                <tr class="emptyGrid3">
-                    <td class="gridSize emptyGrid3"></td>
-                    <td class="gridSize emptyGrid32"></td>
-                    <td class="gridSize emptyGrid33"></td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="col-10 push-1 bodyBold" style="font-size: 20px">
+    <?php
+    // $postList is updated by Middle End
+    $postList = [
+        0 => [
+            "creator" => "Max", 
+            "title" => "Title Here", 
+            "description" => "Description here with a lot more words than that of the title", 
+            "link" => "https://maxedward.com",
+            "comments" => [
+                0 => ["creator" => "Karim", "description" => "Oldest Comment"],
+                1 => ["creator" => "Jose", "description" => "Middle Comment"],
+                2 => ["creator" => "Max", "description" => "Newest Comment"]
+                ]
+            ],
+        1 => [
+            "creator" => "Max", 
+            "title" => "Title Here", 
+            "description" => "Description here with a lot more words than that of the title", 
+            "link" => "https://maxedward.com",
+            "comments" => []
+            ],
+        2 => [
+            "creator" => "Max", 
+            "title" => "Title Here", 
+            "description" => "Description here with a lot more words than that of the title", 
+            "link" => "https://maxedward.com",
+            "comments" => [
+                0 => ["creator" => "Karim", "description" => "Oldest Comment"],
+                1 => ["creator" => "Jose", "description" => "Middle Comment"]
+                ]
+        ],
+        3 => [
+            "creator" => "Max", 
+            "title" => "Title Here", 
+            "description" => "Description here with a lot more words than that of the title", 
+            "link" => "https://maxedward.com",
+            "comments" => [
+                0 => ["creator" => "Karim", "description" => "Oldest Comment"],
+                1 => ["creator" => "Jose", "description" => "Middle Comment"],
+                2 => ["creator" => "Max", "description" => "Newest Comment"]
+                ]
+            ],
+        4 => [
+            "creator" => "Max", 
+            "title" => "Title Here", 
+            "description" => "Description here with a lot more words than that of the title", 
+            "link" => "https://maxedward.com",
+            "comments" => []
+            ],
+        5 => [
+            "creator" => "Max", 
+            "title" => "Title Here", 
+            "description" => "Description here with a lot more words than that of the title", 
+            "link" => "https://maxedward.com",
+            "comments" => []
+            ]
+        ];
+        
+        foreach ($postList as $postID => $info) {
+        ?>
+
+            <div class="col-12" style="margin: 2ch 0 1ch 0">
+                <div class="col-11 titleBold" style="">
+                    <div class="col-12 bodyBold postContainer" style="margin: 0">
+                        <div class="col-12">
+                            <table style="margin: 0;">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <table class="bodyLight">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="max-width: fit-content;">
+                                                            <a href="/~kg448/account.php?viewing=<?php echo $info['creator']; ?>&redirectFrom=feed" title="View <?php echo $info['creator']; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
+                                                                <span class="">
+                                                                    <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($info['creator'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 2.5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                                                </span>
+                                                            </a>
+                                                        </td>
+                                                        <td style="padding-left: 0.5ch; overflow: visible; white-space: nowrap;">
+                                                            <div class="col-12">
+                                                                <a href="/~kg448/account.php?viewing=<?php echo $info['creator']; ?>&redirectFrom=feed" title="View <?php echo $info['creator']; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
+                                                                    <?php 
+                                                                    if ($_SERVER[HTTP_HOST] != "maxedward.com") { 
+                                                                        echo getProfile($info['creator'])["fname"].' '.getProfile($info['creator'])["lname"]; 
+                                                                        if (isAdmin($info['creator'])) {
+                                                                            print('
+                                                                                <span class="subtitleLight" style="font-size: 18px; color: rgb(144, 85, 54); padding-left: 5px;">
+                                                                                    Admin
+                                                                                </span>');
+                                                                        } 
+                                                                    } else { 
+                                                                        echo "Max Cohen"; 
+                                                                    }
+                                                                    ?>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                        <td style="text-align: right; width: 100%;">
+                                            <div class="subtitleLight" style="position: relative; font-size: 20px; margin-top: 0.2ch; text-decoration: none;">
+                                                <a href="<?php echo $info['link']; ?>" class="subtitleLight" style="font-size: 20px; text-decoration: none;" title="Open song link">
+                                                    Go to song ↗
+                                                </a>    
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table style="margin: 0;">
+                                <tbody>
+                                    <tr>
+                                        <td style="max-width: fit-content;">
+                                            <span class="">
+                                                <img src="assets/logo_spotify.png" class="logoImg" style="border-width: 0.05px; border-radius: 0.35ch; height: 15ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                            </span>
+                                        </td>
+                                        <td style="padding-left: 1.69ch; vertical-align: top; height: 15ch;">
+                                            <div class="col-12" style="height: 7.5ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+                                                <div class="col-12" style="margin-top: 0.5ch;">
+                                                    <?php echo $info['title']; ?>
+                                                </div>
+                                                <div class="col-12 subtitleLight" style="font-size: 18px; margin-top: 0.5ch; text-overflow: ellipsis; overflow: hidden;">
+                                                    <?php echo $info['description']; ?>
+                                                </div>
+                                            </div>
+                                            <div class="col-8" style="height: 8ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 2.65ch;">
+                                                <div class="col-12" style="margin-top: 0ch; vertical-align: bottom; font-weight: normal;">
+                                                    Song Title Here
+                                                </div>
+                                                <div class="col-12 subtitleLight" style="font-size: 18px; margin-top: 0.5ch; text-overflow: ellipsis; overflow: hidden; font-style: normal;">
+                                                    Album - Year
+                                                </div>
+                                                <div class="col-12 subtitleLight" style="font-size: 18px; margin-top: 0.5ch; text-overflow: ellipsis; overflow: hidden;">
+                                                    Artist
+                                                </div>
+                                            </div>
+                                            <div class="col-4" style="height: 8ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 5ch; text-align: right;">
+                                                <div class="col-12" style="">
+                                                    <img src="assets/comment.png" onclick="openComment(<?php echo $info['post_id'] ?>)" class="" style="border-width: 0; height: 3ch; margin-top: 0; cursor: pointer;" />
+                                                    <img src="assets/heart-off.png" onclick="toggleLike(<?php echo $info['post_id'] ?>)" class="" style="border-width: 0; height: 3ch; margin-left: 0.75ch; cursor: pointer;" />
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <?php
+                    if (count($info["comments"]) > 0) {
+                        foreach ($info["comments"] as $commentIndex => $commentInfo) {
+                    ?>
+
+                    <div class="col-12">
+                        <div class="col-1">
+                            <table class="bodyLight" style="width: 100%">
+                                <tbody>
+                                    <tr>
+                                        <td style="max-width: fit-content;">
+                                            <span class="" style="width: 100%">
+                                                <img src="assets/commentArrow.png" class="" style="border-width: 0px; border-radius: 0; height: 3.5ch; margin-left: 50%; transform: translate(-50%, 0);" />
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-10 bodyLight commentContainer" style="margin: 0; padding: 0.5ch 1ch 0.5ch 1ch; <?php if ($commentIndex == count($info["comments"])-1) { echo "border-radius: 0 0 1ch 1ch"; } else { echo "border-radius: 0;"; } ?>font-style: normal; font-size: 18px;"> 
+                            <table class="bodyLight">
+                                <tbody>
+                                    <tr>
+                                        <td style="max-width: fit-content;">
+                                            <a href="/~kg448/account.php?viewing=<?php echo $commentInfo["creator"]; ?>&redirectFrom=feed" title="View <?php echo $commentInfo["creator"]; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
+                                                <span class="">
+                                                    <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($commentInfo['creator'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 2.5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                                </span>
+                                            </a>
+                                        </td>
+                                        <td style="padding-left: 0.5ch">
+                                            <div class="col-12">
+                                                <a href="/~kg448/account.php?viewing=<?php echo $commentInfo["creator"]; ?>&redirectFrom=feed" title="View <?php echo $commentInfo["creator"]; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
+                                                    <?php 
+                                                    if ($_SERVER[HTTP_HOST] != "maxedward.com") { 
+                                                        echo getProfile($commentInfo['creator'])["fname"];
+                                                        if (isAdmin($commentInfo["creator"])) {
+                                                        print('
+                                                            <span class="subtitleLight" style="font-size: 18px; color: rgb(144, 85, 54); padding-left: 5px;">
+                                                                Admin
+                                                            </span>');
+                                                        } 
+                                                    } else {
+                                                        echo $commentInfo['creator'];
+                                                    }
+                                                    ?>
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td style="padding-left: 1ch">
+                                            <div class="col-12" style="color: #a2a2a2;">
+                                                <?php echo $commentInfo["description"]; ?>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <?php
+                        }
+                    }
+                    ?>
+
+                </div>
+            </div>
+
+        <?php 
+        }
+        ?>
+        </div>
     </div>
 
     <?php
@@ -209,18 +440,20 @@ td.emptyGrid33 {
     <div class="col-12" style="margin: 10vh 0">
         <div class="col-10 push-1 bodyLight" style="">
             <div class="col-2">
-                <img src="<?php echo getProfile($_SESSION['username'])["profile_picture"]; ?>" class="imgFitMid logoImg" style="border-radius: 100%; height: min(10ch, 10vw); border-style: solid; border-color: rgba(255, 255, 255, 0.15);" />
+                <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="imgFitMid logoImg" style="border-radius: 100%; height: min(10ch, 10vw); border-style: solid; border-color: rgba(255, 255, 255, 0.15);" />
             </div>
             <div class="col-8 push-05">
                 <div class="col-12 titleLight">
-                    <?php if ($_SERVER[HTTP_HOST] != "maxedward.com") {  echo getProfile($_SESSION['username'])["fname"].' '.getProfile($_SESSION['username'])["lname"]; } ?> 
+                    <?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["fname"].' '.getProfile($_SESSION['username'])["lname"]; } ?> 
                     <span class="subtitleLight" style="font-size: 20px">(<?php echo $_SESSION['username']; ?>)</span>
                     <?php
-                    if (isAdmin($_SESSION['username'])) {
-                        print('
-                        <span class="subtitleLight" style="font-size: 20px; color: rgb(144, 85, 54); padding-left: 5px;">
-                            Admin
-                        </span>');
+                    if ($_SERVER[HTTP_HOST] != "maxedward.com") {
+                        if (isAdmin($_SESSION['username'])) {
+                            print('
+                            <span class="subtitleLight" style="font-size: 20px; color: rgb(144, 85, 54); padding-left: 5px;">
+                                Admin
+                            </span>');
+                        }
                     }
                     ?>
                 </div>
@@ -243,25 +476,232 @@ td.emptyGrid33 {
         </div>
     </div>
     <div class="col-12" style="margin-top: 1vh">
-        <table class="col-10 push-1 emptyGrid" cellspacing="15" cellpadding="0">
-            <tbody style="width: 100%">
-                <tr style="width: 100%">
-                    <td class="gridSize emptyGrid1"></td>
-                    <td class="gridSize emptyGrid12"></td>
-                    <td class="gridSize emptyGrid13"></td>
-                </tr>
-                <tr class="emptyGrid2">
-                    <td class="gridSize emptyGrid2"></td>
-                    <td class="gridSize emptyGrid22"></td>
-                    <td class="gridSize emptyGrid23"></td>
-                </tr>
-                <tr class="emptyGrid3">
-                    <td class="gridSize emptyGrid3"></td>
-                    <td class="gridSize emptyGrid32"></td>
-                    <td class="gridSize emptyGrid33"></td>
-                </tr>
-            </tbody>
-        </table>
+        <div class="col-10 push-1 bodyBold" style="font-size: 20px">
+    <?php
+    // $postList is updated by Middle End
+    $postList = [
+        0 => [
+            "creator" => "Max", 
+            "title" => "Title Here", 
+            "description" => "Description here with a lot more words than that of the title", 
+            "link" => "https://maxedward.com",
+            "comments" => [
+                0 => ["creator" => "Karim", "description" => "Oldest Comment"],
+                1 => ["creator" => "Jose", "description" => "Middle Comment"],
+                2 => ["creator" => "Max", "description" => "Newest Comment"]
+                ]
+            ],
+        1 => [
+            "creator" => "Max", 
+            "title" => "Title Here", 
+            "description" => "Description here with a lot more words than that of the title", 
+            "link" => "https://maxedward.com",
+            "comments" => []
+            ],
+        2 => [
+            "creator" => "Max", 
+            "title" => "Title Here", 
+            "description" => "Description here with a lot more words than that of the title", 
+            "link" => "https://maxedward.com",
+            "comments" => [
+                0 => ["creator" => "Karim", "description" => "Oldest Comment"],
+                1 => ["creator" => "Jose", "description" => "Middle Comment"]
+                ]
+        ],
+        3 => [
+            "creator" => "Max", 
+            "title" => "Title Here", 
+            "description" => "Description here with a lot more words than that of the title", 
+            "link" => "https://maxedward.com",
+            "comments" => [
+                0 => ["creator" => "Karim", "description" => "Oldest Comment"],
+                1 => ["creator" => "Jose", "description" => "Middle Comment"],
+                2 => ["creator" => "Max", "description" => "Newest Comment"]
+                ]
+            ],
+        4 => [
+            "creator" => "Max", 
+            "title" => "Title Here", 
+            "description" => "Description here with a lot more words than that of the title", 
+            "link" => "https://maxedward.com",
+            "comments" => []
+            ],
+        5 => [
+            "creator" => "Max", 
+            "title" => "Title Here", 
+            "description" => "Description here with a lot more words than that of the title", 
+            "link" => "https://maxedward.com",
+            "comments" => []
+            ]
+        ];
+        
+        foreach ($postList as $postID => $info) {
+        ?>
+
+            <div class="col-12" style="margin: 2ch 0 1ch 0">
+                <div class="col-11 titleBold" style="">
+                    <div class="col-12 bodyBold postContainer" style="margin: 0">
+                        <div class="col-12">
+                            <table style="margin: 0;">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <table class="bodyLight">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="max-width: fit-content;">
+                                                            <a href="/~kg448/account.php?viewing=<?php echo $info['creator']; ?>&redirectFrom=feed" title="View <?php echo $info['creator']; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
+                                                                <span class="">
+                                                                    <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($info['creator'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 2.5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                                                </span>
+                                                            </a>
+                                                        </td>
+                                                        <td style="padding-left: 0.5ch; overflow: visible; white-space: nowrap;">
+                                                            <div class="col-12">
+                                                                <a href="/~kg448/account.php?viewing=<?php echo $info['creator']; ?>&redirectFrom=feed" title="View <?php echo $info['creator']; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
+                                                                    <?php 
+                                                                    if ($_SERVER[HTTP_HOST] != "maxedward.com") { 
+                                                                        echo getProfile($info['creator'])["fname"].' '.getProfile($info['creator'])["lname"]; 
+                                                                        if (isAdmin($info['creator'])) {
+                                                                            print('
+                                                                                <span class="subtitleLight" style="font-size: 18px; color: rgb(144, 85, 54); padding-left: 5px;">
+                                                                                    Admin
+                                                                                </span>');
+                                                                        } 
+                                                                    } else { 
+                                                                        echo "Max Cohen"; 
+                                                                    }
+                                                                    ?>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                        <td style="text-align: right; width: 100%;">
+                                            <div class="subtitleLight" style="position: relative; font-size: 20px; margin-top: 0.2ch; text-decoration: none;">
+                                                <a href="<?php echo $info['link']; ?>" class="subtitleLight" style="font-size: 20px; text-decoration: none;" title="Open song link">
+                                                    Go to song ↗
+                                                </a>    
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table style="margin: 0;">
+                                <tbody>
+                                    <tr>
+                                        <td style="max-width: fit-content;">
+                                            <span class="">
+                                                <img src="assets/logo_spotify.png" class="logoImg" style="border-width: 0.05px; border-radius: 0.35ch; height: 15ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                            </span>
+                                        </td>
+                                        <td style="padding-left: 1.69ch; vertical-align: top; height: 15ch;">
+                                            <div class="col-12" style="height: 7.5ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+                                                <div class="col-12" style="margin-top: 0.5ch;">
+                                                    <?php echo $info['title']; ?>
+                                                </div>
+                                                <div class="col-12 subtitleLight" style="font-size: 18px; margin-top: 0.5ch; text-overflow: ellipsis; overflow: hidden;">
+                                                    <?php echo $info['description']; ?>
+                                                </div>
+                                            </div>
+                                            <div class="col-8" style="height: 8ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 2.65ch;">
+                                                <div class="col-12" style="margin-top: 0ch; vertical-align: bottom; font-weight: normal;">
+                                                    Song Title Here
+                                                </div>
+                                                <div class="col-12 subtitleLight" style="font-size: 18px; margin-top: 0.5ch; text-overflow: ellipsis; overflow: hidden; font-style: normal;">
+                                                    Album - Year
+                                                </div>
+                                                <div class="col-12 subtitleLight" style="font-size: 18px; margin-top: 0.5ch; text-overflow: ellipsis; overflow: hidden;">
+                                                    Artist
+                                                </div>
+                                            </div>
+                                            <div class="col-4" style="height: 8ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 5ch; text-align: right;">
+                                                <div class="col-12" style="">
+                                                    <img src="assets/comment.png" onclick="openComment(<?php echo $info['post_id'] ?>)" class="" style="border-width: 0; height: 3ch; margin-top: 0; cursor: pointer;" />
+                                                    <img src="assets/heart-off.png" onclick="toggleLike(<?php echo $info['post_id'] ?>)" class="" style="border-width: 0; height: 3ch; margin-left: 0.75ch; cursor: pointer;" />
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <?php
+                    if (count($info["comments"]) > 0) {
+                        foreach ($info["comments"] as $commentIndex => $commentInfo) {
+                    ?>
+
+                    <div class="col-12">
+                        <div class="col-1">
+                            <table class="bodyLight" style="width: 100%">
+                                <tbody>
+                                    <tr>
+                                        <td style="max-width: fit-content;">
+                                            <span class="" style="width: 100%">
+                                                <img src="assets/commentArrow.png" class="" style="border-width: 0px; border-radius: 0; height: 3.5ch; margin-left: 50%; transform: translate(-50%, 0);" />
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-10 bodyLight commentContainer" style="margin: 0; padding: 0.5ch 1ch 0.5ch 1ch; <?php if ($commentIndex == count($info["comments"])-1) { echo "border-radius: 0 0 1ch 1ch"; } else { echo "border-radius: 0;"; } ?>font-style: normal; font-size: 18px;"> 
+                            <table class="bodyLight">
+                                <tbody>
+                                    <tr>
+                                        <td style="max-width: fit-content;">
+                                            <a href="/~kg448/account.php?viewing=<?php echo $commentInfo["creator"]; ?>&redirectFrom=feed" title="View <?php echo $commentInfo["creator"]; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
+                                                <span class="">
+                                                    <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($commentInfo['creator'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 2.5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                                </span>
+                                            </a>
+                                        </td>
+                                        <td style="padding-left: 0.5ch">
+                                            <div class="col-12">
+                                                <a href="/~kg448/account.php?viewing=<?php echo $commentInfo["creator"]; ?>&redirectFrom=feed" title="View <?php echo $commentInfo["creator"]; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
+                                                    <?php 
+                                                    if ($_SERVER[HTTP_HOST] != "maxedward.com") { 
+                                                        echo getProfile($commentInfo['creator'])["fname"];
+                                                        if (isAdmin($commentInfo["creator"])) {
+                                                        print('
+                                                            <span class="subtitleLight" style="font-size: 18px; color: rgb(144, 85, 54); padding-left: 5px;">
+                                                                Admin
+                                                            </span>');
+                                                        } 
+                                                    } else {
+                                                        echo $commentInfo['creator'];
+                                                    }
+                                                    ?>
+                                                </a>
+                                            </div>
+                                        </td>
+                                        <td style="padding-left: 1ch">
+                                            <div class="col-12" style="color: #a2a2a2;">
+                                                <?php echo $commentInfo["description"]; ?>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <?php
+                        }
+                    }
+                    ?>
+
+                </div>
+            </div>
+
+        <?php 
+        }
+        ?>
+        </div>
     </div>
     
     <?php
