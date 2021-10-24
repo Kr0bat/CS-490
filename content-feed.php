@@ -170,7 +170,7 @@ $postList = array_reverse($postList);
                                 </tr>
                             </tbody>
                         </table>
-                        <table style="margin: 0;">
+                        <table style="margin: 0; width: 100%;">
                             <tbody>
                                 <tr>
                                     <td style="max-width: fit-content;">
@@ -187,7 +187,7 @@ $postList = array_reverse($postList);
                                                 <?php echo $info['description']; ?>
                                             </div>
                                         </div>
-                                        <div class="col-8" style="height: 8ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 2.65ch;">
+                                        <div class="col-8" style="height: 8ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 2.65ch; width: 100%;">
                                             <div class="col-12" style="margin-top: 0ch; vertical-align: bottom; font-weight: normal;">
                                                 Song Title Here
                                             </div>

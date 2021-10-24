@@ -268,7 +268,7 @@ td.emptyGrid33 {
                                     </tr>
                                 </tbody>
                             </table>
-                            <table style="margin: 0;">
+                            <table style="margin: 0; width: 100%;">
                                 <tbody>
                                     <tr>
                                         <td style="max-width: fit-content;">
@@ -276,7 +276,7 @@ td.emptyGrid33 {
                                                 <img src="assets/logo_spotify.png" class="logoImg" style="border-width: 0.05px; border-radius: 0.35ch; height: 15ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
                                             </span>
                                         </td>
-                                        <td style="padding-left: 1.69ch; vertical-align: top; height: 15ch;">
+                                        <td style="padding-left: 1.69ch; vertical-align: top; height: 15ch; width: 100%;">
                                             <div class="col-12" style="height: 7.5ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
                                                 <div class="col-12" style="margin-top: 0.5ch;">
                                                     <?php echo $info['title']; ?>
@@ -610,7 +610,7 @@ td.emptyGrid33 {
                                     </tr>
                                 </tbody>
                             </table>
-                            <table style="margin: 0;">
+                            <table style="margin: 0; width: 100%;">
                                 <tbody>
                                     <tr>
                                         <td style="max-width: fit-content;">
@@ -618,7 +618,7 @@ td.emptyGrid33 {
                                                 <img src="assets/logo_spotify.png" class="logoImg" style="border-width: 0.05px; border-radius: 0.35ch; height: 15ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
                                             </span>
                                         </td>
-                                        <td style="padding-left: 1.69ch; vertical-align: top; height: 15ch;">
+                                        <td style="padding-left: 1.69ch; vertical-align: top; height: 15ch; width: 100%;">
                                             <div class="col-12" style="height: 7.5ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
                                                 <div class="col-12" style="margin-top: 0.5ch;">
                                                     <?php echo $info['title']; ?>
