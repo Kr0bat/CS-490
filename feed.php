@@ -13,8 +13,11 @@
 <body  style="background-color: #161616; font-family: 'Montserrat', sans-serif;">
 <?php
 session_start();
-include("posts.php");
-include("users.php");
+
+if ($_SERVER[HTTP_HOST] != "maxedward.com") {
+    include("posts.php");
+    include("users.php");
+}
 
 //
 // =======
@@ -28,9 +31,9 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
     // -------
     // BASIC USER
     // -------
-    include("sidebar-basic.php");
+    include("sidebar-admin.php");
     include("content-feed.php");
-    $role = "basic";
+    $role = "admin";
 
 } else {
     $role = false;

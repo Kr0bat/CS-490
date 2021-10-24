@@ -141,7 +141,7 @@ if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
                     <td>
                         <a href="/~kg448/account.php" class="linkLight">
                             <div>
-                                <img src="<?php echo getProfile($_SESSION['username'])["profile_picture"]; ?>" class="imgFitMid logoImg" style="border-radius: 100%; height: 5ch; border-style: solid; border-color: <?php if ($currPage == 'account') { print("#56b35e; border-width: 0.2ch;"); } else { print("rgba(255, 255, 255, 0.15)"); } ?>; margin-left: 1ch;" />
+                                <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="imgFitMid logoImg" style="border-radius: 100%; height: 5ch; border-style: solid; border-color: <?php if ($currPage == 'account') { print("#56b35e; border-width: 0.2ch;"); } else { print("rgba(255, 255, 255, 0.15)"); } ?>; margin-left: 1ch;" />
                             </div>
                         </a>
                     </td>
@@ -151,23 +151,15 @@ if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
                         <div class="col-12" style="margin-left: 1ch;">
                             <a href="/~kg448/account.php" class="linkLight">
                                 <div style="width: 9ch; overflow: hidden; text-overflow: ellipsis;">
-                                    <?php echo getProfile($_SESSION['username'])["fname"]; ?>
+                                    <?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["fname"]; } else { echo "Max"; } ?>
                                 </div>
                             </a>
                         </div>
-                        <div class="col-12" style="margin-left: 1ch; color: rgb(144, 85, 54); margin-top: -1ch;">
-                            Admin
-                        </div>
-                    </td>
-                </tr>
-                <tr class="lightTableTrSpacerSmall"></tr>
-                <tr class="lightTableTr">
-                    <td style="text-align: center">
-                        <div style="">
-                            <a href="/~kg448/newPost.php" class="linkLight" style="border: 0.15ch solid white; border-radius: 0.5ch; padding: 4px; margin-left: -4px;">
-                                New Post
-                            </a>
-                        </div>
+                        <a href="/~kg448/account.php" class="linkLight">
+                            <div class="col-12" style="margin-left: 1ch; color: rgb(144, 85, 54); margin-top: -1ch;">
+                                Admin
+                            </div>
+                        </a>
                     </td>
                 </tr>
                 <tr class="lightTableTrSpacerSmall"></tr>
@@ -200,6 +192,26 @@ if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
                                 <div class=<?php if ($currPage == 'search') { print("trSelected"); } ?>>
                                     Search
                                 </div>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="lightTableTrSpacerSmall"></tr>
+                <tr class="lightTableTr">
+                    <td style="text-align: center">
+                        <div style="">
+                            <a href="/~kg448/newPost.php" class="linkLight" style="border: 0.15ch solid white; border-radius: 0.5ch; padding: 4px; margin-left: -4px;">
+                                New Post
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="lightTableTrSpacerSmall"></tr>
+                <tr class="lightTableTr">
+                    <td style="text-align: center">
+                        <div style="">
+                            <a href="/~kg448/newUser.php" class="linkLight" style="border: 0.15ch solid white; border-radius: 0.5ch; padding: 4px; margin-left: -4px;">
+                                New User
                             </a>
                         </div>
                     </td>

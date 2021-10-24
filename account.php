@@ -29,7 +29,7 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
     // -------
     // BASIC USER
     // -------
-    include("sidebar-basic.php");
+    include("sidebar-admin.php");
     include("content-account.php");
     $role = "basic";
 

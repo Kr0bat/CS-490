@@ -98,12 +98,12 @@ $postList = [
 
 if ($_SERVER[HTTP_HOST] != "maxedward.com") {
 
-$idList = allPostId();
+    $idList = allPostId();
 
-foreach($idList as $id){
-    $postList[] = getPost($id);
-}
-$postList = array_reverse($postList);
+    foreach($idList as $id){
+        $postList[] = getPost($id);
+    }
+    $postList = array_reverse($postList);
 
 }
 
@@ -120,6 +120,8 @@ $postList = array_reverse($postList);
         </div>
 
     <?php
+
+    if ($_SERVER[HTTP_HOST] != "maxedward.com") {
     foreach ($postList as $postID => $info) {
     ?>
 
@@ -276,6 +278,7 @@ $postList = array_reverse($postList);
         </div>
 
     <?php 
+    }
     }
     ?>
 

@@ -159,16 +159,6 @@ if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
                 </tr>
                 <tr class="lightTableTrSpacerSmall"></tr>
                 <tr class="lightTableTr">
-                    <td style="text-align: center">
-                        <div style="">
-                            <a href="/~kg448/newPost.php" class="linkLight" style="border: 0.15ch solid white; border-radius: 0.5ch; padding: 4px; margin-left: -4px;">
-                                New Post
-                            </a>
-                        </div>
-                    </td>
-                </tr>
-                <tr class="lightTableTrSpacerSmall"></tr>
-                <tr class="lightTableTr">
                     <td>
                         <div style="margin-left: 1ch;">
                             <a href="/~kg448/feed.php" class="linkLight">
@@ -197,6 +187,16 @@ if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
                                 <div class=<?php if ($currPage == 'search') { print("trSelected"); } ?>>
                                     Search
                                 </div>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                <tr class="lightTableTrSpacerSmall"></tr>
+                <tr class="lightTableTr">
+                    <td style="text-align: center">
+                        <div style="">
+                            <a href="/~kg448/newPost.php" class="linkLight" style="border: 0.15ch solid white; border-radius: 0.5ch; padding: 4px; margin-left: -4px;">
+                                New Post
                             </a>
                         </div>
                     </td>
