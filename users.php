@@ -142,11 +142,11 @@ function isAdmin($username)
       $row = mysqli_fetch_array($r,MYSQLI_ASSOC);
       if($row['t'] == 'admin')
       {
-          return true;
+          return 1;
       }
       else
       {
-          return false;
+          return 0;
       }
   }
   else
@@ -177,8 +177,10 @@ function createAccount($username, $password, $type, $firstName, $lastName)
     //make database connection
     require('databaseConnect.php');
     
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    
     //make query
-    $q1 = "INSERT INTO user (username, password, type, first_name, last_name) VALUES ('$username', '$password', '$type', '$firstName', '$lastName')";
+    $q1 = "INSERT INTO user (username, password, type, first_name, last_name) VALUES ('$username', '$hashed_password', '$type', '$firstName', '$lastName')";
   
     //execute query
     $r = @mysqli_query ($dbc, $q1);
@@ -220,11 +222,11 @@ function isBlocked($username)
       $row = mysqli_fetch_array($r,MYSQLI_ASSOC);
       if($row['bt'] == 1)
       {
-          return true;
+          return 1;
       }
       else
       {
-          return false;
+          return 0;
       }
   }
   else
