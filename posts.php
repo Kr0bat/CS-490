@@ -188,7 +188,36 @@
     mysqli_close($dbc);
  }
  
-
+ function getLikes($post_id)
+ {
+     //make database connection
+     require('databaseConnect.php');
+       
+    //make query
+    $q1 = " SELECT liker FROM likes WHERE post_id = '$post_id'";
+    
+    //execute query
+    $r = @mysqli_query ($dbc, $q1);
+    
+    // get list of likes
+     if($r)
+     { 
+    
+        while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
+        {
+           
+            $likes[] = $row;
+            
+        }    
+        
+        return $likes; 
+    }
+    else
+    {
+        return 0;
+    }
+    
+ }
  
  ?>
  </body> 
