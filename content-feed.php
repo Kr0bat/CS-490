@@ -100,8 +100,9 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
 
     $idList = allPostId();
 
-    foreach($idList as $id){
-        $postList[] = getPost($id);
+    foreach($idList as $index => $id){
+        $postList[$index] = getPost($id);
+        $postList[$index]['id'] = $id;
     }
     $postList = array_reverse($postList);
 
