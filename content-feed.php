@@ -178,7 +178,7 @@ $postList = array_reverse($postList);
                                             <img src="assets/logo_spotify.png" class="logoImg" style="border-width: 0.05px; border-radius: 0.35ch; height: 15ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
                                         </span>
                                     </td>
-                                    <td style="padding-left: 1.69ch; vertical-align: top; height: 15ch;">
+                                    <td style="padding-left: 1.69ch; vertical-align: top; height: 15ch; width: 100%;">
                                         <div class="col-12" style="height: 7.5ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
                                             <div class="col-12" style="margin-top: 0.5ch;">
                                                 <?php echo $info['title']; ?>
@@ -187,7 +187,7 @@ $postList = array_reverse($postList);
                                                 <?php echo $info['description']; ?>
                                             </div>
                                         </div>
-                                        <div class="col-8" style="height: 8ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 2.65ch; width: 100%;">
+                                        <div class="col-6" style="height: 8ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 2.65ch;">
                                             <div class="col-12" style="margin-top: 0ch; vertical-align: bottom; font-weight: normal;">
                                                 Song Title Here
                                             </div>
@@ -198,7 +198,7 @@ $postList = array_reverse($postList);
                                                 Artist
                                             </div>
                                         </div>
-                                        <div class="col-4" style="height: 8ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 5ch; text-align: right;">
+                                        <div class="col-6" style="height: 8ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 5ch; text-align: right;">
                                             <div class="col-12" style="">
                                                 <img src="assets/comment.png" onclick="openComment(<?php echo $info['post_id'] ?>)" class="" style="border-width: 0; height: 3ch; margin-top: 0; cursor: pointer;" />
                                                 <img src="assets/heart-off.png" onclick="toggleLike(<?php echo $info['post_id'] ?>)" class="" style="border-width: 0; height: 3ch; margin-left: 0.75ch; cursor: pointer;" />

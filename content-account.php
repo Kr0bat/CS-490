@@ -285,7 +285,7 @@ td.emptyGrid33 {
                                                     <?php echo $info['description']; ?>
                                                 </div>
                                             </div>
-                                            <div class="col-8" style="height: 8ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 2.65ch;">
+                                            <div class="col-6" style="height: 8ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 2.65ch;">
                                                 <div class="col-12" style="margin-top: 0ch; vertical-align: bottom; font-weight: normal;">
                                                     Song Title Here
                                                 </div>
@@ -296,7 +296,7 @@ td.emptyGrid33 {
                                                     Artist
                                                 </div>
                                             </div>
-                                            <div class="col-4" style="height: 8ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 5ch; text-align: right;">
+                                            <div class="col-6" style="height: 8ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 5ch; text-align: right;">
                                                 <div class="col-12" style="">
                                                     <img src="assets/comment.png" onclick="openComment(<?php echo $info['post_id'] ?>)" class="" style="border-width: 0; height: 3ch; margin-top: 0; cursor: pointer;" />
                                                     <img src="assets/heart-off.png" onclick="toggleLike(<?php echo $info['post_id'] ?>)" class="" style="border-width: 0; height: 3ch; margin-left: 0.75ch; cursor: pointer;" />
