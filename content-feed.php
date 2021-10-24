@@ -126,7 +126,7 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
     foreach ($postList as $postID => $info) {
     ?>
 
-        <div class="col-12" style="margin: 2ch 0 1ch 0">
+        <div class="col-12" id="<?php echo $info['id'] ?>" style="margin: 2ch 0 1ch 0">
             <div class="col-10 push-1 titleBold" style="">
                 <div class="col-12 bodyBold postContainer" style="margin: 0">
                     <div class="col-12">
@@ -203,8 +203,8 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
                                         </div>
                                         <div class="col-6" style="height: 8ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 5ch; text-align: right;">
                                             <div class="col-12" style="">
-                                                <img src="assets/comment.png" onclick="openComment(<?php echo $info['post_id'] ?>)" class="" style="border-width: 0; height: 3ch; margin-top: 0; cursor: pointer;" />
-                                                <img src="assets/heart-off.png" onclick="toggleLike(<?php echo $info['post_id'] ?>)" class="" style="border-width: 0; height: 3ch; margin-left: 0.75ch; cursor: pointer;" />
+                                                <img src="assets/comment.png" onclick="openComment(<?php echo $info['id'] ?>)" class="" style="border-width: 0; height: 3ch; margin-top: 0; cursor: pointer;" />
+                                                <img src="assets/heart-off.png" onclick="toggleLike(<?php echo $info['id'] ?>)" class="" style="border-width: 0; height: 3ch; margin-left: 0.75ch; cursor: pointer;" />
                                             </div>
                                         </div>
                                     </td>
