@@ -110,14 +110,14 @@ button {
         <form method="POST">
             <div class="col-10 push-1" style="margin: 2ch 1ch 0.5ch 1ch;">
                 <div class="col-55 colsm-10 pushsm-1">
-                    <input maxlength="40" type="text" name="newpost_title" placeholder="Title of your post" value="" style="width: 100%; background-color: #000; border-color: #2e7934; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px;" required />
+                    <input maxlength="40" type="text" name="newpost_title" placeholder="Title of your post" value="" style="width: 100%; background-color: #000; border-color: #090909; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px;" required />
                 </div>
                 <div class="col-55 push-1 colsm-10 pushsm-1">
-                    <input maxlength="100" type="text" name="newpost_link" placeholder="Paste Spotify song link here" value="" style="width: 100%; background-color: #000; border-color: #2e7934; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px;" required />
+                    <input maxlength="100" type="text" name="newpost_link" placeholder="Paste Spotify song link here" value="" style="width: 100%; background-color: #000; border-color: #090909; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px;" required />
                 </div>
             </div>
             <div class="col-10 push-1" style="margin: 1ch 1ch 2ch 1ch;">
-                <input maxlength="240" type="text" name="newpost_description" placeholder="Add your own description here" value="" style="width: 100%; background-color: #000; border-color: #2e7934; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px; word-break: break-word; height: 7.5ch; vertical-align: top;" required />
+                <input maxlength="240" type="text" name="newpost_description" placeholder="Add your own description here" value="" style="width: 100%; background-color: #000; border-color: #090909; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px; word-break: break-word; height: 7.5ch; vertical-align: top;" required />
             </div>
             <div class="col-10 push-1" style="margin: 0.5ch 1ch 2ch 1ch;">
                 <button type="submit" name="newpost_submit" style="width: 50%; background-color: #2e7934; border-color: #2e7934; border-style: outset; color: #fff; border-radius: 0.75ch; font-size: 20px; margin-left: 50%; transform: translate(-50%, 0); padding: 0.5ch 0;">Post</button>
