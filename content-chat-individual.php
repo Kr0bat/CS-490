@@ -99,7 +99,11 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
     //ensures messages display in chronological order
     $msgList = array_reverse($msgList);
 
-    setRead($recipient, $sender);
+    //only set read if the latest message in a chat was NOT sent by the logged-in user
+    if ( $msgList[0]['recipient'] == $_SESSION['username'] ){
+        setRead($recipient, $sender);
+    }
+    
 
     ///
     /* 

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php
+session_start();
 ?>
 <style>
 .dmContainer {
@@ -67,16 +68,6 @@
             
             foreach ($senders as $sender){
                 $latestChat = getChat($recipient, $sender);
-
-                //Toggles the read dot in chat if there exists a recieved chat that the user hasn't read
-                //This will work once chats.php is updated
-                $read = false;
-                foreach($latestChat as $chat){
-                    if ($chat['recipient'] == $_SESSION['username'] && $chat['read'] == 0){
-                        $read = true;
-                    }
-                }
-
                 $latestChat = $latestChat[count($latestChat) - 1];
                 unset($latestChat[$sender]);
                 $chatlist[$sender] = $latestChat;
@@ -86,11 +77,15 @@
             //
 
             //echo "<p style='color:white'> WORDS </p>";
+            /*
+            print_r(allChats($recipient));
+            print_r($senders);
+            print_r($chatlist);
+            */
             if (count($chatlist) == 0) {
 
-                
                 print('
-                    <a href="/~kg448/search.php?viewAll=none">
+                    <a href="">
                         <div class="col-12 bodyBold dmContainer" style="margin: 0.5ch 0">
                             <div class="col-12">
                                 <div class="col-12">
@@ -99,7 +94,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td style="padding-left: 0.35ch">
-                                                        Search for users to start a chat
+                                                        + New Chat
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -110,12 +105,10 @@
                         </div>
                     </a>
                     ');
-                    
 
             } else {
                 
                 foreach($chatlist as $user => $content) {
-
                     print('
                     <a href="?chatWith='.$user.'">
                         <div class="col-12 bodyBold dmContainer" style="margin: 0.5ch 0 0.25ch 0">
@@ -128,7 +121,7 @@
                                                     <td style="max-width: fit-content;">
                                                         <span class="');
                                                         
-                                                        if ($read) {
+                                                        if ($content['r'] == 0) {
                                                             print('blueDot" style="margin-left: 1.5ch;"');
                                                         } else {
                                                             print('"');
@@ -136,7 +129,7 @@
 
                                                         print('>
                                                             <a href="/~kg448/account.php?viewing='.$user.'&redirectFrom=chat" title="Go to '.$user.'\'s Profile">
-                                                                <img src="'.getProfile($user)["profile_picture"].'" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 1.53ch; width: 1.53ch;  border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                                                <img src="assets/profPic.jpeg" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 1.53ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
                                                             </a>
                                                         </span>
                                                     </td>
@@ -150,9 +143,9 @@
                                                         print('');
                                                     }
 
-                                                    print(''.getProfile($user)["fname"].' '.getProfile($user)["lname"].'</a>');
+                                                    print(''.$user.'</a>');
 
-                                                    if (isAdmin($user)) {
+                                                    if ($user == "Max") {
                                                         print('
                                                         <span class="subtitleLight" style="font-size: 18px; color: rgb(144, 85, 54);vertical-align: bottom; padding-left: 5px;">
                                                             Admin

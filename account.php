@@ -45,12 +45,13 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
             $lname = $_POST['edit_account_name_last'];
             $desc = $_POST['edit_account_description'];
             $user = $_SESSION['username'];
+            $pic_url = $_POST['edit_account_pfp_link'];
 
             
             updateFname($fname, $user);
             updateLname($lname, $user);
             updateDesc($desc, $user);
-            
+            updateProfilePic($user, $pic_url);
 
             header("Location: /~kg448/account.php");
         }
