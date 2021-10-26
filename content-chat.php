@@ -78,8 +78,9 @@
             //echo "<p style='color:white'> WORDS </p>";
             if (count($chatlist) == 0) {
 
+                
                 print('
-                    <a href="">
+                    <a href="/~kg448/search.php?viewAll=none">
                         <div class="col-12 bodyBold dmContainer" style="margin: 0.5ch 0">
                             <div class="col-12">
                                 <div class="col-12">
@@ -88,7 +89,7 @@
                                             <tbody>
                                                 <tr>
                                                     <td style="padding-left: 0.35ch">
-                                                        + New Chat
+                                                        Search for users to start a chat
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -99,6 +100,7 @@
                         </div>
                     </a>
                     ');
+                    
 
             } else {
                 
@@ -123,7 +125,7 @@
 
                                                         print('>
                                                             <a href="/~kg448/account.php?viewing='.$user.'&redirectFrom=chat" title="Go to '.$user.'\'s Profile">
-                                                                <img src="'.getProfile($user)["profile_picture"].'" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 1.53ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                                                <img src="'.getProfile($user)["profile_picture"].'" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 1.53ch; width: 1.53ch;  border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
                                                             </a>
                                                         </span>
                                                     </td>

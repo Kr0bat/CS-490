@@ -151,7 +151,7 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
                             <td style="max-width: fit-content;">
 
                                 <a href="/~kg448/account.php?viewing=<?php echo $_SESSION['chatWith']; ?>&redirectFrom=chat">
-                                    <img src="<?php echo getProfile($_SESSION['chatWith'])["profile_picture"]; ?>" class="logoImg" style="border-radius: 100%; height: 1.53ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                    <img src="<?php echo getProfile($_SESSION['chatWith'])["profile_picture"]; ?>" class="logoImg" style="border-radius: 100%; height: 1.53ch; width: 1.53ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
                                 </a>
                             </td>
                             <td style="padding-left: 0.35ch">

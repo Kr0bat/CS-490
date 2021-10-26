@@ -128,7 +128,7 @@ td.emptyGrid33 {
     <div class="col-12" style="margin: 10vh 0">
         <div class="col-10 push-1 bodyLight" style="">
             <div class="col-2">
-                <img src="<?php echo getProfile($_GET['viewing'])["profile_picture"]; ?>" class="imgFitMid logoImg" style="border-radius: 100%; height: min(10ch, 10vw); border-style: solid; border-color: rgba(255, 255, 255, 0.15);" />
+                <img src="<?php echo getProfile($_GET['viewing'])["profile_picture"]; ?>" class="imgFitMid logoImg" style="border-radius: 100%; height: min(10ch, 10vw); width: min(10ch, 10vw); border-style: solid; border-color: rgba(255, 255, 255, 0.15);" />
             </div>
             <div class="col-8 push-05">
                 <div class="col-12 titleLight">
@@ -231,7 +231,7 @@ td.emptyGrid33 {
                                                         <td style="max-width: fit-content;">
                                                             <a href="/~kg448/account.php?viewing=<?php echo $info['creator']; ?>&redirectFrom=feed" title="View <?php echo $info['creator']; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
                                                                 <span class="">
-                                                                    <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($info['creator'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 2.5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                                                    <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($info['creator'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 2.5ch; width: 2.5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
                                                                 </span>
                                                             </a>
                                                         </td>
@@ -335,7 +335,7 @@ td.emptyGrid33 {
                                         <td style="max-width: fit-content;">
                                             <a href="/~kg448/account.php?viewing=<?php echo $commentInfo["creator"]; ?>&redirectFrom=feed" title="View <?php echo $commentInfo["creator"]; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
                                                 <span class="">
-                                                    <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($commentInfo['creator'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 2.5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                                    <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($commentInfo['creator'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 2.5ch; width: 2.5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
                                                 </span>
                                             </a>
                                         </td>
@@ -410,7 +410,7 @@ td.emptyGrid33 {
                         </a>
                     </div>
                     <div class="col-12" style="margin-top: 2ch">
-                        <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="imgFitMid logoImg" style="border-radius: 100%; height: min(10ch, 10vw); border-style: solid; border-color: rgba(255, 255, 255, 0.15);" />
+                        <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="imgFitMid logoImg" style="border-radius: 100%; height: min(10ch, 10vw); width: min(10ch, 10vw); border-style: solid; border-color: rgba(255, 255, 255, 0.15);" />
                     </div>
                 </div>
                 <div class="col-8 push-05">
@@ -461,7 +461,7 @@ td.emptyGrid33 {
     <div class="col-12" style="margin: 10vh 0">
         <div class="col-10 push-1 bodyLight" style="">
             <div class="col-2">
-                <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="imgFitMid logoImg" style="border-radius: 100%; height: min(10ch, 10vw); border-style: solid; border-color: rgba(255, 255, 255, 0.15);" />
+                <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="imgFitMid logoImg" style="border-radius: 100%; height: min(10ch, 10vw); width: min(10ch, 10vw); border-style: solid; border-color: rgba(255, 255, 255, 0.15);" />
             </div>
             <div class="col-8 push-05">
                 <div class="col-12 titleLight">
@@ -573,7 +573,7 @@ td.emptyGrid33 {
                                                         <td style="max-width: fit-content;">
                                                             <a href="/~kg448/account.php?viewing=<?php echo $info['creator']; ?>&redirectFrom=feed" title="View <?php echo $info['creator']; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
                                                                 <span class="">
-                                                                    <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($info['creator'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 2.5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                                                    <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($info['creator'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 2.5ch; width: 2.5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
                                                                 </span>
                                                             </a>
                                                         </td>
@@ -677,7 +677,7 @@ td.emptyGrid33 {
                                         <td style="max-width: fit-content;">
                                             <a href="/~kg448/account.php?viewing=<?php echo $commentInfo["creator"]; ?>&redirectFrom=feed" title="View <?php echo $commentInfo["creator"]; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
                                                 <span class="">
-                                                    <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($commentInfo['creator'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 2.5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                                    <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($commentInfo['creator'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 2.5ch; width: 2.5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
                                                 </span>
                                             </a>
                                         </td>

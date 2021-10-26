@@ -141,7 +141,7 @@ if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
                     <td>
                         <a href="/~kg448/account.php" class="linkLight">
                             <div>
-                                <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="imgFitMid logoImg" style="border-radius: 100%; height: 5ch; border-style: solid; border-color: <?php if ($currPage == 'account') { print("#56b35e; border-width: 0.2ch;"); } else { print("rgba(255, 255, 255, 0.15)"); } ?>; margin-left: 1ch;" />
+                                <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="imgFitMid logoImg" style="border-radius: 100%; height: 5ch; width: 5ch; border-style: solid; border-color: <?php if ($currPage == 'account') { print("#56b35e; border-width: 0.2ch;"); } else { print("rgba(255, 255, 255, 0.15)"); } ?>; margin-left: 1ch;" />
                             </div>
                         </a>
                     </td>
