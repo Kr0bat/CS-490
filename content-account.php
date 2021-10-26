@@ -141,7 +141,7 @@ td.emptyGrid33 {
 
     <div class="col-12" style="margin-top: 5vh">
         <a href="/~kg448/<?php if (isset($_GET['redirectFrom'])) { echo $_GET['redirectFrom']; } else { echo "search"; } ?>.php">
-            <div class="col-10 push-1 subtitleBold" style="font-size: 22.5px">
+            <div class="col-10 push-1 subtitleBold underlineOnHover" style="font-size: 22.5px">
                 Back
             </div>
         </a>
@@ -212,7 +212,7 @@ td.emptyGrid33 {
                                                     <td style="text-align: right; width: 50%;">
                                                         <img src="assets/comment.png" class="" style="border-width: 0; height: 2ch; margin-top: 0; cursor: pointer; padding-right: 0.5ch;" />
                                                     </td>
-                                                    <td style="text-align: left; width: 50%; padding-left: 0ch;">
+                                                    <td class="underlineOnHover" style="text-align: left; width: 50%; padding-left: 0ch;">
                                                         Chat
                                                     </td>
                                                 </tr>
@@ -224,7 +224,7 @@ td.emptyGrid33 {
                                     <?php if ($_SESSION['role'] == "admin") { ?>
 
                                     <td style="width: 1ch"></td>
-                                    <td class="blockContainer bodyBold">
+                                    <td class="blockContainer bodyBold underlineOnHover">
                                         Block User
                                     </td>
 

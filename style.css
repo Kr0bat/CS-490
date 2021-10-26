@@ -222,6 +222,10 @@ body {
 /*                 */
 /* - Text Styles - */
 /*                 */
+.underlineOnHover:hover {
+    text-decoration: underline;
+}
+
 .clickable-light {
     text-decoration: none;
     color: rgb(209, 209, 209);
@@ -230,7 +234,7 @@ body {
 }
 
 .clickable-light:hover {
-    text-decoration:none;
+    text-decoration: none;
     color: rgb(168, 168, 168);
     cursor: pointer;
     background-color: rgb(83, 83, 83);

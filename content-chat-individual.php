@@ -150,7 +150,7 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
                     <tbody>
                         <tr>
                             <td style="width: 3ch">
-                                <a href="/~kg448/<?php if (isset($_GET['redirectFrom'])) { echo $_GET['redirectFrom']; } else { echo "chat"; } ?>.php" class="subtitleBold" style="text-decoration: none; font-size: 18px">
+                                <a href="/~kg448/<?php if (isset($_GET['redirectFrom'])) { echo $_GET['redirectFrom']; } else { echo "chat"; } ?>.php" class="subtitleBold underlineOnHover" style="text-decoration: none; font-size: 18px">
                                     Back
                                 </a>
                             </td>
@@ -161,7 +161,7 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
                                 </a>
                             </td>
                             <td style="padding-left: 0.35ch">
-                                <a href="/~kg448/account.php?viewing=<?php echo $_SESSION['chatWith']; ?>&redirectFrom=chat" class="titleBold" style="text-decoration: none;" title="Go to <?php echo $_SESSION['chatWith']; ?>'s Profile">
+                                <a href="/~kg448/account.php?viewing=<?php echo $_SESSION['chatWith']; ?>&redirectFrom=chat" class="titleBold underlineOnHover" style="text-decoration: none;" title="Go to <?php echo $_SESSION['chatWith']; ?>'s Profile">
                                     <?php echo getProfile($_SESSION['chatWith'])["fname"].' '.getProfile($_SESSION['chatWith'])["lname"]; ?>
                                 </a>
                                 <?php

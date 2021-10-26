@@ -98,8 +98,8 @@
                                         <table>
                                             <tbody>
                                                 <tr>
-                                                    <td style="padding-left: 0.35ch">
-                                                        Search for users to start a chat
+                                                    <td class="underlineOnHover" style="padding-left: 0.35ch">
+                                                        Tap to search for users to start a chat
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -141,11 +141,11 @@
                                                         </span>
                                                     </td>
                                                     <td style="padding-left: 0.35ch">
-                                                        <a href="/~kg448/account.php?viewing='.$user.'&redirectFrom=chat" class="bodyBold" style="text-decoration: none;" title="Go to '.$user.'\'s Profile">
+                                                        <a href="/~kg448/account.php?viewing='.$user.'&redirectFrom=chat" class="bodyBold underlineOnHover" style="text-decoration: none;" title="Go to '.$user.'\'s Profile">
                                                     ');
                                                         
                                                     if ($content['r'] == 0) {
-                                                        print('From ');
+                                                        print('(NEW) ');
                                                     } else {
                                                         print('');
                                                     }

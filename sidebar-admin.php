@@ -149,13 +149,13 @@ if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
                 <tr class="lightTableTr">
                     <td>
                         <div class="col-12" style="margin-left: 1ch;">
-                            <a href="/~kg448/account.php" class="linkLight">
+                            <a href="/~kg448/account.php" class="linkLight underlineOnHover">
                                 <div style="width: 9ch; overflow: hidden; text-overflow: ellipsis;">
                                     <?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["fname"]; } else { echo "Max"; } ?>
                                 </div>
                             </a>
                         </div>
-                        <a href="/~kg448/account.php" class="linkLight">
+                        <a href="/~kg448/account.php" class="linkLight underlineOnHover">
                             <div class="col-12" style="margin-left: 1ch; color: rgb(144, 85, 54); margin-top: -1ch;">
                                 Admin
                             </div>
@@ -166,7 +166,7 @@ if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
                 <tr class="lightTableTr">
                     <td>
                         <div style="margin-left: 1ch;">
-                            <a href="/~kg448/feed.php" class="linkLight">
+                            <a href="/~kg448/feed.php" class="linkLight underlineOnHover">
                                 <div class=<?php if ($currPage == 'feed') { print("trSelected"); } ?>>
                                     Feed
                                 </div>
@@ -177,7 +177,7 @@ if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
                 <tr class="lightTableTr">
                     <td>
                         <div style="margin-left: 1ch;">
-                            <a href="/~kg448/chat.php" class="linkLight">
+                            <a href="/~kg448/chat.php" class="linkLight underlineOnHover">
                                 <div class=<?php if ($currPage == 'chat') { print("trSelected"); } ?>>
                                     Chat
                                 </div>
@@ -188,7 +188,7 @@ if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
                 <tr class="lightTableTr">
                     <td>
                         <div style="margin-left: 1ch;">
-                            <a href="/~kg448/search.php" class="linkLight">
+                            <a href="/~kg448/search.php" class="linkLight underlineOnHover">
                                 <div class=<?php if ($currPage == 'search') { print("trSelected"); } ?>>
                                     Search
                                 </div>
@@ -200,7 +200,7 @@ if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
                 <tr class="lightTableTr">
                     <td style="text-align: center">
                         <div style="">
-                            <a href="/~kg448/newPost.php" class="linkLight" style="border: 0.15ch solid white; border-radius: 0.5ch; padding: 4px; margin-left: -4px;">
+                            <a href="/~kg448/newPost.php" class="linkLight underlineOnHover" style="border: 0.15ch solid white; border-radius: 0.5ch; padding: 4px; margin-left: -4px;">
                                 New Post
                             </a>
                         </div>
@@ -210,7 +210,7 @@ if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
                 <tr class="lightTableTr">
                     <td style="text-align: center">
                         <div style="">
-                            <a href="/~kg448/newUser.php" class="linkLight" style="border: 0.15ch solid white; border-radius: 0.5ch; padding: 4px; margin-left: -4px;">
+                            <a href="/~kg448/newUser.php" class="linkLight underlineOnHover" style="border: 0.15ch solid white; border-radius: 0.5ch; padding: 4px; margin-left: -4px;">
                                 New User
                             </a>
                         </div>
@@ -221,7 +221,7 @@ if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
                 <tr class="lightTableTr">
                     <td>
                         <div style="margin-left: 1ch;">
-                            <a href="?logout=true" class="linkLight">
+                            <a href="?logout=true" class="linkLight underlineOnHover">
                                 <div class=<?php if ($currPage == 'settings') { print("trSelected"); } ?>>
                                     Log Out
                                 </div>
