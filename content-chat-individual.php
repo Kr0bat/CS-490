@@ -146,7 +146,9 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
                     <tbody>
                         <tr>
                             <td style="width: 3ch">
-                                <a href="/~kg448/chat.php" class="subtitleBold" style="text-decoration: none; font-size: 18px">Back</a>
+                                <a href="/~kg448/<?php if (isset($_GET['redirectFrom'])) { echo $_GET['redirectFrom']; } else { echo "chat"; } ?>.php" class="subtitleBold" style="text-decoration: none; font-size: 18px">
+                                    Back
+                                </a>
                             </td>
                             <td style="max-width: fit-content;">
 

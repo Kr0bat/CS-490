@@ -253,7 +253,7 @@ td.emptyGrid33 {
                                             </div>
                                         </td>
                                         <td style="max-width: fit-content;">
-                                            <a href="/~kg448/chat.php?chatWith=<?php echo $username; ?>">
+                                            <a href="/~kg448/chat.php?chatWith=<?php echo $username; ?>&redirectFrom=search" title="Chat with <?php echo $username; ?>">
                                                 <span class="">
                                                     <img src="assets/comment.png" class="" style="border-width: 0.05px; border-radius: 0; height: 5ch; width: 5ch; border-style: none; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
                                                 </span>
