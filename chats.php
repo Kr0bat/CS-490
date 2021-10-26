@@ -123,15 +123,6 @@ function sendChat($recipient, $sender, $message)
     
 }
 
-$maxChats = allChats('Max');
-
-
-
-echo '<pre>';
-print_r($maxChats);
-echo '<pre>';
-
-
 ?>
  </body>
  </html>
