@@ -41,7 +41,7 @@ function allChats($recipient)
     require('databaseConnect.php');
     
     //make query
-    $q1 = " SELECT sender AS s FROM chat WHERE recipient = '$recipient' OR sender = '$recipient' ";
+    $q1 = " SELECT sender AS s FROM chat WHERE recipient = '$recipient'";
     
     $r = @mysqli_query ($dbc, $q1);
     
@@ -62,13 +62,31 @@ function allChats($recipient)
             }
         }    
         
-        return $usernames; 
+         
     }
     else
     {
         return 0;
     }
-  
+    
+    
+    //make query
+    $q2 = " SELECT recipient AS s FROM chat WHERE sender = '$recipient'";
+    $r = @mysqli_query ($dbc, $q2);
+    
+     while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
+     {
+            if(in_array($row['s'], $usernames))
+            {
+                    continue;
+            }
+            else
+            {
+                    $usernames[] = $row['s'];
+            }
+     }    
+    
+    return $usernames;
 }
 
 function setRead($recipient, $sender)
@@ -104,6 +122,14 @@ function sendChat($recipient, $sender, $message)
      mysqli_close($dbc);
     
 }
+
+$maxChats = allChats('Max');
+
+
+
+echo '<pre>';
+print_r($maxChats);
+echo '<pre>';
 
 
 ?>
