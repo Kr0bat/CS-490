@@ -235,7 +235,7 @@ td.emptyGrid33 {
                                                 <img src="<?php echo getProfile($username)["profile_picture"]; ?>" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 5ch; width: 5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
                                             </span>
                                         </td>
-                                        <td style="padding-left: 1.69ch">
+                                        <td style="padding-left: 1.69ch; width: 100%;">
                                             <div class="col-12">
                                                 <?php echo $info['fname'].' '.$info['lname']; ?> 
                                                 <span class="subtitleLight" style="font-size: 20px">(<?php echo $username; ?>)</span>
@@ -251,6 +251,13 @@ td.emptyGrid33 {
                                             <div class="col-12 subtitleLight" style="font-size: 18px; margin-top: 0.5ch; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
                                                 <?php echo $info['profile_description']; ?>
                                             </div>
+                                        </td>
+                                        <td style="max-width: fit-content;">
+                                            <a href="/~kg448/chat.php?chatWith=<?php echo $username; ?>">
+                                                <span class="">
+                                                    <img src="/assets/comment.png" class="logoImg" style="border-width: 0.05px; border-radius: 0; height: 5ch; width: 5ch; border-style: none; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                                </span>
+                                            </a>
                                         </td>
                                     </tr>
                                 </tbody>
