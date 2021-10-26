@@ -19,6 +19,20 @@
     border-style: solid;
     border-color: #4a4a4a;
 }
+.chatContainer {
+    border-radius: 1ch;
+    padding: 1ch;
+    background: #2a4223;
+    border-style: solid;
+    border-color: #436339;
+}
+.blockContainer {
+    border-radius: 1ch;
+    padding: 1ch;
+    background: #3d2222;
+    border-style: solid;
+    border-color: #654040;
+}
 .statContainer {
     border-radius: 1ch;
     padding: 1ch;
@@ -190,7 +204,7 @@ td.emptyGrid33 {
                             </tr>
                             <tr style="height: 2ch;"></tr>
                             <tr style="width: 100%; text-align: center; ">
-                                <td class="postContainer">
+                                <td class="chatContainer">
                                     <a href="/~kg448/chat.php?chatWith=<?php echo $_GET['viewing']; ?>">
                                         <table class="bodyBold" style="width: 100%">
                                             <tbody>
@@ -206,10 +220,16 @@ td.emptyGrid33 {
                                         </table>
                                     </a>
                                     </td>
-                                    <!--td style="width: 1ch"></td>
-                                    <td class="postContainer bodyBold">
-                                        Follow
-                                    </td-->
+
+                                    <?php if ($_SESSION['role'] == "admin") { ?>
+
+                                    <td style="width: 1ch"></td>
+                                    <td class="blockContainer bodyBold">
+                                        Block User
+                                    </td>
+
+                                    <?php } ?>
+
                                 </a>
                             </tr>
                         </tbody>

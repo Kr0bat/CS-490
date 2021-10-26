@@ -31,7 +31,8 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
     // -------
     include("sidebar-admin.php");
     include("content-account.php");
-    $role = "basic";
+    $role = "admin";
+    $_SESSION['role'] = "admin";
 
 } else {
     $role = false;
