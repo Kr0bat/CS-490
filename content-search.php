@@ -255,7 +255,7 @@ td.emptyGrid33 {
                                         <td style="max-width: fit-content;">
                                             <a href="/~kg448/chat.php?chatWith=<?php echo $username; ?>">
                                                 <span class="">
-                                                    <img src="/assets/comment.png" class="logoImg" style="border-width: 0.05px; border-radius: 0; height: 5ch; width: 5ch; border-style: none; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                                    <img src="assets/comment.png" class="logoImg" style="border-width: 0.05px; border-radius: 0; height: 5ch; width: 5ch; border-style: none; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
                                                 </span>
                                             </a>
                                         </td>
