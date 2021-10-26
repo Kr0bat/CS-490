@@ -41,7 +41,7 @@ function allChats($recipient)
     require('databaseConnect.php');
     
     //make query
-    $q1 = " SELECT sender AS s FROM chat WHERE recipient = '$recipient' ";
+    $q1 = " SELECT sender AS s FROM chat WHERE recipient = '$recipient' OR sender = '$recipient' ";
     
     $r = @mysqli_query ($dbc, $q1);
     
@@ -104,7 +104,6 @@ function sendChat($recipient, $sender, $message)
      mysqli_close($dbc);
     
 }
-
 
 
 ?>
