@@ -11,7 +11,7 @@
      require('databaseConnect.php');
        
     //make query
-    $q1 = " SELECT message AS msg, time AS t, sender AS s, read_status AS r FROM chat WHERE (sender = '$sender' AND recipient = '$recipient') OR (sender = '$recipient' AND recipient = '$sender')";
+    $q1 = " SELECT message AS msg, time AS t, sender AS s, read_status AS r, recipient as recipient FROM chat WHERE (sender = '$sender' AND recipient = '$recipient') OR (sender = '$recipient' AND recipient = '$sender')";
     
     $r = @mysqli_query ($dbc, $q1);
     
