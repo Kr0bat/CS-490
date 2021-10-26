@@ -19,6 +19,13 @@
     border-style: solid;
     border-color: #4a4a4a;
 }
+.statContainer {
+    border-radius: 1ch;
+    padding: 1ch;
+    background: #31313132;
+    border-style: solid;
+    border-color: #4a4a4a32;
+}
 .commentContainer {
     border-radius: 0 0 1ch 1ch;
     padding: 1ch;
@@ -128,18 +135,20 @@ td.emptyGrid33 {
     <div class="col-12" style="margin: 10vh 0">
         <div class="col-10 push-1 bodyLight" style="">
             <div class="col-2">
-                <img src="<?php echo getProfile($_GET['viewing'])["profile_picture"]; ?>" class="imgFitMid logoImg" style="border-radius: 100%; height: min(10ch, 10vw); width: min(10ch, 10vw); border-style: solid; border-color: rgba(255, 255, 255, 0.15);" />
+                <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_GET['viewing'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="imgFitMid logoImg" style="border-radius: 100%; height: min(10ch, 10vw); width: min(10ch, 10vw); border-style: solid; border-color: rgba(255, 255, 255, 0.15);" />
             </div>
             <div class="col-8 push-05">
                 <div class="col-12 titleLight">
                     <?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_GET['viewing'])["fname"].' '.getProfile($_GET['viewing'])["lname"]; } ?> 
                     <span class="subtitleLight" style="font-size: 20px">(<?php echo $_GET['viewing']; ?>)</span>
                     <?php
-                    if (isAdmin($_GET['viewing'])) {
-                        print('
-                        <span class="subtitleLight" style="font-size: 20px; color: rgb(144, 85, 54); padding-left: 5px;">
-                            Admin
-                        </span>');
+                    if ($_SERVER[HTTP_HOST] != "maxedward.com") {
+                        if (isAdmin($_GET['viewing'])) {
+                            print('
+                            <span class="subtitleLight" style="font-size: 20px; color: rgb(144, 85, 54); padding-left: 5px;">
+                                Admin
+                            </span>');
+                        }
                     }
                     ?>
                 </div>
@@ -149,7 +158,67 @@ td.emptyGrid33 {
             </div>
         </div>
     </div>
-    <div class="col-12" style="margin-top: 1vh">
+    <div class="col-12" style="margin-top: 0.5vh">
+        <div class="col-10 push-1 titleBold" style="font-size: 22.5px">
+            Statistics
+        </div>
+    </div>
+    <div class="col-12" style="margin-top: 0vh">
+        <div class="col-10 push-1">
+            <div class="col-12" style="margin: 2ch 0 1ch 0">
+                <div class="col-11 bodyBold statContainer">
+                    <table style="width: 100%;">
+                        <tbody>
+                            <tr style="height: 1ch;"></tr>
+                            <tr style="width: 100%; text-align: center;">
+                                <td class="bodyBold" style="width: 49%; font-size: 30px;">
+                                    69
+                                </td>
+                                <td style="width: 1ch"></td>
+                                <td class="bodyBold" style="width: 49%; font-size: 30px;">
+                                    420
+                                </td>
+                            </tr>
+                            <tr style="width: 100%; text-align: center;">
+                                <td class="bodyLight">
+                                    Posts
+                                </td>
+                                <td style="width: 1ch"></td>
+                                <td class="bodyLight">
+                                    Likes
+                                </td>
+                            </tr>
+                            <tr style="height: 2ch;"></tr>
+                            <tr style="width: 100%; text-align: center; ">
+                                <td class="postContainer">
+                                    <a href="/~kg448/chat.php?chatWith=<?php echo $_GET['viewing']; ?>">
+                                        <table class="bodyBold" style="width: 100%">
+                                            <tbody>
+                                                <tr style="width: 100%">
+                                                    <td style="text-align: right; width: 50%;">
+                                                        <img src="assets/comment.png" class="" style="border-width: 0; height: 2ch; margin-top: 0; cursor: pointer; padding-right: 0.5ch;" />
+                                                    </td>
+                                                    <td style="text-align: left; width: 50%; padding-left: 0ch;">
+                                                        Chat
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </a>
+                                    </td>
+                                    <!--td style="width: 1ch"></td>
+                                    <td class="postContainer bodyBold">
+                                        Follow
+                                    </td-->
+                                </a>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12" style="margin-top: 7vh">
         <div class="col-10 push-1 titleBold" style="font-size: 22.5px">
             Post History
         </div>
