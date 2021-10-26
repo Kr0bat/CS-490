@@ -169,10 +169,10 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
                                 }
                                 ?>
                             </td>
-                            <td style="padding-left: 1ch; width: 50%">        
+                            <td style="padding-left: 1ch; font-size: 20px; width: 15ch">        
                                 <div class="col-12">
                                     <a href="">
-                                        <button type="submit" name="newdm_submit" style="width: 80%; background-color: #545454; border-color: #262626; border-style: solid; color: #fff; border-radius: 0.75ch; font-size: 20px; margin-left: 50%; transform: translate(-50%, 0); padding: 1ch 0; margin-top: 0.55vh;">Refresh</button>
+                                        <button type="submit" name="newdm_submit" style="width: 15ch; background-color: #545454; border-color: #262626; border-style: solid; color: #fff; border-radius: 0.75ch; font-size: 20px; margin-left: 50%; transform: translate(-50%, 0); padding: 1ch 0; margin-top: 0.55vh;">Refresh</button>
                                     </a>
                                 </div>
                             </td>
