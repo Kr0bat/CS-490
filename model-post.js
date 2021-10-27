@@ -18,7 +18,7 @@ class Post {
         song_link = "https://google.com") {
 
         // MAIN STRUCTURE:
-        this.containerDiv = ('<div>')
+        this.containerDiv = $('<div>')
             .addClass('col-12 bodyBold postContainer')
             .id(this.options.post_id)
             .css({
