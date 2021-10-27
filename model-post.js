@@ -1,28 +1,21 @@
 
-window.Post = {
+class Post {
 
-    initialize(options) {
-
-        _.defaults(options, {
-            username: "USERNAME",
-            isAdmin: false,
-            user_first_name: "FIRST",
-            user_last_name: "LAST",
-            user_pfp_link: "https://web.njit.edu/~kg448/assets/default-profile.png",
-            post_title: "DEFAULT TITLE",
-            post_description: "DEFAULT DESCRIPTION",
-            post_id: 0,
-            song_album_art: "https://web.njit.edu/~kg448/assets/logo_spotify.png",
-            song_title: "SONG TITLE",
-            song_album: "SONG ALBUM",
-            song_year: "SONG YEAR",
-            song_artist: "SONG ARTIST",
-            song_link: "https://google.com"
-        })
-
-    },
-
-    render() {
+    constructor(
+        username = "USERNAME",
+        isAdmin = false,
+        user_first_name = "FIRST",
+        user_last_name = "LAST",
+        user_pfp_link = "https://web.njit.edu/~kg448/assets/default-profile.png",
+        post_title = "DEFAULT TITLE",
+        post_description = "DEFAULT DESCRIPTION",
+        post_id = 0,
+        song_album_art = "https://web.njit.edu/~kg448/assets/logo_spotify.png",
+        song_title = "SONG TITLE",
+        song_album = "SONG ALBUM",
+        song_year = "SONG YEAR",
+        song_artist = "SONG ARTIST",
+        song_link = "https://google.com") {
 
         // MAIN STRUCTURE:
         this.$containerDiv = $('<div>')
@@ -352,6 +345,7 @@ window.Post = {
             .append(this.$containerDiv)
 
         return this.$el
+
     }
 
 }
