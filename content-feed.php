@@ -146,7 +146,7 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
                                                     </td>
                                                     <td style="padding-left: 0.5ch; overflow: visible; white-space: nowrap;">
                                                         <div class="col-12">
-                                                            <a href="/~kg448/account.php?viewing=<?php echo $info['creator']; ?>&redirectFrom=feed" title="View <?php echo $info['creator']; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
+                                                            <a href="/~kg448/account.php?viewing=<?php echo $info['creator']; ?>&redirectFrom=feed" title="View <?php echo $info['creator']; ?>'s Profile" style="text-decoration: none;" class="bodyLight underlineOnHover">
                                                                 <?php echo getProfile($info['creator'])["fname"].' '.getProfile($info['creator'])["lname"];
 
                                                                 if (isAdmin($info['creator'])) {
