@@ -14,15 +14,38 @@
     width: 10.1ch;
 }
 
+.sidebar-style-mobile {
+    background-color: #000; 
+    position: fixed; 
+    bottom: 0; 
+    top: auto; 
+    border-radius: 0 1.75ch 0 0; 
+    z-index: 50; 
+    font-size: 22.5px;
+    width: 100vw;
+    height: 5ch
+}
+
 .lightTable {
     color: #fff;
     line-height: 3ch;
     width: 100%;
 }
 
+.lightTableMobile {
+    color: #fff;
+    line-height: 1ch;
+    width: 100%;
+}
+
 .lightTableTr {
     width: 100%;
     text-align: left;
+}
+
+.lightTableTd {
+    width: 20%;
+    text-align: center;
 }
 
 .lightTableTrSpacerSmall {
@@ -131,6 +154,74 @@ if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
     $currPage = 'settings';
 }
 
+require_once 'Mobile_Detect.php';
+$detect = new Mobile_Detect;
+$isMobile = false;
+
+if( $detect->isMobile() && !$detect->isTablet() ){
+    $isMobile = true;
+}
+
+if ($isMobile) {
+
+?>
+
+<div class="sidebar-style-mobile" style="font-family: 'Montserrat', sans-serif;">
+    <div class="col-12" style="padding: 0; margin-top: -0.5ch;">
+        <table class="lightTableMobile" style="border-spacing: 25px">
+            <tbody>
+                <tr style="width: 100%">
+                    <td class="lightTableTd">
+                        <div style="width: 3ch; margin-left: 50%; transform: translate(-50%, 0);">
+                            <a href="/~kg448/feed.php" class="linkLight underlineOnHover">
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="<?php if ($currPage == 'feed') { print("#56b35e"); } else { print('#FFFFFF'); } ?>" d="M21.66,10.25l-9-8a1,1,0,0,0-1.32,0l-9,8a1,1,0,0,0-.27,1.11A1,1,0,0,0,3,12H4v9a1,1,0,0,0,1,1H19a1,1,0,0,0,1-1V12h1a1,1,0,0,0,.93-.64A1,1,0,0,0,21.66,10.25ZM13,20H11V17a1,1,0,0,1,2,0Zm5,0H15V17a3,3,0,0,0-6,0v3H6V12H18ZM5.63,10,12,4.34,18.37,10Z"/></svg>
+                                </div>
+                            </a>
+                        </div>
+                    </td>
+                    <td class="lightTableTd">
+                        <div style="width: 3ch; margin-left: 50%; transform: translate(-50%, 0);">
+                            <a href="/~kg448/chat.php" class="linkLight underlineOnHover">
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="<?php if ($currPage == 'chat') { print("#56b35e"); } else { print('#FFFFFF'); } ?>" d="M19,8H18V5a3,3,0,0,0-3-3H5A3,3,0,0,0,2,5V17a1,1,0,0,0,.62.92A.84.84,0,0,0,3,18a1,1,0,0,0,.71-.29l2.81-2.82H8v1.44a3,3,0,0,0,3,3h6.92l2.37,2.38A1,1,0,0,0,21,22a.84.84,0,0,0,.38-.08A1,1,0,0,0,22,21V11A3,3,0,0,0,19,8ZM8,11v1.89H6.11a1,1,0,0,0-.71.29L4,14.59V5A1,1,0,0,1,5,4H15a1,1,0,0,1,1,1V8H11A3,3,0,0,0,8,11Zm12,7.59-1-1a1,1,0,0,0-.71-.3H11a1,1,0,0,1-1-1V11a1,1,0,0,1,1-1h8a1,1,0,0,1,1,1Z"/></svg>
+                                </div>
+                            </a>
+                        </div>
+                    </td>
+                    <td class="lightTableTd">
+                        <div style="width: 3ch; margin-left: 50%; transform: translate(-50%, 0);">
+                            <a href="/~kg448/newPost.php" class="linkLight underlineOnHover" style="border: 0ch solid white; border-radius: 0ch; padding: 4px; margin-left: 0;">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#FFFFFF" d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Zm4-9H13V8a1,1,0,0,0-2,0v3H8a1,1,0,0,0,0,2h3v3a1,1,0,0,0,2,0V13h3a1,1,0,0,0,0-2Z"/></svg>
+                            </a>
+                        </div>
+                    </td>
+                    <td class="lightTableTd">
+                        <div style="width: 3ch; margin-left: 50%; transform: translate(-50%, 0);">
+                            <a href="/~kg448/search.php" class="linkLight underlineOnHover">
+                                <div>
+                                    <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24"><path fill="<?php if ($currPage == 'search') { print("#56b35e"); } else { print('#FFFFFF'); } ?>" d="M21.07,16.83,19,14.71a3.08,3.08,0,0,0-3.4-.57l-.9-.9a7,7,0,1,0-1.41,1.41l.89.89A3,3,0,0,0,14.71,19l2.12,2.12a3,3,0,0,0,4.24,0A3,3,0,0,0,21.07,16.83Zm-8.48-4.24a5,5,0,1,1,0-7.08A5,5,0,0,1,12.59,12.59Zm7.07,7.07a1,1,0,0,1-1.42,0l-2.12-2.12a1,1,0,0,1,0-1.42,1,1,0,0,1,1.42,0l2.12,2.12A1,1,0,0,1,19.66,19.66Z"/></svg>
+                                </div>
+                            </a>
+                        </div>
+                    </td>
+                    <td class="lightTableTd">
+                        <a href="/~kg448/account.php" class="linkLight">
+                            <div style="margin-left: 0">
+                                <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="imgFitMid logoImg" style="margin-top: 0ch; border-radius: 100%; height: 3ch; width: 3ch; border-style: solid; border-color: <?php if ($currPage == 'account') { print("#56b35e; border-width: 0.35ch;"); } else { print("rgba(255, 255, 255, 0.15)"); } ?>; margin-left: 0;" />
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<?php
+
+} else {
+
 ?>
 
 <div class="sidebar-style" style="font-family: 'Montserrat', sans-serif;">
@@ -218,3 +309,9 @@ if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
         </table>
     </div>
 </div>
+
+<?php
+
+}
+
+?>

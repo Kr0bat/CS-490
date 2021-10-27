@@ -131,7 +131,7 @@ td.emptyGrid33 {
     }
 }
 </style>
-<div class="col-12" style="font-size: 22.5px; padding-left: 10ch">
+<div class="col-12" style="font-size: 22.5px; <?php if (!$isMobile) { echo "padding-left: 10ch"; } ?>">
     
     <?php
 

@@ -22,7 +22,7 @@
 }
 </style>
 <body>
-    <div class="col-12" style="font-size: 22.5px; padding-left: 10ch">
+    <div class="col-12" style="font-size: 22.5px; <?php if (!$isMobile) { echo "padding-left: 10ch"; } ?>">
         <div class="col-12" style="margin-top: 5vh">
             <table class="col-10 push-1">
                 <tbody>
@@ -33,7 +33,7 @@
                             </div>
                         </td>
                         <td style="text-align: right;">
-                            <a href="" style="text-decoration: none;">
+                            <a href="/~kg448/search.php?viewAll=none" style="text-decoration: none;">
                                 <div class="subtitleLight" style="font-size: 20px; font-style: normal;">
                                     + New Chat
                                 </div>

@@ -111,9 +111,17 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
 // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ KARIM'S CODE ENDS HERE ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
 //
 
+require_once 'Mobile_Detect.php';
+$detect = new Mobile_Detect;
+$isMobile = false;
+
+if( $detect->isMobile() && !$detect->isTablet() ){
+    $isMobile = true;
+}
+
 ?>
 <body>
-    <div class="col-12" style="font-size: 22.5px; padding-left: 10ch">
+    <div class="col-12" style="font-size: 22.5px; <?php if (!$isMobile) { echo "padding-left: 10ch"; } ?>">
         <div class="col-12" style="margin-top: 5vh">
             <div class="col-10 push-1 titleBold" style="">
                 Spotifeed
