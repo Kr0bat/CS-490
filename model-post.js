@@ -18,85 +18,85 @@ class Post {
         song_link = "https://google.com") {
 
         // MAIN STRUCTURE:
-        this.$containerDiv = $('<div>')
+        this.containerDiv = ('<div>')
             .addClass('col-12 bodyBold postContainer')
             .id(this.options.post_id)
             .css({
                 'margin': '0',
             })
 
-        this.$innerDiv = $('<div>')
+        this.innerDiv = ('<div>')
             .addClass('col-12')
-            .appendTo(this.$containerDiv)
+            .appendTo(this.containerDiv)
 
-        this.$topTable = $('<table>')
+        this.topTable = ('<table>')
             .css({
                 'margin': '0',
             })
-            .appendTo(this.$innerDiv)
+            .appendTo(this.innerDiv)
 
-        this.$botTable = $('<table>')
+        this.botTable = ('<table>')
             .css({
                 'margin': '0',
                 'width': '100%'
             })
-            .appendTo(this.$innerDiv)
+            .appendTo(this.innerDiv)
 
-        this.$topTableBody = $('<tbody>')
-            .appendTo(this.$topTable)
+        this.topTableBody = ('<tbody>')
+            .appendTo(this.topTable)
 
-        this.$botTableBody = $('<tbody>')
-            .appendTo(this.$botTable)
+        this.botTableBody = ('<tbody>')
+            .appendTo(this.botTable)
 
-        this.$topTr = $('<tr>')
-            .appendTo(this.$topTableBody)
+        this.topTr = ('<tr>')
+            .appendTo(this.topTableBody)
 
-        this.$botTr = $('<tr>')
-            .appendTo(this.$botTableBody)
+        this.botTr = ('<tr>')
+            .appendTo(this.botTableBody)
 
-        this.$leftTd = $('<td>')
-            .appendTo(this.$topTr)
+        this.leftTd = ('<td>')
+            .appendTo(this.topTr)
 
-        this.$rightTd = $('<td>')
+        this.rightTd = ('<td>')
             .css({
                 'text-align': 'right',
                 'width': '100%'
             })
-            .appendTo(this.$topTr)
+            .appendTo(this.topTr)
 
 
 
 
         // CREATOR NAME AND PROFILE PIC STRUCTURE:
-        this.$creatorTable = $('<table>')
+        this.creatorTable = ('<table>')
             .addClass('bodyLight')
-            .appendTo(this.$leftTd)
+            .appendTo(this.leftTd)
 
-        this.$creatorTableBody = $('<tbody>')
-            .appendTo(this.$creatorTable)
+        this.creatorTableBody = ('<tbody>')
+            .appendTo(this.creatorTable)
 
-        this.$creatorTr = $('<tr>')
-            .appendTo(this.$creatorTableBody)
+        this.creatorTr = ('<tr>')
+            .appendTo(this.creatorTableBody)
 
-        this.$creatorPfpTd = $('<td>')
+        this.creatorPfpTd = ('<td>')
             .css({
                 'max-width': 'fit-content',
             })
-            .appendTo(this.$creatorTr)
+            .appendTo(this.creatorTr)
 
-        this.$creatorNameTd = $('<td>')
+        this.creatorNameTd = ('<td>')
             .css({
                 'padding-left': '0.5ch',
                 'overflow': 'visible',
                 'white-space': 'nowrap'
             })
-            .appendTo(this.$creatorTr)
+            .appendTo(this.creatorTr)
 
 
 
 
         // CREATOR'S PIC:
-        this.$creatorPfp = $('<img>')
+        this.creatorPfp = ('<img>')
             .addClass('logoImg')
             .src(this.options.user_pfp_link)
             .css({
@@ -109,27 +109,27 @@ class Post {
                 'margin-top': '0.4ch'
             })
 
-        this.$pfpHolder = $('<span>')
-            .append(this.$creatorPfp)
+        this.pfpHolder = ('<span>')
+            .append(this.creatorPfp)
         
-        $profileURL = "/~kg448/account.php?viewing=" + this.options.username + "&redirectFrom=feed";
+        profileURL = "/~kg448/account.php?viewing=" + this.options.username + "&redirectFrom=feed";
 
-        this.$accountLink = $('<a>')
-            .href($profileURL)
+        this.accountLink = ('<a>')
+            .href(profileURL)
             .title("View " + this.options.username + "'s Profile")
             .addClass('bodyLight')
             .css({
                 'text-decoration': 'none',
             })
-            .append(this.$pfpHolder)
-            .appendTo(this.$creatorPfpTd)
+            .append(this.pfpHolder)
+            .appendTo(this.creatorPfpTd)
 
 
 
 
         // CREATOR'S NAME:
-        this.$accountLinkName = $('<a>')
-            .href($profileURL)
+        this.accountLinkName = ('<a>')
+            .href(profileURL)
             .title("View " + this.options.username + "'s Profile")
             .addClass('bodyLight underlineOnHover')
             .css({
@@ -138,7 +138,7 @@ class Post {
             .html(this.options.user_first_name + ' ' + this.options.user_last_name)
             
         if (this.options.isAdmin) {
-            this.$adminSpan = $('<span>')
+            this.adminSpan = ('<span>')
                 .addClass('subtitleLight')
                 .css({
                     'font-size': '18px',
@@ -146,19 +146,19 @@ class Post {
                     'padding-left': '5px'
                 })
                 .html('Admin')
-                .appendTo(this.$accountLinkName)
+                .appendTo(this.accountLinkName)
         }
 
-        this.$nameDiv = $('<div>')
+        this.nameDiv = ('<div>')
             .addClass('col-12')
-            .append(this.$accountLinkName)
-            .appendTo(this.$creatorNameTd)
+            .append(this.accountLinkName)
+            .appendTo(this.creatorNameTd)
 
 
 
 
         // GO TO SONG LINK:
-        this.$songLinkDiv = $('<div>')
+        this.songLinkDiv = ('<div>')
             .addClass('subtitleLight')
             .css({
                 'position': 'relative',
@@ -166,9 +166,9 @@ class Post {
                 'margin-top': '0.2ch',
                 'text-decoration': 'none'
             })
-            .appendTo(this.$rightTd)
+            .appendTo(this.rightTd)
 
-        this.$songLink = $('<a>')
+        this.songLink = ('<a>')
             .href(this.options.song_link)
             .title("Open link to " + this.options.song_title)
             .html("Go to " + this.options.song_title + " ↗")
@@ -177,13 +177,13 @@ class Post {
                 'text-decoration': 'none',
                 'font-size': '20px'
             })
-            .appendTo(this.$songLinkDiv)
+            .appendTo(this.songLinkDiv)
 
 
 
 
         // ALBUM COVER:
-        this.$albumImg = $('<img>')
+        this.albumImg = ('<img>')
             .addClass('logoImg')
             .src(this.options.song_album_art)
             .css({
@@ -195,30 +195,30 @@ class Post {
                 'margin-top': '0.4ch'
             })
 
-        this.$albumHolder = $('<span>')
-            .append(this.$albumImg)
+        this.albumHolder = ('<span>')
+            .append(this.albumImg)
 
-        this.$albumTd = $('<td>')
+        this.albumTd = ('<td>')
             .css({
                 'max-width': 'fit-content'
             })
-            .append(this.$albumHolder)
-            .appendTo(this.$botTr)
+            .append(this.albumHolder)
+            .appendTo(this.botTr)
 
 
 
 
         // POST CONTENT LAYOUT:
-        this.$contentTd = $('<td>')
+        this.contentTd = ('<td>')
             .css({
                 'padding-left': '1.69ch',
                 'vertical-align': 'top',
                 'height': '15ch',
                 'width': '100%'
             })
-            .appendTo(this.$botTr)
+            .appendTo(this.botTr)
         
-        this.$postContentSection = $('<div>')
+        this.postContentSection = ('<div>')
             .addClass('col-12')
             .css({
                 'height': '7.5ch',
@@ -226,9 +226,9 @@ class Post {
                 'text-overflow': 'ellipsis',
                 'word-break': 'break-word'
             })
-            .appendTo(this.$contentTd)
+            .appendTo(this.contentTd)
         
-        this.$songContentSection = $('<div>')
+        this.songContentSection = ('<div>')
             .addClass('col-6')
             .css({
                 'height': '8ch',
@@ -237,9 +237,9 @@ class Post {
                 'word-break': 'break-word',
                 'padding-top': '2.65ch'
             })
-            .appendTo(this.$contentTd)
+            .appendTo(this.contentTd)
         
-        this.$buttonSection = $('<div>')
+        this.buttonSection = ('<div>')
             .addClass('col-6')
             .css({
                 'height': '8ch',
@@ -249,21 +249,21 @@ class Post {
                 'padding-top': '5ch',
                 'text-align': 'right'
             })
-            .appendTo(this.$contentTd)
+            .appendTo(this.contentTd)
 
 
 
 
         // POST CONTENT TOP SECTION:
-        this.$postTitle = $('<div>')
+        this.postTitle = ('<div>')
             .addClass('col-12')
             .css({
                 'margin-top': '0.5ch'
             })
             .html(this.options.post_title)
-            .appendTo(this.$postContentSection)
+            .appendTo(this.postContentSection)
 
-        this.$postDescription = $('<div>')
+        this.postDescription = ('<div>')
             .addClass('col-12 subtitleLight')
             .css({
                 'margin-top': '0.5ch',
@@ -272,13 +272,13 @@ class Post {
                 'overflow': 'hidden'
             })
             .html(this.options.post_description)
-            .appendTo(this.$postContentSection)
+            .appendTo(this.postContentSection)
 
 
 
 
         // SONG CONTENT BOTTOM LEFT SECTION:
-        this.$songTitle = $('<div>')
+        this.songTitle = ('<div>')
             .addClass('col-12')
             .css({
                 'margin-top': '0ch',
@@ -286,9 +286,9 @@ class Post {
                 'font-weight': 'normal'
             })
             .html(this.options.song_title)
-            .appendTo(this.$songContentSection)
+            .appendTo(this.songContentSection)
         
-        this.$songDescription = $('<div>')
+        this.songDescription = ('<div>')
             .addClass('col-12 subtitleLight')
             .css({
                 'font-size': '18px',
@@ -298,9 +298,9 @@ class Post {
                 'font-weight': 'normal'
             })
             .html(this.options.song_album + ' - ' + this.options.song_year)
-            .appendTo(this.$songContentSection)
+            .appendTo(this.songContentSection)
         
-        this.$songArtist = $('<div>')
+        this.songArtist = ('<div>')
             .addClass('col-12 subtitleLight')
             .css({
                 'font-size': '18px',
@@ -309,13 +309,13 @@ class Post {
                 'overflow': 'hidden'
             })
             .html(this.options.song_artist)
-            .appendTo(this.$songContentSection)
+            .appendTo(this.songContentSection)
 
 
 
 
         // COMMENT AND LIKE BUTTONS (RIGHT BOTTOM SECTION):
-        this.$commentButton = $('<img>')
+        this.commentButton = ('<img>')
             .src('assets/comment.png')
             .addClass('commentButton')
             .css({
@@ -325,7 +325,7 @@ class Post {
                 'cursor': 'pointer'
             })
 
-        this.$likeButton = $('<img>')
+        this.likeButton = ('<img>')
             .src('assets/heart-off.png')
             .addClass('likeButton')
             .css({
@@ -335,16 +335,16 @@ class Post {
                 'cursor': 'pointer'
             })
         
-        this.$buttonDiv = $('<div>')
+        this.buttonDiv = ('<div>')
             .addClass('col-12')
-            .append(this.$commentButton)
-            .append(this.$likeButton)
-            .appendTo(this.$buttonSection)
+            .append(this.commentButton)
+            .append(this.likeButton)
+            .appendTo(this.buttonSection)
 
-        this.$el
-            .append(this.$containerDiv)
+        this.el
+            .append(this.containerDiv)
 
-        return this.$el
+        return this.el
 
     }
 
