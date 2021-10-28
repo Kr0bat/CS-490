@@ -188,6 +188,22 @@
     mysqli_close($dbc);
  }
  
+ function likePost($post_id, $liker)
+{
+     //make database connection
+     require('databaseConnect.php');
+       
+    //make query
+    $q1 = "INSERT INTO likes (post_id, liker) VALUES ('$post_id', '$liker')";
+    
+    //execute query
+    $r = @mysqli_query ($dbc, $q1);
+    
+    //close database connection 
+    mysqli_close($dbc);
+
+}
+ 
  function getLikes($post_id)
  {
      //make database connection
