@@ -3,6 +3,7 @@
 
 <?php
 session_start();
+include("users.php");
 
 //
 // =======
@@ -17,6 +18,7 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
     // BASIC USER
     // -------
     $role = "basic";
+    include("sidebar-basic.php");
 
 } else {
     $role = false;
@@ -27,6 +29,7 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
             // ADMINISTRATOR
             // -------
             $role = "admin";
+            include("sidebar-admin.php");
 
         } else if ($_SESSION['role'] == "basic") {
             
@@ -34,6 +37,7 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
             // BASIC USER
             // -------
             $role = "basic";
+            include("sidebar-basic.php");
 
         } else {
 
@@ -100,9 +104,9 @@ button {
 </head>
 
 <body style="background-color: #161616; font-family: 'Montserrat', sans-serif;">
-    <div class="col-12 subtitleBold" style="text-align: left; margin: max(1ch, 2vh) 0 0 max(2ch, 2vw)">
+    <!--div class="col-12 subtitleBold" style="text-align: left; margin: max(1ch, 2vh) 0 0 max(2ch, 2vw)">
         <a href="/~kg448/feed.php" class="subtitleBold" style="text-decoration: none; font-size: 18px">Cancel</a>
-    </div>
+    </div-->
     <div class="col-12 titleBold" style="text-align: center; margin-top: 3ch;">
         New Post
     </div>
