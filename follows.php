@@ -22,20 +22,22 @@ function follow($follower, $username)
     mysqli_close($dbc);
  }
  
- function SearchPostbyFollow($follower, $username)
+ function SearchPostbyFollow($follower)
  {
      //make database connection
      require('databaseConnect.php');
      
      //make query
-     $q1 = "SELECT follower AS follower, username AS username FROM follows WHERE follower = '$follower' AND username = '$username'";
+     $q1 = "SELECT follower AS follower, username AS username FROM follows WHERE follower = '$follower'";
      $r = @mysqli_query ($dbc, $q1); 
      
-     // check if user follows other user
+     // check all of the users follower follows
      if($r)
      { 
         
         $row = mysqli_fetch_array($r, MYSQLI_ASSOC);
+        $followList[] = $row;
+        
         
         if($row == 0)
         {
@@ -43,26 +45,45 @@ function follow($follower, $username)
         }
         else
         {
-            //make query
-            $q2 = "SELECT Title AS title, Description AS description, Link AS link, Creator AS creator FROM post WHERE Creator = '$username'";
-            $r = @mysqli_query ($dbc, $q2); 
-     
-           // get list of posts
-           if($r)
-           { 
-    
-                while($row2 = mysqli_fetch_array($r, MYSQLI_ASSOC))
-               {
-           
-                    $posts[] = $row2;
-            
-               }    
-        
-               return $posts; 
+            while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
+            {
+                 $followList[] = $row;
             }
         }
     }
- }
+    else
+    {
+         return 0;
+    }
+    
+    foreach($followList as $value)
+    {
+          //make query
+         $q2 = "SELECT Title AS title, Description AS description, Link AS link, Creator AS creator FROM post WHERE Creator = '$value[username]'";
+         $r = @mysqli_query ($dbc, $q2); 
+     
+         // get list of posts
+         if($r)
+         { 
+    
+                while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
+                {
+           
+                 $posts[] = $row;
+            
+                }    
+         }
+         else
+         {
+             return 0;
+         }
+    
+    }
+    
+    return $posts;
+    
+    
+}
  
  
  ?>
