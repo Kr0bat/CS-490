@@ -77,6 +77,29 @@ function UpdateComments($description, $Commenter, $post_id, $comment_id)
     
 }
 
+function SearchCommentByP($post_id)
+{
+
+     //make database connection
+     require('databaseConnect.php');
+       
+    //make query
+    $q1 = "SELECT description, timestamp FROM comment WHERE post_id = '$post_id'";
+    
+    //execute query
+    $r = @mysqli_query ($dbc, $q1);
+    
+    while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
+    {
+        $comments[] = $row;
+    
+    }
+    
+    //close database connection 
+    mysqli_close($dbc);
+    
+    return $comments;
+}
 
  
   ?>
