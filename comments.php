@@ -44,7 +44,7 @@ function SearchCommentByC($Commenter)
      require('databaseConnect.php');
        
     //make query
-    $q1 = "SELECT description, timestamp FROM comment WHERE commenter = '$Commenter'";
+    $q1 = "SELECT description, timestamp, commenter FROM comment WHERE commenter = '$Commenter'";
     
     //execute query
     $r = @mysqli_query ($dbc, $q1);
@@ -84,7 +84,7 @@ function SearchCommentByP($post_id)
      require('databaseConnect.php');
        
     //make query
-    $q1 = "SELECT description, timestamp FROM comment WHERE post_id = '$post_id'";
+    $q1 = "SELECT description, timestamp, commenter FROM comment WHERE post_id = '$post_id'";
     
     //execute query
     $r = @mysqli_query ($dbc, $q1);
