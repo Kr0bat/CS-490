@@ -31,7 +31,7 @@
      require('databaseConnect.php');
        
     //make query
-    $q1 = " SELECT Title AS title, Description AS description, Link AS link, Creator AS creator  FROM post WHERE id = '$id'";
+    $q1 = " SELECT Title AS title, Description AS description, Link AS link, Creator AS creator, id as id FROM post WHERE id = '$id'";
     
     //execute query
     $r = @mysqli_query ($dbc, $q1);
@@ -73,7 +73,7 @@
      require('databaseConnect.php');
        
     //make query
-    $q1 = " SELECT Title AS title, Description AS description, Link AS link, Creator AS creator FROM post ORDER BY Timestamp";
+    $q1 = " SELECT Title AS title, Description AS description, Link AS link, Creator AS creator, id as id FROM post ORDER BY Timestamp";
     
     //execute query
     $r = @mysqli_query ($dbc, $q1);
@@ -95,7 +95,7 @@
      require('databaseConnect.php');
      
      //make query
-     $q1 = "SELECT Title AS title, Description AS description, Link AS link, Creator AS creator FROM post WHERE Title LIKE '%$Title%'";
+     $q1 = "SELECT Title AS title, Description AS description, Link AS link, Creator AS creator, id AS id FROM post WHERE Title LIKE '%$Title%'";
      $r = @mysqli_query ($dbc, $q1); 
      
      // get list of users
@@ -123,7 +123,8 @@
      require('databaseConnect.php');
      
      //make query
-     $q1 = "SELECT Title AS title, Description AS description, Link AS link, Creator AS creator FROM post WHERE Description LIKE '%$Description%'";
+     $q1 = "SELECT Title AS title, Description AS description, Link AS link, Creator AS creator, id AS id FROM post WHERE Description LIKE
+     '%$Description%'";
      $r = @mysqli_query ($dbc, $q1); 
      
      // get list of users
@@ -151,7 +152,7 @@
      require('databaseConnect.php');
      
      //make query
-     $q1 = "SELECT Title AS title, Description AS description, Link AS link, Creator AS creator FROM post WHERE Creator = '$Creator'";
+     $q1 = "SELECT Title AS title, Description AS description, Link AS link, Creator AS creator, id as id FROM post WHERE Creator = '$Creator'";
      $r = @mysqli_query ($dbc, $q1); 
      
      // get list of posts

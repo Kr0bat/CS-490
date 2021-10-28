@@ -59,7 +59,7 @@ function follow($follower, $username)
     foreach($followList as $value)
     {
           //make query
-         $q2 = "SELECT Title AS title, Description AS description, Link AS link, Creator AS creator FROM post WHERE Creator = '$value[username]'";
+         $q2 = "SELECT Title AS title, Description AS description, Link AS link, Creator AS creator, id AS id FROM post WHERE Creator = '$value[username]'";
          $r = @mysqli_query ($dbc, $q2); 
      
          // get list of posts
@@ -84,8 +84,7 @@ function follow($follower, $username)
     
     
 }
- 
- 
+  
  ?>
  </body> 
  </html>
