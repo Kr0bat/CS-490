@@ -95,7 +95,7 @@ function setRead($recipient, $sender)
     require('databaseConnect.php');
     
     //make query
-    $q1 = " UPDATE chat SET read_status = 1  WHERE (sender = '$sender' AND recipient = '$recipient') OR (sender = '$recipient' AND recipient = '$sender')";
+    $q1 = " UPDATE chat SET recipient_read = 1  WHERE (sender = '$sender' AND recipient = '$recipient')";
     
     //execute query
     $r = @mysqli_query ($dbc, $q1);
