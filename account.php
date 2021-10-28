@@ -13,8 +13,9 @@
 <body  style="background-color: #161616; font-family: 'Montserrat', sans-serif;">
 <?php
 session_start();
-include("users.php");
+include("profile-controller.php"); //profile-controller includes posts.php
 include("factory.php");
+include("users.php");
 
 //
 // =======

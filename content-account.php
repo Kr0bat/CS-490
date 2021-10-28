@@ -302,6 +302,10 @@ td.emptyGrid33 {
             "comments" => []
             ]
         ];
+
+        $postList = [];
+
+        $postList = getUserPosts($_GET['viewing']);
         
         foreach ($postList as $postID => $info) {
         ?>
@@ -644,6 +648,10 @@ td.emptyGrid33 {
             "comments" => []
             ]
         ];
+
+        $postList = [];
+
+        $postList = getUserPosts($_SESSION['username']);
         
         foreach ($postList as $postID => $info) {
         ?>
