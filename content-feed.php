@@ -271,21 +271,6 @@ if (isset($_GET['successMsg'])) {
                                             </span>
                                         </a>
                                     </td>
-                                    <td style="padding-left: 0.5ch">
-                                        <div class="col-12">
-                                            <a href="/~kg448/account.php?viewing=<?php echo $commentInfo["creator"]; ?>&redirectFrom=feed" title="View <?php echo $commentInfo["creator"]; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
-                                                <?php echo getProfile($commentInfo['creator'])["fname"];
-
-                                                if (isAdmin($commentInfo["creator"])) {
-                                                print('
-                                                    <span class="subtitleLight" style="font-size: 18px; color: rgb(144, 85, 54); padding-left: 5px;">
-                                                        Admin
-                                                    </span>');
-                                                } 
-                                                ?>
-                                            </a>
-                                        </div>
-                                    </td>
                                     <td style="padding-left: 1ch">
                                         <div class="col-12" style="color: #a2a2a2;">
                                             <?php echo $commentInfo["description"]; ?>
