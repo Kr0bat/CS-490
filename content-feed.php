@@ -119,6 +119,16 @@ if( $detect->isMobile() && !$detect->isTablet() ){
     $isMobile = true;
 }
 
+if (isset($_GET['successMsg'])) {
+    $user = $_GET['successMsg'];
+    print('
+    <header>
+        <div class="headerText" style="width: 100%; margin: 0 0 2vh 0; padding: 2vh 0; text-align: center; font-size: max(1.35vw, 2.5vh); color: #eaeaea; background-color: #599c51ff">
+            New User: '.$user.' successfully created
+        </div>
+    </header>');
+}
+
 ?>
 <body>
     <div class="col-12" style="font-size: 22.5px; <?php if (!$isMobile) { echo "padding-left: 10ch"; } ?>">
