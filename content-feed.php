@@ -185,28 +185,21 @@ if (isset($_GET['successMsg'])) {
                                         </table>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td style="text-align: right; width: 100%;">
-                                        <div class="subtitleLight" style="position: relative; font-size: 20px; margin-top: 0.2ch; text-decoration: none;">
-                                            <a href="<?php echo $info['link']; ?>" class="subtitleLight" style="font-size: 20px; text-decoration: none;" title="Open song link">
-                                                Go to song ↗
-                                            </a>    
-                                        </div>
-                                    </td>
-                                </tr>
                             </tbody>
                         </table>
                         <table style="margin: 0; width: 100%;">
                             <tbody>
                                 <tr>
                                     <td style="max-width: fit-content;">
-                                        <span class="">
-                                            <img src="assets/logo_spotify.png" class="logoImg" style="border-width: 0.05px; border-radius: 0.35ch; height: 15ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
-                                        </span>
+                                        <a href="<?php echo $info['link']; ?>">
+                                            <span class="">
+                                                <img src="assets/logo_spotify.png" class="logoImg" style="border-width: 0.05px; border-radius: 0.35ch; width: clamp(100%, 100%, 25ch); border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                            </span>
+                                        </a>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td style="padding-left: 1.69ch; vertical-align: top; height: 15ch; width: 100%;">
+                                    <td style="padding-left: 1ch; vertical-align: top; width: 100%;">
                                         <div class="col-12" style="height: 7.5ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
                                             <div class="col-12" style="margin-top: 0.5ch;">
                                                 <?php echo $info['title']; ?>
@@ -215,7 +208,7 @@ if (isset($_GET['successMsg'])) {
                                                 <?php echo $info['description']; ?>
                                             </div>
                                         </div>
-                                        <div class="col-6" style="height: 8ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 2.65ch;">
+                                        <div class="col-12" style="overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 1ch;">
                                             <div class="col-12" style="margin-top: 0ch; vertical-align: bottom; font-weight: normal;">
                                                 Song Title Here
                                             </div>
@@ -226,10 +219,19 @@ if (isset($_GET['successMsg'])) {
                                                 Artist
                                             </div>
                                         </div>
-                                        <div class="col-6" style="height: 8ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 5ch; text-align: right;">
-                                            <div class="col-12" style="">
-                                                <img src="assets/comment.png" onclick="openComment(<?php echo $info['id'] ?>)" class="" style="border-width: 0; height: 3ch; margin-top: 0; cursor: pointer;" />
-                                                <img src="assets/heart-off.png" onclick="toggleLike(<?php echo $info['id'] ?>)" class="" style="border-width: 0; height: 3ch; margin-left: 0.75ch; cursor: pointer;" />
+                                        <div class="col-12" style="overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 1ch; text-align: center;">
+                                            <table style="margin: 0; width: 100%;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="width: 50%">
+                                                            <img src="assets/comment.png" onclick="openComment(<?php echo $info['id'] ?>)" class="" style="border-width: 0; height: 3ch; margin-top: 0; cursor: pointer;" />
+                                                        </td>
+                                                        <td style="width: 50%">
+                                                            <img src="assets/heart-off.png" onclick="toggleLike(<?php echo $info['id'] ?>)" class="" style="border-width: 0; height: 3ch; margin-left: 0; cursor: pointer;" />
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
                                             </div>
                                         </div>
                                     </td>
