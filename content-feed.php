@@ -204,7 +204,7 @@ if (isset($_GET['successMsg'])) {
                                 <tr>
                                     <td style="padding-left: 0ch; vertical-align: top; width: 100%;">
                                         <div class="col-12" style="overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
-                                            <div class="col-12" style="margin-top: 0.5ch;">
+                                            <div class="col-12" style="margin-top: 1.5ch;">
                                                 <?php echo $info['title']; ?>
                                             </div>
                                             <div class="col-12 subtitleLight" style="font-size: 16px; margin-top: 0.5ch; text-overflow: ellipsis; overflow: hidden;">
