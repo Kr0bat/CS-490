@@ -961,5 +961,44 @@ button.slideButton {
         margin-top: -2vh;
     }
 
+
+    /*                          */
+    /* - 490 Project Specific - */
+    /*                          */
+    .titleLight {
+        font-size: 30px;
+        color: #ffffff;
+        font-weight: 400;
+    }
+    .titleBold {
+        font-size: 30px;
+        color: #ffffff;
+        font-weight: bolder;
+    }
+
+    .subtitleLight {
+        font-size: 22.5px;
+        color: #a2a2a2;
+        font-weight: 400;
+        font-style: italic;
+    }
+    .subtitleBold {
+        font-size: 22.5px;
+        color: #a2a2a2;
+        font-weight: bolder;
+        font-style: italic;
+    }
+
+    .bodyLight {
+        font-size: 16px;
+        color: #ffffff;
+        font-weight: 400;
+    }
+    .bodyBold {
+        font-size: 16px;
+        color: #ffffff;
+        font-weight: bolder;
+    }
+
 }
 
