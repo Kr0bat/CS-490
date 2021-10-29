@@ -200,7 +200,7 @@ if (isset($_GET['successMsg'])) {
                                 </tr>
                                 <tr>
                                     <td style="padding-left: 1ch; vertical-align: top; width: 100%;">
-                                        <div class="col-12" style="height: 7.5ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+                                        <div class="col-12" style="overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
                                             <div class="col-12" style="margin-top: 0.5ch;">
                                                 <?php echo $info['title']; ?>
                                             </div>
@@ -209,14 +209,14 @@ if (isset($_GET['successMsg'])) {
                                             </div>
                                         </div>
                                         <div class="col-12" style="overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 1ch;">
-                                            <div class="col-12" style="margin-top: 0ch; vertical-align: bottom; font-weight: normal;">
+                                            <div class="col-12" style="overflow: hidden; text-overflow: ellipsis; word-break: break-word; margin-top: 0ch; vertical-align: bottom; font-weight: normal;">
                                                 Song Title Here
-                                                <span class="subtitleLight" style="font-size: 16px; text-overflow: ellipsis; overflow: hidden;">
-                                                    Artist
+                                                <span class="subtitleLight" style="font-size: 16px; text-overflow: ellipsis; overflow: hidden; padding-left: 1.5ch;">
+                                                    (Artist)
                                                 </span>
                                             </div>
                                         </div>
-                                        <div class="col-12" style="overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 0.5ch; text-align: center;">
+                                        <div class="col-12" style="overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 1ch; text-align: center;">
                                             <table style="margin: 0; width: 100%;">
                                                 <tbody>
                                                     <tr>
