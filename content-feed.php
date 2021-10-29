@@ -193,7 +193,7 @@ if (isset($_GET['successMsg'])) {
                                     <td style="max-width: fit-content;">
                                         <a href="<?php echo $info['link']; ?>">
                                             <span class="">
-                                                <img src="assets/logo_spotify.png" class="" style="background: rgb(19, 19, 19); font-size: 16px; border-width: 0px; border-radius: 1ch 1ch 0 0; width: clamp(100%, 100%, 25ch); border-style: solid; border-color: rgba(255, 255, 255, 0); margin-top: 0.5ch;" />
+                                                <img src="assets/logo_spotify.png" class="logoImg" style="background: rgb(19, 19, 19); font-size: 16px; border-width: 0px; border-radius: 1ch 1ch 0 0; width: clamp(100%, 100%, 25ch); border-style: solid; border-color: rgba(255, 255, 255, 0); margin-top: 0.5ch;" />
                                                 <div class="col-12 subtitleLight logoImg" style="font-size: 16px; background: rgb(19, 19, 19); border-radius: 0 0 1ch 1ch; padding: 0.5ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word; margin-top: -0.5ch;">
                                                     Song Title Here ↗
                                                 </div>
