@@ -18,7 +18,7 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
     // BASIC USER
     // -------
     $role = "basic";
-    include("sidebar-basic.php");
+    include("sidebar-admin.php");
 
 } else {
     $role = false;
