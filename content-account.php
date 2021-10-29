@@ -543,7 +543,7 @@ td.emptyGrid33 {
 
     <div class="col-12" style="margin-top: 5vh; text-align: right;">
         <div class="col-11 subtitleBold underlineOnHover" style="">
-            <a href="/~kg448/index.php?logout=true" class="subtitleBold" style="font-size: 18px; text-decoration: none;">
+            <a href="/~kg448/index.php?logout=true" class="subtitleBold underlineOnHover" style="font-size: 18px; text-decoration: none;">
                 Log Out
             </a>
         </div>
