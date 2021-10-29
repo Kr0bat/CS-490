@@ -196,7 +196,10 @@ if (isset($_GET['successMsg'])) {
                                                 <div class="col-12 bodyLight" style="background: black; border-radius: 0.35ch 0.35ch 0 0; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
                                                     Song Title Here
                                                 </div>
-                                                <img src="assets/logo_spotify.png" class="logoImg" style="border-width: 0.05px; border-radius: 0.35ch; width: clamp(100%, 100%, 25ch); border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                                <img src="assets/logo_spotify.png" class="logoImg" style="border-width: 0.05px; border-radius: 0.35ch; width: clamp(100%, 100%, 25ch); border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0ch;" />
+                                                <div class="col-12 bodyLight" style="background: black; border-radius: 0 0 0.35ch 0.35ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word;">
+                                                    Song Title Here
+                                                </div>
                                             </span>
                                         </a>
                                     </td>
