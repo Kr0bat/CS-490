@@ -52,7 +52,7 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
     // \/ \/ \/ \/ \/ KARIM'S CODE STARTS HERE \/ \/ \/ \/ \/
     if (isset($_POST['newuser_submit'])){
 
-        include("users.php");
+
 
         $username = $_POST['newuser_username'];
         $password = $_POST['newuser_password'];
@@ -68,10 +68,18 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
 
         print($username.' '.$password.'<br/>'.$type.'<br/>'.$firstName.' '.$lastName);
         
-        // UNCOMMENT THIS WHEN READY TO RUN:
-        // createAccount($username, $password, $type, $firstName, $lastName);
+        // UNCOMMENT THIS WHEN READY TO RUN:v
+        
+        if ( is_null(getProfile($username)) ){
+         createAccount($username, $password, $type, $firstName, $lastName);
+         print($username. " Was created!");
+        }
+        else{
+            //do some html stuff Max
+        }
 
         //header("Location: /~kg448/feed.php?successMsg=userCreated");
+        
     }
     // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ KARIM'S CODE ENDS HERE ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
     //
