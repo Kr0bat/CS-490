@@ -243,7 +243,7 @@ if ($isMobile) {
                                 <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="imgFitMid logoImg" style="border-radius: 100%; height: 3ch; width: 3ch; border-style: solid; border-color: <?php if ($currPage == 'account') { print("#56b35e; border-width: 0.2ch;"); } else { print("rgba(255, 255, 255, 0.15)"); } ?>;" />
                             </a>
                         </div>
-                        <div style="margin-top: 0px; font-size: 18px;">
+                        <div style="margin-top: 0px; font-size: 18px; padding-left: 4px; width: 7.5ch; overflow: hidden; text-overflow: ellipsis;">
                             <a href="/~kg448/account.php" class="linkLight underlineOnHover" style="">
                                 <?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["fname"]; } else { echo "Max"; } ?>
                             </a>
