@@ -68,6 +68,12 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
         $user = ucfirst($user);
         insertPost($user, $title, $description, $link);
         header("Location: /~kg448/feed.php");
+        print('
+        <header>
+            <div class="headerText" style="width: 100%; margin: 0 0 2vh 0; padding: 2vh 0; text-align: center; font-size: max(1.35vw, 2.5vh); color: #eaeaea; background-color: #599c51ff">
+                Successfully uploaded post
+            </div>
+        </header>');
     }
     // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ KARIM'S CODE ENDS HERE ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
     //
