@@ -63,6 +63,17 @@ function checkLogin( $name, $pass ) {
 // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ KARIM'S CODE ENDS HERE ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
 //
 
+//
+// -----
+// LOG OUT
+// -----
+//
+if (isset($_GET['logout'])) {
+    $_SESSION['role'] = 'logged out';
+    $_SESSION['username'] = '';
+    $_SESSION['password'] = '';
+    header("Location: /~kg448/index.php");
+}
 
 ?>
 <style>
