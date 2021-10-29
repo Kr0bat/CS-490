@@ -211,14 +211,14 @@ if (isset($_GET['successMsg'])) {
                                                 <?php echo $info['description']; ?>
                                             </div>
                                         </div>
-                                        <div class="col-12" style="overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 1ch;">
+                                        <!--div class="col-12" style="overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 1ch;">
                                             <div class="col-12" style="overflow: hidden; text-overflow: ellipsis; word-break: break-word; margin-top: 0ch; vertical-align: bottom; font-weight: normal;">
                                                 Song Title Here
                                                 <span class="subtitleLight" style="font-size: 16px; text-overflow: ellipsis; overflow: hidden; padding-left: 1.5ch;">
                                                     (Artist)
                                                 </span>
                                             </div>
-                                        </div>
+                                        </div-->
                                         <div class="col-12" style="overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 1ch; text-align: center;">
                                             <table style="margin: 0; width: 100%;">
                                                 <tbody>
