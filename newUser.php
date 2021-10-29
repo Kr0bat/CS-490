@@ -66,17 +66,20 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
             $type = "basic";
         }
         
-        // UNCOMMENT THIS WHEN READY TO RUN:v
-        
         if ( is_null(getProfile($username)) ){
             createAccount($username, $password, $type, $firstName, $lastName);
-            header("Location: /~kg448/feed.php?successMsg=$username");
+            print('
+            <header>
+                <div class="headerText" style="width: 100%; margin: 0 0 2vh 0; padding: 2vh 0; text-align: center; font-size: max(1.35vw, 2.5vh); color: #eaeaea; background-color: #599c51ff">
+                    Successfully created user '.$username.'
+                </div>
+            </header>');
         }
         else{
             print('
             <header>
                 <div class="headerText" style="width: 100%; margin: 0 0 2vh 0; padding: 2vh 0; text-align: center; font-size: max(1.35vw, 2.5vh); color: #eaeaea; background-color: #9c5151ff">
-                    Username already exists
+                    '.$username.' already exists
                 </div>
             </header>');
         }
