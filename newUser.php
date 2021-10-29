@@ -139,7 +139,7 @@ button {
                 </div>
             </div>
             <div class="col-10 push-1" style="margin: 2ch 0 0.5ch 0;">
-                <div class="col-55 colsm-12 pushsm-0" style="margin-bottom: 1ch;">
+                <div class="col-55 colsm-12 pushsm-0" style="margin-bottom: 2ch;">
                     <input maxlength="40" type="text" name="newuser_first" placeholder="First Name" value="" style="width: 100%; background-color: #000; border-color: #090909; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px;" required />
                 </div>
                 <div class="col-55 push-1 colsm-12 pushsm-0">
