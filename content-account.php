@@ -26,12 +26,27 @@
     border-style: solid;
     border-color: #436339;
 }
+.unfollowContainer {
+    border-radius: 1ch;
+    padding: 1ch;
+    background: #2a3a52;
+    border-style: solid;
+    border-color: #45596e;
+}
+.followContainer {
+    border-radius: 1ch;
+    padding: 1ch;
+    background: #2a3a5239;
+    border-style: solid;
+    border-color: #394a5c;
+}
 .blockContainer {
     border-radius: 1ch;
     padding: 1ch;
     background: #3d2222;
     border-style: solid;
     border-color: #654040;
+    text-align: center;
 }
 .statContainer {
     border-radius: 1ch;
@@ -134,8 +149,7 @@ td.emptyGrid33 {
 <div class="col-12" style="font-size: 22.5px; <?php if (!$isMobile) { echo "padding-left: 10ch"; } ?>">
     
     <?php
-
-        if (isset($_GET['viewing'])) {
+        if (isset($_GET['viewing']) && (strtolower($_GET['viewing']) != strtolower($_SESSION['username']))) {
             // SHOW SOMEONE ELSE'S PROFILE
     ?>
 
@@ -149,7 +163,16 @@ td.emptyGrid33 {
     <div class="col-12" style="margin: 10vh 0">
         <div class="col-10 push-1 bodyLight" style="">
             <div class="col-2">
-                <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_GET['viewing'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="imgFitMid logoImg" style="border-radius: 100%; height: min(10ch, 10vw); width: min(10ch, 10vw); border-style: solid; border-color: rgba(255, 255, 255, 0.15);" />
+                <div class="col-12">
+                    <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_GET['viewing'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="imgFitMid logoImg" style="border-radius: 100%; height: min(10ch, 10vw); width: min(10ch, 10vw); border-style: solid; border-color: rgba(255, 255, 255, 0.15);" />
+                </div>
+                <?php if ($_SESSION['role'] == 'admin') { ?>
+                    <a href="/~kg448/account.php?viewing=<?php echo $_GET['viewing']; ?>&adminBan=<?php echo $_GET['viewing']; ?>">
+                        <div class="col-12 blockContainer" style="width: min(10ch, 10vw); margin-top: 1.5ch;">
+                            Ban User
+                        </div>
+                    </a>
+                <?php } ?>
             </div>
             <div class="col-8 push-05">
                 <div class="col-12 titleLight">
@@ -209,7 +232,7 @@ td.emptyGrid33 {
                                         <table class="bodyBold" style="width: 100%">
                                             <tbody>
                                                 <tr style="width: 100%">
-                                                    <td style="text-align: right; width: 50%;">
+                                                    <td style="text-align: right; width: 46%;">
                                                         <img src="assets/comment.png" class="" style="border-width: 0; height: 2ch; margin-top: 0; cursor: pointer; padding-right: 0.5ch;" />
                                                     </td>
                                                     <td class="underlineOnHover" style="text-align: left; width: 50%; padding-left: 0ch;">
@@ -219,18 +242,83 @@ td.emptyGrid33 {
                                             </tbody>
                                         </table>
                                     </a>
-                                    </td>
+                                </td>
+                                <td style="width: 1ch"></td>
 
-                                    <?php if ($_SESSION['role'] == "admin") { ?>
+                                <?php 
+                                if (isset($_GET['flipFollowing']) && isset($_GET['viewing'])) {
+                                    if ($_GET['flipFollowing'] == $_GET['viewing']) {
+                                ?>
 
-                                    <td style="width: 1ch"></td>
-                                    <td class="blockContainer bodyBold underlineOnHover">
-                                        Block User
-                                    </td>
+                                <td class="unfollowContainer bodyBold underlineOnHover">
+                                    <a href="/~kg448/account.php?viewing=<?php echo $_GET['viewing']; ?>">
+                                        <table class="bodyBold" style="width: 100%">
+                                            <tbody>
+                                                <tr style="width: 100%">
+                                                    <td style="text-align: right; width: 44%;">
+                                                        <div style="margin-top: 0.3ch;">
+                                                            <img src="assets/comment.png" class="" style="border-width: 0; height: 2ch; margin-top: 0; cursor: pointer; padding-right: 0.5ch; content: url('data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9JzMwMHB4JyB3aWR0aD0nMzAwcHgnICBmaWxsPSIjRkZGRkZGIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNjQgNjQiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDY0IDY0IiB4bWw6c3BhY2U9InByZXNlcnZlIj48cGF0aCBkPSJNNTEuMzMsMzQuOGMzLjUsMi4xNyw1LjY3LDYuMDgsNS42NywxMC4xOWMwLDQuNDUtMi41NSw4LjY0LTYuNTEsMTAuNjhjLTEuNjYsMC44NS0zLjU1LDEuMzExLTUuNDYsMS4zMTEgIGMtMS40OSwwLTIuOTYtMC4yOC00LjMzLTAuODAxYy0xLjAxLTAuMzgtMS45Ni0wLjg5LTIuODItMS41MjljLTMuMzMtMi40Ni01LjE4LTYuNTUxLTQuODQtMTAuNjgxYzAuMzUtNC4wNjksMi44Mi03Ljc3LDYuNDctOS42NDkgIGMxLjY3LTAuODYsMy41NjEtMS4zMTEsNS40OC0xLjMxMWMwLjM5LDAsMC43OSwwLjAyMSwxLjE3LDAuMDdDNDguMDEsMzMuMjQsNDkuNzgsMzMuODMsNTEuMzMsMzQuOHogTTUwLjY2LDQwLjc1ICBjMC4zOS0wLjM5LDAuMzktMS4wMiwwLTEuNDFjLTAuMzkxLTAuMzktMS4wMy0wLjM5LTEuNDIsMEw0NSw0My41OGwtNC4yNC00LjI0Yy0wLjM5LTAuMzktMS4wMjktMC4zOS0xLjQyLDAgIGMtMC4zOSwwLjM5MS0wLjM5LDEuMDIxLDAsMS40MUw0My41OSw0NWwtNC4yNSw0LjI0Yy0wLjM5LDAuMzktMC4zOSwxLjAyLDAsMS40MWMwLjIsMC4xOTksMC40NSwwLjI5LDAuNzEsMC4yOSAgczAuNTEtMC4wOTEsMC43MS0wLjI5TDQ1LDQ2LjQxbDQuMjQsNC4yNGMwLjIsMC4xOTksMC40NSwwLjI5LDAuNzEsMC4yOXMwLjUxLTAuMDkxLDAuNzEtMC4yOWMwLjM5LTAuMzkxLDAuMzktMS4wMjEsMC0xLjQxICBMNDYuNDIsNDVMNTAuNjYsNDAuNzV6Ij48L3BhdGg+PHBhdGggZD0iTTQxLjUsMTguNDljMCwzLjEwOS0xLjI2LDYuMDItMy41Niw4LjJjLTAuNDYsMC40MzktMC45NiwwLjg0LTEuNDgsMS4xODljLTEuOTYsMS4zNC00LjI5LDIuMDktNi42MywyLjA5ICBjLTEuNzcsMC0zLjQ4LTAuNDItNS4wNy0xLjIzOWMtMC40NS0wLjIzLTAuODctMC40OS0xLjI4LTAuNzYxYy0wLjAxLTAuMDItMC4wMS0wLjAyLTAuMDItMC4wMmMtMi45LTIuMDMtNC43OS01LjQtNC45NS04Ljk0ICBjLTAuMTgtNC4xNDksMS44OS04LjA5LDUuNDEtMTAuMjc5QzI1LjczLDcuNiwyNy44Myw3LjAxLDMwLjAxLDcuMDFjMiwwLDMuOTUsMC41MSw1LjY2LDEuNDcxQzM5LjI2LDEwLjUzLDQxLjUsMTQuMzYsNDEuNSwxOC40OXoiPjwvcGF0aD48cGF0aCBkPSJNMzcuMTksMjkuNzljMS42ODksMC4zNywzLjM1OSwwLjg4LDQuOTcsMS41MWMtMS4yNSwwLjI1LTIuNDUsMC42Ny0zLjU3LDEuMjRjLTQuMjUsMi4yLTcuMTQsNi41MS03LjU0LDExLjI2ICBjLTAuNDEsNC44MiwxLjc1LDkuNTksNS42NDEsMTIuNDZjMC4xNDksMC4xMSwwLjMsMC4yMjEsMC40NDksMC4zMmMtOS40OSwxLjEtMTkuMTYtMC4wMjEtMjguMTY5LTMuMjlDNy43OSw1Mi44Niw3LDUxLjczLDcsNTAuNDcgIHYtNi45NmMwLTMuNzcsMS44OS03LjIyOSw1LjA3LTkuMjdjMy4yNi0yLjA5LDYuODItMy41OCwxMC42LTQuNDJjMC4zOCwwLjI1LDAuNzcsMC40NzksMS4xOCwwLjY4OWMxLjg4LDAuOTcxLDMuODksMS40Niw1Ljk4LDEuNDYgIEMzMi40MSwzMS45NywzNC45OSwzMS4xOSwzNy4xOSwyOS43OXoiPjwvcGF0aD48L3N2Zz4=');" />
+                                                        </div>
+                                                    </td>
+                                                    <td class="underlineOnHover" style="text-align: left; width: 50%; padding-left: 0ch;">
+                                                        Unfollow
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </a>
+                                </td>
 
-                                    <?php } ?>
+                                <?php
+                                    } else {
+                                ?>
 
-                                </a>
+                                <td class="followContainer bodyBold underlineOnHover">
+                                    <a href="/~kg448/account.php?viewing=<?php echo $_GET['viewing']; ?>&flipFollowing=<?php echo $_GET['viewing']; ?>">
+                                        <table class="bodyBold" style="width: 100%">
+                                            <tbody>
+                                                <tr style="width: 100%">
+                                                    <td style="text-align: right; width: 44%;">
+                                                        <div style="margin-top: 0.3ch;">
+                                                            <img src="assets/comment.png" class="" style="border-width: 0; height: 2ch; margin-top: 0; cursor: pointer; padding-right: 0.5ch; content: url('data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9JzMwMHB4JyB3aWR0aD0nMzAwcHgnICBmaWxsPSIjRkZGRkZGIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNjQgNjQiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDY0IDY0IiB4bWw6c3BhY2U9InByZXNlcnZlIj48cGF0aCBkPSJNNDEuNSwxOC40OWMwLDMuMTA5LTEuMjYsNi4wMi0zLjU2LDguMmMtMC40NiwwLjQzOS0wLjk2LDAuODQtMS40OCwxLjE4OWMtMS45NiwxLjM0LTQuMjksMi4wOS02LjYzLDIuMDkgIGMtMS43NywwLTMuNDgtMC40Mi01LjA3LTEuMjM5Yy0wLjQ1LTAuMjMtMC44Ny0wLjQ5LTEuMjgtMC43NjFjLTAuMDEtMC4wMi0wLjAxLTAuMDItMC4wMi0wLjAyYy0yLjktMi4wMy00Ljc5LTUuNC00Ljk1LTguOTQgIGMtMC4xOC00LjE0OSwxLjg5LTguMDksNS40MS0xMC4yNzlDMjUuNzMsNy42LDI3LjgzLDcuMDEsMzAuMDEsNy4wMWMyLDAsMy45NSwwLjUxLDUuNjYsMS40NzFDMzkuMjYsMTAuNTMsNDEuNSwxNC4zNiw0MS41LDE4LjQ5eiI+PC9wYXRoPjxwYXRoIGQ9Ik0zNy4xOSwyOS43OWMxLjY5LDAuMzcsMy4zNiwwLjg4LDQuOTcsMS41MWMtMS4yNSwwLjI1LTIuNDUsMC42Ny0zLjU3LDEuMjRjLTQuMjUsMi4yLTcuMTQsNi41MS03LjU0LDExLjI2ICBjLTAuNDEsNC44MiwxLjc1LDkuNTksNS42NCwxMi40NmMwLjE1LDAuMTEsMC4zLDAuMjIxLDAuNDUsMC4zMmMtOS40OSwxLjEtMTkuMTctMC4wMjEtMjguMTctMy4yOUM3Ljc5LDUyLjg2LDcsNTEuNzMsNyw1MC40NyAgdi02Ljk2YzAtMy43NywxLjg5LTcuMjI5LDUuMDctOS4yN2MzLjI2LTIuMDksNi44Mi0zLjU4LDEwLjYtNC40MmMwLjM4LDAuMjUsMC43NywwLjQ3OSwxLjE4LDAuNjg5YzEuODgsMC45NzEsMy44OSwxLjQ2LDUuOTgsMS40NiAgYzEuNzMsMCwzLjQ2LTAuMzUsNS4wOC0xQzM1LjcsMzAuNjUsMzYuNDYsMzAuMjUsMzcuMTksMjkuNzl6Ij48L3BhdGg+PHBhdGggZD0iTTUxLjMzLDM0LjhjMy41LDIuMTcsNS42Nyw2LjA4LDUuNjcsMTAuMTljMCw0LjQ1LTIuNTUsOC42NC02LjUxLDEwLjY4Yy0xLjY2LDAuODUtMy41NSwxLjMxMS01LjQ2LDEuMzExICBjLTAuMzksMC0wLjc4LTAuMDIxLTQuMzMtMC44MDFsLTIuODItMS41MjljLTMuMzMtMi40Ni01LjE5LTYuNTUxLTQuODQtMTAuNjgxYzAuMzUtNC4wNjksMi44Mi03Ljc3LDYuNDctOS42NDkgIGMxLjY3LTAuODYsMy41Ni0xLjMxMSw1LjQ4LTEuMzExYzAuMzksMCwwLjc5LDAuMDIxLDEuMTcsMC4wN0M0OC4wMSwzMy4yNCw0OS43OCwzMy44Myw1MS4zMywzNC44eiBNNTMsNDQuOTljMC0wLjU1LTAuNDUtMS0xLTFoLTYgIHYtNmMwLTAuNTUtMC40NS0xLTEtMXMtMSwwLjQ1LTEsMXY2aC02Yy0wLjU1LDAtMSwwLjQ1LTEsMWMwLDAuNTYsMC40NSwxLDEsMWg2djZjMCwwLjU2LDAuNDUsMSwxLDFzMS0wLjQ0LDEtMXYtNmg2ICBDNTIuNTUsNDUuOTksNTMsNDUuNTUsNTMsNDQuOTl6Ij48L3BhdGg+PC9zdmc+');" />
+                                                        </div>
+                                                    </td>
+                                                    <td class="underlineOnHover" style="text-align: left; width: 50%; padding-left: 0ch;">
+                                                        Follow
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </a>
+                                </td>
+                                    
+                                <?php
+                                    }
+                                } else {
+                                ?>
+
+                                <td class="followContainer bodyBold underlineOnHover">
+                                    <a href="/~kg448/account.php?viewing=<?php echo $_GET['viewing']; ?>&flipFollowing=<?php echo $_GET['viewing']; ?>">
+                                        <table class="bodyBold" style="width: 100%">
+                                            <tbody>
+                                                <tr style="width: 100%">
+                                                    <td style="text-align: right; width: 44%;">
+                                                        <div style="margin-top: 0.3ch;">
+                                                            <img src="assets/comment.png" class="" style="border-width: 0; height: 2ch; margin-top: 0; cursor: pointer; padding-right: 0.5ch; content: url('data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9JzMwMHB4JyB3aWR0aD0nMzAwcHgnICBmaWxsPSIjRkZGRkZGIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNjQgNjQiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDY0IDY0IiB4bWw6c3BhY2U9InByZXNlcnZlIj48cGF0aCBkPSJNNDEuNSwxOC40OWMwLDMuMTA5LTEuMjYsNi4wMi0zLjU2LDguMmMtMC40NiwwLjQzOS0wLjk2LDAuODQtMS40OCwxLjE4OWMtMS45NiwxLjM0LTQuMjksMi4wOS02LjYzLDIuMDkgIGMtMS43NywwLTMuNDgtMC40Mi01LjA3LTEuMjM5Yy0wLjQ1LTAuMjMtMC44Ny0wLjQ5LTEuMjgtMC43NjFjLTAuMDEtMC4wMi0wLjAxLTAuMDItMC4wMi0wLjAyYy0yLjktMi4wMy00Ljc5LTUuNC00Ljk1LTguOTQgIGMtMC4xOC00LjE0OSwxLjg5LTguMDksNS40MS0xMC4yNzlDMjUuNzMsNy42LDI3LjgzLDcuMDEsMzAuMDEsNy4wMWMyLDAsMy45NSwwLjUxLDUuNjYsMS40NzFDMzkuMjYsMTAuNTMsNDEuNSwxNC4zNiw0MS41LDE4LjQ5eiI+PC9wYXRoPjxwYXRoIGQ9Ik0zNy4xOSwyOS43OWMxLjY5LDAuMzcsMy4zNiwwLjg4LDQuOTcsMS41MWMtMS4yNSwwLjI1LTIuNDUsMC42Ny0zLjU3LDEuMjRjLTQuMjUsMi4yLTcuMTQsNi41MS03LjU0LDExLjI2ICBjLTAuNDEsNC44MiwxLjc1LDkuNTksNS42NCwxMi40NmMwLjE1LDAuMTEsMC4zLDAuMjIxLDAuNDUsMC4zMmMtOS40OSwxLjEtMTkuMTctMC4wMjEtMjguMTctMy4yOUM3Ljc5LDUyLjg2LDcsNTEuNzMsNyw1MC40NyAgdi02Ljk2YzAtMy43NywxLjg5LTcuMjI5LDUuMDctOS4yN2MzLjI2LTIuMDksNi44Mi0zLjU4LDEwLjYtNC40MmMwLjM4LDAuMjUsMC43NywwLjQ3OSwxLjE4LDAuNjg5YzEuODgsMC45NzEsMy44OSwxLjQ2LDUuOTgsMS40NiAgYzEuNzMsMCwzLjQ2LTAuMzUsNS4wOC0xQzM1LjcsMzAuNjUsMzYuNDYsMzAuMjUsMzcuMTksMjkuNzl6Ij48L3BhdGg+PHBhdGggZD0iTTUxLjMzLDM0LjhjMy41LDIuMTcsNS42Nyw2LjA4LDUuNjcsMTAuMTljMCw0LjQ1LTIuNTUsOC42NC02LjUxLDEwLjY4Yy0xLjY2LDAuODUtMy41NSwxLjMxMS01LjQ2LDEuMzExICBjLTAuMzksMC0wLjc4LTAuMDIxLTQuMzMtMC44MDFsLTIuODItMS41MjljLTMuMzMtMi40Ni01LjE5LTYuNTUxLTQuODQtMTAuNjgxYzAuMzUtNC4wNjksMi44Mi03Ljc3LDYuNDctOS42NDkgIGMxLjY3LTAuODYsMy41Ni0xLjMxMSw1LjQ4LTEuMzExYzAuMzksMCwwLjc5LDAuMDIxLDEuMTcsMC4wN0M0OC4wMSwzMy4yNCw0OS43OCwzMy44Myw1MS4zMywzNC44eiBNNTMsNDQuOTljMC0wLjU1LTAuNDUtMS0xLTFoLTYgIHYtNmMwLTAuNTUtMC40NS0xLTEtMXMtMSwwLjQ1LTEsMXY2aC02Yy0wLjU1LDAtMSwwLjQ1LTEsMWMwLDAuNTYsMC40NSwxLDEsMWg2djZjMCwwLjU2LDAuNDUsMSwxLDFzMS0wLjQ0LDEtMXYtNmg2ICBDNTIuNTUsNDUuOTksNTMsNDUuNTUsNTMsNDQuOTl6Ij48L3BhdGg+PC9zdmc+');" />
+                                                        </div>
+                                                    </td>
+                                                    <td class="underlineOnHover" style="text-align: left; width: 50%; padding-left: 0ch;">
+                                                        Follow
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </a>
+                                </td>
+
+                                <?php
+                                }
+                                ?>
                             </tr>
                         </tbody>
                     </table>
@@ -520,7 +608,7 @@ td.emptyGrid33 {
                         Paste link to new profile picture:
                     </div>
                     <div class="col-11 bodyLight" style="margin-top: 0.25ch;">
-                        <input maxlength="100" type="text" name="edit_account_pfp_link" placeholder="URL to picture" value="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" style="font-size: 20px; width: 100%; margin: 2px 0; background-color: #00000000; border-color: #56b35e32; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 10px; text-align: left;" required />
+                        <input maxlength="100" type="search" name="edit_account_pfp_link" placeholder="URL to picture" value="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" style="font-size: 20px; width: 100%; margin: 2px 0; background-color: #00000000; border-color: #56b35e32; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 10px; text-align: left;" required />
                     </div>
                     <div class="col-11 bodyLight" style="margin-top: 1.5ch;">
                         Description:
@@ -587,6 +675,43 @@ td.emptyGrid33 {
                             edit profile
                         </span>
                     </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12" style="margin-top: 0.5vh">
+        <div class="col-10 push-1 titleBold" style="font-size: 22.5px">
+            Statistics
+        </div>
+    </div>
+    <div class="col-12" style="margin-top: 0vh">
+        <div class="col-10 push-1">
+            <div class="col-12" style="margin: 2ch 0 1ch 0">
+                <div class="col-11 bodyBold statContainer">
+                    <table style="width: 100%;">
+                        <tbody>
+                            <tr style="height: 1ch;"></tr>
+                            <tr style="width: 100%; text-align: center;">
+                                <td class="bodyBold" style="width: 49%; font-size: 30px;">
+                                    69
+                                </td>
+                                <td style="width: 1ch"></td>
+                                <td class="bodyBold" style="width: 49%; font-size: 30px;">
+                                    420
+                                </td>
+                            </tr>
+                            <tr style="width: 100%; text-align: center;">
+                                <td class="bodyLight">
+                                    Posts
+                                </td>
+                                <td style="width: 1ch"></td>
+                                <td class="bodyLight">
+                                    Likes
+                                </td>
+                            </tr>
+                            <tr style="height: 1ch;"></tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

@@ -136,7 +136,7 @@ td.emptyGrid33 {
             <div class="col-10 push-1 titleBold" style="">
                 <form method="get">
                     <div class="col-10">
-                        <input maxlength="280" type="text" name="search_msg" placeholder="Search for users..." value="" style="width: 65vw; background-color: #212121; border-color: #212121; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px; word-break: break-word; vertical-align: top;" required />
+                        <input maxlength="280" type="search" name="search_msg" placeholder="Search for users..." value="" style="width: 65vw; background-color: #212121; border-color: #212121; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px; word-break: break-word; vertical-align: top;" required />
                     </div>
                 </form>
             </div>
