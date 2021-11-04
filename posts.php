@@ -236,6 +236,24 @@
     
  }
  
+ function removeLike($post_id, $liker)
+{
+     //make database connection
+     require('databaseConnect.php');
+       
+    //make query
+    $q1 = "DELETE FROM likes WHERE post_id = '$post_id' AND liker = '$liker' ";
+    
+    //execute query
+    $r = @mysqli_query ($dbc, $q1);
+    
+    //close database connection 
+    mysqli_close($dbc);
+
+}
+ 
+
+ 
  ?>
  </body> 
  </html>
