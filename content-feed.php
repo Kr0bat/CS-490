@@ -101,9 +101,21 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
 
     $idList = allPostId();
 
+    $likeList = [4, 5];
+    //$likeList = userLikes($_SESSION['username']);
+
     foreach($idList as $index => $id){
         $postList[$index] = getPost($id);
         $postList[$index]['id'] = $id;
+
+        if ( in_array($id, $likeList) ){
+            $postList[$index]['liked'] = true;
+            
+        }
+        else{
+            $postList[$index]['liked'] = false;
+        }
+        
     }
     $postList = array_reverse($postList);
 
@@ -228,7 +240,7 @@ if (isset($_GET['successMsg'])) {
                                                             <img src="assets/comment.png" onclick="openComment(<?php echo $info['id'] ?>)" class="" style="border-width: 0; height: 3ch; margin-top: 0; cursor: pointer;" />
                                                         </td>
                                                         <td style="width: 50%">
-                                                            <img src="assets/heart-off.png" onclick="toggleLike(<?php echo $info['id'] ?>)" class="" style="border-width: 0; height: 3ch; margin-left: 0; cursor: pointer;" />
+                                                            <img src=<?php if ($info['liked']) {echo "assets/heart-on.png";} else{echo "assets/heart-off.png";}?> onclick="toggleLike('<?php echo $info['id'] ?>', '<?php echo $_SESSION['username']?>')" class="" style="border-width: 0; height: 3ch; margin-left: 0; cursor: pointer;" />
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -375,7 +387,7 @@ if (isset($_GET['successMsg'])) {
                                         <div class="col-6" style="height: 8ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 5ch; text-align: right;">
                                             <div class="col-12" style="">
                                                 <img src="assets/comment.png" id="comment_post_<?php echo $info['id'] ?>" onclick="openComment(<?php echo $info['id'] ?>)" class="" style="border-width: 0; height: 3ch; margin-top: 0; cursor: pointer;" />
-                                                <img src="assets/heart-off.png" id="like_post_<?php echo $info['id'] ?>" onclick="toggleLike(<?php echo $info['id'] ?>)" class="" style="border-width: 0; height: 3ch; margin-left: 0.75ch; cursor: pointer;" />
+                                                <img src=<?php if ($info['liked']) {echo "assets/heart-on.png";} else{echo "assets/heart-off.png";}?>  id="like_post_<?php echo $info['id'] ?>" onclick="toggleLike('<?php echo $info['id'] ?>', '<?php echo $_SESSION['username']?>')" class="" style="border-width: 0; height: 3ch; margin-left: 0.75ch; cursor: pointer;" />
                                             </div>
                                         </div>
                                     </td>
@@ -457,4 +469,5 @@ if (isset($_GET['successMsg'])) {
 
     </div>
 </body>
+
 </html>
