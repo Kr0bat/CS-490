@@ -16,8 +16,7 @@ include("comments.php");
 
         $idList = allPostId();
 
-        $likeList = [1, 2];
-        //$likeList = userLikes($username);
+        $likeList = searchPostIdbyLiker($username);
         
         foreach($postList as $index => $post){
             $post['comments']= SearchCommentByP($post['id']);

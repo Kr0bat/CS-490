@@ -269,7 +269,7 @@ function searchPostIdbyLiker($username)
     
         while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
         {
-            $post_id[] = $row;   
+            $post_id[] = $row['post_id'];  
         }
     
         return $post_id;
@@ -282,7 +282,7 @@ function searchPostIdbyLiker($username)
     
 }
 
- 
+
  ?>
  </body> 
  </html>

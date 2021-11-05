@@ -101,8 +101,7 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
 
     $idList = allPostId();
 
-    $likeList = [4, 5];
-    //$likeList = userLikes($_SESSION['username']);
+    $likeList = searchPostIdbyLiker($_SESSION['username']);
 
     foreach($idList as $index => $id){
         $postList[$index] = getPost($id);
