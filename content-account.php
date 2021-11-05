@@ -168,7 +168,7 @@ td.emptyGrid33 {
                 </div>
                 <?php if ($_SESSION['role'] == 'admin') { ?>
                     <a href="/~kg448/account.php?viewing=<?php echo $_GET['viewing']; ?>&adminBan=<?php echo $_GET['viewing']; ?>">
-                        <div class="col-12 blockContainer" style="width: min(10ch, 10vw); margin-top: 1.5ch;">
+                        <div class="col-12 blockContainer" style="width: min(10ch, 10vw); margin-top: 1.5ch; color: white; text-deocration: none;">
                             Ban User
                         </div>
                     </a>
