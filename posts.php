@@ -251,7 +251,36 @@
     mysqli_close($dbc);
 
 }
- 
+
+function searchPostIdbyLiker($username)
+{
+     //make database connection
+     require('databaseConnect.php');
+       
+    //make query
+    $q1 = " SELECT post_id FROM likes WHERE liker = '$username'";
+    
+    //execute query
+    $r = @mysqli_query ($dbc, $q1);
+    
+     // get list of post_id
+     if($r)
+     { 
+    
+        while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
+        {
+            $post_id[] = $row;   
+        }
+    
+        return $post_id;
+        
+    }
+    else
+    {
+        return 0;
+    }
+    
+}
 
  
  ?>
