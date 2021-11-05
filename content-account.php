@@ -489,6 +489,38 @@ td.emptyGrid33 {
                             </table>
                         </div>
                     </div>
+                    <!-- Hidden Comment Section Until Button Clicked -->
+                    <div class="col-12" id="comment_input_<?php echo $info['id'] ?>" style="display: none;">
+                        <div class="col-1">
+                            <table class="bodyLight" style="width: 100%">
+                                <tbody>
+                                    <tr>
+                                        <td style="max-width: fit-content;">
+                                            <span class="" style="width: 100%">
+                                                <img src="assets/commentArrow.png" class="" style="border-width: 0px; border-radius: 0; height: 3.5ch; margin-left: 50%; transform: translate(-50%, 0);" />
+                                            </span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="col-10 bodyLight commentContainer" style="margin: 0; padding: 0.5ch 1ch 0.5ch 1ch; <?php if (count($info["comments"]) == 0) { echo "border-radius: 0 0 1ch 1ch"; } else { echo "border-radius: 0;"; } ?>font-style: normal; font-size: 18px;"> 
+                            <form method="POST">
+                                <table class="bodyLight">
+                                    <tbody>
+                                        <tr>
+                                            <td style="padding-left: 0">
+                                                <input maxlength="240" type="text" name="comment_msg_<?php echo $info['id'] ?>" placeholder="Type something to <?php echo $_SESSION['chatWith']; ?>" value="" style="width: 100%; background-color: #000; border-color: #1e4e22; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px; word-break: break-word; height: 7vh; vertical-align: top; margin-top: 0.5vh;" required />
+                                            </td>
+                                            <td style="padding-left: 1ch">
+                                                <button type="submit" name="comment_submit_<?php echo $info['id'] ?>" style="width: 80%; background-color: #1e4e22; border-color: #1e4e22; border-style: solid; color: #fff; border-radius: 0.75ch; font-size: 20px; margin-left: 50%; transform: translate(-50%, 0); padding: 1ch 0; margin-top: 0.55vh;">Comment</button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </form>
+                        </div>
+                    </div>
 
                     <?php
                     if (count($info["comments"]) > 0) {
