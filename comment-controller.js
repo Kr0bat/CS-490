@@ -36,7 +36,6 @@ function openComment(id){
 
 function updateCommentSection(post, pfp, role, user){
     postElementId = "post_container_" + post;
-    alert(postElementId);
     var postElement = document.getElementById(postElementId);
     
     //postElement.innerHTML = postElement.innerHTML + "<p> HERE ARE SOME WORDS</p>";
