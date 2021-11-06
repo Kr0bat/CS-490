@@ -489,7 +489,7 @@ td.emptyGrid33 {
                             </table>
                         </div>
                     </div>
-                    <div class="col-12" id="comment_input_<?php echo $info['id'] ?>">
+                    <div class="col-12" id="comment_input_<?php echo $info['id'] ?>" style="display: none;">
                         <div class="col-1">
                             <table class="bodyLight" style="width: 100%">
                                 <tbody>
