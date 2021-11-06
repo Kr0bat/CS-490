@@ -2,9 +2,17 @@
 include("posts.php");
 include("comments.php");
 
-    function getUserPosts($username){
+    function getUserPosts($username, $user = null){ 
+        //$username is the user being looked up, while $user is the user who is looking up a user
+        //$user is used to see if a user has liked posts from the profile that the user is looking at
+
+
         $postList = [];
         $postList = searchPostByC($username);
+
+        if (!$user){
+            $user = $username;
+        }
 
         /*
         foreach($postList as $index => $post){ 
@@ -16,7 +24,7 @@ include("comments.php");
 
         $idList = allPostId();
 
-        $likeList = searchPostIdbyLiker($username);
+        $likeList = searchPostIdbyLiker($user);
         
         foreach($postList as $index => $post){
             $post['comments']= SearchCommentByP($post['id']);

@@ -393,10 +393,10 @@ td.emptyGrid33 {
 
             $postList = [];
 
-            $postList = getUserPosts($_GET['viewing']);
-            
-            foreach ($postList as $postID => $info) {
-            ?>
+        $postList = getUserPosts($_GET['viewing'], $_SESSION['username']);
+        
+        foreach ($postList as $postID => $info) {
+        ?>
 
             <div class="col-12" style="margin: 2ch 0 1ch 0">
                 <div class="col-11 titleBold" style="">
@@ -489,7 +489,7 @@ td.emptyGrid33 {
                             </table>
                         </div>
                     </div>
-                    <div class="col-12" id="comment_input_<?php echo $info['id'] ?>">
+                    <div class="col-12" id="comment_input_<?php echo $info['id'] ?>" style="display: none;">
                         <div class="col-1">
                             <table class="bodyLight" style="width: 100%">
                                 <tbody>

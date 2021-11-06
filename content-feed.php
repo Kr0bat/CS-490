@@ -114,9 +114,33 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
         else{
             $postList[$index]['liked'] = false;
         }
+
+        $rawComments = SearchCommentByP($id);
+        $comments = [];
+        
+        //idk why, but trying to append comment information from within this loop
+        
+        foreach($rawComments as $index => $rawComment){
+            $comments[$index]["description"] = $rawComment["description"];
+            $comments[$index]["timestamp"] = $rawComment["timestamp"];
+            $comments[$index]["commenter"] = $rawComment["creator"];
+            $comments[$index]["creator"] = getProfile($comments[$index]["creator"])['profile_picture'];
+            //$comments[$index]["creator"]["profile_picture"] = 
+        }
+
+        //print_r($comments);
+/*
+        foreach($comments as $entity){
+            print_r($entity);
+            echo "<br>";
+        }*/
+
+        $postList[$index]["comments"] = $comments;
+        
         
     }
     $postList = array_reverse($postList);
+    //print_r($postList[2]);
 
 }
 
@@ -395,8 +419,9 @@ if (isset($_GET['successMsg'])) {
                         </table>
                     </div>
                 </div>
-                <!-- Hidden Comment Section Until Button Clicked -->
-                <div class="col-12" id="comment_input_<?php echo $info['id'] ?>" style="display: none;">
+
+                                <!-- Hidden Comment Section Until Button Clicked -->
+                                <div class="col-12" id="comment_input_<?php echo $info['id'] ?>" style="display: none;">
                     <div class="col-1">
                         <table class="bodyLight" style="width: 100%">
                             <tbody>
@@ -427,6 +452,7 @@ if (isset($_GET['successMsg'])) {
                         </form>
                     </div>
                 </div>
+
 
                 <?php
                 if (count($info["comments"]) > 0) {
