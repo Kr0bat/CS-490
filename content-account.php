@@ -332,66 +332,66 @@ td.emptyGrid33 {
         </div>
     </div>
     <div class="col-12" style="margin-top: 1vh">
-    <div class="col-10 push-1 bodyBold" style="font-size: 20px">
-    <?php
-    // $postList is updated by Middle End
-    $postList = [
-        0 => [
-            "creator" => "Max", 
-            "title" => "Title Here", 
-            "description" => "Description here with a lot more words than that of the title", 
-            "link" => "https://maxedward.com",
-            "comments" => [
-                0 => ["creator" => "Karim", "description" => "Oldest Comment"],
-                1 => ["creator" => "Jose", "description" => "Middle Comment"],
-                2 => ["creator" => "Max", "description" => "Newest Comment"]
+        <div class="col-10 push-1 bodyBold" style="font-size: 20px">
+        <?php
+        // $postList is updated by Middle End
+        $postList = [
+            0 => [
+                "creator" => "Max", 
+                "title" => "Title Here", 
+                "description" => "Description here with a lot more words than that of the title", 
+                "link" => "https://maxedward.com",
+                "comments" => [
+                    0 => ["creator" => "Karim", "description" => "Oldest Comment"],
+                    1 => ["creator" => "Jose", "description" => "Middle Comment"],
+                    2 => ["creator" => "Max", "description" => "Newest Comment"]
+                    ]
+                ],
+            1 => [
+                "creator" => "Max", 
+                "title" => "Title Here", 
+                "description" => "Description here with a lot more words than that of the title", 
+                "link" => "https://maxedward.com",
+                "comments" => []
+                ],
+            2 => [
+                "creator" => "Max", 
+                "title" => "Title Here", 
+                "description" => "Description here with a lot more words than that of the title", 
+                "link" => "https://maxedward.com",
+                "comments" => [
+                    0 => ["creator" => "Karim", "description" => "Oldest Comment"],
+                    1 => ["creator" => "Jose", "description" => "Middle Comment"]
+                    ]
+            ],
+            3 => [
+                "creator" => "Max", 
+                "title" => "Title Here", 
+                "description" => "Description here with a lot more words than that of the title", 
+                "link" => "https://maxedward.com",
+                "comments" => [
+                    0 => ["creator" => "Karim", "description" => "Oldest Comment"],
+                    1 => ["creator" => "Jose", "description" => "Middle Comment"],
+                    2 => ["creator" => "Max", "description" => "Newest Comment"]
+                    ]
+                ],
+            4 => [
+                "creator" => "Max", 
+                "title" => "Title Here", 
+                "description" => "Description here with a lot more words than that of the title", 
+                "link" => "https://maxedward.com",
+                "comments" => []
+                ],
+            5 => [
+                "creator" => "Max", 
+                "title" => "Title Here", 
+                "description" => "Description here with a lot more words than that of the title", 
+                "link" => "https://maxedward.com",
+                "comments" => []
                 ]
-            ],
-        1 => [
-            "creator" => "Max", 
-            "title" => "Title Here", 
-            "description" => "Description here with a lot more words than that of the title", 
-            "link" => "https://maxedward.com",
-            "comments" => []
-            ],
-        2 => [
-            "creator" => "Max", 
-            "title" => "Title Here", 
-            "description" => "Description here with a lot more words than that of the title", 
-            "link" => "https://maxedward.com",
-            "comments" => [
-                0 => ["creator" => "Karim", "description" => "Oldest Comment"],
-                1 => ["creator" => "Jose", "description" => "Middle Comment"]
-                ]
-        ],
-        3 => [
-            "creator" => "Max", 
-            "title" => "Title Here", 
-            "description" => "Description here with a lot more words than that of the title", 
-            "link" => "https://maxedward.com",
-            "comments" => [
-                0 => ["creator" => "Karim", "description" => "Oldest Comment"],
-                1 => ["creator" => "Jose", "description" => "Middle Comment"],
-                2 => ["creator" => "Max", "description" => "Newest Comment"]
-                ]
-            ],
-        4 => [
-            "creator" => "Max", 
-            "title" => "Title Here", 
-            "description" => "Description here with a lot more words than that of the title", 
-            "link" => "https://maxedward.com",
-            "comments" => []
-            ],
-        5 => [
-            "creator" => "Max", 
-            "title" => "Title Here", 
-            "description" => "Description here with a lot more words than that of the title", 
-            "link" => "https://maxedward.com",
-            "comments" => []
-            ]
-        ];
+            ];
 
-        $postList = [];
+            $postList = [];
 
         $postList = getUserPosts($_GET['viewing'], $_SESSION['username']);
         
@@ -589,9 +589,9 @@ td.emptyGrid33 {
                 </div>
             </div>
 
-        <?php 
-        }
-        ?>
+            <?php 
+            }
+            ?>
         </div>
     </div>
 
