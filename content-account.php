@@ -479,7 +479,7 @@ td.emptyGrid33 {
                                             </div>
                                             <div class="col-6" style="height: 8ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 5ch; text-align: right;">
                                                 <div class="col-12" style="">
-                                                    <img src="assets/comment.png" id="comment_post_<?php echo $info['id'] ?>" onclick="openComment(<?php echo $info['post_id'] ?>)" class="" style="border-width: 0; height: 3ch; margin-top: 0; cursor: pointer;" />
+                                                    <img src="assets/comment.png" id="comment_post_<?php echo $info['id'] ?>" onclick="openComment('comment_input_<?php echo $info['id'] ?>')" class="" style="border-width: 0; height: 3ch; margin-top: 0; cursor: pointer;" />
                                                     <img src=<?php if ($info['liked']) {echo "assets/heart-on.png";} else{echo "assets/heart-off.png";}?> id="like_post_<?php echo $info['id'] ?>" onclick="toggleLike('<?php echo $info['id'] ?>', '<?php echo $_SESSION['username']?>')" class="" style="border-width: 0; height: 3ch; margin-left: 0.75ch; cursor: pointer;" />
                                                 </div>
                                             </div>
@@ -490,7 +490,7 @@ td.emptyGrid33 {
                         </div>
                     </div>
                     <!-- Hidden Comment Section Until Button Clicked -->
-                    <div class="col-12" id="comment_input_<?php echo $info['id'] ?>" > <!-- CHANGE THIS BACK KARIM -->
+                    <div class="col-12" id="comment_input_<?php echo $info['id'] ?>" style="display: none;" >
                         <div class="col-1">
                             <table class="bodyLight" style="width: 100%">
                                 <tbody>
@@ -901,7 +901,7 @@ td.emptyGrid33 {
                                             </div>
                                             <div class="col-4" style="height: 8ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 5ch; text-align: right;">
                                                 <div class="col-12" style="">
-                                                    <img src="assets/comment.png" id="comment_post_<?php echo $info['id'] ?>" onclick="openComment(<?php echo $info['post_id'] ?>)" class="" style="border-width: 0; height: 3ch; margin-top: 0; cursor: pointer;" />
+                                                    <img src="assets/comment.png" id="comment_post_<?php echo $info['id'] ?>" onclick="openComment('comment_input_<?php echo $info['id'] ?>')" class="" style="border-width: 0; height: 3ch; margin-top: 0; cursor: pointer;" />
                                                     <img src=<?php if ($info['liked']) {echo "assets/heart-on.png";} else{echo "assets/heart-off.png";}?> id="like_post_<?php echo $info['id'] ?>" onclick="toggleLike('<?php echo $info['id'] ?>', '<?php echo $_SESSION['username']?>')" class="" style="border-width: 0; height: 3ch; margin-left: 0.75ch; cursor: pointer;" />
                                                 </div>
                                             </div>
@@ -912,7 +912,7 @@ td.emptyGrid33 {
                         </div>
                     </div>
                     <!-- Hidden Comment Section Until Button Clicked -->
-                    <div class="col-12" id="comment_input_<?php echo $info['id'] ?>"> <!-- CHANGE THIS BACK KARIM -->
+                    <div class="col-12" id="comment_input_<?php echo $info['id'] ?>" style="display: none;">
                         <div class="col-1">
                             <table class="bodyLight" style="width: 100%">
                                 <tbody>
