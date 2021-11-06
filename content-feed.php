@@ -176,7 +176,7 @@ if (isset($_GET['successMsg'])) {
     ?>
 
         <div class="col-12" id="<?php echo $info['id'] ?>" style="margin: 2ch 0 1ch 0">
-            <div class="col-10 push-1 titleBold" id="post_container_<?php echo $postID?>" style="">
+            <div class="col-10 push-1 titleBold" id="post_container_<?php echo $info[id]?>" style="">
                 <div class="col-12 bodyBold postContainer" style="margin: 0">
                     <div class="col-12">
                         <table style="margin: 0;">
@@ -325,7 +325,7 @@ if (isset($_GET['successMsg'])) {
     ?>
 
         <div class="col-12" id="<?php echo $info['id'] ?>" style="margin: 2ch 0 1ch 0">
-            <div class="col-10 push-1 titleBold" id="post_container_<?php echo $postID?>" style="">
+            <div class="col-10 push-1 titleBold" id="post_container_<?php echo $info[id]?>" style="">
                 <div class="col-12 bodyBold postContainer" style="margin: 0">
                     <div class="col-12">
                         <table style="margin: 0;">
@@ -435,7 +435,7 @@ if (isset($_GET['successMsg'])) {
                                             <input maxlength="50" type="text" name="comment_msg_<?php echo $info['id'] ?>" placeholder="Type your comment here" value="" style="width: 100%; background-color: #000; border-color: #28622d; border-style: solid; color: #fff; padding: 0.25ch 1ch; border-radius: 0.75ch; font-size: 20px; word-break: break-word; height: 7vh; vertical-align: top; margin-top: 0.5vh;" required />
                                         </td>
                                         <td style="padding-left: 1ch">
-                                            <button type="button" onclick='sendComment("comment_msg_<?php echo $info[id] ?>", "<?php echo $info[id] ?>", "<?php echo $_SESSION[username] ?>")' name="comment_submit_<?php echo $info['id'] ?>" style="width: 80%; background-color: #28622d; border-color: #1e4e22; border-style: solid; color: #fff; border-radius: 0.75ch; font-size: 20px; margin-left: 50%; transform: translate(-50%, 0); padding: 1ch 0; margin-top: 0.55vh;">Comment</button>
+                                            <button type="button" onclick='sendComment("comment_msg_<?php echo $info[id] ?>", "<?php echo $info[id] ?>" , "<?php echo $_SESSION[username] ?>", "<?php echo getProfile($_SESSION[username])[profile_picture]?>", "<?php echo $_SESSION[role]?>" )' name="comment_submit_<?php echo $info['id'] ?>" style="width: 80%; background-color: #28622d; border-color: #1e4e22; border-style: solid; color: #fff; border-radius: 0.75ch; font-size: 20px; margin-left: 50%; transform: translate(-50%, 0); padding: 1ch 0; margin-top: 0.55vh;">Comment</button>
                                         </td>
                                     </tr>
                                 </tbody>
