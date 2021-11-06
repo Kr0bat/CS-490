@@ -117,25 +117,17 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
 
         $rawComments = SearchCommentByP($id);
         $comments = [];
-        
-        //idk why, but trying to append comment information from within this loop
-        
-        foreach($rawComments as $index => $rawComment){
-            $comments[$index]["description"] = $rawComment["description"];
-            $comments[$index]["timestamp"] = $rawComment["timestamp"];
-            $comments[$index]["commenter"] = $rawComment["creator"];
-            $comments[$index]["creator"] = getProfile($comments[$index]["creator"])['profile_picture'];
+
+        foreach($rawComments as $comNum => $rawComment){
+            $comments[$comNum]["description"] = $rawComment["description"];
+            $comments[$comNum]["timestamp"] = $rawComment["timestamp"];
+            //$comments[$index]["commenter"] = $rawComment["creator"];
+            $comments[$comNum]["creator"] = $rawComment["commenter"];
             //$comments[$index]["creator"]["profile_picture"] = 
         }
 
-        //print_r($comments);
-/*
-        foreach($comments as $entity){
-            print_r($entity);
-            echo "<br>";
-        }*/
-
         $postList[$index]["comments"] = $comments;
+
         
         
     }

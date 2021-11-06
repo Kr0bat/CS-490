@@ -27,7 +27,7 @@ include("comments.php");
         $likeList = searchPostIdbyLiker($user);
         
         foreach($postList as $index => $post){
-            $post['comments']= SearchCommentByP($post['id']);
+            //$post['comments']= SearchCommentByP($post['id']);
             $postList[$index] = $post;
 
             if ( in_array($post['id'], $likeList) ){
@@ -37,6 +37,19 @@ include("comments.php");
             else{
                 $postList[$index]['liked'] = false;
             }
+
+            $rawComments = SearchCommentByP($post['id']);
+            $comments = [];
+
+            foreach($rawComments as $comNum => $rawComment){
+                $comments[$comNum]["description"] = $rawComment["description"];
+                $comments[$comNum]["timestamp"] = $rawComment["timestamp"];
+                //$comments[$index]["commenter"] = $rawComment["creator"];
+                $comments[$comNum]["creator"] = $rawComment["commenter"];
+                //$comments[$index]["creator"]["profile_picture"] = 
+            }
+
+            $postList[$index]["comments"] = $comments;
         }
 
 
