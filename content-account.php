@@ -399,7 +399,7 @@ td.emptyGrid33 {
         ?>
 
             <div class="col-12" style="margin: 2ch 0 1ch 0">
-                <div class="col-11 titleBold" style="">
+                <div class="col-11 titleBold" id="post_container_<?php echo $postID?>" style="">
                     <div class="col-12 bodyBold postContainer" style="margin: 0">
                         <div class="col-12">
                             <table style="margin: 0;">
@@ -821,7 +821,7 @@ td.emptyGrid33 {
         ?>
 
             <div class="col-12" style="margin: 2ch 0 1ch 0">
-                <div class="col-11 titleBold" style="">
+                <div class="col-11 titleBold" id="post_container_<?php echo $postID?>" style="">
                     <div class="col-12 bodyBold postContainer" style="margin: 0">
                         <div class="col-12">
                             <table style="margin: 0;">
