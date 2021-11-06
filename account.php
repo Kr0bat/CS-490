@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <script src="like-controller.js"> </script>
+    <script src="comment-controller.js"> </script>
 </head>
 
 <body  style="background-color: #161616; font-family: 'Montserrat', sans-serif;">
