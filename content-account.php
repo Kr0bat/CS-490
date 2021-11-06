@@ -393,7 +393,7 @@ td.emptyGrid33 {
 
         $postList = [];
 
-        $postList = getUserPosts($_GET['viewing']);
+        $postList = getUserPosts($_GET['viewing'], $_SESSION['username']);
         
         foreach ($postList as $postID => $info) {
         ?>
