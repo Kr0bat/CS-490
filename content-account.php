@@ -202,9 +202,10 @@ td.emptyGrid33 {
     </div>
 
     <?php
-    $postCount = count(getUserPosts($_SESSION['username']));
+    $postCount = count(getUserPosts($_GET['viewing']));
     $likeCount = 0;
     foreach ($postCount as $index => $content) {
+        print_r($content);
         $likeCount += $content['likeCount'];
     }
     ?>
