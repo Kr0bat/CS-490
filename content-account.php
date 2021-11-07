@@ -729,7 +729,7 @@ td.emptyGrid33 {
 
     <?php
     $postCount = count(getUserPosts($_SESSION['username']));
-    $postL = getUserPosts($_GET['viewing']);
+    $postL = getUserPosts($_SESSION['username']);
     $likeCount = 0;
     foreach ($postL as $index => $content) {
         $likeCount += $content['likeCount'];
