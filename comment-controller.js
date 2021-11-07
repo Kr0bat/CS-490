@@ -15,7 +15,7 @@ function sendComment(id, post, user, pfp, role){
     //window.location.reload();
 
     updateCommentSection(post, pfp, role, user, comment);
-    openComment("comment_input_" + id);
+    openComment("comment_input_" + post);
 }
 
 function openComment(id){
@@ -35,7 +35,7 @@ function removeCommentCorners(id) {
     var div = document.getElementsByClassName(id);
     var noElement = ! document.getElementsByClassName(id).length;
 
-    if (noElement > 0) {
+    if (noElement == 0) {
         div.style.borderRadius = "0";
     }
 }
