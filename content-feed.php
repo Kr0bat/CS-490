@@ -320,7 +320,7 @@ if (isset($_GET['successMsg'])) {
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-10 bodyLight commentContainer" id="comment_input_box_<?php echo $info['id'] ?>" style="margin: 0; padding: 0.5ch 1ch 0.5ch 1ch; <?php if ($commentIndex == count($info["comments"])-1) { echo "border-radius: 0 0 1ch 1ch;"; } else { echo "border-radius: 0;"; } ?> font-style: normal; font-size: 18px;"> 
+                    <div class="col-10 bodyLight commentContainer comment_input_box_<?php echo $info['id'] ?>" id="" style="margin: 0; padding: 0.5ch 1ch 0.5ch 1ch; <?php if ($commentIndex == count($info["comments"])-1) { echo "border-radius: 0 0 1ch 1ch;"; } else { echo "border-radius: 0;"; } ?> font-style: normal; font-size: 18px;"> 
                         <table class="bodyLight">
                             <tbody>
                                 <tr>
@@ -496,7 +496,7 @@ if (isset($_GET['successMsg'])) {
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-10 bodyLight commentContainer" id="comment_input_box_<?php echo $info['id'] ?>" style="margin: 0; padding: 0.5ch 1ch 0.5ch 1ch; <?php if ($commentIndex == count($info["comments"])-1) { echo "border-radius: 0 0 1ch 1ch;"; } else { echo "border-radius: 0;"; } ?> font-style: normal; font-size: 18px;"> 
+                    <div class="col-10 bodyLight commentContainer comment_input_box_<?php echo $info['id'] ?>" id="" style="margin: 0; padding: 0.5ch 1ch 0.5ch 1ch; <?php if ($commentIndex == count($info["comments"])-1) { echo "border-radius: 0 0 1ch 1ch;"; } else { echo "border-radius: 0;"; } ?> font-style: normal; font-size: 18px;"> 
                         <table class="bodyLight">
                             <tbody>
                                 <tr>
