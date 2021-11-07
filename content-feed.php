@@ -268,6 +268,38 @@ if (isset($_GET['successMsg'])) {
                         </table>
                     </div>
                 </div>
+                <!-- Hidden Comment Section Until Button Clicked -->
+                <div class="col-12" id="comment_input_<?php echo $info['id'] ?>" style="display: none;">
+                    <div class="col-1">
+                        <table class="bodyLight" style="width: 100%">
+                            <tbody>
+                                <tr>
+                                    <td style="max-width: fit-content;">
+                                        <span class="" style="width: 100%">
+                                            <img src="assets/commentArrow.png" class="" style="border-width: 0px; border-radius: 0; height: 3.5ch; margin-left: 50%; transform: translate(-50%, 0);" />
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-10 bodyLight commentContainer" style="margin: 0; padding: 0.5ch 1ch 0.5ch 1ch; <?php if (count($info["comments"]) == 0) { echo "border-radius: 0 0 1ch 1ch"; } else { echo "border-radius: 0;"; } ?>font-style: normal; font-size: 18px;"> 
+                        <form method="POST">
+                            <table class="bodyLight" style="width: 100%">
+                                <tbody>
+                                    <tr>
+                                        <td style="padding-left: 0">
+                                            <input maxlength="50" type="text" name="comment_msg_<?php echo $info['id'] ?>" placeholder="Type your comment here" value="" style="width: 100%; background-color: #000; border-color: #28622d; border-style: solid; color: #fff; padding: 0.25ch 1ch; border-radius: 0.75ch; font-size: 20px; word-break: break-word; height: 7vh; vertical-align: top; margin-top: 0.5vh;" required />
+                                        </td>
+                                        <td style="padding-left: 1ch">
+                                            <button type="button" onclick='sendComment("comment_msg_<?php echo $info[id] ?>", "<?php echo $info[id] ?>" , "<?php echo $_SESSION[username] ?>", "<?php echo getProfile($_SESSION[username])[profile_picture]?>", "<?php echo $_SESSION[role]?>" )' name="comment_submit_<?php echo $info['id'] ?>" style="width: 80%; background-color: #28622d; border-color: #1e4e22; border-style: solid; color: #fff; border-radius: 0.75ch; font-size: 20px; margin-left: 50%; transform: translate(-50%, 0); padding: 1ch 0; margin-top: 0.55vh;">Comment</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </form>
+                    </div>
+                </div>
 
                 <?php
                 if (count($info["comments"]) > 0) {
@@ -288,7 +320,7 @@ if (isset($_GET['successMsg'])) {
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-10 bodyLight commentContainer" id="comment_input_box_<?php echo $info['id'] ?>" style="margin: 0; padding: 0.5ch 1ch 0.5ch 1ch; <?php if ($commentIndex == count($info["comments"])-1) { echo "border-radius: 0 0 1ch 1ch"; } else { echo "border-radius: 0;"; } ?>font-style: normal; font-size: 18px;"> 
+                    <div class="col-10 bodyLight commentContainer" id="comment_input_box_<?php echo $info['id'] ?>" style="margin: 0; padding: 0.5ch 1ch 0.5ch 1ch; <?php if ($commentIndex == count($info["comments"])-1) { echo "border-radius: 0 0 1ch 1ch;"; } else { echo "border-radius: 0;"; } ?> font-style: normal; font-size: 18px;"> 
                         <table class="bodyLight">
                             <tbody>
                                 <tr>
@@ -464,7 +496,7 @@ if (isset($_GET['successMsg'])) {
                             </tbody>
                         </table>
                     </div>
-                    <div class="col-10 bodyLight commentContainer" style="margin: 0; padding: 0.5ch 1ch 0.5ch 1ch; <?php if ($commentIndex == count($info["comments"])-1) { echo "border-radius: 0 0 1ch 1ch"; } else { echo "border-radius: 0;"; } ?>font-style: normal; font-size: 18px;"> 
+                    <div class="col-10 bodyLight commentContainer" id="comment_input_box_<?php echo $info['id'] ?>" style="margin: 0; padding: 0.5ch 1ch 0.5ch 1ch; <?php if ($commentIndex == count($info["comments"])-1) { echo "border-radius: 0 0 1ch 1ch;"; } else { echo "border-radius: 0;"; } ?> font-style: normal; font-size: 18px;"> 
                         <table class="bodyLight">
                             <tbody>
                                 <tr>
