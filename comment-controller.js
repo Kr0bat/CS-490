@@ -34,7 +34,7 @@ function openComment(id){
 function removeCommentCorners(id) {
     var div = document.getElementsByClassName(id);
 
-    if (div != null) {
+    if (div != null && div != undefined) {
         div.style.borderRadius = "0";
     }
 }
