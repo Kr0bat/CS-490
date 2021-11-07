@@ -200,6 +200,15 @@ td.emptyGrid33 {
             Statistics
         </div>
     </div>
+
+    <?php
+    $postCount = count(getUserPosts($_SESSION['username']));
+    $likeCount = 0;
+    foreach ($postCount as $index => $content) {
+        $likeCount += $content['likeCount'];
+    }
+    ?>
+
     <div class="col-12" style="margin-top: 0vh">
         <div class="col-10 push-1">
             <div class="col-12" style="margin: 2ch 0 1ch 0">
@@ -209,11 +218,11 @@ td.emptyGrid33 {
                             <tr style="height: 1ch;"></tr>
                             <tr style="width: 100%; text-align: center;">
                                 <td class="bodyBold" style="width: 49%; font-size: 30px;">
-                                    69
+                                    <?php echo $postCount; ?>
                                 </td>
                                 <td style="width: 1ch"></td>
                                 <td class="bodyBold" style="width: 49%; font-size: 30px;">
-                                    420
+                                    <?php echo $likeCount; ?>
                                 </td>
                             </tr>
                             <tr style="width: 100%; text-align: center;">
@@ -716,6 +725,15 @@ td.emptyGrid33 {
             Statistics
         </div>
     </div>
+
+    <?php
+    $postCount = count(getUserPosts($_SESSION['username']));
+    $likeCount = 0;
+    foreach ($postCount as $index => $content) {
+        $likeCount += $content['likeCount'];
+    }
+    ?>
+
     <div class="col-12" style="margin-top: 0vh">
         <div class="col-10 push-1">
             <div class="col-12" style="margin: 2ch 0 1ch 0">
@@ -725,11 +743,11 @@ td.emptyGrid33 {
                             <tr style="height: 1ch;"></tr>
                             <tr style="width: 100%; text-align: center;">
                                 <td class="bodyBold" style="width: 49%; font-size: 30px;">
-                                    69
+                                    <?php echo $postCount; ?>
                                 </td>
                                 <td style="width: 1ch"></td>
                                 <td class="bodyBold" style="width: 49%; font-size: 30px;">
-                                    420
+                                    <?php echo $likeCount; ?>
                                 </td>
                             </tr>
                             <tr style="width: 100%; text-align: center;">
