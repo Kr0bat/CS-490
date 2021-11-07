@@ -30,7 +30,7 @@ include("comments.php");
             //$post['comments']= SearchCommentByP($post['id']);
             $postList[$index] = $post;
 
-            $likeCount = count(getLikes($post));
+            $likeCount = count(getLikes($post['id']));
             $postList[$index]['likeCount'] = $likeCount;
 
             if ( in_array($post['id'], $likeList) ){
