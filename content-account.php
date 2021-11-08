@@ -183,7 +183,7 @@ td.emptyGrid33 {
                         if (!isBlocked($_GET['viewing'])) {
                     ?>
                     <a href="">
-                        <div class="col-12 blockContainer" onclick="toggleBan($_GET['viewing'], $_SESSION['username'], <?php echo isBlocked($_GET['viewing']); ?>)" style="width: min(10ch, 10vw); margin-top: 1.5ch; color: white; text-deocration: none;">
+                        <div class="col-12 blockContainer" onclick="toggleBan(<?php echo $_GET['viewing']; ?>, <?php echo $_SESSION['username']; ?>, <?php echo isBlocked($_GET['viewing']); ?>)" style="width: min(10ch, 10vw); margin-top: 1.5ch; color: white; text-deocration: none;">
                             Ban User
                         </div>
                     </a>
@@ -191,7 +191,7 @@ td.emptyGrid33 {
                         } else {
                 ?>
                     <a href="">
-                        <div class="col-12 blockContainer" onclick="toggleBan($_GET['viewing'], $_SESSION['username'], <?php echo isBlocked($_GET['viewing']); ?>)" style="width: min(10ch, 10vw); margin-top: 1.5ch; color: white; text-deocration: none;">
+                        <div class="col-12 blockContainer" onclick="toggleBan(<?php echo $_GET['viewing']; ?>, <?php echo $_SESSION['username']; ?>, <?php echo isBlocked($_GET['viewing']); ?>)" style="width: min(10ch, 10vw); margin-top: 1.5ch; color: white; text-deocration: none;">
                             Unban User
                         </div>
                     </a>
