@@ -16,6 +16,7 @@
 <?php
 session_start();
 include("profile-controller.php"); //profile-controller includes posts.php
+include("user-controller.php");
 include("factory.php");
 include("users.php");
 
