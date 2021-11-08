@@ -1,8 +1,4 @@
 <html>
-	<head>
-		<title>Sample PHP</title>
-	</head>
-	<body>
  <?php
  
  function insertPost($username, $title, $description, $link)
@@ -284,5 +280,4 @@ function searchPostIdbyLiker($username)
 
 
  ?>
- </body> 
  </html>

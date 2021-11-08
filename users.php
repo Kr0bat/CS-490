@@ -1,8 +1,4 @@
 <html>
-	<head>
-		<title>Sample PHP</title>
-	</head>
-	<body>
  <?php
 
 function getPass($username)
@@ -236,5 +232,4 @@ function isBlocked($username)
 }
 
  ?>
- </body>
  </html>

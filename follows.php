@@ -1,8 +1,4 @@
 <html>
-	<head>
-		<title>Sample PHP</title>
-	</head>
-	<body>
  <?php
  
 function follow($follower, $username)
@@ -86,5 +82,4 @@ function follow($follower, $username)
 }
   
  ?>
- </body> 
  </html>

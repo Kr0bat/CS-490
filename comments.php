@@ -1,8 +1,4 @@
 <html>
-	<head>
-		<title>Sample PHP</title>
-	</head>
-	<body>
  <?php
  
  function insertComment($commenter, $description, $post_id)
@@ -103,5 +99,4 @@ function SearchCommentByP($post_id)
 
  
   ?>
- </body>  
  </html>

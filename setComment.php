@@ -1,8 +1,4 @@
 <html>
-	<head>
-		<title>Sample PHP</title>
-	</head>
-	<body>
 <?php
 include("comments.php");
 
@@ -17,6 +13,4 @@ if (isset($_REQUEST['username']) && isset($_REQUEST['comment']) && isset($_REQUE
 }
 
 ?>
-
-</body>  
  </html>

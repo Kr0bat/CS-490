@@ -1,8 +1,4 @@
 <html>
-	<head>
-		<title>Sample PHP</title>
-	</head>
-	<body>
  <?php
  
  function getChat($recipient, $sender)
@@ -124,5 +120,4 @@ function sendChat($recipient, $sender, $message)
 }
 //print_r(getChat("Karim", "Max"));
 ?>
- </body>
  </html>
