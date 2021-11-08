@@ -107,6 +107,9 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
         $postList[$index] = getPost($id);
         $postList[$index]['id'] = $id;
 
+        $likeCount = count(getLikes($id));
+        $postList[$index]['likeCount'] = $likeCount;
+
         if ( in_array($id, $likeList) ){
             $postList[$index]['liked'] = true;
             
@@ -437,7 +440,7 @@ if (isset($_GET['successMsg'])) {
                                                             <td style="width: 100%;"></td>
                                                             <td style="width: 3ch;"></td>
                                                             <td style="text-align: center; width: 3ch; padding-left: 0.75ch;">
-                                                                <span id="like_counter_<?php echo $info['id']; ?>" style="color: #D75A4A; font-size: 30px; font-weight: bolder;"><?php echo $info['liked'] ?></span>
+                                                                <span id="like_counter_<?php echo $info['id']; ?>" style="color: #D75A4A; font-size: 30px; font-weight: bolder;"><?php echo $info['likeCount'] ?></span>
                                                             </td>
                                                         </tr>
                                                         <tr>
