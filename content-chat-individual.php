@@ -196,7 +196,7 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
                                 <input maxlength="240" type="text" name="newdm_msg" placeholder="Type something to <?php echo $_SESSION['chatWith']; ?>" value="" style="width: 100%; background-color: #000; border-color: #1e4e22; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px; word-break: break-word; height: 7vh; vertical-align: top; margin-top: 0.5vh;" required />
                             </div>
                             <div class="col-3">
-                                <button type="submit" name="newdm_submit" style="width: 80%; background-color: #1e4e22; border-color: #1e4e22; border-style: solid; color: #fff; border-radius: 0.75ch; font-size: 20px; margin-left: 50%; transform: translate(-50%, 0); padding: 1ch 0; margin-top: 0.55vh;">Send</button>
+                                <button type="button" onclick="updateChat('sender=<?php $_SESSION['Karim']?>')" name="newdm_submit" style="width: 80%; background-color: #1e4e22; border-color: #1e4e22; border-style: solid; color: #fff; border-radius: 0.75ch; font-size: 20px; margin-left: 50%; transform: translate(-50%, 0); padding: 1ch 0; margin-top: 0.55vh;">Send</button>
                             </div>
                         </form>
                     </div>
@@ -241,4 +241,5 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
         <div style="width: 75vw; height: 59vh; margin-left: 7.6vw; position: fixed; bottom: 0; background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 69%, rgba(0,0,0,0) 100%); pointer-events: none;"></div>
     </div>
 </body>
+
 </html>
