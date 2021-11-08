@@ -50,6 +50,7 @@ function toggleBan($recipient, $admin, $banBool) {
             blockAccount($recipient);
         }
     }
+    header("Location: /~kg448/account.php?viewing=$recipient");
 }
 ?>
 </body>
