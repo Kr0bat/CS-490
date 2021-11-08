@@ -545,14 +545,16 @@ if (isset($_GET['successMsg'])) {
                                             </span>
                                         </a>
                                     </td>
-                                    <td style="padding-left: 0.5ch">
-                                        <div class="col-12">
-                                            <a href="/~kg448/account.php?viewing=<?php echo $commentInfo["creator"]; ?>&redirectFrom=feed" title="View <?php echo $commentInfo["creator"]; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
-                                                <?php echo getProfile($commentInfo['creator'])["fname"];
-
+                                    <td style="padding-left: 0.5ch; max-width: 10ch;">
+                                        <div class="col-12" style="max-width: 10ch;">
+                                            <a href="/~kg448/account.php?viewing=<?php echo $commentInfo["creator"]; ?>&redirectFrom=feed" title="View <?php echo $commentInfo["creator"]; ?>'s Profile" style="text-decoration: none;" class="bodyLight">  
+                                                <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap">
+                                                    <?php echo getProfile($commentInfo['creator'])["fname"]; ?>
+                                                </div>
+                                                <?php 
                                                 if (isAdmin($commentInfo["creator"])) {
                                                 print('
-                                                    <span class="subtitleLight" style="font-size: 18px; color: rgb(144, 85, 54); padding-left: 5px;">
+                                                    <span class="subtitleLight" style="font-size: 18px; color: rgb(144, 85, 54); padding-left: 0px;">
                                                         Admin
                                                     </span>');
                                                 } 
