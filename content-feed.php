@@ -355,6 +355,12 @@ if (isset($_GET['successMsg'])) {
 
         } else {
 
+            // DESKTOP VERSION !
+            // DESKTOP VERSION !? < !
+            // DESKTOP VERSION !? <+> !?
+            // DESKTOP VERSION !? < !
+            // DESKTOP VERSION !
+
     ?>
 
         <div class="col-12" id="<?php echo $info['id'] ?>" style="margin: 2ch 0 1ch 0">
@@ -539,10 +545,25 @@ if (isset($_GET['successMsg'])) {
                                             </a>
                                         </div>
                                     </td>
-                                    <td style="padding-left: 1ch">
-                                        <div class="col-12" style="color: #a2a2a2;">
+                                    <td style="padding-left: 1ch; width: 100%;">
+                                        <div class="col-12" style="color: #a2a2a2; word-break: break-word;">
                                             <?php echo $commentInfo["description"]; ?>
                                         </div>
+                                    </td>
+                                    <td style="max-width: fit-content; width: 2.5ch;">
+
+                                        <?php 
+                                        if (isAdmin($_SESSION['username']) || (strtolower($_SESSION['username']) == strtolower($commentInfo["creator"]))) {
+                                        ?>
+
+                                        <span class="">
+                                            <img src="" class="" style="height: 2.5ch; width: 2.5ch; margin-top: 0.25ch; content: url('data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9JzMwMHB4JyB3aWR0aD0nMzAwcHgnICBmaWxsPSIjRUM1RDU3IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3BhY2U9InByZXNlcnZlIiB2ZXJzaW9uPSIxLjEiIHN0eWxlPSJzaGFwZS1yZW5kZXJpbmc6Z2VvbWV0cmljUHJlY2lzaW9uO3RleHQtcmVuZGVyaW5nOmdlb21ldHJpY1ByZWNpc2lvbjtpbWFnZS1yZW5kZXJpbmc6b3B0aW1pemVRdWFsaXR5OyIgdmlld0JveD0iMCAwIDIwNCAyNTgiIHg9IjBweCIgeT0iMHB4IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCI+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj4KICAgCiAgICAuZmlsMCB7ZmlsbDojRUM1RDU3fQogICAKICA8L3N0eWxlPjwvZGVmcz48Zz48cGF0aCBjbGFzcz0iZmlsMCIgZD0iTTE5MSA3MGwwIDEzOWMwLDI3IC0yMiw0OSAtNDksNDlsLTc1IDBjLTI3LDAgLTQ5LC0yMiAtNDksLTQ5bDAgLTEzOSAxNzMgMHptLTI0IDQybDAgOTNjMCwxOSAtMjUsMTkgLTI1LDBsMCAtOTNjMCwtMjAgMjUsLTIwIDI1LDB6bS01MCAwYzAsMzEgMCw2MiAwLDkzIDAsMTkgLTI1LDE5IC0yNSwwIDAsLTMxIDAsLTYyIDAsLTkzIDAsLTIwIDI1LC0yMCAyNSwwem0tNTAgMGwwIDkzYzAsMTkgLTI1LDE5IC0yNSwwbDAgLTkzYzAsLTIwIDI1LC0yMCAyNSwweiI+PC9wYXRoPjxwYXRoIGNsYXNzPSJmaWwwIiBkPSJNMTMgMzNsNDYgMGMtMSwtOSAyLC0xNyA4LC0yM2wwIC0xYzEzLC0xMiA2NCwtMTIgNzYsMCA2LDcgMTAsMTUgOSwyNGw0MCAwYzE3LDAgMTcsMjYgMCwyNmwtMTc5IDBjLTE3LDAgLTE3LC0yNiAwLC0yNnptNjYgMGw1MyAwYzEsLTMgMCwtNyAtMywtMTAgLTQsLTQgLTQzLC00IC00OCwwbDAgMGMtMywzIC0zLDcgLTIsMTB6Ij48L3BhdGg+PC9nPjwvc3ZnPg==');">
+                                        </span>
+
+                                        <?php 
+                                        }
+                                        ?>
+
                                     </td>
                                 </tr>
                             </tbody>
