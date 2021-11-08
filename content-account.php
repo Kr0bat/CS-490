@@ -157,7 +157,7 @@ if (isBlocked($_GET['viewing'])) {
     </div>');
 }
 ?>
-<div class="col-12" style="font-size: 22.5px; <?php if (!$isMobile) { echo "padding-left: 10ch"; } ?>">
+<div class="col-12" style="font-size: 22.5px; <?php if (!$isMobile) { echo "padding-left: 6ch"; } ?>">
     
     <?php
         if (isset($_GET['viewing']) && (strtolower($_GET['viewing']) != strtolower($_SESSION['username']))) {
@@ -376,7 +376,7 @@ if (isBlocked($_GET['viewing'])) {
         </div>
     </div>
     <div class="col-12" style="margin-top: 1vh">
-        <div class="col-10 push-1 bodyBold" style="font-size: 20px">
+        <div class="col-10 push-1 bodyBold" style="font-size: 20px; margin-bottom: 5ch;">
         <?php
         // $postList is updated by Middle End
         $postList = [
@@ -656,7 +656,7 @@ if (isBlocked($_GET['viewing'])) {
         </div>
     </div>
     <div class="col-12" style="margin: 10vh 0">
-        <div class="col-10 push-1 bodyLight" style="">
+        <div class="col-10 push-1 bodyLight" style="margin-bottom: 5ch;">
             <form method="POST">
                 <div class="col-2">
                     <div class="col-12 bodyLight">
@@ -811,7 +811,7 @@ if (isBlocked($_GET['viewing'])) {
         </div>
     </div>
     <div class="col-12" style="margin-top: 1vh">
-        <div class="col-10 push-1 bodyBold" style="font-size: 20px">
+        <div class="col-10 push-1 bodyBold" style="font-size: 20px; margin-bottom: 5ch;">
     <?php
     // $postList is updated by Middle End
     $postList = [

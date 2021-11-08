@@ -162,7 +162,7 @@ if (isset($_GET['successMsg'])) {
 
 ?>
 <body>
-    <div class="col-12" style="font-size: 22.5px; <?php if (!$isMobile) { echo "padding-left: 10ch"; } ?>">
+    <div class="col-12" style="font-size: 22.5px; <?php if (!$isMobile) { echo "padding-left: 6ch"; } ?>">
         <div class="col-12" style="margin-top: 5vh">
             <div class="col-10 push-1 titleBold" style="">
                 Spotifeed
