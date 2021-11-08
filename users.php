@@ -201,6 +201,21 @@ function blockAccount($username)
     mysqli_close($dbc);  
 }
 
+function unblockAccount($username)
+{
+    //make database connection
+    require('databaseConnect.php');
+    
+    //make query
+    $q1 = "UPDATE user SET blocked_status = 0 WHERE username = '$username'";
+  
+    //execute query
+    $r = @mysqli_query ($dbc, $q1);
+    
+    //close database connection
+    mysqli_close($dbc);  
+}
+
 function isBlocked($username)
 {
   //make database connection

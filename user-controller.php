@@ -39,6 +39,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     updateUser();
     header("Location: /~kg448/account.php");
 }
+
+function toggleBan($recipient, $admin, $banBool) {
+    if (isAdmin($admin)) {
+        if ($banBool == 1) {
+            //unban
+            unblockAccount($recipient);
+        } else {
+            //ban them
+            blockAccount($recipient);
+        }
+    }
+}
 ?>
 </body>
 </html>

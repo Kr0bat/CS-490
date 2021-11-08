@@ -160,19 +160,45 @@ td.emptyGrid33 {
             </div>
         </a>
     </div>
+
+    <?php
+        if (isBlocked($_GET['viewing'])) {
+            print('
+            <header>
+                <div class="headerText" style="width: 100%; margin: 0 0 2vh 0; padding: 2vh 0; text-align: center; font-size: max(1.35vw, 2.5vh); color: #eaeaea; background-color: #9c5151ff">
+                    '.$_GET['viewing'].' is banned
+                </div>
+            </header>');
+        }
+    ?>
+
     <div class="col-12" style="margin: 10vh 0">
         <div class="col-10 push-1 bodyLight" style="">
             <div class="col-2">
                 <div class="col-12">
                     <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_GET['viewing'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="imgFitMid logoImg" style="border-radius: 100%; height: min(10ch, 10vw); width: min(10ch, 10vw); border-style: solid; border-color: rgba(255, 255, 255, 0.15);" />
                 </div>
-                <?php if ($_SESSION['role'] == 'admin') { ?>
+                <?php 
+                    if ($_SESSION['role'] == 'admin' && (!isAdmin($_Get['viewing']))) { 
+                        if (!isBlocked($_GET['viewing'])) {
+                    ?>
                     <a href="/~kg448/account.php?viewing=<?php echo $_GET['viewing']; ?>&adminBan=<?php echo $_GET['viewing']; ?>">
-                        <div class="col-12 blockContainer" style="width: min(10ch, 10vw); margin-top: 1.5ch; color: white; text-deocration: none;">
+                        <div class="col-12 blockContainer" onclick="toggleBan($_GET['viewing'], $_SESSION['username'], <?php echo isBlocked($_GET['viewing']); ?>)" style="width: min(10ch, 10vw); margin-top: 1.5ch; color: white; text-deocration: none;">
                             Ban User
                         </div>
                     </a>
-                <?php } ?>
+                <?php   
+                        } else {
+                ?>
+                    <a href="/~kg448/account.php?viewing=<?php echo $_GET['viewing']; ?>&adminBan=<?php echo $_GET['viewing']; ?>">
+                        <div class="col-12 blockContainer" onclick="toggleBan($_GET['viewing'], $_SESSION['username'], <?php echo isBlocked($_GET['viewing']); ?>)" style="width: min(10ch, 10vw); margin-top: 1.5ch; color: white; text-deocration: none;">
+                            Unban User
+                        </div>
+                    </a>
+                <?php
+                        }
+                    } 
+                ?>
             </div>
             <div class="col-8 push-05">
                 <div class="col-12 titleLight">
