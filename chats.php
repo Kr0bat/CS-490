@@ -1,4 +1,3 @@
-<html>
  <?php
  
  function getChat($recipient, $sender)
@@ -120,4 +119,3 @@ function sendChat($recipient, $sender, $message)
 }
 //print_r(getChat("Karim", "Max"));
 ?>
- </html>
