@@ -59,7 +59,7 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
             header("Location: /~kg448/account.php");
         }
 
-        if ( (isset($_POST['ban_account_button'])) && ( $_SESSION['role'] == "admin") )  {
+        if ( (isset($_POST['ban_account_submit'])) && ( $_SESSION['role'] == "admin") )  {
             $banee = $_POST['ban_account_username'];
             $isBanned = isBlocked($banee);
 
