@@ -41,18 +41,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header("Location: /~kg448/account.php");
 }
 
-function toggleBan($recipient, $admin, $banBool) {
-    if (isAdmin($admin) && !isAdmin($recipient)) {
-        if ($banBool == 1) {
-            //unban
-            unblockAccount($recipient);
-        } else {
-            //ban them
-            blockAccount($recipient);
-        }
-    }
-    header("Location: /~kg448/account.php?viewing=$recipient");
-}
 ?>
 </body>
 </html>

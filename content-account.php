@@ -182,16 +182,19 @@ td.emptyGrid33 {
                     if ($_SESSION['role'] == 'admin' && (!isAdmin($_GET['viewing']))) { 
                         if (!isBlocked($_GET['viewing'])) {
                     ?>
-                    <a href="">
-                        <div class="col-12 blockContainer" onclick="toggleBan(<?php echo $_GET['viewing']; ?>, <?php echo $_SESSION['username']; ?>, <?php echo isBlocked($_GET['viewing']); ?>)" style="width: min(10ch, 10vw); margin-top: 1.5ch; color: white; text-deocration: none;">
-                            Ban User
-                        </div>
-                    </a>
+                    <form action="POST">
+                        <a href="">
+                            <input type="text" name="ban_account_username" value="<?php echo $_GET['viewing']; ?>" readonly/>
+                            <button type="submit" name="ban_account_submit" class="col-12 blockContainer" style="width: min(10ch, 10vw); margin-top: 1.5ch; color: white; text-deocration: none;">
+                                Ban User
+                            </button>
+                        </a>
+                    </form>
                 <?php   
                         } else {
                 ?>
                     <a href="">
-                        <div class="col-12 blockContainer" onclick="toggleBan(<?php echo $_GET['viewing']; ?>, <?php echo $_SESSION['username']; ?>, <?php echo isBlocked($_GET['viewing']); ?>)" style="width: min(10ch, 10vw); margin-top: 1.5ch; color: white; text-deocration: none;">
+                        <div class="col-12 blockContainer" style="width: min(10ch, 10vw); margin-top: 1.5ch; color: white; text-deocration: none;">
                             Unban User
                         </div>
                     </a>
