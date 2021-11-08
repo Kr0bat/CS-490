@@ -1,6 +1,7 @@
 <?php
 include("posts.php");
 include("comments.php");
+include("users.php");
 
     function getUserPosts($username, $user = null){ 
         //$username is the user being looked up, while $user is the user who is looking up a user
