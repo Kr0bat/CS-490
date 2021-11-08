@@ -437,7 +437,7 @@ if (isset($_GET['successMsg'])) {
                                                             <td style="width: 100%;"></td>
                                                             <td style="width: 3ch;"></td>
                                                             <td style="text-align: center; width: 3ch; padding-left: 0.75ch;">
-                                                                <span style="color: #D75A4A; font-size: 30px; font-weight: bolder;"><?php echo $info['liked'] ?></span>
+                                                                <span id="like_counter_<?php echo $info['id']; ?>" style="color: #D75A4A; font-size: 30px; font-weight: bolder;"><?php echo $info['liked'] ?></span>
                                                             </td>
                                                         </tr>
                                                         <tr>
