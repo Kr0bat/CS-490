@@ -146,6 +146,17 @@ td.emptyGrid33 {
     }
 }
 </style>
+
+<?php
+if (isBlocked($_GET['viewing'])) {
+    print('
+    <div class="col-12">
+        <div class="headerText" style="width: 100%; margin: 0 0 2vh 0; padding: 2vh 0; text-align: center; font-size: max(1.35vw, 2.5vh); color: #eaeaea; background-color: #9c5151ff">
+            '.$_GET['viewing'].' is banned
+        </div>
+    </div>');
+}
+?>
 <div class="col-12" style="font-size: 22.5px; <?php if (!$isMobile) { echo "padding-left: 10ch"; } ?>">
     
     <?php
@@ -160,18 +171,6 @@ td.emptyGrid33 {
             </div>
         </a>
     </div>
-
-    <?php
-        if (isBlocked($_GET['viewing'])) {
-            print('
-            <header>
-                <div class="headerText" style="width: 100%; margin: 0 0 2vh 0; padding: 2vh 0; text-align: center; font-size: max(1.35vw, 2.5vh); color: #eaeaea; background-color: #9c5151ff">
-                    '.$_GET['viewing'].' is banned
-                </div>
-            </header>');
-        }
-    ?>
-
     <div class="col-12" style="margin: 10vh 0">
         <div class="col-10 push-1 bodyLight" style="">
             <div class="col-2">
