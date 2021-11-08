@@ -112,7 +112,7 @@ function userSearch($username)
     
         while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
         {
-            echo $row[s];
+            //echo $row[s];
             $usernames[] = $row['s'];
             
         }    
