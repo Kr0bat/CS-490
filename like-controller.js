@@ -11,17 +11,21 @@ function toggleLike(id, username){
     xhr.send();
 
     var imageId = "like_post_" + id;
+    var counterId = "like_counter_" + id;
 
     var imageOff = "assets/heart-off.png";
     var imageOn = "assets/heart-on.png"
 
     var image = document.getElementById(imageId);
+    var counter = document.getElementById(counterId);
 
     if (image.src == "https://web.njit.edu/~kg448/assets/heart-on.png"){
         image.src = imageOff;
+        counter.innerHTML = parseInt(counter.innerHTML,10) - 1;
     }
     else{
         image.src = imageOn;
+        counter.innerHTML = parseInt(counter.innerHTML,10) + 1;
     }
 }
 
