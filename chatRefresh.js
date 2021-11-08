@@ -16,17 +16,15 @@ function updateChat(sender, user=null, message=null, timestamp=null){
         
     }
 
-    //append the message (in html format) to the 
+    //append the message (in html format) to the div
     if (user == sender){
-        /* This isn't working....
-        chatBox.innerHTML = '<div class="subtitleLight" style="font-size: 14px; padding-left: 1.5ch; padding-top: 0.25ch;">' + timestamp +'</div>' + chatBox.innerHTML;
-        chatBox.innerHTML = '<div class="bubbleSend bodyLight">' + message +'</div>' + chatBox.innerHTML;
-        */
+        // This isn't working....
+        chatBox.innerHTML = '<tr style="width: 100%;"><td style="width: 50%"></td><td style="width: 50%"><div class="bubbleSend bodyLight">' + message + '</div><div class="subtitleLight" style="font-size: 14px; padding-left: 1.5ch; padding-top: 0.25ch;">' + timestamp +'</div></td></tr>' + chatBox.innerHTML;
+        
     }
     else{
-        /*
-        chatBox.innerHTML = '<div class="subtitleLight" style="font-size: 14px; padding-left: 3.5ch; padding-top: 0.25ch;">'. timestamp + chatBox.innerHTML;
-        chatBox.innerHTML = '<div class="bubbleReceive bodyLight">' + message + '</div>' + chatBox.innerHTML;
-        */
+        //
+        chatBox.innerHTML = '<tr style="width: 100%;"><td style="width: 50%"><div class="bubbleReceive bodyLight">' + message + '</div><div class="subtitleLight" style="font-size: 14px; padding-left: 3.5ch; padding-top: 0.25ch;">'. timestamp + '</div></td><td style="width: 50%"></td></tr>' + chatBox.innerHTML;
+        
     }
 }
