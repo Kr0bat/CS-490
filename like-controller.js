@@ -18,14 +18,15 @@ function toggleLike(id, username){
 
     var image = document.getElementById(imageId);
     var counter = document.getElementById(counterId);
+    var currCount = Number.parseInt(counter.innerHTML);
 
     if (image.src == "https://web.njit.edu/~kg448/assets/heart-on.png"){
         image.src = imageOff;
-        counter.innerHTML = parseInt(counter.innerHTML,10) - 1;
+        counter.innerHTML = currCount - 1;
     }
     else{
         image.src = imageOn;
-        counter.innerHTML = parseInt(counter.innerHTML,10) + 1;
+        counter.innerHTML = currCount + 1;
     }
 }
 

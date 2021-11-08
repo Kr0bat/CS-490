@@ -145,7 +145,7 @@ $precursor = '/~kg448';
 $currPage = "feed";
 
 if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
-    if (isset($_GET['viewing'])) {
+    if (isset($_GET['viewing']) && strtolower($_GET['viewing']) != strtolower($_SESSION['username'])) {
         $currPage = "none";
     } else {
         $currPage = 'account';
