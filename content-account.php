@@ -750,13 +750,6 @@ td.emptyGrid33 {
                         </span>
                     </a>
                 </div>
-                <div class="col-12 bodyLight" style="margin-top: 2ch">
-                    <a href="?editProfile=true" style="text-decoration: none;">
-                        <span class="subtitleBold" style="font-size: 17.5px;">
-                            edit profile
-                        </span>
-                    </a>
-                </div>
             </div>
         </div>
     </div>
