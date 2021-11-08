@@ -189,18 +189,24 @@ if (isBlocked($_GET['viewing'])) {
                             </button>
                         </a>
                     </form>
-                <?php   
+
+                    <?php   
                         } else {
-                ?>
-                    <a href="">
-                        <div class="col-12 blockContainer" style="width: min(10ch, 10vw); margin-top: 1.5ch; color: white; text-deocration: none;">
-                            Unban User
-                        </div>
-                    </a>
-                <?php
+                    ?>
+
+                    <form method="POST">
+                        <a href="">
+                            <input type="text" name="ban_account_username" value="<?php echo $_GET['viewing']; ?>" style="display: none;" readonly/>
+                            <button type="submit" name="ban_account_submit" class="col-12 blockContainer" style="width: min(10ch, 10vw); margin-top: 1.5ch; color: white; text-deocration: none;">
+                                Unban User
+                            </button>
+                        </a>
+                    </form>
+
+                    <?php
                         }
                     } 
-                ?>
+                    ?>
             </div>
             <div class="col-8 push-05">
                 <div class="col-12 titleLight">
