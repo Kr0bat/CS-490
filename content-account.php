@@ -179,7 +179,7 @@ td.emptyGrid33 {
                     <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_GET['viewing'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="imgFitMid logoImg" style="border-radius: 100%; height: min(10ch, 10vw); width: min(10ch, 10vw); border-style: solid; border-color: rgba(255, 255, 255, 0.15);" />
                 </div>
                 <?php 
-                    if ($_SESSION['role'] == 'admin' && (!isAdmin($_Get['viewing']))) { 
+                    if ($_SESSION['role'] == 'admin' && (!isAdmin($_GET['viewing']))) { 
                         if (!isBlocked($_GET['viewing'])) {
                     ?>
                     <a href="">

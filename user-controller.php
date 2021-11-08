@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 function toggleBan($recipient, $admin, $banBool) {
-    if (isAdmin($admin)) {
+    if (isAdmin($admin) && !isAdmin($recipient)) {
         if ($banBool == 1) {
             //unban
             unblockAccount($recipient);
