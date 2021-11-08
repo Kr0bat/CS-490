@@ -70,16 +70,17 @@
 
                 //Toggles the read dot in chat if there exists a recieved chat that the user hasn't read
                 //This will work once chats.php is updated
-                $read = false;
+                $unread = false;
                 foreach($latestChat as $chat){
                     if ($chat['recipient'] == $_SESSION['username'] && $chat['r'] == 0){
-                        $read = true;
+                        $unread = true;
                     }
                 }
 
                 $latestChat = $latestChat[count($latestChat) - 1];
                 unset($latestChat[$sender]);
                 $chatlist[$sender] = $latestChat;
+                $chatlist[$sender]['unread'] = $unread;
 
             }
             // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ KARIM'S CODE ENDS HERE ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
@@ -128,7 +129,7 @@
                                                     <td style="max-width: fit-content;">
                                                         <span class="');
                                                         
-                                                        if ($read) {
+                                                        if ($content['unread']) {
                                                             print('blueDot" style="margin-left: 1.5ch;"');
                                                         } else {
                                                             print('"');
@@ -144,8 +145,9 @@
                                                         <a class="bodyBold">
                                                     ');
                                                         
-                                                    if ($content['r'] == 0) {
+                                                    if ($content['unread']) {
                                                         print('(NEW) ');
+                                                        //print($unread);
                                                     } else {
                                                         print('');
                                                     }
