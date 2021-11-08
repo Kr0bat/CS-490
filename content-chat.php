@@ -72,7 +72,7 @@
                 //This will work once chats.php is updated
                 $read = false;
                 foreach($latestChat as $chat){
-                    if ($chat['recipient'] == $_SESSION['username'] && $chat['read'] == 0){
+                    if ($chat['recipient'] == $_SESSION['username'] && $chat['r'] == 0){
                         $read = true;
                     }
                 }
