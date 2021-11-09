@@ -21,7 +21,7 @@ if ( isset($_POST['get_chat']) ){
     
     foreach($allChats as $chat){ 
         $chatTime = strtotime($chat['t']);
-        if ($chatTime > $lastUpdated){
+        if ($chatTime >= $lastUpdated){
             $newChats[] = $chat;
             setRead($chat['recipient'], $chat['sender']);
         }
