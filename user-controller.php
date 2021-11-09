@@ -11,7 +11,7 @@
 </head>
 <body>
 <?php
-include("users.php");
+//include("users.php");
 /*
 session_start();
 #include("users.php"); TODO include backend functions
