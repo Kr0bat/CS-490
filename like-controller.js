@@ -23,10 +23,12 @@ function toggleLike(id, username){
     if (image.src == "https://web.njit.edu/~kg448/assets/heart-on.png"){
         image.src = imageOff;
         counter.innerHTML = currCount - 1;
+        counter.style.color = "#a2a2a2";
     }
     else{
         image.src = imageOn;
         counter.innerHTML = currCount + 1;
+        counter.style.color = "#D75A4A";
     }
 }
 

@@ -461,7 +461,7 @@ if (isset($_GET['successMsg'])) {
                                                             <td style="width: 100%;"></td>
                                                             <td style="width: 3ch;"></td>
                                                             <td style="text-align: center; width: 3ch; padding-left: 0.75ch;">
-                                                                <span id="like_counter_<?php echo $info['id']; ?>" style="color: #D75A4A; font-size: 30px; font-weight: bolder;"><?php echo $info['likeCount'] ?></span>
+                                                                <span id="like_counter_<?php echo $info['id']; ?>" style="color: <?php if ($info['liked']) { echo '#D75A4A;'; } else { echo '#a2a2a2;'; }?> font-size: 30px; font-weight: bolder;"><?php echo $info['likeCount'] ?></span>
                                                             </td>
                                                         </tr>
                                                         <tr>
@@ -470,7 +470,7 @@ if (isset($_GET['successMsg'])) {
                                                                 <img src="assets/comment.png" title="Add Comment" id="comment_post_<?php echo $info['id'] ?>" onclick="openComment('comment_input_<?php echo $info['id'] ?>')" class="" style="border-width: 0; height: 3ch; margin-top: 0; cursor: pointer;" />
                                                             </td>
                                                             <td style="width: 3ch;">
-                                                                <img <?php if ($info['liked']) {echo 'src="assets/heart-on.png"  title="Unlike Post"';} else {echo 'src="assets/heart-off.png"  title="Like Post"';}?> id="like_post_<?php echo $info['id'] ?>" onclick="toggleLike('<?php echo $info['id'] ?>', '<?php echo $_SESSION['username']?>')" class="" style="border-width: 0; height: 3ch; margin-left: 0.75ch; cursor: pointer;" />
+                                                                <img <?php if ($info['liked']) {echo 'src="assets/heart-on.png"  title="Unlike Post"';} else { echo 'src="assets/heart-off.png"  title="Like Post"'; }?> id="like_post_<?php echo $info['id'] ?>" onclick="toggleLike('<?php echo $info['id'] ?>', '<?php echo $_SESSION['username']?>')" class="" style="border-width: 0; height: 3ch; margin-left: 0.75ch; cursor: pointer;" />
                                                             </td>
                                                         </tr>
                                                     </tbody>
