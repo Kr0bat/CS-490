@@ -146,8 +146,7 @@
                                                     ');
                                                         
                                                     if ($content['unread']) {
-                                                        print('(NEW) ');
-                                                        //print($unread);
+                                                        print('<span style="color: #56b35e">(NEW)</span> ');
                                                     } else {
                                                         print('');
                                                     }
