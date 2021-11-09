@@ -1,4 +1,3 @@
-<html>
  <?php
  
  function getTokens()
@@ -75,4 +74,3 @@ function UpdateExpiration($expiration, $new_expiration)
 }
 
  ?>
- </html>
