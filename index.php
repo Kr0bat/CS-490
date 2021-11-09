@@ -4,6 +4,7 @@
 <?php
 session_start();
 include("projectSiteMiddle.php");
+include("users.php");
 
 //
 // \/ \/ \/ \/ \/ KARIM'S CODE STARTS HERE \/ \/ \/ \/ \/
@@ -43,7 +44,7 @@ function checkLogin( $name, $pass ) {
 
     if ($user != null) {
         $role = $user['type'];
-        $_SESSION['username'] = $name;
+        $_SESSION['username'] = getProfile($name)['username'];
         $_SESSION['password'] = $password;
         
         if ($role == "admin") {

@@ -32,7 +32,7 @@ function getProfile($username)
   require('databaseConnect.php');
    
   //make query
-  $q1 = "SELECT first_name AS fname, last_name AS lname, pfp_url AS profile_picture, description AS profile_description  FROM user WHERE username = '$username' ";
+  $q1 = "SELECT first_name AS fname, last_name AS lname, pfp_url AS profile_picture, description AS profile_description, username  FROM user WHERE username = '$username' ";
   $r = @mysqli_query ($dbc, $q1); 
   
   //get user's info

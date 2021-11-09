@@ -4,7 +4,7 @@ function updateChat(sender, user=null, message=null, timestamp=null){
     if (timestamp == null){
         var d = new Date();
         timestamp = d.getFullYear() + "-" + d.getMonth() + "-" + d.getDay() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
-        //alert(timestamp);
+        alert(timestamp);
     }
 
     if(user == null){
