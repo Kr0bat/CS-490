@@ -41,6 +41,23 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
 } else {
     $role = false;
     if (isset($_SESSION['role'])) {
+
+
+        //
+        // \/ \/ \/ \/ \/ KARIM'S CODE STARTS HERE \/ \/ \/ \/ \/
+        if ( (isset($_POST['delete_post_submit'])) && ( $_SESSION['role'] == "admin" || $_SESSION['role'] == "basic" ) )  {
+            $postID = $_POST['delete_post_id'];
+            $creator = $_POST['delete_post_creator'];
+
+            if ($_SESSION['role'] == "admin" || ( strtolower($_SESSION['username']) == strtolower($creator)) ) {
+                removePost($postID);
+            }
+
+        }
+        // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ KARIM'S CODE ENDS HERE ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
+        //
+
+
         if ($_SESSION['role'] == "admin") {
 
             // -------
