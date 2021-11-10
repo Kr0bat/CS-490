@@ -166,7 +166,7 @@ if (isBlocked($_GET['viewing'])) {
     ?>
 
     <div class="col-12" style="margin-top: 5vh">
-        <a href="/~kg448/<?php if (isset($_GET['redirectFrom'])) { echo $_GET['redirectFrom']; if ($_GET['redirectFrom'] == "search") { echo '?search_msg='.$_GET['searchKey']; } } else { echo "search"; } ?>.php">
+        <a href="/~kg448/<?php if (isset($_GET['redirectFrom'])) { echo $_GET['redirectFrom'].'.php'; if ($_GET['redirectFrom'] == "search") { echo '.php?search_msg='.$_GET['searchKey']; } } else { echo "search.php"; } ?>">
             <div class="col-10 push-1 subtitleBold underlineOnHover" style="font-size: 22.5px">
                 Back
             </div>
