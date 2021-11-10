@@ -420,8 +420,8 @@ if (isset($_GET['successMsg'])) {
                                                             </span>
                                                         </a>
                                                     </td>
-                                                    <td style="padding-left: 0.5ch; overflow: visible; white-space: nowrap; max-width: 25vw;">
-                                                        <div class="col-12">
+                                                    <td style="padding-left: 0.5ch; overflow: hidden; white-space: nowrap; max-width: 25vw;">
+                                                        <div class="col-12" style="overflow: hidden; white-space: nowrap; max-width: 25vw;">
                                                             <a href="/~kg448/account.php?viewing=<?php echo $info['creator']; ?>&redirectFrom=feed" title="View <?php echo $info['creator']; ?>'s Profile" class="bodyLight underlineOnHover" style="text-decoration: none; <?php if (isAdmin($info["creator"])) { echo "color: rgb(175, 107, 72)"; } ?>">
                                                                 <?php echo getProfile($info['creator'])["fname"].' '.getProfile($info['creator'])["lname"]; ?>
                                                             </a>
