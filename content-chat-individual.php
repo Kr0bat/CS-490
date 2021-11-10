@@ -162,16 +162,10 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
                             </td>
                             <td style="padding-left: 0.35ch">
                                 <a href="/~kg448/account.php?viewing=<?php echo $_SESSION['chatWith']; ?>&redirectFrom=chat" class="titleBold underlineOnHover" style="text-decoration: none;" title="Go to <?php echo $_SESSION['chatWith']; ?>'s Profile">
-                                    <?php echo getProfile($_SESSION['chatWith'])["fname"].' '.getProfile($_SESSION['chatWith'])["lname"]; ?>
+                                    <div style="max-width: 40vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; <?php if (isAdmin($_SESSION['chatWith'])) { echo "color: rgb(175, 107, 72);"; } ?>">
+                                        <?php echo getProfile($_SESSION['chatWith'])["fname"].' '.getProfile($_SESSION['chatWith'])["lname"]; ?>
+                                    </div>
                                 </a>
-                                <?php
-                                if (isAdmin($_SESSION['chatWith'])) {
-                                    print('
-                                    <span class="subtitleLight" style="font-size: 30px; color: rgb(144, 85, 54); padding-left: 5px;">
-                                        Admin
-                                    </span>');
-                                }
-                                ?>
                             </td>
                             <td style="padding-left: 1ch; font-size: 20px; width: 15ch">        
                                 <div class="col-12">
