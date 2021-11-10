@@ -257,11 +257,9 @@ if (isBlocked($_GET['viewing'])) {
 
                             <?php 
 
-                            $isFollowing = false;
-
                             // Determine if you're following the viewed user
 
-                            if ($isFollowing) {
+                            if (isFollowing($_GET['viewing'], $_SESSION['username'])) {
                             ?>
                                 
                             <td class="" style="width: 49%; cursor: pointer;">
