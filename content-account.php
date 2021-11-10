@@ -183,7 +183,7 @@ if (isBlocked($_GET['viewing'])) {
                         if (!isBlocked($_GET['viewing'])) {
                     ?>
                     <form method="POST">
-                        <a href="">
+                        <a href="" style="cursor: pointer;">
                             <input type="text" name="ban_account_username" value="<?php echo $_GET['viewing']; ?>" style="display: none;" readonly/>
                             <button type="submit" name="ban_account_submit" class="col-12 blockContainer" style="font-size: 20px; width: min(10ch, 10vw); margin-top: 1.5ch; color: white; text-deocration: none;">
                                 Ban User
@@ -196,7 +196,7 @@ if (isBlocked($_GET['viewing'])) {
                     ?>
 
                     <form method="POST">
-                        <a href="">
+                        <a href="" style="cursor: pointer;">
                             <input type="text" name="ban_account_username" value="<?php echo $_GET['viewing']; ?>" style="display: none;" readonly/>
                             <button type="submit" name="ban_account_submit" class="col-12 blockContainer" style="font-size: 20px; width: min(10ch, 10vw); margin-top: 1.5ch; color: white; text-deocration: none;">
                                 Unban User
@@ -237,7 +237,7 @@ if (isBlocked($_GET['viewing'])) {
                     <tbody>
                         <tr style="height: 1.5ch;"></tr>
                         <tr style="width: 100%; text-align: center; ">
-                            <td class="chatContainer" style="width: 49%;">
+                            <td class="chatContainer underlineOnHover" style="width: 49%;">
                                 <a href="/~kg448/chat.php?chatWith=<?php echo $_GET['viewing']; ?>">
                                     <table class="bodyBold" style="width: 100%">
                                         <tbody>
@@ -264,7 +264,7 @@ if (isBlocked($_GET['viewing'])) {
                             if ($isFollowing) {
                             ?>
                                 
-                            <td class="" style="width: 49%;">
+                            <td class="" style="width: 49%; cursor: pointer;">
                                 <form method="POST">
                                     <input type="text" name="follow_username" value="<?php echo $_GET['viewing'] ?>" style="display: none;" readonly/>
                                     <button type="submit" name="follow_submit" class="unfollowContainer bodyBold underlineOnHover" style="width: 100%;">
@@ -290,7 +290,7 @@ if (isBlocked($_GET['viewing'])) {
                             } else {
                             ?>
 
-                            <td class="">
+                            <td class="" style="cursor: pointer;">
                                 <form method="POST">
                                     <input type="text" name="follow_username" value="<?php echo $_GET['viewing'] ?>" style="display: none;" readonly/>
                                     <button type="submit" name="follow_submit" class="followContainer bodyBold underlineOnHover" style="width: 100%;">
