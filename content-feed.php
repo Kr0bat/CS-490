@@ -335,7 +335,7 @@ if (isset($_GET['successMsg'])) {
                                     <td style="padding-left: 0.5ch; max-width: 10ch;">
                                         <div class="col-12" style="max-width: 10ch;">
                                             <a href="/~kg448/account.php?viewing=<?php echo $commentInfo["creator"]; ?>&redirectFrom=feed" title="View <?php echo $commentInfo["creator"]; ?>'s Profile" style="text-decoration: none;" class="bodyLight">  
-                                                <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; <?php if (isAdmin($commentInfo["creator"])) { echo "rgb(175, 107, 72)"; } ?>">
+                                                <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; <?php if (isAdmin($commentInfo["creator"])) { echo "color: rgb(175, 107, 72)"; } ?>">
                                                     <?php echo getProfile($commentInfo['creator'])["fname"]; ?>
                                                 </div>
                                             </a>
@@ -587,7 +587,7 @@ if (isset($_GET['successMsg'])) {
                                     <td style="padding-left: 0.5ch; max-width: 10ch;">
                                         <div class="col-12" style="max-width: 10ch;">
                                             <a href="/~kg448/account.php?viewing=<?php echo $commentInfo["creator"]; ?>&redirectFrom=feed" title="View <?php echo $commentInfo["creator"]; ?>'s Profile" style="text-decoration: none;" class="bodyLight">  
-                                                <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; <?php if (isAdmin($commentInfo["creator"])) { echo "rgb(175, 107, 72)"; } ?>">
+                                                <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; <?php if (isAdmin($commentInfo["creator"])) { echo "color: rgb(175, 107, 72)"; } ?>">
                                                     <?php echo getProfile($commentInfo['creator'])["fname"]; ?>
                                                 </div>
                                             </a>
