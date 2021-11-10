@@ -135,7 +135,7 @@ td.emptyGrid33 {
             <div class="<?php if (!$isMobile) { echo "col-10 push-1"; } else { echo "col-12"; } ?> titleBold" style="">
                 <form method="get">
                     <div class="col-12">
-                        <input maxlength="280" type="search" name="search_msg" placeholder="Search for users..." value="" style="background-color: #212121; border-color: #212121; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px; word-break: break-word; vertical-align: top;" required />
+                        <input maxlength="280" type="search" name="search_msg" placeholder="Search for users..." value="" style="width: 100%; background-color: #212121; border-color: #212121; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px; word-break: break-word; vertical-align: top;" required />
                     </div>
                 </form>
             </div>
