@@ -778,7 +778,10 @@ if (isBlocked($_GET['viewing'])) {
     <?php
     $postCount = count(getUserPosts($_SESSION['username']));
     $postL = getUserPosts($_SESSION['username']);
+    
     $likeCount = 0;
+    $followerCount = 0;
+
     foreach ($postL as $index => $content) {
         $likeCount += $content['likeCount'];
     }
