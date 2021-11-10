@@ -298,30 +298,11 @@ if (isBlocked($_GET['viewing'])) {
 
                                 if ($isFollowing) {
                                 ?>
-
-                                <td class="unfollowContainer bodyLight underlineOnHover">
-                                    <a href="/~kg448/account.php?viewing=<?php echo $_GET['viewing']; ?>">
-                                        <table class="bodyLight" style="width: 100%">
-                                            <tbody>
-                                                <tr style="width: 100%">
-                                                    <td style="text-align: right; width: 44%;">
-                                                        <div style="margin-top: 0.3ch;">
-                                                            <img src="assets/comment.png" class="" style="border-width: 0; height: 2ch; margin-top: 0; cursor: pointer; padding-right: 0.5ch; content: url('data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9JzMwMHB4JyB3aWR0aD0nMzAwcHgnICBmaWxsPSIjRkZGRkZGIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNjQgNjQiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDY0IDY0IiB4bWw6c3BhY2U9InByZXNlcnZlIj48cGF0aCBkPSJNNTEuMzMsMzQuOGMzLjUsMi4xNyw1LjY3LDYuMDgsNS42NywxMC4xOWMwLDQuNDUtMi41NSw4LjY0LTYuNTEsMTAuNjhjLTEuNjYsMC44NS0zLjU1LDEuMzExLTUuNDYsMS4zMTEgIGMtMS40OSwwLTIuOTYtMC4yOC00LjMzLTAuODAxYy0xLjAxLTAuMzgtMS45Ni0wLjg5LTIuODItMS41MjljLTMuMzMtMi40Ni01LjE4LTYuNTUxLTQuODQtMTAuNjgxYzAuMzUtNC4wNjksMi44Mi03Ljc3LDYuNDctOS42NDkgIGMxLjY3LTAuODYsMy41NjEtMS4zMTEsNS40OC0xLjMxMWMwLjM5LDAsMC43OSwwLjAyMSwxLjE3LDAuMDdDNDguMDEsMzMuMjQsNDkuNzgsMzMuODMsNTEuMzMsMzQuOHogTTUwLjY2LDQwLjc1ICBjMC4zOS0wLjM5LDAuMzktMS4wMiwwLTEuNDFjLTAuMzkxLTAuMzktMS4wMy0wLjM5LTEuNDIsMEw0NSw0My41OGwtNC4yNC00LjI0Yy0wLjM5LTAuMzktMS4wMjktMC4zOS0xLjQyLDAgIGMtMC4zOSwwLjM5MS0wLjM5LDEuMDIxLDAsMS40MUw0My41OSw0NWwtNC4yNSw0LjI0Yy0wLjM5LDAuMzktMC4zOSwxLjAyLDAsMS40MWMwLjIsMC4xOTksMC40NSwwLjI5LDAuNzEsMC4yOSAgczAuNTEtMC4wOTEsMC43MS0wLjI5TDQ1LDQ2LjQxbDQuMjQsNC4yNGMwLjIsMC4xOTksMC40NSwwLjI5LDAuNzEsMC4yOXMwLjUxLTAuMDkxLDAuNzEtMC4yOWMwLjM5LTAuMzkxLDAuMzktMS4wMjEsMC0xLjQxICBMNDYuNDIsNDVMNTAuNjYsNDAuNzV6Ij48L3BhdGg+PHBhdGggZD0iTTQxLjUsMTguNDljMCwzLjEwOS0xLjI2LDYuMDItMy41Niw4LjJjLTAuNDYsMC40MzktMC45NiwwLjg0LTEuNDgsMS4xODljLTEuOTYsMS4zNC00LjI5LDIuMDktNi42MywyLjA5ICBjLTEuNzcsMC0zLjQ4LTAuNDItNS4wNy0xLjIzOWMtMC40NS0wLjIzLTAuODctMC40OS0xLjI4LTAuNzYxYy0wLjAxLTAuMDItMC4wMS0wLjAyLTAuMDItMC4wMmMtMi45LTIuMDMtNC43OS01LjQtNC45NS04Ljk0ICBjLTAuMTgtNC4xNDksMS44OS04LjA5LDUuNDEtMTAuMjc5QzI1LjczLDcuNiwyNy44Myw3LjAxLDMwLjAxLDcuMDFjMiwwLDMuOTUsMC41MSw1LjY2LDEuNDcxQzM5LjI2LDEwLjUzLDQxLjUsMTQuMzYsNDEuNSwxOC40OXoiPjwvcGF0aD48cGF0aCBkPSJNMzcuMTksMjkuNzljMS42ODksMC4zNywzLjM1OSwwLjg4LDQuOTcsMS41MWMtMS4yNSwwLjI1LTIuNDUsMC42Ny0zLjU3LDEuMjRjLTQuMjUsMi4yLTcuMTQsNi41MS03LjU0LDExLjI2ICBjLTAuNDEsNC44MiwxLjc1LDkuNTksNS42NDEsMTIuNDZjMC4xNDksMC4xMSwwLjMsMC4yMjEsMC40NDksMC4zMmMtOS40OSwxLjEtMTkuMTYtMC4wMjEtMjguMTY5LTMuMjlDNy43OSw1Mi44Niw3LDUxLjczLDcsNTAuNDcgIHYtNi45NmMwLTMuNzcsMS44OS03LjIyOSw1LjA3LTkuMjdjMy4yNi0yLjA5LDYuODItMy41OCwxMC42LTQuNDJjMC4zOCwwLjI1LDAuNzcsMC40NzksMS4xOCwwLjY4OWMxLjg4LDAuOTcxLDMuODksMS40Niw1Ljk4LDEuNDYgIEMzMi40MSwzMS45NywzNC45OSwzMS4xOSwzNy4xOSwyOS43OXoiPjwvcGF0aD48L3N2Zz4=');" />
-                                                        </div>
-                                                    </td>
-                                                    <td class="underlineOnHover" style="text-align: left; width: 50%; padding-left: 0ch; font-family: 'Montserrat', sans-serif;">
-                                                        Unfollow
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </a>
-                                </td>
                                    
                                 <td class="">
                                     <form method="POST">
                                         <input type="text" name="follow_username" value="<?php echo $_GET['viewing'] ?>" style="display: none;" readonly/>
-                                        <button type="submit" name="follow_submit" class="unfollowContainer bodyLight underlineOnHover" style="width: 100%;">
+                                        <button type="submit" name="follow_submit" class="unfollowContainer bodyBold underlineOnHover" style="width: 100%;">
                                             <table class="bodyLight" style="width: 100%">
                                                 <tbody>
                                                     <tr style="width: 100%">
@@ -348,7 +329,7 @@ if (isBlocked($_GET['viewing'])) {
                                     <form method="POST">
                                         <input type="text" name="follow_username" value="<?php echo $_GET['viewing'] ?>" style="display: none;" readonly/>
                                         <button type="submit" name="follow_submit" class="followContainer bodyBold underlineOnHover" style="width: 100%;">
-                                            <table class="bodyBold" style="width: 100%">
+                                            <table class="bodyLight" style="width: 100%">
                                                 <tbody>
                                                     <tr style="width: 100%">
                                                         <td style="text-align: right; width: 44%;">
@@ -356,7 +337,7 @@ if (isBlocked($_GET['viewing'])) {
                                                                 <img src="assets/comment.png" class="" style="border-width: 0; height: 2.5ch; margin-top: 0; cursor: pointer; padding-right: 0.5ch; content: url('data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9JzMwMHB4JyB3aWR0aD0nMzAwcHgnICBmaWxsPSIjRkZGRkZGIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNjQgNjQiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDY0IDY0IiB4bWw6c3BhY2U9InByZXNlcnZlIj48cGF0aCBkPSJNNDEuNSwxOC40OWMwLDMuMTA5LTEuMjYsNi4wMi0zLjU2LDguMmMtMC40NiwwLjQzOS0wLjk2LDAuODQtMS40OCwxLjE4OWMtMS45NiwxLjM0LTQuMjksMi4wOS02LjYzLDIuMDkgIGMtMS43NywwLTMuNDgtMC40Mi01LjA3LTEuMjM5Yy0wLjQ1LTAuMjMtMC44Ny0wLjQ5LTEuMjgtMC43NjFjLTAuMDEtMC4wMi0wLjAxLTAuMDItMC4wMi0wLjAyYy0yLjktMi4wMy00Ljc5LTUuNC00Ljk1LTguOTQgIGMtMC4xOC00LjE0OSwxLjg5LTguMDksNS40MS0xMC4yNzlDMjUuNzMsNy42LDI3LjgzLDcuMDEsMzAuMDEsNy4wMWMyLDAsMy45NSwwLjUxLDUuNjYsMS40NzFDMzkuMjYsMTAuNTMsNDEuNSwxNC4zNiw0MS41LDE4LjQ5eiI+PC9wYXRoPjxwYXRoIGQ9Ik0zNy4xOSwyOS43OWMxLjY5LDAuMzcsMy4zNiwwLjg4LDQuOTcsMS41MWMtMS4yNSwwLjI1LTIuNDUsMC42Ny0zLjU3LDEuMjRjLTQuMjUsMi4yLTcuMTQsNi41MS03LjU0LDExLjI2ICBjLTAuNDEsNC44MiwxLjc1LDkuNTksNS42NCwxMi40NmMwLjE1LDAuMTEsMC4zLDAuMjIxLDAuNDUsMC4zMmMtOS40OSwxLjEtMTkuMTctMC4wMjEtMjguMTctMy4yOUM3Ljc5LDUyLjg2LDcsNTEuNzMsNyw1MC40NyAgdi02Ljk2YzAtMy43NywxLjg5LTcuMjI5LDUuMDctOS4yN2MzLjI2LTIuMDksNi44Mi0zLjU4LDEwLjYtNC40MmMwLjM4LDAuMjUsMC43NywwLjQ3OSwxLjE4LDAuNjg5YzEuODgsMC45NzEsMy44OSwxLjQ2LDUuOTgsMS40NiAgYzEuNzMsMCwzLjQ2LTAuMzUsNS4wOC0xQzM1LjcsMzAuNjUsMzYuNDYsMzAuMjUsMzcuMTksMjkuNzl6Ij48L3BhdGg+PHBhdGggZD0iTTUxLjMzLDM0LjhjMy41LDIuMTcsNS42Nyw2LjA4LDUuNjcsMTAuMTljMCw0LjQ1LTIuNTUsOC42NC02LjUxLDEwLjY4Yy0xLjY2LDAuODUtMy41NSwxLjMxMS01LjQ2LDEuMzExICBjLTAuMzksMC0wLjc4LTAuMDIxLTQuMzMtMC44MDFsLTIuODItMS41MjljLTMuMzMtMi40Ni01LjE5LTYuNTUxLTQuODQtMTAuNjgxYzAuMzUtNC4wNjksMi44Mi03Ljc3LDYuNDctOS42NDkgIGMxLjY3LTAuODYsMy41Ni0xLjMxMSw1LjQ4LTEuMzExYzAuMzksMCwwLjc5LDAuMDIxLDEuMTcsMC4wN0M0OC4wMSwzMy4yNCw0OS43OCwzMy44Myw1MS4zMywzNC44eiBNNTMsNDQuOTljMC0wLjU1LTAuNDUtMS0xLTFoLTYgIHYtNmMwLTAuNTUtMC40NS0xLTEtMXMtMSwwLjQ1LTEsMXY2aC02Yy0wLjU1LDAtMSwwLjQ1LTEsMWMwLDAuNTYsMC40NSwxLDEsMWg2djZjMCwwLjU2LDAuNDUsMSwxLDFzMS0wLjQ0LDEtMXYtNmg2ICBDNTIuNTUsNDUuOTksNTMsNDUuNTUsNTMsNDQuOTl6Ij48L3BhdGg+PC9zdmc+');" />
                                                             </div>
                                                         </td>
-                                                        <td class="underlineOnHover" style="text-align: left; width: 50%; padding-left: 0ch;">
+                                                        <td class="underlineOnHover" style="text-align: left; width: 50%; padding-left: 0ch; font-family: 'Montserrat', sans-serif;">
                                                             Follow
                                                         </td>
                                                     </tr>
