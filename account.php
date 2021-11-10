@@ -71,7 +71,7 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
                 //ban them
                 blockAccount($banee);
             }
-            header("Location: /~kg448/account.php?viewing=$banee");
+            header('Location: /~kg448/account.php?viewing='.$banee.'&redirectFrom='.$_GET['redirectFrom']);
         }
 
         if ( (isset($_POST['follow_submit'])) && ( $_SESSION['role'] == "admin" || $_SESSION['role'] == "basic" ) ) {
@@ -84,7 +84,7 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
                 follow($followee, $_SESSION['username']);
             }
 
-            header("Location: /~kg448/account.php?viewing=$followee");
+            header('Location: /~kg448/account.php?viewing='.$followee.'&redirectFrom='.$_GET['redirectFrom']);
         }
         // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ KARIM'S CODE ENDS HERE ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
         //

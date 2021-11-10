@@ -223,7 +223,7 @@ td.emptyGrid33 {
             ?>
 
             <div class="col-12 fadeIn" style="margin-top: 1vh; animation-delay: <?php echo $delayTime; ?>s;">
-                <a href="/~kg448/account.php?viewing=<?php echo $username; ?>&redirectFrom=search" title="View <?php echo $username; ?>'s Profile">
+                <a href="/~kg448/account.php?viewing=<?php echo $username; ?>&redirectFrom=search&searchKey=<?php echo $_REQUEST['search_msg'] ?>" title="View <?php echo $username; ?>'s Profile">
                     <div class="col-10 push-1 bodyBold dmContainer underlineOnHover" style="margin: 0.25ch 0">
                         <div class="col-12">
                             <table>
