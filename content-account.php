@@ -173,7 +173,7 @@ if (isBlocked($_GET['viewing'])) {
         </a>
     </div>
     <div class="col-12" style="margin: 10vh 0 5vh 0;">
-        <div class="<?php if (!$isMobile) { echo "col-10 push-1"; } else { echo "col-12"; } ?> bodyLight" style="">
+        <div class="col-10 push-1 bodyLight" style="">
             <div class="<?php if (!$isMobile) { echo "col-2"; } else { echo "col-12"; } ?>">
                 <div class="col-12">
                     <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_GET['viewing'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="imgFitMid logoImg" style="border-radius: 100%; height: min(10ch, 10vw); width: min(10ch, 10vw); border-style: solid; border-color: rgba(255, 255, 255, 0.15);" />
@@ -185,7 +185,7 @@ if (isBlocked($_GET['viewing'])) {
                     <form method="POST">
                         <a href="" style="cursor: pointer;">
                             <input type="text" name="ban_account_username" value="<?php echo $_GET['viewing']; ?>" style="display: none;" readonly/>
-                            <button type="submit" name="ban_account_submit" class="col-12 blockContainer" style="font-size: 20px; width: min(10ch, 10vw); margin-top: 1.5ch; color: white; text-deocration: none;">
+                            <button type="submit" name="ban_account_submit" class="col-12 blockContainer" style="font-size: 20px; <?php if (!$isMobile) { echo "width: min(10ch, 10vw);"; } ?> margin-top: 1.5ch; color: white; text-deocration: none;">
                                 Ban User
                             </button>
                         </a>
@@ -198,7 +198,7 @@ if (isBlocked($_GET['viewing'])) {
                     <form method="POST">
                         <a href="" style="cursor: pointer;">
                             <input type="text" name="ban_account_username" value="<?php echo $_GET['viewing']; ?>" style="display: none;" readonly/>
-                            <button type="submit" name="ban_account_submit" class="col-12 blockContainer" style="font-size: 20px; width: min(10ch, 10vw); margin-top: 1.5ch; color: white; text-deocration: none;">
+                            <button type="submit" name="ban_account_submit" class="col-12 blockContainer" style="font-size: 20px; <?php if (!$isMobile) { echo "width: min(10ch, 10vw);"; } ?> margin-top: 1.5ch; color: white; text-deocration: none;">
                                 Unban User
                             </button>
                         </a>
@@ -680,25 +680,25 @@ if (isBlocked($_GET['viewing'])) {
                     </div>
                 </div>
                 <div class="<?php if (!$isMobile) { echo "col-8 push-05"; } else { echo "col-12"; } ?>">
-                    <div class="col-11 bodyLight" style="margin-top: 0ch;">
+                    <div class="col-11 bodyLight" style="<?php if (!$isMobile) { echo "margin-top: 0;"; } else { echo "margin-top: 2ch;"; } ?>">
                         First & Last Name:
                     </div>
-                    <div class="col-5 bodyLight" style="margin-top: 0.25ch;">
+                    <div class="col-55 bodyLight" style="margin-top: 0.25ch;">
                         <input maxlength="100" type="text" name="edit_account_name_first" placeholder="First Name" value="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["fname"]; } ?>" style="font-size: 20px; width: 100%; margin: 2px 0; background-color: #00000000; border-color: #56b35e32; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 10px; text-align: left;" required />
                     </div>
-                    <div class="col-5 push-1 bodyLight" style="margin-top: 0.25ch;">
+                    <div class="col-55 push-1 bodyLight" style="margin-top: 0.25ch;">
                         <input maxlength="100" type="text" name="edit_account_name_last" placeholder="Last Name" value="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["lname"]; } ?>" style="font-size: 20px; width: 100%; margin: 2px 0; background-color: #00000000; border-color: #56b35e32; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 10px; text-align: left;" required />
                     </div>
-                    <div class="col-11 bodyLight" style="margin-top: 1.5ch;">
+                    <div class="col-12 bodyLight" style="margin-top: 1.5ch;">
                         Paste link to new profile picture:
                     </div>
-                    <div class="col-11 bodyLight" style="margin-top: 0.25ch;">
+                    <div class="col-12 bodyLight" style="margin-top: 0.25ch;">
                         <input maxlength="100" type="search" name="edit_account_pfp_link" placeholder="URL to picture" value="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" style="font-size: 20px; width: 100%; margin: 2px 0; background-color: #00000000; border-color: #56b35e32; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 10px; text-align: left;" required />
                     </div>
-                    <div class="col-11 bodyLight" style="margin-top: 1.5ch;">
+                    <div class="col-12 bodyLight" style="margin-top: 1.5ch;">
                         Description:
                     </div>
-                    <div class="col-11 bodyLight" style="margin-top: 0.25ch;">
+                    <div class="col-12 bodyLight" style="margin-top: 0.25ch;">
                         <input maxlength="240" type="text" name="edit_account_description" placeholder="Describe yourself and your music taste!" value="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["profile_description"]; } ?>" style="font-size: 20px; width: 100%; min-height: 9ch; margin: 2px 0; background-color: #00000000; border-color: #56b35e32; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 10px; text-align: left;" required />
                     </div>
                     <div class="col-12 bodyLight" style="margin-top: 2ch">
@@ -733,10 +733,10 @@ if (isBlocked($_GET['viewing'])) {
     </div>
     <div class="col-12" style="margin: 10vh 0">
         <div class="<?php if (!$isMobile) { echo "col-10 push-1"; } else { echo "col-12"; } ?> bodyLight" style="">
-            <div class="<?php if (!$isMobile) { echo "col-2"; } else { echo "col-12"; } ?>">
+            <div class="<?php if (!$isMobile) { echo "col-2"; } else { echo "col-6 push-1"; } ?>">
                 <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="imgFitMid logoImg" style="border-radius: 100%; height: min(10ch, 10vw); width: min(10ch, 10vw); border-style: solid; border-color: rgba(255, 255, 255, 0.15);" />
             </div>
-            <div class="<?php if (!$isMobile) { echo "col-8 push-05"; } else { echo "col-10 push-1"; } ?>">
+            <div class="<?php if (!$isMobile) { echo "col-8 push-05"; } else { echo "col-10 push-1"; } ?>" style="<?php if (!$isMobile) { echo ""; } else { echo "margin-top: 1.5ch;"; } ?>">
                 <div class="col-12 titleLight">
                     <?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["fname"].' '.getProfile($_SESSION['username'])["lname"]; } ?> 
                     <span class="subtitleLight" style="font-size: 20px">(<?php echo $_SESSION['username']; ?>)</span>
