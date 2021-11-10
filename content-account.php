@@ -332,7 +332,10 @@ if (isBlocked($_GET['viewing'])) {
     <?php
     $postCount = count(getUserPosts($_GET['viewing']));
     $postL = getUserPosts($_GET['viewing']);
+
     $likeCount = 0;
+    $followerCount = 0;
+
     foreach ($postL as $index => $content) {
         $likeCount += $content['likeCount'];
     }
@@ -795,6 +798,10 @@ if (isBlocked($_GET['viewing'])) {
                                 <td class="bodyBold" style="width: 49%; font-size: 30px;">
                                     <?php echo $likeCount; ?>
                                 </td>
+                                <td style="width: 1ch"></td>
+                                <td class="bodyBold" style="width: 49%; font-size: 30px;">
+                                    <?php echo $followerCount; ?>
+                                </td>
                             </tr>
                             <tr style="width: 100%; text-align: center;">
                                 <td class="bodyLight">
@@ -804,8 +811,11 @@ if (isBlocked($_GET['viewing'])) {
                                 <td class="bodyLight">
                                     Likes
                                 </td>
+                                <td style="width: 1ch"></td>
+                                <td class="bodyLight">
+                                    Followers
+                                </td>
                             </tr>
-                            <tr style="height: 1ch;"></tr>
                         </tbody>
                     </table>
                 </div>
