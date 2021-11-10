@@ -185,7 +185,7 @@ if (isBlocked($_GET['viewing'])) {
                     <form method="POST">
                         <a href="" style="cursor: pointer;">
                             <input type="text" name="ban_account_username" value="<?php echo $_GET['viewing']; ?>" style="display: none;" readonly/>
-                            <button type="submit" name="ban_account_submit" class="col-12 blockContainer" style="font-size: 20px; <?php if (!$isMobile) { echo "width: min(10ch, 10vw);"; } ?> margin-top: 1.5ch; color: white; text-deocration: none;">
+                            <button type="submit" name="ban_account_submit" class="col-12 blockContainer bodyLight" style="font-size: 20px; <?php if (!$isMobile) { echo "width: min(10ch, 10vw);"; } ?> margin-top: 1.5ch; color: white; text-deocration: none;">
                                 Ban User
                             </button>
                         </a>
@@ -198,7 +198,7 @@ if (isBlocked($_GET['viewing'])) {
                     <form method="POST">
                         <a href="" style="cursor: pointer;">
                             <input type="text" name="ban_account_username" value="<?php echo $_GET['viewing']; ?>" style="display: none;" readonly/>
-                            <button type="submit" name="ban_account_submit" class="col-12 blockContainer" style="font-size: 20px; <?php if (!$isMobile) { echo "width: min(10ch, 10vw);"; } ?> margin-top: 1.5ch; color: white; text-deocration: none;">
+                            <button type="submit" name="ban_account_submit" class="col-12 blockContainer bodyLight" style="font-size: 20px; <?php if (!$isMobile) { echo "width: min(10ch, 10vw);"; } ?> margin-top: 1.5ch; color: white; text-deocration: none;">
                                 Unban User
                             </button>
                         </a>
@@ -210,7 +210,7 @@ if (isBlocked($_GET['viewing'])) {
                     ?>
             </div>
             <div class="<?php if (!$isMobile) { echo "col-8 push-05"; } else { echo "col-12"; } ?>">
-                <div class="col-12 titleLight">
+                <div class="col-12 titleLight" style="<?php if (!$isMobile) { echo ""; } else { echo "margin-top: 1.5ch;"; } ?>">
                     <?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_GET['viewing'])["fname"].' '.getProfile($_GET['viewing'])["lname"]; } ?> 
                     <span class="subtitleLight" style="font-size: 20px">(<?php echo $_GET['viewing']; ?>)</span>
                     <?php
