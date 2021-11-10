@@ -349,15 +349,15 @@ if (isBlocked($_GET['viewing'])) {
                         <tbody>
                             <tr style="height: 1ch;"></tr>
                             <tr style="width: 100%; text-align: center;">
-                                <td class="bodyBold" style="width: 49%; font-size: 30px;">
+                                <td class="bodyBold" style="width: 32%; font-size: 30px;">
                                     <?php echo $postCount; ?>
                                 </td>
                                 <td style="width: 1ch"></td>
-                                <td class="bodyBold" style="width: 49%; font-size: 30px;">
+                                <td class="bodyBold" style="width: 32%; font-size: 30px;">
                                     <?php echo $likeCount; ?>
                                 </td>
                                 <td style="width: 1ch"></td>
-                                <td class="bodyBold" style="width: 49%; font-size: 30px;">
+                                <td class="bodyBold" style="width: 32%; font-size: 30px;">
                                     <?php echo $followerCount; ?>
                                 </td>
                             </tr>
@@ -791,15 +791,15 @@ if (isBlocked($_GET['viewing'])) {
                         <tbody>
                             <tr style="height: 1ch;"></tr>
                             <tr style="width: 100%; text-align: center;">
-                                <td class="bodyBold" style="width: 49%; font-size: 30px;">
+                                <td class="bodyBold" style="width: 32%; font-size: 30px;">
                                     <?php echo $postCount; ?>
                                 </td>
                                 <td style="width: 1ch"></td>
-                                <td class="bodyBold" style="width: 49%; font-size: 30px;">
+                                <td class="bodyBold" style="width: 32%; font-size: 30px;">
                                     <?php echo $likeCount; ?>
                                 </td>
                                 <td style="width: 1ch"></td>
-                                <td class="bodyBold" style="width: 49%; font-size: 30px;">
+                                <td class="bodyBold" style="width: 32%; font-size: 30px;">
                                     <?php echo $followerCount; ?>
                                 </td>
                             </tr>
