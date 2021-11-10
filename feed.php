@@ -46,11 +46,17 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
         //
         // \/ \/ \/ \/ \/ KARIM'S CODE STARTS HERE \/ \/ \/ \/ \/
         if ( (isset($_POST['delete_post_submit'])) && ( $_SESSION['role'] == "admin" || $_SESSION['role'] == "basic" ) )  {
-            $postID = $_POST['delete_post_id'];
+            $newPostID = $_POST['delete_post_id'];
             $creator = $_POST['delete_post_creator'];
 
+            print($newPostID.'<br/>'.$creator.'<br/>');
+
             if ($_SESSION['role'] == "admin" || ( strtolower($_SESSION['username']) == strtolower($creator)) ) {
-                removePost($postID);
+                //removePost($newPostID);
+                //header("Location: /~kg448/feed.php?deleteMsgPost=$newPostID");
+                print('Has rights');
+            } else {
+                print('Cannot do that');
             }
 
         }

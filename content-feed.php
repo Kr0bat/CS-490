@@ -150,12 +150,31 @@ if( $detect->isMobile() && !$detect->isTablet() ){
     $isMobile = true;
 }
 
-if (isset($_GET['successMsg'])) {
-    $user = $_GET['successMsg'];
+if (isset($_GET['successMsgUser'])) {
+    $user = $_GET['successMsgUser'];
     print('
     <header>
         <div class="headerText" style="width: 100%; margin: 0 0 2vh 0; padding: 2vh 0; text-align: center; font-size: max(1.35vw, 2.5vh); color: #eaeaea; background-color: #599c51ff">
             New User: '.$user.' successfully created
+        </div>
+    </header>');
+}
+
+if (isset($_GET['successMsgPost'])) {
+    print('
+    <header>
+        <div class="headerText" style="width: 100%; margin: 0 0 2vh 0; padding: 2vh 0; text-align: center; font-size: max(1.35vw, 2.5vh); color: #eaeaea; background-color: #599c51ff">
+            New post successfully created
+        </div>
+    </header>');
+}
+
+if (isset($_GET['deleteMsgPost'])) {
+    $postDeleteID = $_GET['deleteMsgPost'];
+    print('
+    <header>
+        <div class="headerText" style="width: 100%; margin: 0 0 2vh 0; padding: 2vh 0; text-align: center; font-size: max(1.35vw, 2.5vh); color: #eaeaea; background-color: #9c5151ff">
+            Post (ID #'.$postDeleteID.') successfully deleted
         </div>
     </header>');
 }

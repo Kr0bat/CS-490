@@ -68,14 +68,9 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
         
         if ( is_null(getProfile($username)) ){
             createAccount($username, $password, $type, $firstName, $lastName);
-            print('
-            <header>
-                <div class="headerText" style="width: 100%; margin: 0 0 2vh 0; padding: 2vh 0; text-align: center; font-size: max(1.35vw, 2.5vh); color: #eaeaea; background-color: #599c51ff">
-                    Successfully created user '.$username.'
-                </div>
-            </header>');
+            header("Location: /~kg448/feed.php?successMsgUser=$username");
         }
-        else{
+        else {
             print('
             <header>
                 <div class="headerText" style="width: 100%; margin: 0 0 2vh 0; padding: 2vh 0; text-align: center; font-size: max(1.35vw, 2.5vh); color: #eaeaea; background-color: #9c5151ff">
