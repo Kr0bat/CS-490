@@ -58,16 +58,16 @@ function follow($follower, $username)
         
         if($row == 0)
         {
-           return 0;
+           return false;
         }
         else
         {
-             return 1;
+             return true;
         }
      }
      else
      {
-          return 0;
+          return false;
      }
      
     

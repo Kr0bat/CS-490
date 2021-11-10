@@ -18,6 +18,7 @@ session_start();
 include("profile-controller.php"); // contains POSTS.php & COMMENTS.php & USERS.php
 include("user-controller.php"); // contains USERS.php
 include("factory.php");
+include("follows.php");
 
 //
 // =======
@@ -71,6 +72,19 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
                 blockAccount($banee);
             }
             header("Location: /~kg448/account.php?viewing=$banee");
+        }
+
+        if ( (isset($_POST['follow_submit'])) && ( $_SESSION['role'] == "admin" || $_SESSION['role'] == "basic" ) ) {
+
+            $followee = $_POST['follow_username'];
+
+            if (isFollowing($followee, $_SESSION['username'])) {
+                unfollow($followee, $_SESSION['username']);
+            } else {
+                follow($followee, $_SESSION['username']);
+            }
+
+            header("Location: /~kg448/account.php?viewing=$followee");
         }
         // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ KARIM'S CODE ENDS HERE ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
         //
