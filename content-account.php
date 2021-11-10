@@ -237,7 +237,7 @@ if (isBlocked($_GET['viewing'])) {
                     <tbody>
                         <tr style="height: 1.5ch;"></tr>
                         <tr style="width: 100%; text-align: center; ">
-                            <td class="chatContainer">
+                            <td class="chatContainer" style="width: 49%;">
                                 <a href="/~kg448/chat.php?chatWith=<?php echo $_GET['viewing']; ?>">
                                     <table class="bodyBold" style="width: 100%">
                                         <tbody>
@@ -264,7 +264,7 @@ if (isBlocked($_GET['viewing'])) {
                             if ($isFollowing) {
                             ?>
                                 
-                            <td class="">
+                            <td class="" style="width: 49%;">
                                 <form method="POST">
                                     <input type="text" name="follow_username" value="<?php echo $_GET['viewing'] ?>" style="display: none;" readonly/>
                                     <button type="submit" name="follow_submit" class="unfollowContainer bodyBold underlineOnHover" style="width: 100%;">
@@ -374,6 +374,7 @@ if (isBlocked($_GET['viewing'])) {
                                     Followers
                                 </td>
                             </tr>
+                            <tr style="height: 1ch;"></tr>
                         </tbody>
                     </table>
                 </div>
@@ -816,6 +817,7 @@ if (isBlocked($_GET['viewing'])) {
                                     Followers
                                 </td>
                             </tr>
+                            <tr style="height: 1ch;"></tr>
                         </tbody>
                     </table>
                 </div>
