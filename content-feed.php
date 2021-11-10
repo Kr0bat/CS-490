@@ -179,7 +179,7 @@ if (isset($_GET['successMsg'])) {
     ?>
 
         <div class="col-12" id="<?php echo $info['id'] ?>" style="margin: 2ch 0 1ch 0">
-            <div class="col-10 push-1 titleBold" id="post_container_<?php echo $info[id]?>" style="">
+            <div class="col-12 titleBold" id="post_container_<?php echo $info[id]?>" style="">
                 <div class="col-12 bodyBold postContainer" style="margin: 0">
                     <div class="col-12">
                         <table style="margin: 0;">
@@ -196,18 +196,10 @@ if (isset($_GET['successMsg'])) {
                                                             </span>
                                                         </a>
                                                     </td>
-                                                    <td style="padding-left: 0.5ch; overflow: visible; white-space: nowrap;">
-                                                        <div class="col-12">
-                                                            <a href="/~kg448/account.php?viewing=<?php echo $info['creator']; ?>&redirectFrom=feed" title="View <?php echo $info['creator']; ?>'s Profile" style="text-decoration: none;" class="bodyLight underlineOnHover">
-                                                                <?php echo getProfile($info['creator'])["fname"].' '.getProfile($info['creator'])["lname"];
-
-                                                                if (isAdmin($info['creator'])) {
-                                                                print('
-                                                                    <span class="subtitleLight" style="font-size: 18px; color: rgb(144, 85, 54); padding-left: 5px;">
-                                                                        Admin
-                                                                    </span>');
-                                                                } 
-                                                                ?>
+                                                    <td style="padding-left: 0.5ch; overflow: hidden; white-space: nowrap; max-width: 25vw;">
+                                                        <div class="col-12" style="overflow: hidden; white-space: nowrap; max-width: 25vw;">
+                                                            <a href="/~kg448/account.php?viewing=<?php echo $info['creator']; ?>&redirectFrom=feed" title="View <?php echo $info['creator']; ?>'s Profile" class="bodyLight underlineOnHover" style="text-decoration: none; <?php if (isAdmin($info["creator"])) { echo "color: rgb(175, 107, 72)"; } ?>">
+                                                                <?php echo getProfile($info['creator'])["fname"].' '.getProfile($info['creator'])["lname"]; ?>
                                                             </a>
                                                         </div>
                                                     </td>

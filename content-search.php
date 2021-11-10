@@ -6,7 +6,6 @@
 ?>
 <style>
 .dmContainer {
-    width: 65vw;
     border-radius: 1ch;
     padding: 1ch;
     background: #ffffff17;
@@ -133,10 +132,10 @@ td.emptyGrid33 {
 <body>
     <div class="col-12" style="font-size: 22.5px; <?php if (!$isMobile) { echo "padding-left: 6ch"; } ?>">
         <div class="col-12" style="margin-top: 5vh">
-            <div class="col-10 push-1 titleBold" style="">
+            <div class="<?php if (!$isMobile) { echo "col-10 push-1"; } else { echo "col-12"; } ?> titleBold" style="">
                 <form method="get">
-                    <div class="col-10">
-                        <input maxlength="280" type="search" name="search_msg" placeholder="Search for users..." value="" style="width: 65vw; background-color: #212121; border-color: #212121; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px; word-break: break-word; vertical-align: top;" required />
+                    <div class="col-12">
+                        <input maxlength="280" type="search" name="search_msg" placeholder="Search for users..." value="" style="background-color: #212121; border-color: #212121; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px; word-break: break-word; vertical-align: top;" required />
                     </div>
                 </form>
             </div>

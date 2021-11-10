@@ -173,8 +173,8 @@ if (isBlocked($_GET['viewing'])) {
         </a>
     </div>
     <div class="col-12" style="margin: 10vh 0 5vh 0;">
-        <div class="col-10 push-1 bodyLight" style="">
-            <div class="col-2">
+        <div class="<?php if (!$isMobile) { echo "col-10 push-1"; } else { echo "col-12"; } ?> bodyLight" style="">
+            <div class="<?php if (!$isMobile) { echo "col-2"; } else { echo "col-12"; } ?>">
                 <div class="col-12">
                     <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_GET['viewing'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="imgFitMid logoImg" style="border-radius: 100%; height: min(10ch, 10vw); width: min(10ch, 10vw); border-style: solid; border-color: rgba(255, 255, 255, 0.15);" />
                 </div>
@@ -209,7 +209,7 @@ if (isBlocked($_GET['viewing'])) {
                     } 
                     ?>
             </div>
-            <div class="col-8 push-05">
+            <div class="<?php if (!$isMobile) { echo "col-8 push-05"; } else { echo "col-12"; } ?>">
                 <div class="col-12 titleLight">
                     <?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_GET['viewing'])["fname"].' '.getProfile($_GET['viewing'])["lname"]; } ?> 
                     <span class="subtitleLight" style="font-size: 20px">(<?php echo $_GET['viewing']; ?>)</span>
@@ -732,11 +732,11 @@ if (isBlocked($_GET['viewing'])) {
         </div>
     </div>
     <div class="col-12" style="margin: 10vh 0">
-        <div class="col-10 push-1 bodyLight" style="">
-            <div class="col-2">
+        <div class="<?php if (!$isMobile) { echo "col-10 push-1"; } else { echo "col-12"; } ?> bodyLight" style="">
+            <div class="<?php if (!$isMobile) { echo "col-2"; } else { echo "col-12"; } ?>">
                 <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="imgFitMid logoImg" style="border-radius: 100%; height: min(10ch, 10vw); width: min(10ch, 10vw); border-style: solid; border-color: rgba(255, 255, 255, 0.15);" />
             </div>
-            <div class="col-8 push-05">
+            <div class="<?php if (!$isMobile) { echo "col-8 push-05"; } else { echo "col-12"; } ?>">
                 <div class="col-12 titleLight">
                     <?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["fname"].' '.getProfile($_SESSION['username'])["lname"]; } ?> 
                     <span class="subtitleLight" style="font-size: 20px">(<?php echo $_SESSION['username']; ?>)</span>
