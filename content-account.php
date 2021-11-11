@@ -341,7 +341,7 @@ if (isBlocked($_GET['viewing'])) {
 
     <div class="col-12" style="margin-top: 0vh">
         <div class="col-10 push-1">
-            <div class="col-12" style="margin: 2ch 0 1ch 0">
+            <div class="col-12" style="margin: 2ch 0 2ch 0">
                 <div class="col-12 bodyBold statContainer">
                     <table style="width: 100%;">
                         <tbody>
@@ -384,7 +384,7 @@ if (isBlocked($_GET['viewing'])) {
             Post History
         </div>
     </div>
-    <div class="col-12" style="margin-top: 1vh">
+    <div class="col-12" style="margin-top: 0vh">
         <div class="col-10 push-1 bodyBold" style="font-size: 20px; margin-bottom: 5ch;">
         <?php
         // $postList is updated by Middle End

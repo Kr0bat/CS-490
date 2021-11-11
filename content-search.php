@@ -220,6 +220,52 @@ td.emptyGrid33 {
             $userIndex = 1;
             foreach ($userList as $username => $info) { 
                 if (($userIndex < 5) || (isset($_GET['viewAll']) && $_GET['viewAll'] == "users")) {
+
+                    if ($isMobile) {
+            ?>
+
+            <div class="col-12 fadeIn" style="margin-top: 1vh; animation-delay: <?php echo $delayTime; ?>s;">
+                <a href="/~kg448/account.php?viewing=<?php echo $username; ?>&redirectFrom=search&searchKey=<?php echo $_REQUEST['search_msg'] ?>" title="View <?php echo $username; ?>'s Profile">
+                    <div class="col-12 bodyBold dmContainer underlineOnHover" style="margin: 0.25ch 0">
+                        <div class="col-12">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td style="max-width: fit-content;">
+                                            <span class="">
+                                                <img src="<?php echo getProfile($username)["profile_picture"]; ?>" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 5ch; width: 5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                            </span>
+                                        </td>
+                                        <td style="padding-left: 1.69ch; width: 100%;">
+                                            <div class="col-12">
+                                                <span style="<?php if (isAdmin($username)) { echo " color: rgb(175, 107, 72);"; } ?>">
+                                                    <?php echo $info['fname'].' '.$info['lname']; ?> 
+                                                </span>
+                                                <span class="subtitleLight" style="font-size: 20px;">
+                                                    (<?php echo $username; ?>)
+                                                </span>
+                                            </div>
+                                            <div class="col-12 subtitleLight" style="font-size: 18px; margin-top: 0.5ch; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
+                                                <?php echo $info['profile_description']; ?>
+                                            </div>
+                                        </td>
+                                        <td style="max-width: fit-content;">
+                                            <a href="/~kg448/chat.php?chatWith=<?php echo $username; ?>&redirectFrom=search" title="Chat with <?php echo $username; ?>">
+                                                <span class="">
+                                                    <img src="assets/comment.png" class="" style="border-width: 0.05px; border-radius: 0; height: 5ch; width: 5ch; border-style: none; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                                </span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <?php
+                    } else {
             ?>
 
             <div class="col-12 fadeIn" style="margin-top: 1vh; animation-delay: <?php echo $delayTime; ?>s;">
@@ -267,6 +313,8 @@ td.emptyGrid33 {
             </div>
 
         <?php
+                    }
+
                 $delayTime += $additionDelay;
                 }
             $userIndex += 1;
