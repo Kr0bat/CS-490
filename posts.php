@@ -1,4 +1,8 @@
 <html>
+	<head>
+		<title>Sample PHP</title>
+	</head>
+	<body>
  <?php
  
  function insertPost($username, $title, $description, $link)
@@ -46,19 +50,21 @@
      require('databaseConnect.php');
        
     //make query
-    $q1 = " SELECT id AS i FROM post";
+    $q1 = " SELECT id FROM post";
     
     //execute query
     $r = @mysqli_query ($dbc, $q1);
     
     while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
     {
-        $id[] = $row['i'];
+        $id[] = $row;
     
     }
     
     //close database connection
     mysqli_close($dbc);
+    
+    rsort($id);
     
     return $id;
  }
@@ -265,7 +271,7 @@ function searchPostIdbyLiker($username)
     
         while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
         {
-            $post_id[] = $row['post_id'];  
+            $post_id[] = $row;   
         }
     
         return $post_id;
@@ -279,5 +285,8 @@ function searchPostIdbyLiker($username)
 }
 
 
+
+ 
  ?>
+ </body> 
  </html>
