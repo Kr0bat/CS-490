@@ -168,6 +168,35 @@ function grabAllfollowers($username)
     mysqli_close($dbc);
  }
 
+function grabAllfollowing($follower)
+ {
+     //make database connection
+     require('databaseConnect.php');
+     
+       
+    //make query
+    $q1 = "SELECT username FROM follows WHERE follower = '$follower'";
+    $r = @mysqli_query ($dbc, $q1); 
+    
+     if($r)
+     { 
+        while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
+        {
+           $followers[] = $row['username'];
+        }    
+        
+        return $followers;
+        
+     }
+     else
+     {
+         return 0;
+     }
+    
+    //close database connection
+    mysqli_close($dbc);
+ } 
+ 
 
  ?>
  </body> 

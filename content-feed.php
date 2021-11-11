@@ -475,7 +475,9 @@ if (isset($_GET['deleteMsgPost'])) {
                                 <tr>
                                     <td style="max-width: fit-content;">
                                         <span class="">
-                                            <img src="<?php echo $info['album_art']; ?>" class="logoImg" style="border-width: 0.05px; border-radius: 0.35ch; height: 15ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                            <a href="<?php echo $info['link']; ?>" title="Go to song">
+                                                <img src="<?php echo $info['album_art']; ?>" class="logoImg" style="border-width: 0.05px; border-radius: 0.35ch; height: 15ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                            </a>
                                         </span>
                                     </td>
                                     <td style="padding-left: 1.69ch; vertical-align: top; height: 15ch; width: 100%;">
