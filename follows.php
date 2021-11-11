@@ -167,9 +167,6 @@ function grabAllfollowers($username)
     mysqli_close($dbc);
  }
 
-
-
-  print_r(SearchPostbyFollow("Karim"));
  ?>
  </body> 
  </html>

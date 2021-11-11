@@ -21,6 +21,7 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
     include("posts.php");
     include("users.php");
     include("comments.php");
+    include("follows.php");
 }
 
 //

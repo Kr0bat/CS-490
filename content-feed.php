@@ -93,13 +93,16 @@ $postList = [
         ]
     ];
 
+    $postList=[];
+
 //
 // \/ \/ \/ \/ \/ KARIM'S CODE STARTS HERE \/ \/ \/ \/ \/
 
 
 if ($_SERVER[HTTP_HOST] != "maxedward.com") {
 
-    $idList = allPostId();
+    //$idList = allPostId();
+    $idList = SearchPostbyFollow($_SESSION['username']);
 
     $likeList = searchPostIdbyLiker($_SESSION['username']);
 
