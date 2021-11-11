@@ -93,53 +93,50 @@ $postList = [
         ]
     ];
 
-    $postList=[];
+$postList=[];
 
 //
 // \/ \/ \/ \/ \/ KARIM'S CODE STARTS HERE \/ \/ \/ \/ \/
 
 
-if ($_SERVER[HTTP_HOST] != "maxedward.com") {
+//$idList = allPostId();
+$idList = SearchPostbyFollow($_SESSION['username']);
 
-    //$idList = allPostId();
-    $idList = SearchPostbyFollow($_SESSION['username']);
+$likeList = searchPostIdbyLiker($_SESSION['username']);
 
-    $likeList = searchPostIdbyLiker($_SESSION['username']);
+foreach($idList as $index => $id){
+    $postList[$index] = getPost($id);
+    $postList[$index]['id'] = $id;
 
-    foreach($idList as $index => $id){
-        $postList[$index] = getPost($id);
-        $postList[$index]['id'] = $id;
+    $likeCount = count(getLikes($id));
+    $postList[$index]['likeCount'] = $likeCount;
 
-        $likeCount = count(getLikes($id));
-        $postList[$index]['likeCount'] = $likeCount;
-
-        if ( in_array($id, $likeList) ){
-            $postList[$index]['liked'] = true;
-            
-        }
-        else{
-            $postList[$index]['liked'] = false;
-        }
-
-        $rawComments = SearchCommentByP($id);
-        $comments = [];
-
-        foreach($rawComments as $comNum => $rawComment){
-            $comments[$comNum]["description"] = $rawComment["description"];
-            $comments[$comNum]["timestamp"] = $rawComment["timestamp"];
-            //$comments[$index]["commenter"] = $rawComment["creator"];
-            $comments[$comNum]["creator"] = $rawComment["commenter"];
-            //$comments[$index]["creator"]["profile_picture"] = 
-        }
-
-        $postList[$index]["comments"] = $comments;
-
-        
+    if ( in_array($id, $likeList) ){
+        $postList[$index]['liked'] = true;
         
     }
-    //print_r($postList[2]);
+    else{
+        $postList[$index]['liked'] = false;
+    }
 
+    $rawComments = SearchCommentByP($id);
+    $comments = [];
+
+    foreach($rawComments as $comNum => $rawComment){
+        $comments[$comNum]["description"] = $rawComment["description"];
+        $comments[$comNum]["timestamp"] = $rawComment["timestamp"];
+        //$comments[$index]["commenter"] = $rawComment["creator"];
+        $comments[$comNum]["creator"] = $rawComment["commenter"];
+        //$comments[$index]["creator"]["profile_picture"] = 
+    }
+
+    $postList[$index]["comments"] = $comments;
+
+    
+    
 }
+//print_r($postList[2]);
+
 
 // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ KARIM'S CODE ENDS HERE ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
 //
