@@ -137,7 +137,6 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
         
         
     }
-    $postList = array_reverse($postList);
     //print_r($postList[2]);
 
 }
@@ -662,6 +661,6 @@ if (isset($_GET['deleteMsgPost'])) {
 </body>
 <script>
     setPostsSongInfo()
-    </script>
+</script>
 
 </html>
