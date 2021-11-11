@@ -330,14 +330,16 @@ if (isBlocked($_GET['viewing'])) {
     <?php
     $postCount = count(getUserPosts($_GET['viewing']));
     $postL = getUserPosts($_GET['viewing']);
+    $followL = grabAllfollowers($_GET['viewing']);
 
     $likeCount = 0;
-    $followerCount = 0;
+    $followerCount = count($followL);
 
     foreach ($postL as $index => $content) {
         $likeCount += $content['likeCount'];
     }
     ?>
+
 
     <div class="col-12" style="margin-top: 0vh">
         <div class="col-10 push-1">
@@ -820,9 +822,10 @@ if (isBlocked($_GET['viewing'])) {
     <?php
     $postCount = count(getUserPosts($_SESSION['username']));
     $postL = getUserPosts($_SESSION['username']);
-    
+    $followL = grabAllfollowers($_SESSION['username']);
+
     $likeCount = 0;
-    $followerCount = 0;
+    $followerCount = count($followL);
 
     foreach ($postL as $index => $content) {
         $likeCount += $content['likeCount'];
