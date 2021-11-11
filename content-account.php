@@ -331,9 +331,11 @@ if (isBlocked($_GET['viewing'])) {
     $postCount = count(getUserPosts($_GET['viewing']));
     $postL = getUserPosts($_GET['viewing']);
     $followL = grabAllfollowers($_GET['viewing']);
+    $followL2 = grabAllfollowers($_GET['viewing']);
 
     $likeCount = 0;
     $followerCount = count($followL);
+    $followingCount = count($followL2);
 
     foreach ($postL as $index => $content) {
         $likeCount += $content['likeCount'];
@@ -349,16 +351,20 @@ if (isBlocked($_GET['viewing'])) {
                         <tbody>
                             <tr style="height: 1ch;"></tr>
                             <tr style="width: 100%; text-align: center;">
-                                <td class="bodyBold" style="width: 32%; font-size: 30px;">
+                                <td class="bodyBold" style="width: 25%; font-size: 30px;">
                                     <?php echo $postCount; ?>
                                 </td>
                                 <td style="width: 1ch"></td>
-                                <td class="bodyBold" style="width: 32%; font-size: 30px;">
+                                <td class="bodyBold" style="width: 25%; font-size: 30px;">
                                     <?php echo $likeCount; ?>
                                 </td>
                                 <td style="width: 1ch"></td>
-                                <td class="bodyBold" style="width: 32%; font-size: 30px;">
+                                <td class="bodyBold" style="width: 25%; font-size: 30px;">
                                     <?php echo $followerCount; ?>
+                                </td>
+                                <td style="width: 1ch"></td>
+                                <td class="bodyBold" style="width: 25%; font-size: 30px;">
+                                    <?php echo $followingCount; ?>
                                 </td>
                             </tr>
                             <tr style="width: 100%; text-align: center;">
@@ -372,6 +378,10 @@ if (isBlocked($_GET['viewing'])) {
                                 <td style="width: 1ch"></td>
                                 <td class="bodyLight">
                                     Followers
+                                </td>
+                                <td style="width: 1ch"></td>
+                                <td class="bodyLight">
+                                    Following
                                 </td>
                             </tr>
                             <tr style="height: 1ch;"></tr>
@@ -823,9 +833,11 @@ if (isBlocked($_GET['viewing'])) {
     $postCount = count(getUserPosts($_SESSION['username']));
     $postL = getUserPosts($_SESSION['username']);
     $followL = grabAllfollowers($_SESSION['username']);
+    $followL2 = grabAllfollowers($_SESSION['username']);
 
     $likeCount = 0;
     $followerCount = count($followL);
+    $followingCount = count($followL2);
 
     foreach ($postL as $index => $content) {
         $likeCount += $content['likeCount'];
@@ -840,16 +852,20 @@ if (isBlocked($_GET['viewing'])) {
                         <tbody>
                             <tr style="height: 1ch;"></tr>
                             <tr style="width: 100%; text-align: center;">
-                                <td class="bodyBold" style="width: 32%; font-size: 30px;">
+                                <td class="bodyBold" style="width: 25%; font-size: 30px;">
                                     <?php echo $postCount; ?>
                                 </td>
                                 <td style="width: 1ch"></td>
-                                <td class="bodyBold" style="width: 32%; font-size: 30px;">
+                                <td class="bodyBold" style="width: 25%; font-size: 30px;">
                                     <?php echo $likeCount; ?>
                                 </td>
                                 <td style="width: 1ch"></td>
-                                <td class="bodyBold" style="width: 32%; font-size: 30px;">
+                                <td class="bodyBold" style="width: 25%; font-size: 30px;">
                                     <?php echo $followerCount; ?>
+                                </td>
+                                <td style="width: 1ch"></td>
+                                <td class="bodyBold" style="width: 25%; font-size: 30px;">
+                                    <?php echo $followingCount; ?>
                                 </td>
                             </tr>
                             <tr style="width: 100%; text-align: center;">
@@ -863,6 +879,10 @@ if (isBlocked($_GET['viewing'])) {
                                 <td style="width: 1ch"></td>
                                 <td class="bodyLight">
                                     Followers
+                                </td>
+                                <td style="width: 1ch"></td>
+                                <td class="bodyLight">
+                                    Following
                                 </td>
                             </tr>
                             <tr style="height: 1ch;"></tr>
