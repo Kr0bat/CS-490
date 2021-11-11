@@ -36,6 +36,34 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
 } else {
     $role = false;
     if (isset($_SESSION['role'])) {
+
+        //
+        // \/ \/ \/ \/ \/ KARIM'S CODE STARTS HERE \/ \/ \/ \/ \/
+        if ( (isset($_POST['delete_post_submit'])) && ( $_SESSION['role'] == "admin" || $_SESSION['role'] == "basic" ) )  {
+            $newPostID = $_POST['delete_post_id'];
+            $creator = $_POST['delete_post_creator'];
+
+            //print($newPostID.'<br/>'.$creator.'<br/>');
+
+            if ($_SESSION['role'] == "admin" || ( strtolower($_SESSION['username']) == strtolower($creator)) ) {
+                removePost($newPostID);
+                print('
+                <header>
+                    <div class="headerText" style="width: 100%; margin: 0 0 2vh 0; padding: 2vh 0; text-align: center; font-size: max(1.35vw, 2.5vh); color: #eaeaea; background-color: #9c5151ff">
+                        Post (ID #'.$newPostID.') successfully deleted
+                    </div>
+                </header>');
+                //header("Location: /~kg448/feed.php?deleteMsgPost=$newPostID");
+                //print('Has rights');
+            } else {
+                //print('Cannot do that');
+            }
+
+        }
+        // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ KARIM'S CODE ENDS HERE ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
+        //
+
+
         if ($_SESSION['role'] == "admin") {
 
             // -------
