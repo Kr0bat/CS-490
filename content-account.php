@@ -1191,3 +1191,7 @@ if (isBlocked($_GET['viewing'])) {
     ?>
 
 </div>
+
+<script>
+    setPostsSongInfo()
+</script>

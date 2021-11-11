@@ -59,7 +59,8 @@ include("users.php");
 
         
         
-
+        
+        $postList = array_reverse($postList);
         return $postList;
     }
 ?>
