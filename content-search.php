@@ -206,8 +206,23 @@ td.emptyGrid33 {
             
         $additionDelay = 0.1;
         $delayTime = 0;
+
+        if (count($userList) == 0 && count($postList) == 0) { 
+        ?>
+
+        <div class="col-12" style="margin-top: 10vh;">
+            <div class="col-10 push-1 titleBold" style="">
+                <div class="" style="text-align: center;color: #a2a2a2;font-size: 32px;">
+                    Type keywords above<br>to search for users or posts
+                </div>
+            </div>
+        </div>
+
+        <?php
+        }
             
-        if (count($userList) > 0) { ?>
+        if (count($userList) > 0) { 
+        ?>
 
         <div class="col-12 fadeIn" style="margin-top: 5vh; animation-delay: <?php echo $delayTime; ?>s;">
             <div class="col-10 push-1 subtitleBold" style="font-size: 22.5px">
