@@ -12,11 +12,13 @@
   //get access token
   if($r)
   {
+    /*
       while($row = mysqli_fetch_array($r))
       {
           $tokens[] = $row;
       }
-      
+      */
+      $tokens = mysqli_fetch_array($r);
       return $tokens;
   }
   else
@@ -28,14 +30,14 @@
   mysqli_close($dbc);
  }
  
- function UpdateAccessToken($access_token, $new_access_token)
+ function UpdateAccessToken($access_token)
  {
   
    //make database connection
    require('databaseConnect.php');
    
   //make query
-  $q1 = "UPDATE spotify_access_info SET access_token = '$new_access_token' WHERE access_token = '$access_token'";
+  $q1 = "UPDATE spotify_access_info SET access_token = '$access_token' ";
   $r = @mysqli_query ($dbc, $q1); 
   
   //close database connection
@@ -43,14 +45,14 @@
   
 }
 
-function UpdateRefreshToken($refresh_token, $new_refresh_token)
+function UpdateRefreshToken($refresh_token)
 {
   
    //make database connection
    require('databaseConnect.php');
    
   //make query
-  $q1 = "UPDATE spotify_access_info SET refresh_token = '$new_refresh_token' WHERE refresh_token = '$refresh_token'";
+  $q1 = "UPDATE spotify_access_info SET refresh_token = '$refresh_token' ";
   $r = @mysqli_query ($dbc, $q1); 
   
   //close database connection
@@ -58,14 +60,14 @@ function UpdateRefreshToken($refresh_token, $new_refresh_token)
   
 }
 
-function UpdateExpiration($expiration, $new_expiration)
+function UpdateExpiration($expiration)
 {
   
    //make database connection
    require('databaseConnect.php');
    
   //make query
-  $q1 = "UPDATE spotify_access_info SET expiration = '$new_expiration' WHERE expiration = '$expiration'";
+  $q1 = "UPDATE spotify_access_info SET expiration = '$expiration' ";
   $r = @mysqli_query ($dbc, $q1); 
   
   //close database connection

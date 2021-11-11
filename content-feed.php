@@ -444,7 +444,7 @@ if (isset($_GET['deleteMsgPost'])) {
                                     </td>
                                     <td style="text-align: right; width: 100%;">
                                         <div class="subtitleLight" style="position: relative; font-size: 20px; margin-top: 0.2ch; text-decoration: none; padding-right: 1.15ch;">
-                                            <a href="<?php echo $info['link']; ?>" class="subtitleLight" style="font-size: 20px; text-decoration: none;" title="Open song link">
+                                            <a href="<?php echo $info['link']; ?>" class="subtitleLight" name="songLink" style="font-size: 20px; text-decoration: none;" title="Open song link">
                                                 Go to song ↗
                                             </a>    
                                         </div>
@@ -657,5 +657,8 @@ if (isset($_GET['deleteMsgPost'])) {
 
     </div>
 </body>
+<script>
+    setPostsSongInfo()
+    </script>
 
 </html>
