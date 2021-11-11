@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <script src="like-controller.js"> </script>
     <script src="comment-controller.js"> </script>
+    <script src="api-controller.js"> </script>
 </head>
 
 <body  style="background-color: #161616; font-family: 'Montserrat', sans-serif;">
@@ -78,10 +79,10 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
 
             $followee = $_POST['follow_username'];
 
-            if (isFollowing($followee, $_SESSION['username'])) {
-                unfollow($followee, $_SESSION['username']);
+            if (isFollowing($_SESSION['username'], $followee)) {
+                unfollow($_SESSION['username'], $followee);
             } else {
-                follow($followee, $_SESSION['username']);
+                follow($_SESSION['username'], $followee);
             }
 
             header('Location: /~kg448/account.php?viewing='.$followee.'&redirectFrom='.$_GET['redirectFrom']);

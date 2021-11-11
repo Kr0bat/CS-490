@@ -58,16 +58,16 @@ function follow($follower, $username)
         
         if($row == 0)
         {
-           return false;
+           return 0;
         }
         else
         {
-             return true;
+             return 1;
         }
      }
      else
      {
-          return false;
+          return 0;
      }
      
     
@@ -124,8 +124,7 @@ function follow($follower, $username)
                 while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
                 {
            
-                 $posts[] = $row;
-            
+                 $posts[] = $row['id'];
                 }    
          }
          else
@@ -139,7 +138,35 @@ function follow($follower, $username)
     
 }
 
-  
+function grabAllfollowers($username)
+ {
+     //make database connection
+     require('databaseConnect.php');
+     
+       
+    //make query
+    $q1 = "SELECT follower FROM follows WHERE username = '$username'";
+    $r = @mysqli_query ($dbc, $q1); 
+    
+     if($r)
+     { 
+        while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
+        {
+           $follower[] = $row['id'];
+        }    
+        
+        return $follower;
+        
+     }
+     else
+     {
+         return 0;
+     }
+    
+    //close database connection
+    mysqli_close($dbc);
+ }
+
  ?>
  </body> 
  </html>
