@@ -124,7 +124,7 @@ function follow($follower, $username)
                 while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
                 {
            
-                 $posts[] = $row;
+                 $posts[] = $row['id'];
                 }    
          }
          else
@@ -134,7 +134,7 @@ function follow($follower, $username)
     
     }
     
-    rsort($posts);
+    //rsort($posts);
     return $posts;
     
 }
@@ -153,7 +153,7 @@ function grabAllfollowers($username)
      { 
         while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
         {
-           $follower[] = $row;
+           $follower[] = $row['id'];
         }    
         
         return $follower;
