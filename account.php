@@ -79,10 +79,10 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
 
             $followee = $_POST['follow_username'];
 
-            if (isFollowing($followee, $_SESSION['username'])) {
-                unfollow($followee, $_SESSION['username']);
+            if (isFollowing($_SESSION['username'], $followee)) {
+                unfollow($_SESSION['username'], $followee);
             } else {
-                follow($followee, $_SESSION['username']);
+                follow($_SESSION['username'], $followee);
             }
 
             header('Location: /~kg448/account.php?viewing='.$followee.'&redirectFrom='.$_GET['redirectFrom']);
