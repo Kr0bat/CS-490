@@ -208,6 +208,19 @@ td.emptyGrid33 {
         $delayTime = 0;
 
         if (count($userList) == 0 && count($postList) == 0) { 
+            if (isset($_GET['search_msg'])) {
+        ?>
+
+        <div class="col-12" style="margin-top: 5vh;">
+            <div class="col-10 push-1 titleBold" style="">
+                <div class="" style="text-align: center;color: #b18080;font-size: 32px;">
+                    Could not find results</br>for "<?php echo $_GET['search_msg']; ?>"
+                </div>
+            </div>
+        </div>
+
+        <?php
+            }
         ?>
 
         <div class="col-12" style="margin-top: 10vh;">
