@@ -23,8 +23,17 @@ if (isset($_POST['btn_login_update'])) {
     //print('<br/><br/>'.$_SESSION['role']);
 
     if ( checkLogin($user,$password) != false )  {
-        if ($_SESSION['role'] == "admin" || $_SESSION['role'] == "basic") {
-            header("Location: /~kg448/feed.php");
+        if ( isBlocked($user) ) {
+            print('
+            <header>
+                <div class="headerText" style="width: 100%; margin: 0 0 2vh 0; padding: 2vh 0; text-align: center; font-size: max(1.35vw, 2.5vh); color: #eaeaea; background-color: #9c5151ff">
+                    User is Banned
+                </div>
+            </header>');
+        } else {
+            if ($_SESSION['role'] == "admin" || $_SESSION['role'] == "basic") {
+                header("Location: /~kg448/feed.php");
+            }
         }
    } else {
         print('
