@@ -216,14 +216,6 @@ function grabAllfollowing($follower)
     mysqli_close($dbc);
  } 
  
- 
- 
- $feed = SearchPostbyFollow('Jose');
- 
- echo '<pre>';
- print_r($feed);
- echo '<pre>';
- 
 
  ?>
  </body> 
