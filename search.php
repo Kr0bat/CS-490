@@ -78,7 +78,7 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
                 follow($_SESSION['username'], $followee);
             }
 
-            header('Location: /~kg448/search.php?search_msg='.$searchMsg.'&viewAll='.$viewALl);
+            header('Location: /~kg448/search.php?search_msg='.$searchMsg.'&viewAll='.$viewAll);
         }
         // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ KARIM'S CODE ENDS HERE ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
         //
