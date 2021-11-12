@@ -167,6 +167,26 @@ if (isBlocked($_GET['viewing'])) {
 }
 ?>
 
+<script>
+
+function showPopFollow() {
+    document.getElementById("popup_followers").style.display = "block";
+}
+
+function showPopFollowing() {
+    document.getElementById("popup_following").style.display = "block";
+}
+
+function closePopFollow() {
+    document.getElementById("popup_followers").style.display = "none";
+}
+
+function closePopFollowing() {
+    document.getElementById("popup_following").style.display = "none";
+}
+
+</script>
+
 <!--
  >> >> >> POPUPS << << <<
 -->
@@ -174,7 +194,7 @@ if (isBlocked($_GET['viewing'])) {
 <!--
  ALL FOLLOWERS:
 -->
-<div class="titleBold" id="popup_followers" style="position: sticky; z-index: 999; width: 75%; margin-left: 12.5%; top: 15vh; margin-top: 0vh; height: 30vh; background: black; border: 0.25ch solid #323232; border-radius: 1ch; box-shadow: 2px 3px 6px 0 rgba(0, 0, 0, 0.2), 2px 3px 5px 0 rgba(0, 0, 0, 0.19);">
+<div class="titleBold" id="popup_followers" style="position: fixed; z-index: 999; width: 75%; margin-left: 12.5%; top: 15vh; margin-top: 0vh; min-height: 30vh; max-height: 70vh; background: black; border: 0.25ch solid #323232; border-radius: 1ch; box-shadow: 2px 3px 6px 0 rgba(0, 0, 0, 0.2), 2px 3px 5px 0 rgba(0, 0, 0, 0.19);">
     <?php
     if (isset($_GET['viewing'])) {
         $listFollowers = grabAllfollowers($_GET['viewing']);
@@ -183,69 +203,16 @@ if (isBlocked($_GET['viewing'])) {
     }
     ?>
 
-    <div class="col-12" style="margin: 2ch 0; text-align: center;">Followers</div>
-
-    <?php
-    foreach ($listFollowers as $ind => $arr) {
-        print('<pre>');
-        print_r($listFollowers);
-        print('</pre>');
-
-        $follower = $arr;
-    ?>
-
-    <div class="col-12">
-        <table class="col-10 push-1">
-            <tbody>
-                <tr>
-                    <td style="max-width: fit-content;">
-                        <a href="/~kg448/account.php?viewing=<?php echo $follower; ?>&redirectFrom=feed" title="View <?php echo $follower; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
-                            <span class="">
-                                <img src="<?php echo getProfile($follower)["profile_picture"]; ?>" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 2.5ch; width: 2.5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
-                            </span>
-                        </a>
-                    </td>
-                    <td style="padding-left: 0.5ch; max-width: 50%;">
-                        <div class="col-12" style="max-width: 50%;">
-                            <a href="/~kg448/account.php?viewing=<?php echo $follower; ?>&redirectFrom=feed" title="View <?php echo $follower; ?>'s Profile" style="text-decoration: none;" class="bodyLight">  
-                                <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; <?php if (isAdmin($follower)) { echo "color: rgb(175, 107, 72)"; } ?>">
-                                    <?php echo getProfile($follower)["fname"]; ?>
-                                </div>
-                            </a>
-                        </div>
-                    </td>
-                    <td style="padding-left: 1ch; width: 100%;">
-                        <div class="col-12" style="color: #a2a2a2; word-break: break-word;">
-                            <?php echo getProfile($follower)["profile_description"]; ?>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>    
+    <div class="col-12 subtitleBold" style="font-size: 18px; margin-left: 1ch; text-align: left; padding: 2vh 0 0 10px;">
+        <span class="underlineOnHover" onclick="closePopFollow()" style="cursor: pointer;">
+            Close
+        </span>
     </div>
+
+    <div class="col-12" style="margin: 1vw 0 2vw 0; text-align: center;">Followers</div>
+
+    <div class="col-12" style="margin: 0 0 2vw 0; overflow: hidden; overflow-y: scroll; min-height: 5vh; max-height: 50vh;">
     
-    <?php
-    }
-    ?>
-
-</div>
-
-<!--
- ALL FOLLOWING:
--->
-<div class="titleBold" id="popup_following" style="position: sticky; z-index: 999; width: 75%; margin-left: 12.5%; top: 15vh; margin-top: 0vh; height: 30vh; background: black; border: 0.25ch solid #323232; border-radius: 1ch; box-shadow: 2px 3px 6px 0 rgba(0, 0, 0, 0.2), 2px 3px 5px 0 rgba(0, 0, 0, 0.19);">
-    <?php
-    if (isset($_GET['viewing'])) {
-        $listFollowers = grabAllfollowing($_GET['viewing']);
-    } else {
-        $listFollowers = grabAllfollowing($_SESSION['username']);
-    }
-    ?>
-
-    <div class="col-12" style="margin: 2ch 0; text-align: center;">Followers</div>
-
-    <div class="col-12">
-
         <?php
         foreach ($listFollowers as $ind => $arr) {
             print('<pre>');
@@ -255,38 +222,99 @@ if (isBlocked($_GET['viewing'])) {
             $follower = $arr;
         ?>
 
-        <table>
-            <tbody>
-                <tr>
-                    <td style="max-width: fit-content;">
-                        <a href="/~kg448/account.php?viewing=<?php echo $follower; ?>&redirectFrom=feed" title="View <?php echo $follower; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
-                            <span class="">
-                                <img src="<?php echo getProfile($follower)["profile_picture"]; ?>" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 2.5ch; width: 2.5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
-                            </span>
-                        </a>
-                    </td>
-                    <td style="padding-left: 0.5ch; max-width: 50%;">
-                        <div class="col-12" style="max-width: 50%;">
-                            <a href="/~kg448/account.php?viewing=<?php echo $follower; ?>&redirectFrom=feed" title="View <?php echo $follower; ?>'s Profile" style="text-decoration: none;" class="bodyLight">  
-                                <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; <?php if (isAdmin($follower)) { echo "color: rgb(175, 107, 72)"; } ?>">
-                                    <?php echo getProfile($follower)["fname"]; ?>
-                                </div>
+        <div class="col-12" style="overflow: hidden; overflow-y: scroll; min-height: 5vh; max-height: 50vh;">
+            <table class="col-10 push-1">
+                <tbody>
+                    <tr>
+                        <td style="max-width: fit-content;">
+                            <a href="/~kg448/account.php?viewing=<?php echo $follower; ?>&redirectFrom=feed" title="View <?php echo $follower; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
+                                <span class="">
+                                    <img src="<?php echo getProfile($follower)["profile_picture"]; ?>" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 3.5ch; width: 3.5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.7ch;" />
+                                </span>
                             </a>
-                        </div>
-                    </td>
-                    <td style="padding-left: 1ch; width: 100%;">
-                        <div class="col-12" style="color: #a2a2a2; word-break: break-word;">
-                            <?php echo getProfile($follower)["profile_description"]; ?>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-
+                        </td>
+                        <td style="padding-left: 0.5ch; width: 100%;">
+                            <div class="col-12 bodyBold" style="max-width: 50vw;">
+                                <a href="/~kg448/account.php?viewing=<?php echo $follower; ?>&redirectFrom=feed" title="View <?php echo $follower; ?>'s Profile" style="text-decoration: none;" class="bodyLight">  
+                                    <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; <?php if (isAdmin($follower)) { echo "color: rgb(175, 107, 72)"; } ?>">
+                                        <?php echo getProfile($follower)["fname"]; ?>
+                                    </div>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>    
+        </div>
+        
         <?php
         }
         ?>
+
+    </div>
+
+</div>
+
+<!--
+ ALL FOLLOWING:
+-->
+<div class="titleBold" id="popup_following" style="position: fixed; z-index: 999; width: 75%; margin-left: 12.5%; top: 15vh; margin-top: 0vh; min-height: 30vh; max-height: 70vh; background: black; border: 0.25ch solid #323232; border-radius: 1ch; box-shadow: 2px 3px 6px 0 rgba(0, 0, 0, 0.2), 2px 3px 5px 0 rgba(0, 0, 0, 0.19);">
+    <?php
+    if (isset($_GET['viewing'])) {
+        $listFollowers = grabAllfollowing($_GET['viewing']);
+    } else {
+        $listFollowers = grabAllfollowing($_SESSION['username']);
+    }
+    ?>
+
+    <div class="col-12 subtitleBold" style="font-size: 18px; margin-left: 1ch; text-align: left; padding: 2vh 0 0 10px;">
+        <span class="underlineOnHover" onclick="closePopFollowing()" style="cursor: pointer;">
+            Close
+        </span>
+    </div>
+
+    <div class="col-12" style="margin: 1vw 0 2vw 0; text-align: center;">Following</div>
+
+    <div class="col-12" style="margin: 0 0 2vw 0; overflow: hidden; overflow-y: scroll; min-height: 5vh; max-height: 50vh;">
+    
+        <?php
+        foreach ($listFollowers as $ind => $arr) {
+            print('<pre>');
+            print_r($listFollowers);
+            print('</pre>');
+
+            $follower = $arr;
+        ?>
+
+        <div class="col-12" style="overflow: hidden; overflow-y: scroll; min-height: 5vh; max-height: 50vh;">
+            <table class="col-10 push-1">
+                <tbody>
+                    <tr>
+                        <td style="max-width: fit-content;">
+                            <a href="/~kg448/account.php?viewing=<?php echo $follower; ?>&redirectFrom=feed" title="View <?php echo $follower; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
+                                <span class="">
+                                    <img src="<?php echo getProfile($follower)["profile_picture"]; ?>" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 3.5ch; width: 3.5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.7ch;" />
+                                </span>
+                            </a>
+                        </td>
+                        <td style="padding-left: 0.5ch; width: 100%;">
+                            <div class="col-12 bodyBold" style="max-width: 50vw;">
+                                <a href="/~kg448/account.php?viewing=<?php echo $follower; ?>&redirectFrom=feed" title="View <?php echo $follower; ?>'s Profile" style="text-decoration: none;" class="bodyLight">  
+                                    <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; <?php if (isAdmin($follower)) { echo "color: rgb(175, 107, 72)"; } ?>">
+                                        <?php echo getProfile($follower)["fname"]; ?>
+                                    </div>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>    
+        </div>
         
+        <?php
+        }
+        ?>
+
     </div>
 </div>
 
