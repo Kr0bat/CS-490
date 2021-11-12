@@ -110,7 +110,7 @@
             $posts[] = $row['id'];
             
         }    
-        
+        rsort($posts);
         return $posts; 
     }
     else
