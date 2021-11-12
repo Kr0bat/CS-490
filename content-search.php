@@ -314,7 +314,7 @@ function closeDeleteConfirm(postID) {
             <?php
             $userIndex = 1;
             foreach ($userList as $username => $info) { 
-                if (($userIndex < 5) || (isset($_GET['viewAll']) && $_GET['viewAll'] == "users")) {
+                if ((($userIndex < 5) || (isset($_GET['viewAll']) && $_GET['viewAll'] == "users")) && (!isBlocked($username) || isAdmin($_SESSION['username']))) {
 
                     if ($isMobile) {
             ?>
@@ -333,15 +333,15 @@ function closeDeleteConfirm(postID) {
                                         </td>
                                         <td style="padding-left: 1.69ch; width: 100%;">
                                             <div class="col-12">
-                                                <span style="<?php if (isAdmin($username)) { echo " color: rgb(175, 107, 72);"; } ?>">
+                                                <span style="<?php if (isAdmin($username)) { echo " color: rgb(175, 107, 72);"; } else if (isBlocked($username)) { echo " rgb(186, 71, 71);";} ?>">
                                                     <?php echo $info['fname'].' '.$info['lname']; ?> 
                                                 </span>
-                                                <span class="subtitleLight" style="font-size: 20px;">
+                                                <span class="subtitleLight" style="font-size: 20px;<?php if (isBlocked($username)) { echo " rgb(186, 71, 71);";} ?>">
                                                     (<?php echo $username; ?>)
                                                 </span>
                                             </div>
                                             <div class="col-12 subtitleLight" style="font-size: 18px; margin-top: 0.5ch; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
-                                                <?php echo $info['profile_description']; ?>
+                                                <?php if (!isBlocked($username)) { echo $info['profile_description']; } else { echo "User is Banned"; } ?>
                                             </div>
                                         </td>
                                         <td style="max-width: fit-content;">
@@ -377,23 +377,19 @@ function closeDeleteConfirm(postID) {
                                         </td>
                                         <td style="padding-left: 1.69ch; width: 100%;">
                                             <div class="col-12">
-                                                <?php echo $info['fname'].' '.$info['lname']; ?> 
-                                                <span class="subtitleLight" style="font-size: 20px">(<?php echo $username; ?>)</span>
-                                                <?php
-                                                if (isAdmin($username)) {
-                                                    print('
-                                                    <span class="subtitleLight" style="font-size: 18px; color: rgb(144, 85, 54); padding-left: 5px;">
-                                                        Admin
-                                                    </span>');
-                                                }
-                                                ?>
+                                                <span style="<?php if (isAdmin($username)) { echo " color: rgb(175, 107, 72);"; } else if (isBlocked($username)) { echo " color: rgb(186, 71, 71);";} ?>">
+                                                    <?php echo $info['fname'].' '.$info['lname']; ?> 
+                                                </span>
+                                                <span class="subtitleLight" style="font-size: 20px;<?php if (isBlocked($username)) { echo " color: rgb(186, 71, 71);";} ?>">
+                                                    (<?php echo $username; ?>)
+                                                </span>
                                             </div>
                                             <div class="col-12 subtitleLight" style="font-size: 18px; margin-top: 0.5ch; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
-                                                <?php echo $info['profile_description']; ?>
+                                                <?php if (!isBlocked($username)) { echo $info['profile_description']; } else { echo "User is Banned"; } ?>
                                             </div>
                                         </td>
                                         <?php
-                                        if ($_SESSION['username'] != $username) {
+                                        if ($_SESSION['username'] != $username && !isBlocked($username)) {
                                         ?>
                                         <td style="max-width: fit-content;">
                                             <a href="/~kg448/chat.php?chatWith=<?php echo $username; ?>&redirectFrom=search" title="Chat with <?php echo $username; ?>">
@@ -450,10 +446,13 @@ function closeDeleteConfirm(postID) {
 
         <?php
                     }
-
-                $delayTime += $additionDelay;
+                if (!isBlocked($username) || isAdmin($_SESSION['username'])) {
+                    $delayTime += $additionDelay;
                 }
+                }
+            if (!isBlocked($username) || isAdmin($_SESSION['username'])) {
             $userIndex += 1;
+            }
             }
         }
         if (isset($_GET['viewAll']) && $_GET['viewAll'] == "users") {
