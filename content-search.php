@@ -271,7 +271,7 @@ function closeDeleteConfirm(postID) {
         // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ KARIM'S CODE ENDS HERE ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
         //
             
-        $additionDelay = 0.1;
+        $additionDelay = 0.05;
         $delayTime = 0;
 
         if (count($userList) == 0 && count($postList) == 0) { 
