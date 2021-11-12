@@ -65,6 +65,21 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
             }
 
         }
+
+        if ( (isset($_POST['follow_submit'])) && ( $_SESSION['role'] == "admin" || $_SESSION['role'] == "basic" ) ) {
+
+            $followee = $_POST['follow_username'];
+            $searchMsg = $_POST['follow_search_msg'];
+            $viewAll = $_POST['follow_view_all'];
+
+            if (isFollowing($_SESSION['username'], $followee)) {
+                unfollow($_SESSION['username'], $followee);
+            } else {
+                follow($_SESSION['username'], $followee);
+            }
+
+            header('Location: /~kg448/search.php?search_msg='.$searchMsg.'&viewAll='.$viewALl);
+        }
         // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ KARIM'S CODE ENDS HERE ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
         //
 
