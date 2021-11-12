@@ -639,7 +639,7 @@ function closeDeleteConfirm(postID) {
 
             <div class="col-12" id="<?php echo $info['id'] ?>" style="margin: 2ch 0 1ch 0">
                 <div class="col-12 titleBold" id="post_container_<?php echo $info[id]?>" style="">
-                    <div class="col-12 bodyBold postContainer" style="margin: 0">
+                    <div class="col-12 bodyBold postContainer" id="post_main_<?php echo $info['id'] ?>" style="margin: 0">
                         <div class="col-12">
                             <table style="margin: 0;">
                                 <tbody>
@@ -1181,7 +1181,7 @@ function closeDeleteConfirm(postID) {
 
         <div class="col-12" id="<?php echo $info['id'] ?>" style="margin: 2ch 0 1ch 0">
             <div class="col-12 titleBold" id="post_container_<?php echo $info[id]?>" style="">
-                <div class="col-12 bodyBold postContainer" style="margin: 0">
+                <div class="col-12 bodyBold postContainer" id="post_main_<?php echo $info['id'] ?>" style="margin: 0">
                     <div class="col-12">
                         <table style="margin: 0;">
                             <tbody>
