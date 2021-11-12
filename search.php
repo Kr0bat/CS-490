@@ -10,6 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
     <script src="like-controller.js"> </script>
     <script src="api-controller.js"> </script>
+    <script src="comment-controller.js"> </script>
 </head>
 
 <body  style="background-color: #161616; font-family: 'Montserrat', sans-serif;">
@@ -17,6 +18,8 @@
 session_start();
 include("users.php");
 include("posts.php");
+include("follows.php");
+include("comments.php");
 
 //
 // =======

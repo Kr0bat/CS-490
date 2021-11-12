@@ -200,15 +200,47 @@ td.emptyGrid33 {
             $search = $_REQUEST['search_msg'];
 
             $userResults = userSearch($search);
-            $postList = searchPostByTorD($search); //replace with new backend function
-
-            
+            //$postList = searchPostByTorD($search); //replace with new backend function
 
             foreach($userResults as $user){
                 $userList[$user] = getProfile($user);
             }
 
+            $idList = SearchPostbyTorD($search);
+            //print_r($idList);
+
+            $likeList = searchPostIdbyLiker($_SESSION['username']);
+
+            foreach($idList as $index => $id){
+                $postList[$index] = getPost($id);
+                $postList[$index]['id'] = $id;
+
+                $likeCount = count(getLikes($id));
+                $postList[$index]['likeCount'] = $likeCount;
+
+                if ( in_array($id, $likeList) ){
+                    $postList[$index]['liked'] = true;
+                    
+                }
+                else{
+                    $postList[$index]['liked'] = false;
+                }
+
+                $rawComments = SearchCommentByP($id);
+                $comments = [];
+
+                foreach($rawComments as $comNum => $rawComment){
+                    $comments[$comNum]["description"] = $rawComment["description"];
+                    $comments[$comNum]["timestamp"] = $rawComment["timestamp"];
+                    //$comments[$index]["commenter"] = $rawComment["creator"];
+                    $comments[$comNum]["creator"] = $rawComment["commenter"];
+                    //$comments[$index]["creator"]["profile_picture"] = 
+                }
+
+                $postList[$index]["comments"] = $comments;
+
             
+            }
 
 
         }

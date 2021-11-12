@@ -107,7 +107,7 @@
         while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
         {
            
-            $posts[] = $row;
+            $posts[] = $row['id'];
             
         }    
         
