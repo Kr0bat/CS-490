@@ -377,10 +377,10 @@ function closeDeleteConfirm(postID) {
                                         </td>
                                         <td style="padding-left: 1.69ch; width: 100%;">
                                             <div class="col-12">
-                                                <span style="<?php if (isAdmin($username)) { echo " color: rgb(175, 107, 72);"; } else if (isBlocked($username)) { echo " rgb(186, 71, 71);";} ?>">
+                                                <span style="<?php if (isAdmin($username)) { echo " color: rgb(175, 107, 72);"; } else if (isBlocked($username)) { echo " color: rgb(186, 71, 71);";} ?>">
                                                     <?php echo $info['fname'].' '.$info['lname']; ?> 
                                                 </span>
-                                                <span class="subtitleLight" style="font-size: 20px;<?php if (isBlocked($username)) { echo " rgb(186, 71, 71);";} ?>">
+                                                <span class="subtitleLight" style="font-size: 20px;<?php if (isBlocked($username)) { echo " color: rgb(186, 71, 71);";} ?>">
                                                     (<?php echo $username; ?>)
                                                 </span>
                                             </div>
