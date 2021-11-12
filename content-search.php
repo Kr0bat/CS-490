@@ -473,7 +473,7 @@ function closeDeleteConfirm(postID) {
         if (count($postList) > 0) {
         ?>
 
-            <div class="col-12 fadeIn" style="margin-top: 0vh; animation-delay: <?php echo $delayTime; ?>s;">
+            <div class="col-12 fadeIn" style="margin-top: 3.5vh; animation-delay: <?php echo $delayTime; ?>s;">
                 <div class="col-10 push-1 subtitleBold" style="font-size: 22.5px">
                     Post Results
                 </div>
@@ -482,7 +482,9 @@ function closeDeleteConfirm(postID) {
                 <div class="col-10 push-1">
 
                 <?php
+                $postIndex = 1;
                 foreach ($postList as $postID => $info) { 
+                    if (($postIndex < 5) || (isset($_GET['viewAll']) && $_GET['viewAll'] == "posts")) {
                 ?>
 
                     <div class="col-12 fadeIn" id="<?php echo $info['id'] ?>" style="margin: 2ch 0 1ch 0; animation-delay: <?php echo $delayTime; ?>s;">
@@ -760,12 +762,27 @@ function closeDeleteConfirm(postID) {
                     </div>
 
                 <?php
-                $delayTime += $additionDelay;
+                    $delayTime += $additionDelay;
+                    }
+                $postIndex += 1;
                 }
 
-                if (count($postList) > 5) {
+                if (isset($_GET['viewAll']) && $_GET['viewAll'] == "posts") {
                 ?>
-
+        
+                    <div class="col-12 fadeIn" style="margin: 0.5vh 0 5vh 0; animation-delay: <?php echo $delayTime; ?>s;">
+                        <a href="?search_msg=<?php echo $_GET['search_msg']; ?>&viewAll=none">
+                            <div class="col-10 push-15 subtitleLight" style="margin-top: 1vh; font-size: 20px; text-decoration: none;">
+                                View less
+                            </div>
+                        </a>
+                    </div>
+        
+                <?php
+                } 
+                else if (count($postList) > 4) {
+                ?>
+        
                     <div class="col-12 fadeIn" style="margin: 0.5vh 0 5vh 0; animation-delay: <?php echo $delayTime; ?>s;">
                         <a href="?search_msg=<?php echo $_GET['search_msg']; ?>&viewAll=posts">
                             <div class="col-10 push-15 subtitleLight" style="margin-top: 1vh; font-size: 20px; text-decoration: none;">
