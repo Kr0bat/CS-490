@@ -419,7 +419,7 @@ td.emptyGrid33 {
                 ?>
 
                     <div class="col-12 fadeIn" id="<?php echo $info['id'] ?>" style="margin: 2ch 0 1ch 0; animation-delay: <?php echo $delayTime; ?>s;">
-                        <div class="col-10 push-1 titleBold" id="post_container_<?php echo $info[id]?>" style="">
+                        <div class="col-12 titleBold" id="post_container_<?php echo $info[id]?>" style="">
                             <div class="col-12 bodyBold postContainer" style="margin: 0">
                                 <div class="col-12">
                                     <table style="margin: 0;">
