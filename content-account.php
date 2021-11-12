@@ -519,11 +519,11 @@ function closePopFollowing() {
                                     <?php echo $likeCount; ?>
                                 </td>
                                 <td style="width: 1ch"></td>
-                                <td class="bodyBold" onclick="showPopFollow()" style="width: 25%; font-size: 30px;">
+                                <td class="bodyBold underlineOnHover" onclick="showPopFollow()" style="width: 25%; font-size: 30px; cursor: pointer;">
                                     <?php echo $followerCount; ?>
                                 </td>
                                 <td style="width: 1ch"></td>
-                                <td class="bodyBold" onclick="showPopFollowing()" style="width: 25%; font-size: 30px;">
+                                <td class="bodyBold underlineOnHover" onclick="showPopFollowing()" style="width: 25%; font-size: 30px; cursor: pointer;">
                                     <?php echo $followingCount; ?>
                                 </td>
                             </tr>
@@ -536,11 +536,11 @@ function closePopFollowing() {
                                     Likes
                                 </td>
                                 <td style="width: 1ch"></td>
-                                <td class="bodyLight" onclick="showPopFollow()">
+                                <td class="bodyLight underlineOnHover" onclick="showPopFollow()" style="cursor: pointer;">
                                     Followers
                                 </td>
                                 <td style="width: 1ch"></td>
-                                <td class="bodyLight" onclick="showPopFollowing()">
+                                <td class="bodyLight underlineOnHover" onclick="showPopFollowing()" style="cursor: pointer;">
                                     Following
                                 </td>
                             </tr>
@@ -1022,11 +1022,11 @@ function closePopFollowing() {
                                     <?php echo $likeCount; ?>
                                 </td>
                                 <td style="width: 1ch"></td>
-                                <td class="bodyBold" onclick="showPopFollow()" style="width: 25%; font-size: 30px;">
+                                <td class="bodyBold underlineOnHover" onclick="showPopFollow()" style="width: 25%; font-size: 30px; cursor: pointer;">
                                     <?php echo $followerCount; ?>
                                 </td>
                                 <td style="width: 1ch"></td>
-                                <td class="bodyBold" onclick="showPopFollowing()" style="width: 25%; font-size: 30px;">
+                                <td class="bodyBold underlineOnHover" onclick="showPopFollowing()" style="width: 25%; font-size: 30px; cursor: pointer;">
                                     <?php echo $followingCount; ?>
                                 </td>
                             </tr>
@@ -1039,11 +1039,11 @@ function closePopFollowing() {
                                     Likes
                                 </td>
                                 <td style="width: 1ch"></td>
-                                <td class="bodyLight" onclick="showPopFollow()">
+                                <td class="bodyLight underlineOnHover" onclick="showPopFollow()" style="cursor: pointer">
                                     Followers
                                 </td>
                                 <td style="width: 1ch"></td>
-                                <td class="bodyLight" onclick="showPopFollowing()">
+                                <td class="bodyLight underlineOnHover" onclick="showPopFollowing()" style="cursor: pointer">
                                     Following
                                 </td>
                             </tr>
