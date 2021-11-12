@@ -134,6 +134,25 @@ function follow($follower, $username)
     
     }
     
+    //make query
+         $q2 = "SELECT id FROM post WHERE Creator = '$follower'";
+         $r = @mysqli_query ($dbc, $q2); 
+     
+         // get list of posts id
+         if($r)
+         { 
+    
+                while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
+                {
+           
+                 $posts[] = $row['id'];
+                }    
+         }
+         else
+         {
+             return 0;
+         }
+    
     rsort($posts);
     return $posts;
     
