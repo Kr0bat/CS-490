@@ -166,11 +166,11 @@ td.emptyGrid33 {
 
         // $postList is updated by Middle End. Only top five (5) results are added to $postList
         $postList = [ 
-            "001" => ["username" => "Karim", "post_title" => "Best Song <3", "post_description" => "I love this song!", "post_link" => "https://maxedward.com"],
-            "002" => ["username" => "Jose", "post_title" => "My Jams", "post_description" => "Best album in the universeeee", "post_link" => "https://maxedward.com"],
-            "003" => ["username" => "User42069", "post_title" => "NEW SHIT !!!", "post_description" => "Listen to this shit!!!", "post_link" => "https://maxedward.com"],
-            "004" => ["username" => "User12345", "post_title" => "😍😍😍", "post_description" => "OMG NO WAYY", "post_link" => "https://maxedward.com"],
-            "005" => ["username" => "Max", "post_title" => "Jeeeeeez", "post_description" => "Im crying rn", "post_link" => "https://maxedward.com"]];
+            "001" => ["username" => "Karim", "title" => "Best Song <3", "description" => "I love this song!", "link" => "https://maxedward.com"],
+            "002" => ["username" => "Jose", "title" => "My Jams", "description" => "Best album in the universeeee", "link" => "https://maxedward.com"],
+            "003" => ["username" => "User42069", "title" => "NEW SHIT !!!", "description" => "Listen to this shit!!!", "link" => "https://maxedward.com"],
+            "004" => ["username" => "User12345", "title" => "😍😍😍", "description" => "OMG NO WAYY", "link" => "https://maxedward.com"],
+            "005" => ["username" => "Max", "title" => "Jeeeeeez", "description" => "Im crying rn", "link" => "https://maxedward.com"]];
         $postList = [];
         $userList = [];
 
@@ -192,11 +192,18 @@ td.emptyGrid33 {
 
             $search = $_REQUEST['search_msg'];
 
-            $results = userSearch($search);
+            $userResults = userSearch($search);
+            $postList = searchPostByTorD($search); //replace with new backend function
 
-            foreach($results as $user){
+            
+
+            foreach($userResults as $user){
                 $userList[$user] = getProfile($user);
             }
+
+            
+
+
         }
         
             //echo "<p style='color:white'> NO RESULTS FOUND for: $_REQUEST[search_msg] </p>";
@@ -682,4 +689,8 @@ td.emptyGrid33 {
         </div>
     </div>
 </body>
+
+<script>
+    setPostsSongInfo()
+</script>
 </html>
