@@ -92,6 +92,11 @@ $msgList = [
 $sender = $_SESSION['chatWith'];
 $recipient = $_SESSION['username'];
 
+// CANNOT CHAT WITH BANNED USERS 
+if (isBlocked($sender) && !isAdmin($recipient)) {
+    header("Location: /~kg448/chat.php");
+}
+
 if ($_SERVER[HTTP_HOST] != "maxedward.com") {
 
     $msgList = getChat($recipient, $sender);

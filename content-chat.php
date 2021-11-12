@@ -117,62 +117,68 @@
                 
                 foreach($chatlist as $user => $content) {
 
-                    print('
-                    <a id="chat_container_'.$user.'" href="?chatWith='.$user.'">
-                        <div class="col-12 bodyBold dmContainer" style="margin: 0.5ch 0 0.25ch 0">
-                            <div class="col-12">
+                    if (!isBlocked($user) || isAdmin($_SESSION['username'])) {
+
+                        print('
+                        <a id="chat_container_'.$user.'" href="?chatWith='.$user.'">
+                            <div class="col-12 bodyBold dmContainer" style="margin: 0.5ch 0 0.25ch 0">
                                 <div class="col-12">
-                                    
-                                        <table>
-                                            <tbody>
-                                                <tr>
-                                                    <td style="max-width: fit-content;">
-                                                        <span class="');
-                                                        
+                                    <div class="col-12">
+                                        
+                                            <table>
+                                                <tbody>
+                                                    <tr>
+                                                        <td style="max-width: fit-content;">
+                                                            <span class="');
+                                                            
+                                                            if ($content['unread']) {
+                                                                print('blueDot" style="margin-left: 1.5ch;"');
+                                                            } else {
+                                                                print('"');
+                                                            }
+
+                                                            print('>
+                                                                <a>
+                                                                    <img src="'.getProfile($user)["profile_picture"].'" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 1.53ch; width: 1.53ch;  border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                                                </a>
+                                                            </span>
+                                                        </td>
+                                                        <td style="padding-left: 0.35ch">
+                                                            <a class="bodyBold">
+                                                        ');
+                                                            
                                                         if ($content['unread']) {
-                                                            print('blueDot" style="margin-left: 1.5ch;"');
+                                                            print('<span style="color: #56b35e">(NEW)</span> ');
                                                         } else {
-                                                            print('"');
+                                                            print('');
                                                         }
 
-                                                        print('>
-                                                            <a>
-                                                                <img src="'.getProfile($user)["profile_picture"].'" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 1.53ch; width: 1.53ch;  border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
-                                                            </a>
-                                                        </span>
-                                                    </td>
-                                                    <td style="padding-left: 0.35ch">
-                                                        <a class="bodyBold">
-                                                    ');
-                                                        
-                                                    if ($content['unread']) {
-                                                        print('<span style="color: #56b35e">(NEW)</span> ');
-                                                    } else {
-                                                        print('');
-                                                    }
+                                                        print(''.getProfile($user)["fname"].' '.getProfile($user)["lname"].'</a>');
 
-                                                    print(''.getProfile($user)["fname"].' '.getProfile($user)["lname"].'</a>');
+                                                        if (isBlocked($user)) {
+                                                            print('<span style="color: rgb(186, 71, 71)">'.getProfile($user)["fname"].' '.getProfile($user)["lname"].'</span></a>');
+                                                        } elseif (isAdmin($user)) {
+                                                            print('<span style="color: rgb(175, 107, 72)">'.getProfile($user)["fname"].' '.getProfile($user)["lname"].'</span></a>');
+                                                        } else {
+                                                            print('<span style="">'.getProfile($user)["fname"].' '.getProfile($user)["lname"].'</span></a>');
+                                                        }
 
-                                                    if (isAdmin($user)) {
                                                         print('
-                                                        <span class="subtitleLight" style="font-size: 18px; color: rgb(144, 85, 54);vertical-align: bottom; padding-left: 5px;">
-                                                            Admin
-                                                        </span>');
-                                                    }
-
-                                                    print('
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        
+                                    </div>
+                                    <div class="col-12 subtitleLight" style="font-size: 18px; margin-top: 0.25ch; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">'.$content["msg"].'</div>
+                                    <div class="col-12 subtitleLight" style="color: #777; font-size: 14px; margin-top: 1ch; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">'.$content["timestamp"].'</div>
                                 </div>
-                                <div class="col-12 subtitleLight" style="font-size: 18px; margin-top: 0.25ch; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">'.$content["msg"].'</div>
-                                <div class="col-12 subtitleLight" style="color: #777; font-size: 14px; margin-top: 1ch; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">'.$content["timestamp"].'</div>
                             </div>
-                        </div>
-                    </a>
-                    ');
+                        </a>
+                        ');
+
+                    }
+
                 }
 
             }
