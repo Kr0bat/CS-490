@@ -20,9 +20,11 @@ if (isset($_REQUEST['username']) && isset($_REQUEST['id'])){
 
     if ($liked){
         removeLike($id, $username);
+        echo "post Unliked";
     }
     else{
         likePost($_REQUEST['id'], $_REQUEST['username']);
+        echo "post Liked";
     }
 }
 
