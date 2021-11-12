@@ -150,7 +150,7 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
                     <tbody>
                         <tr>
                             <td style="width: 3ch">
-                                <a href="/~kg448/<?php if (isset($_GET['redirectFrom'])) { echo $_GET['redirectFrom']; } else { echo "chat"; } ?>.php" class="subtitleBold underlineOnHover" style="text-decoration: none; font-size: 18px">
+                                <a href="/~kg448/<?php if (isset($_GET['redirectFrom'])) { echo $_GET['redirectFrom'].'.php'; if ($_GET['redirectFrom'] == "search" && $_GET['searchKey'] != "") { echo '?search_msg='.$_GET['searchKey']; } } else { echo "chat.php"; } ?>" class="subtitleBold underlineOnHover" style="text-decoration: none; font-size: 18px">
                                     Back
                                 </a>
                             </td>

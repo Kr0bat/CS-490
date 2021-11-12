@@ -271,7 +271,7 @@ function closeDeleteConfirm(postID) {
         // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ KARIM'S CODE ENDS HERE ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
         //
             
-        $additionDelay = 0.1;
+        $additionDelay = 0.05;
         $delayTime = 0;
 
         if (count($userList) == 0 && count($postList) == 0) { 
@@ -392,6 +392,9 @@ function closeDeleteConfirm(postID) {
                                                 <?php echo $info['profile_description']; ?>
                                             </div>
                                         </td>
+                                        <?php
+                                        if ($_SESSION['username'] != $username) {
+                                        ?>
                                         <td style="max-width: fit-content;">
                                             <a href="/~kg448/chat.php?chatWith=<?php echo $username; ?>&redirectFrom=search" title="Chat with <?php echo $username; ?>">
                                                 <span class="">
@@ -401,7 +404,7 @@ function closeDeleteConfirm(postID) {
                                         </td>
 
                                         <?php 
-                                        if (isFollowing($_SESSION['username'], $username)) {
+                                            if (isFollowing($_SESSION['username'], $username)) {
                                         ?>
                                         <td style="max-width: fit-content; padding-left: 1.75ch;">
                                             <form method="POST">
@@ -417,7 +420,7 @@ function closeDeleteConfirm(postID) {
                                         </td>
 
                                         <?php 
-                                        } else {
+                                            } else {
                                         ?>
 
                                         <td style="max-width: fit-content; padding-left: 1.75ch;">
@@ -434,6 +437,7 @@ function closeDeleteConfirm(postID) {
                                         </td>
 
                                         <?php 
+                                            }
                                         }
                                         ?>
                                     </tr>
