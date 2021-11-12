@@ -194,7 +194,7 @@ function closePopFollowing() {
 <!--
  ALL FOLLOWERS:
 -->
-<div class="titleBold" id="popup_followers" style="position: fixed; z-index: 999; width: 75%; margin-left: 12.5%; top: 15vh; margin-top: 0vh; min-height: 30vh; max-height: 70vh; background: black; border: 0.25ch solid #323232; border-radius: 1ch; box-shadow: 2px 3px 6px 0 rgba(0, 0, 0, 0.2), 2px 3px 5px 0 rgba(0, 0, 0, 0.19);">
+<div class="titleBold" id="popup_followers" style="position: fixed; z-index: 999; width: 75%; margin-left: 12.5%; top: 15vh; margin-top: 0vh; min-height: 30vh; max-height: 70vh; background: black; border: 0.25ch solid #323232; border-radius: 1ch; box-shadow: 6px 9px 16px 9px rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.19) 2px 3px 5px 0px">
     <?php
     if (isset($_GET['viewing'])) {
         $listFollowers = grabAllfollowers($_GET['viewing']);
@@ -258,7 +258,7 @@ function closePopFollowing() {
 <!--
  ALL FOLLOWING:
 -->
-<div class="titleBold" id="popup_following" style="position: fixed; z-index: 999; width: 75%; margin-left: 12.5%; top: 15vh; margin-top: 0vh; min-height: 30vh; max-height: 70vh; background: black; border: 0.25ch solid #323232; border-radius: 1ch; box-shadow: 2px 3px 6px 0 rgba(0, 0, 0, 0.2), 2px 3px 5px 0 rgba(0, 0, 0, 0.19);">
+<div class="titleBold" id="popup_following" style="position: fixed; z-index: 999; width: 75%; margin-left: 12.5%; top: 15vh; margin-top: 0vh; min-height: 30vh; max-height: 70vh; background: black; border: 0.25ch solid #323232; border-radius: 1ch; box-shadow: 6px 9px 16px 9px rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.19) 2px 3px 5px 0px">
     <?php
     if (isset($_GET['viewing'])) {
         $listFollowers = grabAllfollowing($_GET['viewing']);
