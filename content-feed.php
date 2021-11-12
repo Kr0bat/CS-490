@@ -560,7 +560,7 @@ function closeDeleteConfirm(postID) {
                     </div>
                     <div class="col-12" style="margin-top: 1ch;">
                         <div class="col-8 push-2">
-                            <table>
+                            <table style="width: 100%">
                                 <tbody>
                                     <tr>
                                         <td style="width: 50%">
