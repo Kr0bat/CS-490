@@ -340,7 +340,7 @@ function closeDeleteConfirm(postID) {
     ?>
 
     <div class="col-12" style="margin-top: 5vh">
-        <a href="/~kg448/<?php if (isset($_GET['redirectFrom'])) { echo $_GET['redirectFrom'].'.php'; if ($_GET['redirectFrom'] == "search") { echo '?search_msg='.$_GET['searchKey']; } if ($_GET['redirectFrom'] == "account" && isset($_GET['prevView'])) { echo '?viewing='.$_GET['prevView']; } if ($_GET['redirectFrom'] == "account" && isset($_GET['popupBack'])) { echo '&popup='.$_GET['popupBack']; } } else { echo "search.php"; } ?>">
+        <a href="/~kg448/<?php if (isset($_GET['redirectFrom'])) { echo $_GET['redirectFrom'].'.php'; if ($_GET['redirectFrom'] == "search" && $_GET['searchKey'] != "") { echo '?search_msg='.$_GET['searchKey']; } if ($_GET['redirectFrom'] == "account" && isset($_GET['prevView'])) { echo '?viewing='.$_GET['prevView']; } if ($_GET['redirectFrom'] == "account" && isset($_GET['popupBack'])) { echo '&popup='.$_GET['popupBack']; } } else { echo "search.php"; } ?>">
             <div class="col-10 push-1 subtitleBold underlineOnHover" style="font-size: 22.5px">
                 Back
             </div>
