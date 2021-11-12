@@ -15,10 +15,17 @@
 .postContainer {
     border-radius: 1ch;
     padding: 1ch;
-    background: #ffffff17;
+    background: #313131;
     border-style: solid;
-    border-color: #ffffff17;
-    overflow: scroll;
+    border-color: #4a4a4a;
+}
+.commentContainer {
+    border-radius: 0 0 1ch 1ch;
+    padding: 1ch;
+    background: #212121;
+    border-style: solid;
+    border-color: #373737;
+    border-top: none;
 }
 .blueDot::before {
     content: '';
