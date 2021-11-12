@@ -194,12 +194,15 @@ function closePopFollowing() {
 <!--
  ALL FOLLOWERS:
 -->
-<div class="titleBold" id="popup_followers" style="position: fixed; z-index: 999; width: 75%; margin-left: 12.5%; top: 15vh; margin-top: 0vh; min-height: 30vh; max-height: 70vh; background: black; border: 0.25ch solid #323232; border-radius: 1ch; box-shadow: 6px 9px 16px 9px rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.19) 2px 3px 5px 0px">
+<div class="titleBold" id="popup_followers" style="<?php if (isset($_GET['popup']) && $_GET['popup'] == "follow") { echo 'display: block; '; } ?>position: fixed; z-index: 999; width: 75%; margin-left: 12.5%; top: 15vh; margin-top: 0vh; min-height: 30vh; max-height: 70vh; background: black; border: 0.25ch solid #323232; border-radius: 1ch; box-shadow: 6px 9px 16px 9px rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.19) 2px 3px 5px 0px">
     <?php
+    $view = "";
     if (isset($_GET['viewing'])) {
         $listFollowers = grabAllfollowers($_GET['viewing']);
+        $view = $_GET['viewing'];
     } else {
         $listFollowers = grabAllfollowers($_SESSION['username']);
+        $view = $_SESSION['username'];
     }
     ?>
 
@@ -215,11 +218,7 @@ function closePopFollowing() {
     
         <?php
         foreach ($listFollowers as $ind => $arr) {
-            print('<pre>');
-            print_r($listFollowers);
-            print('</pre>');
-
-            $follower = $arr;
+            $follower = $arr['follower'];
         ?>
 
         <div class="col-12" style="overflow: hidden; overflow-y: scroll; min-height: 5vh; max-height: 50vh;">
@@ -227,7 +226,7 @@ function closePopFollowing() {
                 <tbody>
                     <tr>
                         <td style="max-width: fit-content;">
-                            <a href="/~kg448/account.php?viewing=<?php echo $follower; ?>&redirectFrom=feed" title="View <?php echo $follower; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
+                            <a href="/~kg448/account.php?viewing=<?php echo $follower; ?>&redirectFrom=account&prevView=<?php echo $view; ?>&popup=follow" title="View <?php echo $follower; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
                                 <span class="">
                                     <img src="<?php echo getProfile($follower)["profile_picture"]; ?>" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 3.5ch; width: 3.5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.7ch;" />
                                 </span>
@@ -235,7 +234,7 @@ function closePopFollowing() {
                         </td>
                         <td style="padding-left: 0.5ch; width: 100%;">
                             <div class="col-12 bodyBold" style="max-width: 50vw;">
-                                <a href="/~kg448/account.php?viewing=<?php echo $follower; ?>&redirectFrom=feed" title="View <?php echo $follower; ?>'s Profile" style="text-decoration: none;" class="bodyLight">  
+                                <a href="/~kg448/account.php?viewing=<?php echo $follower; ?>&redirectFrom=account&prevView=<?php echo $view; ?>&popup=follow" title="View <?php echo $follower; ?>'s Profile" style="text-decoration: none;" class="bodyLight">  
                                     <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; <?php if (isAdmin($follower)) { echo "color: rgb(175, 107, 72)"; } ?>">
                                         <?php echo getProfile($follower)["fname"]; ?>
                                     </div>
@@ -258,12 +257,15 @@ function closePopFollowing() {
 <!--
  ALL FOLLOWING:
 -->
-<div class="titleBold" id="popup_following" style="position: fixed; z-index: 999; width: 75%; margin-left: 12.5%; top: 15vh; margin-top: 0vh; min-height: 30vh; max-height: 70vh; background: black; border: 0.25ch solid #323232; border-radius: 1ch; box-shadow: 6px 9px 16px 9px rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.19) 2px 3px 5px 0px">
+<div class="titleBold" id="popup_following" style="<?php if (isset($_GET['popup']) && $_GET['popup'] == "following") { echo 'display: block; '; } ?>position: fixed; z-index: 999; width: 75%; margin-left: 12.5%; top: 15vh; margin-top: 0vh; min-height: 30vh; max-height: 70vh; background: black; border: 0.25ch solid #323232; border-radius: 1ch; box-shadow: 6px 9px 16px 9px rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.19) 2px 3px 5px 0px">
     <?php
+    $view = "";
     if (isset($_GET['viewing'])) {
         $listFollowers = grabAllfollowing($_GET['viewing']);
+        $view = $_GET['viewing'];
     } else {
         $listFollowers = grabAllfollowing($_SESSION['username']);
+        $view = $_SESSION['username'];
     }
     ?>
 
@@ -279,10 +281,6 @@ function closePopFollowing() {
     
         <?php
         foreach ($listFollowers as $ind => $arr) {
-            print('<pre>');
-            print_r($listFollowers);
-            print('</pre>');
-
             $follower = $arr;
         ?>
 
@@ -291,7 +289,7 @@ function closePopFollowing() {
                 <tbody>
                     <tr>
                         <td style="max-width: fit-content;">
-                            <a href="/~kg448/account.php?viewing=<?php echo $follower; ?>&redirectFrom=feed" title="View <?php echo $follower; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
+                            <a href="/~kg448/account.php?viewing=<?php echo $follower; ?>&redirectFrom=account&prevView=<?php echo $view; ?>&popup=following" title="View <?php echo $follower; ?>'s Profile" style="text-decoration: none;" class="bodyLight">
                                 <span class="">
                                     <img src="<?php echo getProfile($follower)["profile_picture"]; ?>" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 3.5ch; width: 3.5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.7ch;" />
                                 </span>
@@ -299,7 +297,7 @@ function closePopFollowing() {
                         </td>
                         <td style="padding-left: 0.5ch; width: 100%;">
                             <div class="col-12 bodyBold" style="max-width: 50vw;">
-                                <a href="/~kg448/account.php?viewing=<?php echo $follower; ?>&redirectFrom=feed" title="View <?php echo $follower; ?>'s Profile" style="text-decoration: none;" class="bodyLight">  
+                                <a href="/~kg448/account.php?viewing=<?php echo $follower; ?>&redirectFrom=account&prevView=<?php echo $view; ?>&popup=following" title="View <?php echo $follower; ?>'s Profile" style="text-decoration: none;" class="bodyLight">  
                                     <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap; <?php if (isAdmin($follower)) { echo "color: rgb(175, 107, 72)"; } ?>">
                                         <?php echo getProfile($follower)["fname"]; ?>
                                     </div>
@@ -326,7 +324,25 @@ function closePopFollowing() {
     ?>
 
     <div class="col-12" style="margin-top: 5vh">
-        <a href="/~kg448/<?php if (isset($_GET['redirectFrom'])) { echo $_GET['redirectFrom'].'.php'; if ($_GET['redirectFrom'] == "search") { echo '?search_msg='.$_GET['searchKey']; } } else { echo "search.php"; } ?>">
+        <a href="/~kg448/
+        <?php 
+            if (isset($_GET['redirectFrom'])) { 
+                echo $_GET['redirectFrom'].'.php'; 
+                
+                if ($_GET['redirectFrom'] == "search") { 
+                    echo '?search_msg='.$_GET['searchKey']; 
+                } 
+
+                if ($_GET['redirectFrom'] == "account" && isset($_GET['prevView'])) { 
+                    echo '?viewing='.$_GET['prevView']; 
+                } 
+                if ($_GET['redirectFrom'] == "account" && isset($_GET['popup'])) { 
+                    echo '&popup='.$_GET['popup']; 
+                } 
+                
+            } else { 
+                echo "search.php"; 
+            } ?>">
             <div class="col-10 push-1 subtitleBold underlineOnHover" style="font-size: 22.5px">
                 Back
             </div>
