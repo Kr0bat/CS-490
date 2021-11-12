@@ -179,6 +179,27 @@ if (isset($_GET['deleteMsgPost'])) {
 }
 
 ?>
+
+<script>
+
+function openDeleteConfirm(postID) {
+    postDiv = document.getElementById('post_main_' + postID);
+    deleteDiv = document.getElementById('delete_confirm_' + postID);
+
+    postDiv.style.display = "none";
+    deleteDiv.style.display = "block";
+}
+
+function closeDeleteConfirm(postID) {
+    postDiv = document.getElementById('post_main_' + postID);
+    deleteDiv = document.getElementById('delete_confirm_' + postID);
+
+    postDiv.style.display = "block";
+    deleteDiv.style.display = "none";
+}
+
+</script>
+
 <body>
     <div class="col-12" style="font-size: 22.5px; margin-bottom: 5ch; <?php if (!$isMobile) { echo "padding-left: 6ch"; } ?>">
         <div class="col-12" style="margin-top: 5vh">
@@ -194,6 +215,7 @@ if (isset($_GET['deleteMsgPost'])) {
 
         if ($isMobile) {
 
+            // MOBILE VERSION ! (PHONE)
     ?>
 
         <div class="col-12" id="<?php echo $info['id'] ?>" style="margin: 2ch 0 1ch 0">
@@ -413,8 +435,8 @@ if (isset($_GET['deleteMsgPost'])) {
     ?>
 
         <div class="col-12" id="<?php echo $info['id'] ?>" style="margin: 2ch 0 1ch 0">
-            <div class="col-10 push-1 titleBold" id="post_container_<?php echo $info[id]?>" style="">
-                <div class="col-12 bodyBold postContainer" style="margin: 0">
+            <div class="col-10 push-1 titleBold" id="post_container_<?php echo $info['id']?>" style="">
+                <div class="col-12 bodyBold postContainer" id="post_main_<?php echo $info['id'] ?>" style="margin: 0;">
                     <div class="col-12">
                         <table style="margin: 0;">
                             <tbody>
@@ -454,13 +476,9 @@ if (isset($_GET['deleteMsgPost'])) {
                                     ?>
 
                                     <td style="max-width: fit-content; width: 2.5ch;">
-                                        <form method="POST" style="font-size: 20px;">
-                                            <input type="text" name="delete_post_id" value="<?php echo $info['id']; ?>" style="display: none;" readonly/>
-                                            <input type="text" name="delete_post_creator" value="<?php echo $info['creator']; ?>" style="display: none;" readonly/>
-                                            <button type="submit" class="" name="delete_post_submit" style="background: #ffffff00; border: none;font-size: 20px;width: 3ch;height: 3ch;">
-                                                <img src="" class="" title="Delete Post" style="cursor: pointer;font-size: 20px; height: 2.75ch; width: 2.75ch; margin-top: 0.25ch; content: url('data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9JzMwMHB4JyB3aWR0aD0nMzAwcHgnICBmaWxsPSIjRUM1RDU3IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3BhY2U9InByZXNlcnZlIiB2ZXJzaW9uPSIxLjEiIHN0eWxlPSJzaGFwZS1yZW5kZXJpbmc6Z2VvbWV0cmljUHJlY2lzaW9uO3RleHQtcmVuZGVyaW5nOmdlb21ldHJpY1ByZWNpc2lvbjtpbWFnZS1yZW5kZXJpbmc6b3B0aW1pemVRdWFsaXR5OyIgdmlld0JveD0iMCAwIDIwNCAyNTgiIHg9IjBweCIgeT0iMHB4IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCI+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj4KICAgCiAgICAuZmlsMCB7ZmlsbDojRUM1RDU3fQogICAKICA8L3N0eWxlPjwvZGVmcz48Zz48cGF0aCBjbGFzcz0iZmlsMCIgZD0iTTE5MSA3MGwwIDEzOWMwLDI3IC0yMiw0OSAtNDksNDlsLTc1IDBjLTI3LDAgLTQ5LC0yMiAtNDksLTQ5bDAgLTEzOSAxNzMgMHptLTI0IDQybDAgOTNjMCwxOSAtMjUsMTkgLTI1LDBsMCAtOTNjMCwtMjAgMjUsLTIwIDI1LDB6bS01MCAwYzAsMzEgMCw2MiAwLDkzIDAsMTkgLTI1LDE5IC0yNSwwIDAsLTMxIDAsLTYyIDAsLTkzIDAsLTIwIDI1LC0yMCAyNSwwem0tNTAgMGwwIDkzYzAsMTkgLTI1LDE5IC0yNSwwbDAgLTkzYzAsLTIwIDI1LC0yMCAyNSwweiI+PC9wYXRoPjxwYXRoIGNsYXNzPSJmaWwwIiBkPSJNMTMgMzNsNDYgMGMtMSwtOSAyLC0xNyA4LC0yM2wwIC0xYzEzLC0xMiA2NCwtMTIgNzYsMCA2LDcgMTAsMTUgOSwyNGw0MCAwYzE3LDAgMTcsMjYgMCwyNmwtMTc5IDBjLTE3LDAgLTE3LC0yNiAwLC0yNnptNjYgMGw1MyAwYzEsLTMgMCwtNyAtMywtMTAgLTQsLTQgLTQzLC00IC00OCwwbDAgMGMtMywzIC0zLDcgLTIsMTB6Ij48L3BhdGg+PC9nPjwvc3ZnPg==');">
-                                            </button>
-                                        </form>
+                                        <button onclick="openDeleteConfirm(<?php echo $info['id']; ?>)" class="" name="delete_post_open" style="background: #ffffff00; border: none;font-size: 20px;width: 3ch;height: 3ch;">
+                                            <img src="" class="" title="Delete Post" style="cursor: pointer;font-size: 20px; height: 2.75ch; width: 2.75ch; margin-top: 0.25ch; content: url('data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9JzMwMHB4JyB3aWR0aD0nMzAwcHgnICBmaWxsPSIjRUM1RDU3IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3BhY2U9InByZXNlcnZlIiB2ZXJzaW9uPSIxLjEiIHN0eWxlPSJzaGFwZS1yZW5kZXJpbmc6Z2VvbWV0cmljUHJlY2lzaW9uO3RleHQtcmVuZGVyaW5nOmdlb21ldHJpY1ByZWNpc2lvbjtpbWFnZS1yZW5kZXJpbmc6b3B0aW1pemVRdWFsaXR5OyIgdmlld0JveD0iMCAwIDIwNCAyNTgiIHg9IjBweCIgeT0iMHB4IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCI+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj4KICAgCiAgICAuZmlsMCB7ZmlsbDojRUM1RDU3fQogICAKICA8L3N0eWxlPjwvZGVmcz48Zz48cGF0aCBjbGFzcz0iZmlsMCIgZD0iTTE5MSA3MGwwIDEzOWMwLDI3IC0yMiw0OSAtNDksNDlsLTc1IDBjLTI3LDAgLTQ5LC0yMiAtNDksLTQ5bDAgLTEzOSAxNzMgMHptLTI0IDQybDAgOTNjMCwxOSAtMjUsMTkgLTI1LDBsMCAtOTNjMCwtMjAgMjUsLTIwIDI1LDB6bS01MCAwYzAsMzEgMCw2MiAwLDkzIDAsMTkgLTI1LDE5IC0yNSwwIDAsLTMxIDAsLTYyIDAsLTkzIDAsLTIwIDI1LC0yMCAyNSwwem0tNTAgMGwwIDkzYzAsMTkgLTI1LDE5IC0yNSwwbDAgLTkzYzAsLTIwIDI1LC0yMCAyNSwweiI+PC9wYXRoPjxwYXRoIGNsYXNzPSJmaWwwIiBkPSJNMTMgMzNsNDYgMGMtMSwtOSAyLC0xNyA4LC0yM2wwIC0xYzEzLC0xMiA2NCwtMTIgNzYsMCA2LDcgMTAsMTUgOSwyNGw0MCAwYzE3LDAgMTcsMjYgMCwyNmwtMTc5IDBjLTE3LDAgLTE3LC0yNiAwLC0yNnptNjYgMGw1MyAwYzEsLTMgMCwtNyAtMywtMTAgLTQsLTQgLTQzLC00IC00OCwwbDAgMGMtMywzIC0zLDcgLTIsMTB6Ij48L3BhdGg+PC9nPjwvc3ZnPg==');">
+                                        </button>
                                     </td>
 
                                     <?php
@@ -530,6 +548,46 @@ if (isset($_GET['deleteMsgPost'])) {
                         </table>
                     </div>
                 </div>
+
+                <!-- Hidden Delete Confirmation Section -->
+                <?php 
+                if (isAdmin($_SESSION['username']) || (strtolower($_SESSION['username']) == strtolower($info["creator"]))) {
+                ?>
+
+                <div class="col-12 titleBold postContainer" id="delete_confirm_<?php echo $info['id'] ?>" style="display: none; font-size: 32px; text-align: center; padding: 2ch 0;">
+                    <div class="col-12">
+                        Confirm Deletion of Post?
+                    </div>
+                    <div class="col-12" style="margin-top: 1ch;">
+                        <div class="col-8 push-2">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td style="width: 50%">
+                                            <button onclick="closeDeleteConfirm(<?php echo $info['id']; ?>)" type="" name="" style="margin: 0.1ch 0; background-color: #21212199; border-color: #21212145; border-style: outset; color: #cbcbcb; padding: 0.5ch 3ch; border-radius: 0.5ch; font-size: 20px">
+                                                Cancel
+                                            </button>
+                                        </td>
+                                        <td style="width: 50%">
+                                            <form method="POST" style="font-size: 20px;">
+                                                <input type="text" name="delete_post_id" value="<?php echo $info['id']; ?>" style="display: none;" readonly/>
+                                                <input type="text" name="delete_post_creator" value="<?php echo $info['creator']; ?>" style="display: none;" readonly/>
+                                                <button type="submit" class="" name="delete_post_submit" style="background: #ffffff00; border: none;font-size: 20px;width: 3ch;height: 3ch;">
+                                                    <img src="" class="" title="Delete Post" style="cursor: pointer;font-size: 20px; height: 2.75ch; width: 2.75ch; margin-top: 0.25ch; content: url('data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9JzMwMHB4JyB3aWR0aD0nMzAwcHgnICBmaWxsPSIjRUM1RDU3IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3BhY2U9InByZXNlcnZlIiB2ZXJzaW9uPSIxLjEiIHN0eWxlPSJzaGFwZS1yZW5kZXJpbmc6Z2VvbWV0cmljUHJlY2lzaW9uO3RleHQtcmVuZGVyaW5nOmdlb21ldHJpY1ByZWNpc2lvbjtpbWFnZS1yZW5kZXJpbmc6b3B0aW1pemVRdWFsaXR5OyIgdmlld0JveD0iMCAwIDIwNCAyNTgiIHg9IjBweCIgeT0iMHB4IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCI+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj4KICAgCiAgICAuZmlsMCB7ZmlsbDojRUM1RDU3fQogICAKICA8L3N0eWxlPjwvZGVmcz48Zz48cGF0aCBjbGFzcz0iZmlsMCIgZD0iTTE5MSA3MGwwIDEzOWMwLDI3IC0yMiw0OSAtNDksNDlsLTc1IDBjLTI3LDAgLTQ5LC0yMiAtNDksLTQ5bDAgLTEzOSAxNzMgMHptLTI0IDQybDAgOTNjMCwxOSAtMjUsMTkgLTI1LDBsMCAtOTNjMCwtMjAgMjUsLTIwIDI1LDB6bS01MCAwYzAsMzEgMCw2MiAwLDkzIDAsMTkgLTI1LDE5IC0yNSwwIDAsLTMxIDAsLTYyIDAsLTkzIDAsLTIwIDI1LC0yMCAyNSwwem0tNTAgMGwwIDkzYzAsMTkgLTI1LDE5IC0yNSwwbDAgLTkzYzAsLTIwIDI1LC0yMCAyNSwweiI+PC9wYXRoPjxwYXRoIGNsYXNzPSJmaWwwIiBkPSJNMTMgMzNsNDYgMGMtMSwtOSAyLC0xNyA4LC0yM2wwIC0xYzEzLC0xMiA2NCwtMTIgNzYsMCA2LDcgMTAsMTUgOSwyNGw0MCAwYzE3LDAgMTcsMjYgMCwyNmwtMTc5IDBjLTE3LDAgLTE3LC0yNiAwLC0yNnptNjYgMGw1MyAwYzEsLTMgMCwtNyAtMywtMTAgLTQsLTQgLTQzLC00IC00OCwwbDAgMGMtMywzIC0zLDcgLTIsMTB6Ij48L3BhdGg+PC9nPjwvc3ZnPg==');">
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <?php
+                }
+                ?>
+
                 <!-- Hidden Comment Section Until Button Clicked -->
                 <div class="col-12" id="comment_input_<?php echo $info['id'] ?>" style="display: none;">
                     <div class="col-1">
