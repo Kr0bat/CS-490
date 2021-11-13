@@ -117,7 +117,7 @@
                 
                 foreach($chatlist as $user => $content) {
 
-                    if (!isBlocked($user) || isAdmin($_SESSION['username'])) {
+                    if ((!isBlocked($user) || isAdmin($_SESSION['username'])) && (strtolower($user) != strtolower($_SESSION['username']))) {
 
                         print('
                         <a id="chat_container_'.$user.'" href="?chatWith='.$user.'">
@@ -152,8 +152,6 @@
                                                         } else {
                                                             print('');
                                                         }
-
-                                                        print(''.getProfile($user)["fname"].' '.getProfile($user)["lname"].'</a>');
 
                                                         if (isBlocked($user)) {
                                                             print('<span style="color: rgb(186, 71, 71)">'.getProfile($user)["fname"].' '.getProfile($user)["lname"].'</span></a>');
