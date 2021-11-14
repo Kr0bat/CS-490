@@ -48,7 +48,7 @@
                 Your Inbox
             </div>
         </div>
-        <div class="<?php if (!$isMobile) { echo "col-10 push-1"; } else { echo "col-12"; } ?>" style="margin: 5vh 0">
+        <div class="<?php if (!$isMobile) { echo "col-10 push-1"; } else { echo "col-12"; } ?>" id="chat_list" style="margin: 5vh 0">
         
             <?php
 
