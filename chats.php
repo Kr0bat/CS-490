@@ -36,7 +36,7 @@ function allChats($recipient)
     require('databaseConnect.php');
     
     //make query
-    $q1 = " SELECT sender AS s FROM chat WHERE recipient = '$recipient'";
+    $q1 = " SELECT sender AS s, id FROM chat WHERE recipient = '$recipient'";
     
     $r = @mysqli_query ($dbc, $q1);
     
@@ -47,13 +47,13 @@ function allChats($recipient)
     
         while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
         {
-            if(in_array($row['s'], $usernames))
+            if(in_array($row, $ids))
             {
                     continue;
             }
             else
             {
-                    $usernames[] = $row['s'];
+                    $ids[] = $row['id'];
             }
         }    
         
@@ -66,20 +66,46 @@ function allChats($recipient)
     
     
     //make query
-    $q2 = " SELECT recipient AS s FROM chat WHERE sender = '$recipient'";
+    $q2 = " SELECT recipient AS s, id FROM chat WHERE sender = '$recipient'";
     $r = @mysqli_query ($dbc, $q2);
     
      while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
      {
-            if(in_array($row['s'], $usernames))
+            if(in_array($row, $ids))
             {
                     continue;
             }
             else
             {
-                    $usernames[] = $row['s'];
+                    $ids[] = $row['id'];
             }
      }    
+    
+   
+    
+    rsort($ids);
+    
+    foreach($ids as $id)
+    {
+          //make query
+          $q3 = " SELECT sender AS s FROM chat WHERE id = '$id' ";
+          $r = @mysqli_query ($dbc, $q3);
+          
+          $row = mysqli_fetch_array($r, MYSQLI_ASSOC);
+    
+          if(in_array($row['s'], $usernames))
+          {
+                continue;
+          }
+          else
+          {
+              $usernames[] = $row['s'];
+          }
+    
+          
+       }
+    
+    
     
     return $usernames;
 }
@@ -117,5 +143,5 @@ function sendChat($recipient, $sender, $message)
      mysqli_close($dbc);
     
 }
-//print_r(getChat("Karim", "Max"));
+
 ?>
