@@ -185,4 +185,7 @@
         </div>
     </div>
 </body>
+<script>
+    setInterval(function() { refreshChatList("<?php echo $_SESSION['username'] ?>") }, 500);
+</script>
 </html>

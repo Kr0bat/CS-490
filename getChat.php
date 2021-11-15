@@ -68,4 +68,14 @@ if ( isset($_POST['anyUnread'])){
     
 }
 
+if ( isset($_POST['recentChat'])){
+    $sender = $_POST['sender'];
+    $recipient = $_POST['recipient'];
+
+    $latestChat = getChat($sender, $recipient);
+    $latestChat = $latestChat[count($latestChat)-1];
+
+    print_r(json_encode($latestChat));
+}
+
 ?>

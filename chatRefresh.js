@@ -1,5 +1,7 @@
 var lastUpdated = null;
 var result = [];
+var needUpdate = false;
+var msg = "";
 
 function update(timestamp){
     lastUpdated = timestamp;
@@ -74,7 +76,7 @@ function getChats(recipient, sender, user){
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
-            result = JSON.parse(xhr.responseText);
+            var result = JSON.parse(xhr.responseText);
             //alert(result[0]['msg']);
             update(currentTime());
         }
@@ -121,7 +123,7 @@ function checkUnreadChat(recipient){
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
-            result = JSON.parse(xhr.responseText);
+            var result = JSON.parse(xhr.responseText);
 
             var onChat = false;
             var currPage = window.location.href.split('/')[4].split('?')[0]; //grab name of current page
@@ -150,4 +152,59 @@ function changeChatIcons(){
 
     icon = document.getElementById("chat_new");
     icon.style['display'] = "block";
+}
+
+function checkRefresh(chat, recipient){
+    return new Promise(function(resolve, reject){
+        var url = "https://web.njit.edu/~kg448/getChat.php";
+        var xhr = new XMLHttpRequest();
+        var sender = chat.id.substring(15)
+        var params = "recentChat=true&recipient=" + recipient + "&sender=" + sender;
+
+        xhr.open("POST", url, true);
+
+        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+        xhr.send(params);
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var result = JSON.parse(xhr.responseText);
+                //alert("STARTING TO SET STUFF FOR: " + sender);
+                if(chat.getElementsByTagName("div")[3].innerText != result['msg']){
+                    msg = result['msg'];
+                    needUpdate = true;
+
+                    resolve();
+                }
+                else{resolve();}
+            }
+        }
+    })
+}
+
+async function refreshChatList(recipient){
+    var chatList = document.getElementById("chat_list").getElementsByTagName("a");
+    
+    for(let i = 0; i<chatList.length; i++){
+        needUpdate = false;
+        if (chatList[i].id == ""){
+            continue;
+        }
+        else{
+            await checkRefresh(chatList[i], recipient);
+        }
+
+        if (needUpdate){
+            if (chatList[i].getElementsByTagName("span")[0].classList.length == 0){
+                chatList[i].getElementsByTagName("span")[0].setAttribute("class", "blueDot");
+                chatList[i].getElementsByTagName("span")[0].style = "margin-left: 1.5ch;";
+                chatList[i].getElementsByTagName('div')[2].getElementsByTagName('span')[1].innerHTML = '<span style="color: #56b35e">(NEW)</span> ' + chatList[i].getElementsByTagName('div')[2].getElementsByTagName('span')[1].innerHTML;
+            }
+            chatList[i].getElementsByTagName("div")[3].innerText = msg;
+            
+        }
+            
+            
+    }
+        
 }
