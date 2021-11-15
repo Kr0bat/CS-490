@@ -120,7 +120,7 @@
                     if ((!isBlocked($user) || isAdmin($_SESSION['username'])) && (strtolower($user) != strtolower($_SESSION['username']))) {
 
                         print('
-                        <a id="chat_container_'.$user.'" href="?chatWith='.$user.'">
+                        <a name="chat_container" id="chat_container_'.$user.'" href="?chatWith='.$user.'">
                             <div class="col-12 bodyBold dmContainer" style="margin: 0.5ch 0 0.25ch 0">
                                 <div class="col-12">
                                     <div class="col-12">
