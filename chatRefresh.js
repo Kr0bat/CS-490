@@ -108,3 +108,34 @@ function sendChat(sender, recipient){
 
     updateChat(sender);
 }
+
+function checkUnreadChat(recipient){
+    var url = "https://web.njit.edu/~kg448/getChat.php";
+    var xhr = new XMLHttpRequest();
+    var params = "anyUnread=true&recipient=" + recipient;
+
+    xhr.open("POST", url, true);
+
+    xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    xhr.send(params);
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            result = JSON.parse(xhr.responseText);
+            if (result['unread']){
+                changeChatIcons();
+            }
+        }
+    }
+}
+
+function changeChatIcons(){
+    var color = "#dac798";
+    document.getElementById("chat_name").style['color']=color;
+
+    var path = document.getElementById("chat_path");
+    path.setAttribute("fill", color );
+
+    icon = document.getElementById("chat_new");
+    icon.style['display'] = "block";
+}

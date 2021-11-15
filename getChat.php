@@ -41,4 +41,31 @@ if ( isset($_POST['set_chat']) ){
     sendChat($recipient, $sender, $msg);
 }
 
+if ( isset($_POST['anyUnread'])){
+    
+    $recipient = $_POST['recipient'];
+    
+    //print_r(json_encode("AAAA"));
+    
+    $allChat = allChats($recipient);
+    //print_r(json_encode($allChat));
+
+    
+    foreach($allChat as $user){
+        //print_r(json_encode($chat['recipient']) . " AND THE SENDER " .  $chat['s']);
+        $latestChat = getChat($user, $recipient);
+        $latestChat = $latestChat[count($latestChat)-1];
+
+        if ( $latestChat['r'] == 0 && $latestChat['recipient'] == $recipient ) {
+            
+            print_r(json_encode( ['unread' => true] ));
+            return 1;
+        }
+        //print_r(json_encode($latestChat));
+    }
+
+    print_r(json_encode( ['unread' => false] ));
+    
+}
+
 ?>
