@@ -28,13 +28,14 @@
     background-color: #424242;
     color: #fff;
     border-radius: 0.5ch 0.5ch 0.5ch 0;
-
+    word-break: break-word:
 }
 .bubbleSend {
     padding: 1ch 2.5ch 1ch 1ch;
     background-color: #56b35e;
     color: #fff;
     border-radius: 0.5ch 0.5ch 0 0.5ch;
+    word-break: break-word:
 }
 .bubbleSend:after {
     content: '';
