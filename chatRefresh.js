@@ -122,7 +122,19 @@ function checkUnreadChat(recipient){
     xhr.onreadystatechange = function () {
         if (xhr.readyState == 4 && xhr.status == 200) {
             result = JSON.parse(xhr.responseText);
-            if (result['unread']){
+
+            var onChat = false;
+            var currPage = window.location.href.split('/')[4].split('?')[0]; //grab name of current page
+            if (currPage == 'chat.php'){
+                if (window.location.href.split('/')[4].split('?').length > 1){
+                    onChat = false;
+                }
+                else {
+                    onChat = true;
+                }
+            }
+
+            if (result['unread'] && !onChat){
                 changeChatIcons();
             }
         }
