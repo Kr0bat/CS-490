@@ -318,6 +318,10 @@ if ($isMobile) {
     </div>
 </div>
 
+<script src="chatRefresh.js"></script>
+<script>
+    setInterval(function() { checkUnreadChat("<?php echo $_SESSION['username'] ?>") }, 500);
+</script>
 <?php
 
 }
