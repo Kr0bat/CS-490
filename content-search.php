@@ -329,17 +329,14 @@ function closeDeleteConfirm(postID) {
                             <table>
                                 <tbody>
                                     <tr>
-                                        <td style="padding-left: 1.69ch; width: 100%;">
+                                        <td style="padding-left: 1ch; width: 100%;">
                                             <div class="col-12">
-                                                <span style="<?php if (isAdmin($username)) { echo " color: rgb(175, 107, 72);"; } else if (isBlocked($username)) { echo " rgb(186, 71, 71);";} ?>">
+                                                <span style="font-size: 20px; font-weight: bolder; <?php if (isAdmin($username)) { echo " color: rgb(175, 107, 72);"; } else if (isBlocked($username)) { echo " rgb(186, 71, 71);";} ?>">
                                                     <?php echo $info['fname'].' '.$info['lname']; ?> 
                                                 </span>
                                                 <span class="subtitleLight" style="font-size: 20px;<?php if (isBlocked($username)) { echo " rgb(186, 71, 71);";} ?>">
                                                     (<?php echo $username; ?>)
                                                 </span>
-                                            </div>
-                                            <div class="col-12 subtitleLight" style="font-size: 18px; margin-top: 0.5ch; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">
-                                                <?php if (!isBlocked($username)) { echo $info['profile_description']; } else { echo "User is Banned"; } ?>
                                             </div>
                                         </td>
                                     </tr>
@@ -348,18 +345,61 @@ function closeDeleteConfirm(postID) {
                             <table>
                                 <tbody>
                                     <tr>
-                                        <td style="width: 100%;">
+                                        <td style="padding-left: 1ch; width: 100%;">
                                             <span class="">
-                                                <img src="<?php echo getProfile($username)["profile_picture"]; ?>" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 5ch; width: 5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                                <img src="<?php echo getProfile($username)["profile_picture"]; ?>" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 3.5ch; width: 3.5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
                                             </span>
                                         </td>
+
+                                        <?php
+                                        if ($_SESSION['username'] != $username && !isBlocked($username)) {
+                                        ?>
+
                                         <td style="max-width: fit-content;">
                                             <a href="/~kg448/chat.php?chatWith=<?php echo $username; ?>&redirectFrom=search" title="Chat with <?php echo $username; ?>">
                                                 <span class="">
-                                                    <img src="assets/comment.png" class="" style="border-width: 0.05px; border-radius: 0; height: 5ch; width: 5ch; border-style: none; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                                    <img src="assets/comment.png" class="" style="border-width: 0.05px; border-radius: 0; height: 3.5ch; width: 3.5ch; border-style: none; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
                                                 </span>
                                             </a>
                                         </td>
+
+                                        <?php 
+                                            if (isFollowing($_SESSION['username'], $username)) {
+                                        ?>
+                                        <td style="max-width: fit-content; padding-right: 1ch; padding-left: 1.75ch;">
+                                            <form method="POST">
+                                                <input type="text" name="follow_username" value="<?php echo $username ?>" style="display: none;" readonly/>
+                                                <input type="text" name="follow_view_all" value="<?php if (isset($_GET['viewAll'])) { echo $_GET['viewAll']; } else { echo "none"; } ?>" style="display: none;" readonly/>
+                                                <input type="text" name="follow_search_msg" value="<?php echo $_GET['search_msg'] ?>" style="display: none;" readonly/>
+                                                <button type="submit" name="follow_submit" href="" title="Unfollow <?php echo $username; ?>" style="font-size: 22px; height: 5.75ch; width: 5.25ch; border-style: none; background: none;">
+                                                    <span class="" style="">
+                                                        <img src="assets/comment.png" class="" style="border-width: 0.05px; border-radius: 0; height: 3.75ch; width: 3.25ch; border-style: none; border-color: rgba(255, 255, 255, 0.15); padding-top: 0.65ch; content: url('data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9JzMwMHB4JyB3aWR0aD0nMzAwcHgnICBmaWxsPSIjN2RjMGUyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWw6c3BhY2U9InByZXNlcnZlIiB2ZXJzaW9uPSIxLjEiIHN0eWxlPSJzaGFwZS1yZW5kZXJpbmc6Z2VvbWV0cmljUHJlY2lzaW9uO3RleHQtcmVuZGVyaW5nOmdlb21ldHJpY1ByZWNpc2lvbjtpbWFnZS1yZW5kZXJpbmc6b3B0aW1pemVRdWFsaXR5OyIgdmlld0JveD0iMCAwIDg0Ni42NiA4NDYuNjYiIHg9IjBweCIgeT0iMHB4IiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIGNsaXAtcnVsZT0iZXZlbm9kZCI+PGRlZnM+PHN0eWxlIHR5cGU9InRleHQvY3NzIj4KICAgCiAgICAuZmlsMCB7ZmlsbDojN2RjMGUyfQogICAKICA8L3N0eWxlPjwvZGVmcz48Zz48cGF0aCBjbGFzcz0iZmlsMCIgZD0iTTcxMC4xMSA2NzMuMzRjMCwtNy44NyAwLC04MS42MSAwLC0xMzUuODIgMCwtNTQuMTkgLTMyLjQ2LC03Ni4yNiAtMTE3LjU1LC04MC42NyAtNjcuMywtMy40OSAtOTkuODksLTUyLjcxIC0xMTAuNTgsLTczLjE0IDQ1LjQsLTE4LjkzIDgwLjY1LC02MS4xMiA4MC42NSwtMTI2LjY1bDAgLTY2LjgyYzAsLTE4NC4yNiAtMjc4LjU5LC0xODQuMjYgLTI3OC41OSwwbDAgNjYuODJjMCw2NS41MyAzNS4yNSwxMDcuNzQgODAuNjUsMTI2LjY1IC0xMC42OSwyMC40MyAtNDMuMjgsNjkuNjUgLTExMC41OCw3My4xNCAtODUuMDgsNC40MSAtMTE3LjU1LDI2LjQ4IC0xMTcuNTUsODAuNjcgMCw1NC4yMSAwLDEyNy45NSAwLDEzNS44MiAwLDAuOTggNjAuMzYsMS42MyAxNDEuODcsMS45NiAzLjA5LC03Ny4zNiA2Ni43OCwtMTM5LjEzIDE0NC45MSwtMTM5LjEzIDc4LjEyLDAgMTQxLjgxLDYxLjc3IDE0NC45LDEzOS4xMyA4MS41MywtMC4zMyAxNDEuODcsLTAuOTkgMTQxLjg3LC0xLjk2em0tMjg2Ljc3IC0xMDUuNTRjNjIuNjMsMCAxMTMuNDIsNTAuNzggMTEzLjQyLDExMy40MSAwLDYyLjY0IC01MC43OSwxMTMuNDEgLTExMy40MiwxMTMuNDEgLTYyLjY0LDAgLTExMy40MiwtNTAuNzcgLTExMy40MiwtMTEzLjQxIDAsLTYyLjYzIDUwLjc4LC0xMTMuNDEgMTEzLjQyLC0xMTMuNDF6bS02OS4wOCAxMjYuOGMtMTkuNDcsLTE5LjEzIDkuNjMsLTQ4LjcxIDI5LjA4LC0yOS41OWwyMy4zNiAyMi44OSA1Ni40NSAtNTcuMDVjMTkuMjMsLTE5LjM0IDQ4LjY2LDkuOSAyOS40MiwyOS4yNWwtNzAuODUgNzEuNjJjLTguMDMsOC4xNiAtMjEuMTksOC4yOCAtMjkuMzUsMC4yNGwtMzguMTEgLTM3LjM2eiI+PC9wYXRoPjwvZz48L3N2Zz4=')">
+                                                    </span>
+                                                </button>
+                                            </form>
+                                        </td>
+
+                                        <?php 
+                                            } else {
+                                        ?>
+
+                                        <td style="max-width: fit-content; padding-right: 1ch; padding-left: 1.75ch;">
+                                            <form method="POST">
+                                                <input type="text" name="follow_username" value="<?php echo $username ?>" style="display: none;" readonly/>
+                                                <input type="text" name="follow_view_all" value="<?php if (isset($_GET['viewAll'])) { echo $_GET['viewAll']; } else { echo "none"; } ?>" style="display: none;" readonly/>
+                                                <input type="text" name="follow_search_msg" value="<?php echo $_GET['search_msg'] ?>" style="display: none;" readonly/>
+                                                <button type="submit" name="follow_submit" href="" title="Follow <?php echo $username; ?>" style="font-size: 22px; height: 5.75ch; width: 5.25ch; border-style: none; background: none;">
+                                                    <span class="" style="">
+                                                        <img src="assets/comment.png" class="" style="border-width: 0.05px; border-radius: 0; height: 3.5ch; width: 3.5ch; border-style: none; border-color: rgba(255, 255, 255, 0.15); padding-top: 0.25ch; content: url('data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9JzMwMHB4JyB3aWR0aD0nMzAwcHgnICBmaWxsPSIjRkZGRkZGIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNjQgNjQiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDY0IDY0IiB4bWw6c3BhY2U9InByZXNlcnZlIj48cGF0aCBkPSJNNDEuNSwxOC40OWMwLDMuMTA5LTEuMjYsNi4wMi0zLjU2LDguMmMtMC40NiwwLjQzOS0wLjk2LDAuODQtMS40OCwxLjE4OWMtMS45NiwxLjM0LTQuMjksMi4wOS02LjYzLDIuMDkgIGMtMS43NywwLTMuNDgtMC40Mi01LjA3LTEuMjM5Yy0wLjQ1LTAuMjMtMC44Ny0wLjQ5LTEuMjgtMC43NjFjLTAuMDEtMC4wMi0wLjAxLTAuMDItMC4wMi0wLjAyYy0yLjktMi4wMy00Ljc5LTUuNC00Ljk1LTguOTQgIGMtMC4xOC00LjE0OSwxLjg5LTguMDksNS40MS0xMC4yNzlDMjUuNzMsNy42LDI3LjgzLDcuMDEsMzAuMDEsNy4wMWMyLDAsMy45NSwwLjUxLDUuNjYsMS40NzFDMzkuMjYsMTAuNTMsNDEuNSwxNC4zNiw0MS41LDE4LjQ5eiI+PC9wYXRoPjxwYXRoIGQ9Ik0zNy4xOSwyOS43OWMxLjY5LDAuMzcsMy4zNiwwLjg4LDQuOTcsMS41MWMtMS4yNSwwLjI1LTIuNDUsMC42Ny0zLjU3LDEuMjRjLTQuMjUsMi4yLTcuMTQsNi41MS03LjU0LDExLjI2ICBjLTAuNDEsNC44MiwxLjc1LDkuNTksNS42NCwxMi40NmMwLjE1LDAuMTEsMC4zLDAuMjIxLDAuNDUsMC4zMmMtOS40OSwxLjEtMTkuMTctMC4wMjEtMjguMTctMy4yOUM3Ljc5LDUyLjg2LDcsNTEuNzMsNyw1MC40NyAgdi02Ljk2YzAtMy43NywxLjg5LTcuMjI5LDUuMDctOS4yN2MzLjI2LTIuMDksNi44Mi0zLjU4LDEwLjYtNC40MmMwLjM4LDAuMjUsMC43NywwLjQ3OSwxLjE4LDAuNjg5YzEuODgsMC45NzEsMy44OSwxLjQ2LDUuOTgsMS40NiAgYzEuNzMsMCwzLjQ2LTAuMzUsNS4wOC0xQzM1LjcsMzAuNjUsMzYuNDYsMzAuMjUsMzcuMTksMjkuNzl6Ij48L3BhdGg+PHBhdGggZD0iTTUxLjMzLDM0LjhjMy41LDIuMTcsNS42Nyw2LjA4LDUuNjcsMTAuMTljMCw0LjQ1LTIuNTUsOC42NC02LjUxLDEwLjY4Yy0xLjY2LDAuODUtMy41NSwxLjMxMS01LjQ2LDEuMzExICBjLTAuMzksMC0wLjc4LTAuMDIxLTQuMzMtMC44MDFsLTIuODItMS41MjljLTMuMzMtMi40Ni01LjE5LTYuNTUxLTQuODQtMTAuNjgxYzAuMzUtNC4wNjksMi44Mi03Ljc3LDYuNDctOS42NDkgIGMxLjY3LTAuODYsMy41Ni0xLjMxMSw1LjQ4LTEuMzExYzAuMzksMCwwLjc5LDAuMDIxLDEuMTcsMC4wN0M0OC4wMSwzMy4yNCw0OS43OCwzMy44Myw1MS4zMywzNC44eiBNNTMsNDQuOTljMC0wLjU1LTAuNDUtMS0xLTFoLTYgIHYtNmMwLTAuNTUtMC40NS0xLTEtMXMtMSwwLjQ1LTEsMXY2aC02Yy0wLjU1LDAtMSwwLjQ1LTEsMWMwLDAuNTYsMC40NSwxLDEsMWg2djZjMCwwLjU2LDAuNDUsMSwxLDFzMS0wLjQ0LDEtMXYtNmg2ICBDNTIuNTUsNDUuOTksNTMsNDUuNTUsNTMsNDQuOTl6Ij48L3BhdGg+PC9zdmc+')">
+                                                    </span>
+                                                </button>
+                                            </form>
+                                        </td>
+
+                                        <?php 
+                                            }
+                                        ?>
+
                                     </tr>
                                 </tbody>
                             </table>
@@ -500,7 +540,7 @@ function closeDeleteConfirm(postID) {
                 </div>
             </div>
             <div class="col-12" style="margin-top: 1vh">
-                <div class="col-10 push-1">
+                <div class="<?php if ($isMobile) { echo 'col12'; } else { echo 'col-10 push-1'; } ?>">
 
                 <?php
                 $postIndex = 1;
