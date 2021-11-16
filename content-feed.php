@@ -505,7 +505,7 @@ function closeDeleteConfirm(postID) {
                                             <div class="col-12" style="margin-top: 0.5ch;">
                                                 <?php echo $info['title']; ?>
                                             </div>
-                                            <div class="col-12 subtitleLight" style="font-size: 18px; margin-top: 0.5ch; text-overflow: ellipsis; overflow: hidden;">
+                                            <div class="col-12 subtitleLightNorm" style="font-size: 18px; margin-top: 0.5ch; text-overflow: ellipsis; overflow: hidden;">
                                                 <?php echo $info['description']; ?>
                                             </div>
                                         </div>
