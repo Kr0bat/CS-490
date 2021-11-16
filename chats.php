@@ -85,7 +85,7 @@ function allChats($recipient)
     
 
     
-    return $usernames;
+    return $users;
 }
 
 function setRead($recipient, $sender)
@@ -121,5 +121,6 @@ function sendChat($recipient, $sender, $message)
      mysqli_close($dbc);
     
 }
+
 
 ?>
