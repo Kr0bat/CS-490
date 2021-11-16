@@ -235,6 +235,9 @@ function closeDeleteConfirm(postID) {
             foreach($idList as $index => $id){
                 $postList[$index] = getPost($id);
                 $postList[$index]['id'] = $id;
+                $postList[$index]['description'] = richText( $postList[$index]['description'] );
+                $postList[$index]['title'] = richText( $postList[$index]['title'] );
+
 
                 $likeCount = count(getLikes($id));
                 $postList[$index]['likeCount'] = $likeCount;

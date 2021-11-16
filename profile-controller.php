@@ -2,6 +2,8 @@
 include("posts.php");
 include("comments.php");
 include("users.php");
+include("text-controller.php");
+
 
     function getUserPosts($username, $user = null){ 
         //$username is the user being looked up, while $user is the user who is looking up a user
@@ -30,6 +32,9 @@ include("users.php");
         foreach($postList as $index => $post){
             //$post['comments']= SearchCommentByP($post['id']);
             $postList[$index] = $post;
+            $postList[$index]['description'] = richText( $postList[$index]['description'] );
+            $postList[$index]['title'] = richText( $postList[$index]['title'] );
+
 
             $likeCount = count(getLikes($post['id']));
             $postList[$index]['likeCount'] = $likeCount;

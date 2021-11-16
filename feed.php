@@ -22,6 +22,7 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
     include("users.php");
     include("comments.php");
     include("follows.php");
+    include("text-controller.php");
 }
 
 //

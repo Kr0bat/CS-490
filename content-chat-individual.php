@@ -123,7 +123,9 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
         $currTime = time();
         $chatTime = strtotime($chat['t']);
         $chatAge = $currTime - $chatTime;
-
+        $msgList[$index]['msg'] = richText( $chat['msg'] );
+        //echo richText($chat['msg']);
+        //print_r($msgList[$index]['msg']);
         //print_r($chatAge);
 
         if($chatAge <= 60){ // One minute, print min without s

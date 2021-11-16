@@ -107,6 +107,8 @@ $likeList = searchPostIdbyLiker($_SESSION['username']);
 foreach($idList as $index => $id){
     $postList[$index] = getPost($id);
     $postList[$index]['id'] = $id;
+    $postList[$index]['description'] = richText( $postList[$index]['description'] );
+    $postList[$index]['title'] = richText( $postList[$index]['title'] );
 
     $likeCount = count(getLikes($id));
     $postList[$index]['likeCount'] = $likeCount;
@@ -123,7 +125,7 @@ foreach($idList as $index => $id){
     $comments = [];
 
     foreach($rawComments as $comNum => $rawComment){
-        $comments[$comNum]["description"] = $rawComment["description"];
+        $comments[$comNum]["description"] = richText( $rawComment["description"] );
         $comments[$comNum]["timestamp"] = $rawComment["timestamp"];
         //$comments[$index]["commenter"] = $rawComment["creator"];
         $comments[$comNum]["creator"] = $rawComment["commenter"];

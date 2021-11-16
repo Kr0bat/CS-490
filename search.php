@@ -20,6 +20,7 @@ include("users.php");
 include("posts.php");
 include("follows.php");
 include("comments.php");
+include("text-controller.php");
 
 //
 // =======

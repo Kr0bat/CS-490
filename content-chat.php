@@ -51,6 +51,7 @@
         <div class="<?php if (!$isMobile) { echo "col-10 push-1"; } else { echo "col-12"; } ?>" id="chat_list" style="margin: 5vh 0">
         
             <?php
+            
 
 
             // $chatlist is updated by Middle End. Has three parameters: "msg", "new", and "timestamp".
@@ -64,6 +65,7 @@
             $chatlist = [];
             $recipient = $_SESSION['username'];
             $senders = allChats($recipient);
+            //print_r($senders);
             
             foreach ($senders as $sender){
                 $latestChat = getChat($recipient, $sender);
@@ -71,10 +73,12 @@
                 //Toggles the read dot in chat if there exists a recieved chat that the user hasn't read
                 //This will work once chats.php is updated
                 $unread = false;
-                foreach($latestChat as $chat){
+                foreach($latestChat as $index => $chat){
                     if ($chat['recipient'] == $_SESSION['username'] && $chat['r'] == 0){
                         $unread = true;
                     }
+
+                    $latestChat[$index]['msg'] = richText( $chat['msg'] );
                 }
 
                 $latestChat = $latestChat[count($latestChat) - 1];

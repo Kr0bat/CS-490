@@ -16,6 +16,7 @@
 session_start();
 include("users.php");
 include("chats.php");
+include("text-controller.php");
 
 //
 // =======
