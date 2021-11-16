@@ -324,7 +324,7 @@ function closeDeleteConfirm(postID) {
 
             <div class="col-12 fadeIn" style="margin-top: 1vh; animation-delay: <?php echo $delayTime; ?>s;">
                 <a href="/~kg448/account.php?viewing=<?php echo $username; ?>&redirectFrom=search&searchKey=<?php echo $_REQUEST['search_msg'] ?>" title="View <?php echo $username; ?>'s Profile">
-                    <div class="col-12 bodyBold dmContainer underlineOnHover" style="margin: 0.25ch 0">
+                    <div class="col-12 bodyBold dmContainer underlineOnHover" style="margin: 0.25ch 0 0 0">
                         <div class="col-12">
                             <table>
                                 <tbody>
@@ -366,7 +366,7 @@ function closeDeleteConfirm(postID) {
                                         <?php 
                                             if (isFollowing($_SESSION['username'], $username)) {
                                         ?>
-                                        <td style="max-width: fit-content; padding-right: 1ch; padding-left: 1.75ch;">
+                                        <td style="max-width: fit-content; padding-right: 0ch; padding-left: 1.75ch;">
                                             <form method="POST">
                                                 <input type="text" name="follow_username" value="<?php echo $username ?>" style="display: none;" readonly/>
                                                 <input type="text" name="follow_view_all" value="<?php if (isset($_GET['viewAll'])) { echo $_GET['viewAll']; } else { echo "none"; } ?>" style="display: none;" readonly/>
@@ -383,7 +383,7 @@ function closeDeleteConfirm(postID) {
                                             } else {
                                         ?>
 
-                                        <td style="max-width: fit-content; padding-right: 1ch; padding-left: 1.75ch;">
+                                        <td style="max-width: fit-content; padding-right: 0ch; padding-left: 1.75ch;">
                                             <form method="POST">
                                                 <input type="text" name="follow_username" value="<?php echo $username ?>" style="display: none;" readonly/>
                                                 <input type="text" name="follow_view_all" value="<?php if (isset($_GET['viewAll'])) { echo $_GET['viewAll']; } else { echo "none"; } ?>" style="display: none;" readonly/>
