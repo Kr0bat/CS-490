@@ -1595,7 +1595,7 @@ function closeDeleteConfirm(postID) {
         </div>
 
         <?php
-            else {
+            } else {
         ?>
 
         <div class="col-12" id="<?php echo $info['id'] ?>" style="margin: 2ch 0 1ch 0">
