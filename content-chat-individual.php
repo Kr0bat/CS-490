@@ -237,7 +237,7 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
 
             </div>
         </div>
-        <div style="width: 100vw; height: 32vh; <?php if ($isMobile) { echo "margin-left: 7.6vw; "; ?>position: fixed; bottom: 0; background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 69%, rgba(0,0,0,0) 100%); pointer-events: none;"></div>
+        <div style="width: 100vw; height: 32vh; <?php if ($isMobile) { echo "margin-left: 7.6vw; "; } ?>position: fixed; bottom: 0; background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 69%, rgba(0,0,0,0) 100%); pointer-events: none;"></div>
     </div>
 </body>
 
