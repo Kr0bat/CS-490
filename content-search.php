@@ -398,6 +398,7 @@ function closeDeleteConfirm(postID) {
 
                                         <?php 
                                             }
+                                        }
                                         ?>
 
                                     </tr>
