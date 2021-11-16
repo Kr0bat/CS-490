@@ -87,31 +87,31 @@
 }
 .bubbleSendMobile:after {
     content: '';
-    margin-top: -2ch;
+    margin-top: 0ch;
     right: 0;
     position: absolute;
     border: 0px solid;
     display: block;
-    width: 1.2ch;
-    height: 1.2ch;
+    width: 1ch;
+    height: 1ch;
     background-color: transparent;
-    border-bottom-left-radius: 0.85ch;
-    border-bottom-right-radius: 1ch;
-    box-shadow: -21px 9px 0px 8px #56b35e;
+    border-bottom-left-radius: 2ch;
+    border-bottom-right-radius: 1.5ch;
+    box-shadow: -8px 2px 0px 2px #56b35e;
 }
 .bubbleReceiveMobile:after {
     content: '';
-    margin-top: -2ch;
+    margin-top: 0ch;
     left: 0;
     position: absolute;
     border: 0px solid;
     display: block;
-    width: 1.2ch;
-    height: 1.2ch;
+    width: 1ch;
+    height: 1ch;
     background-color: transparent;
-    border-bottom-left-radius: 0.85ch;
-    border-bottom-right-radius: 1ch;
-    box-shadow: 21px 9px 0px 8px #424242;
+    border-bottom-left-radius: 2ch;
+    border-bottom-right-radius: 1.5ch;
+    box-shadow: 8px 2px 0px 2px #424242;
 }
 </style>
 <?php
