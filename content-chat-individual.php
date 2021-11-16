@@ -92,8 +92,8 @@
     position: absolute;
     border: 0px solid;
     display: block;
-    width: 2ch;
-    height: 2ch;
+    width: 1.2ch;
+    height: 1.2ch;
     background-color: transparent;
     border-bottom-left-radius: 0.85ch;
     border-bottom-right-radius: 1ch;
@@ -106,8 +106,8 @@
     position: absolute;
     border: 0px solid;
     display: block;
-    width: 2ch;
-    height: 2ch;
+    width: 1.2ch;
+    height: 1.2ch;
     background-color: transparent;
     border-bottom-left-radius: 0.85ch;
     border-bottom-right-radius: 1ch;
