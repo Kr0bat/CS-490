@@ -88,7 +88,7 @@
 .bubbleSendMobile:after {
     content: '';
     margin-top: -2ch;
-    right: 0.5ch;
+    margin-right: -1ch;
     position: absolute;
     border: 0px solid;
     display: block;
@@ -102,7 +102,7 @@
 .bubbleReceiveMobile:after {
     content: '';
     margin-top: -2ch;
-    left: 0.5ch;
+    margin-left: -1ch;
     position: absolute;
     border: 0px solid;
     display: block;
@@ -286,7 +286,7 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
             </div>
         </div>
 
-        <div style="width: 100vw; height: 32vh; <?php if (!$isMobile) { echo "margin-left: 7.6vw; "; } ?>position: fixed; bottom: 0; background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 69%, rgba(0,0,0,0) 100%); pointer-events: none;">
+        <div style="height: 32vh; <?php if (!$isMobile) { echo "margin-left: 7.6vw; width: 75vw; "; } else { echo "width: 100vw; "; } ?>position: fixed; bottom: 0; background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 69%, rgba(0,0,0,0) 100%); pointer-events: none;">
         </div>
     </div>
 </body>
