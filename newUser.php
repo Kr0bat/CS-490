@@ -118,7 +118,7 @@ button {
     <!--div class="col-12 subtitleBold" style="text-align: left; margin: max(1ch, 2vh) 0 0 max(2ch, 2vw)">
         <a href="/~kg448/feed.php" class="subtitleBold" style="text-decoration: none; font-size: 18px">Cancel</a>
     </div-->
-    <div class="col-12 titleBold" style="text-align: center; margin-top: 3ch;">
+    <div class="col-12 titleBold" style="text-align: center; margin-top: 3ch; margin-bottom: 5vh;">
         Add New User
     </div>
     <div class="col-8 push-2 colsm-12 pushsm-0 bodyLight newPostBackBox" style="text-align: left; margin-top: 3ch;">
