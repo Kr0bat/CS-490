@@ -699,7 +699,7 @@ function closeDeleteConfirm(postID) {
                                         <td style="max-width: fit-content;">
                                             <span class="">
                                                 <a href="<?php echo $info['link']; ?>" title="Go to song">
-                                                    <img src="<?php echo $info['album_art']; ?>" class="logoImg" style="border-width: 0.05px; border-radius: 0.35ch; height: 15ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                                    <img src="<?php echo $info['custom_album_art']; ?>" class="logoImg" style="border-width: 0.05px; border-radius: 0.35ch; height: 15ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
                                                 </a>
                                             </span>
                                         </td>
@@ -1239,7 +1239,7 @@ function closeDeleteConfirm(postID) {
                                     <td style="max-width: fit-content;">
                                         <span class="">
                                             <a href="<?php echo $info['link']; ?>" title="Go to song">
-                                                <img src="<?php echo $info['album_art']; ?>" class="logoImg" style="border-width: 0.05px; border-radius: 0.35ch; height: 15ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                                <img src="<?php echo $info['custom_album_art']; ?>" class="logoImg" style="border-width: 0.05px; border-radius: 0.35ch; height: 15ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
                                             </a>
                                         </span>
                                     </td>
