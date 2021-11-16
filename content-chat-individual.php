@@ -88,7 +88,7 @@
 .bubbleSendMobile:after {
     content: '';
     margin-top: -2ch;
-    margin-right: -1ch;
+    right: 0;
     position: absolute;
     border: 0px solid;
     display: block;
@@ -102,7 +102,7 @@
 .bubbleReceiveMobile:after {
     content: '';
     margin-top: -2ch;
-    margin-left: -1ch;
+    left: 0;
     position: absolute;
     border: 0px solid;
     display: block;
