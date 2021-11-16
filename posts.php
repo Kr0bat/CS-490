@@ -5,7 +5,7 @@
 	<body>
  <?php
  
- function insertPost($username, $title, $description, $link)
+ function insertPost($username, $title, $description, $link, $custom_album_art)
  {
      //make database connection
      require('databaseConnect.php');
@@ -15,7 +15,7 @@
      
        
     //make query
-    $q1 = " INSERT INTO post (Title, Description, Link, Creator) VALUES ('$new_title', '$new_description', '$link', '$username')";
+    $q1 = " INSERT INTO post (Title, Description, Link, Creator, custom_album_art) VALUES ('$new_title', '$new_description', '$link', '$username', '$custom_album_art')";
     
     //execute query
     $r = @mysqli_query ($dbc, $q1);
