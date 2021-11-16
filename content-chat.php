@@ -172,7 +172,7 @@
                                             </table>
                                         
                                     </div>
-                                    <div class="col-12 subtitleLight" style="font-size: 18px; margin-top: 0.25ch; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">'.$content["msg"].'</div>
+                                    <div class="col-12 subtitleLightNorm" style="font-size: 18px; margin-top: 0.25ch; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">'.$content["msg"].'</div>
                                     <div class="col-12 subtitleLight" style="color: #777; font-size: 14px; margin-top: 1ch; text-overflow: ellipsis; overflow: hidden; white-space: nowrap;">'.$content["timestamp"].'</div>
                                 </div>
                             </div>
