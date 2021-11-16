@@ -72,14 +72,14 @@
 
 
 .bubbleReceiveMobile {
-    padding: 1ch 1ch 1ch 2.5ch;
+    padding: 1ch 1.5ch 1ch 1.5ch;
     background-color: #424242;
     color: #fff;
     border-radius: 0.5ch 0.5ch 0.5ch 0;
     word-break: break-word;
 }
 .bubbleSendMobile {
-    padding: 1ch 2.5ch 1ch 1ch;
+    padding: 1ch 1.5ch 1ch 1.5ch;
     background-color: #56b35e;
     color: #fff;
     border-radius: 0.5ch 0.5ch 0 0.5ch;
