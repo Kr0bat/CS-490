@@ -64,9 +64,10 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
         $link = $_POST['newpost_link'];
         $description = $_POST['newpost_description'];
         $user = $_SESSION['username'];
+        $art = $_POST['newpost_album_cover'];
 
         $user = ucfirst($user);
-        insertPost($user, $title, $description, $link);
+        insertPost($user, $title, $description, $link, $art);
         header("Location: /~kg448/feed.php?successMsgPost=true");
     }
     // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ KARIM'S CODE ENDS HERE ^ ^ ^ ^ ^ ^ ^ ^ ^ ^

@@ -131,7 +131,9 @@ async function setPostsSongInfo(){
         var id = link.split('/')[4].split('?')[0]
         await getSongInfo(id);
 
-        art.src = songInfo['album']['images'][0]['url'];
+        if (art.getAttribute("src") == ""){
+            art.src = songInfo['album']['images'][0]['url'];
+        }
         title.innerText = songInfo['name'];
         album_year.innerText = songInfo['album']['name'] + " - " + songInfo['album']['release_date'].split('-')[0];
         artist.innerText = songInfo['artists'][0]['name'];

@@ -256,7 +256,7 @@ function closeDeleteConfirm(postID) {
                                     <td style="max-width: fit-content;">
                                         <a href="<?php echo $info['link']; ?>">
                                             <span class="">
-                                                <img src="<?php echo $info['album_art']; ?>" class="logoImg" style="background: rgb(19, 19, 19); font-size: 16px; border-width: 0px; border-radius: 1ch 1ch 0 0; width: clamp(100%, 100%, 25ch); border-style: solid; border-color: rgba(255, 255, 255, 0); margin-top: 0.5ch;" />
+                                                <img src="<?php echo $info['custom_album_art']; ?>" class="logoImg" style="background: rgb(19, 19, 19); font-size: 16px; border-width: 0px; border-radius: 1ch 1ch 0 0; width: clamp(100%, 100%, 25ch); border-style: solid; border-color: rgba(255, 255, 255, 0); margin-top: 0.5ch;" />
                                                 <div class="col-12 subtitleLight logoImg" style="font-size: 16px; background: rgb(19, 19, 19); border-radius: 0 0 1ch 1ch; padding: 0.5ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word; margin-top: -0.5ch;">
                                                     Song Title Here ↗
                                                 </div>
@@ -494,7 +494,7 @@ function closeDeleteConfirm(postID) {
                                     <td style="max-width: fit-content;">
                                         <span class="">
                                             <a href="<?php echo $info['link']; ?>" title="Go to song">
-                                                <img src="<?php echo $info['album_art']; ?>" class="logoImg" style="border-width: 0.05px; border-radius: 0.35ch; height: 15ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
+                                                <img src="<?php echo $info['custom_album_art']; ?>" class="logoImg" style="border-width: 0.05px; border-radius: 0.35ch; height: 15ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" />
                                             </a>
                                         </span>
                                     </td>
