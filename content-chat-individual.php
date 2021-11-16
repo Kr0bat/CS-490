@@ -69,6 +69,50 @@
     border-bottom-right-radius: 1ch;
     box-shadow: 21px 9px 0px 8px #424242;
 }
+
+
+.bubbleReceiveMobile {
+    padding: 1ch 1ch 1ch 2.5ch;
+    background-color: #424242;
+    color: #fff;
+    border-radius: 0.5ch 0.5ch 0.5ch 0;
+    word-break: break-word;
+}
+.bubbleSendMobile {
+    padding: 1ch 2.5ch 1ch 1ch;
+    background-color: #56b35e;
+    color: #fff;
+    border-radius: 0.5ch 0.5ch 0 0.5ch;
+    word-break: break-word;
+}
+.bubbleSendMobile:after {
+    content: '';
+    margin-top: -2ch;
+    right: 0.5ch;
+    position: absolute;
+    border: 0px solid;
+    display: block;
+    width: 2ch;
+    height: 2ch;
+    background-color: transparent;
+    border-bottom-left-radius: 0.85ch;
+    border-bottom-right-radius: 1ch;
+    box-shadow: -21px 9px 0px 8px #56b35e;
+}
+.bubbleReceiveMobile:after {
+    content: '';
+    margin-top: -2ch;
+    left: 0.5ch;
+    position: absolute;
+    border: 0px solid;
+    display: block;
+    width: 2ch;
+    height: 2ch;
+    background-color: transparent;
+    border-bottom-left-radius: 0.85ch;
+    border-bottom-right-radius: 1ch;
+    box-shadow: 21px 9px 0px 8px #424242;
+}
 </style>
 <?php
 
@@ -185,7 +229,7 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
             </div>
         </div>
  
-        <div class="<?php if (!$isMobile) { echo "col-10 push-1"; } else { echo "col-12"; } ?>" style="height: 85vh; <?php if (!$isMobile) { echo "width: 75vw; left: 7.6vw;"; } else { echo "width: 100vw;"; } ?>">
+        <div class="<?php if (!$isMobile) { echo "col-10 push-1"; } else { echo "col-12"; } ?>" style="height: 85vh; <?php if (!$isMobile) { echo "width: 75vw; left: 7.6vw;"; } else { echo "width: 120vw; margin-left: -10vw;"; } ?>">
             <div class="col-12 chatBoxBack">
                 
                 <div class="col-12 chatTextEntry">
@@ -205,31 +249,35 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
                     <table id="chatTable" style="height: 73vh; width: 100%; border-spacing: 1ch;">
                         <tbody style="height: 73vh; overflow-y: scroll; width: 100%; display: table-footer-group;">
 
-                        <?php
-                        foreach ($msgList as $index => $info) {
-                            print('
-                            <tr style="width: 100%;">
-                                <td style="width: 50%">');
-                                
-                            if ($info['s'] == $_SESSION['chatWith']) {
-                                print('<div class="bubbleReceive bodyLight">'.$info['msg'].'</div>');
-                                print('<div class="subtitleLight" style="font-size: 14px; padding-left: 3.5ch; padding-top: 0.25ch;">'.$info['t'].'</div>');
+                            <?php
+                            foreach ($msgList as $index => $info) {
+                                print('
+                                <tr style="width: 100%;">
+                                    <td style="width: 50%">');
+                                    
+                                if ($info['s'] == $_SESSION['chatWith']) {
+                                    print('<div class="bubbleReceive');
+                                    if ($isMobile) { echo "Mobile"; } 
+                                    print('bodyLight">'.$info['msg'].'</div>');
+                                    print('<div class="subtitleLight" style="font-size: 14px; padding-left: 3.5ch; padding-top: 0.25ch;">'.$info['t'].'</div>');
+                                }
+                                    
+                                print('
+                                    </td>
+                                    <td style="width: 50%">');
+                                    
+                                if ($info['s'] == $_SESSION['username']) {
+                                    print('<div class="bubbleSend');
+                                    if ($isMobile) { echo "Mobile"; } 
+                                    print('bodyLight">'.$info['msg'].'</div>');
+                                    print('<div class="subtitleLight" style="font-size: 14px; padding-left: 1.5ch; padding-top: 0.25ch;">'.$info['t'].'</div>');
+                                }
+                                    
+                                print('
+                                    </td>
+                                </tr>');
                             }
-                                
-                            print('
-                                </td>
-                                <td style="width: 50%">');
-                                
-                            if ($info['s'] == $_SESSION['username']) {
-                                print('<div class="bubbleSend bodyLight">'.$info['msg'].'</div>');
-                                print('<div class="subtitleLight" style="font-size: 14px; padding-left: 1.5ch; padding-top: 0.25ch;">'.$info['t'].'</div>');
-                            }
-                                
-                            print('
-                                </td>
-                            </tr>');
-                        }
-                        ?>
+                            ?>
 
                         </tbody>
                     </table>
@@ -237,7 +285,10 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
 
             </div>
         </div>
-        <div style="width: 100vw; height: 32vh; <?php if ($isMobile) { echo "margin-left: 7.6vw; "; } ?>position: fixed; bottom: 0; background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 69%, rgba(0,0,0,0) 100%); pointer-events: none;"></div>
+
+        <div style="width: 100vw; height: 32vh; <?php if ($isMobile) { echo "margin-left: 7.6vw; "; } ?>position: fixed; bottom: 0; background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 69%, rgba(0,0,0,0) 100%); pointer-events: none;">
+        
+    </div>
     </div>
 </body>
 
