@@ -627,13 +627,13 @@ button.slideButton {
     font-size: 27.5px;
     color: #a2a2a2;
     font-weight: 400;
-    font-style: italic;
+    /*font-style: italic;*/
 }
 .subtitleBold {
     font-size: 27.5px;
     color: #a2a2a2;
     font-weight: bolder;
-    font-style: italic;
+    /*font-style: italic;*/
 }
 
 .bodyLight {
