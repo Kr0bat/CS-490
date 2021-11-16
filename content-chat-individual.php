@@ -229,7 +229,7 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
             </div>
         </div>
  
-        <div class="<?php if (!$isMobile) { echo "col-10 push-1"; } else { echo "col-12"; } ?>" style="height: 85vh; <?php if (!$isMobile) { echo "width: 75vw; left: 7.6vw;"; } else { echo "width: 120vw; margin-left: -10vw;"; } ?>">
+        <div class="<?php if (!$isMobile) { echo "col-10 push-1"; } else { echo "col-12"; } ?>" style="height: 85vh; <?php if (!$isMobile) { echo "width: 75vw; left: 7.6vw;"; } else { echo "width: 100vw;"; } ?>">
             <div class="col-12 chatBoxBack">
                 
                 <div class="col-12 chatTextEntry">
@@ -286,9 +286,8 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
             </div>
         </div>
 
-        <div style="width: 100vw; height: 32vh; <?php if ($isMobile) { echo "margin-left: 7.6vw; "; } ?>position: fixed; bottom: 0; background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 69%, rgba(0,0,0,0) 100%); pointer-events: none;">
-        
-    </div>
+        <div style="width: 100vw; height: 32vh; <?php if (!$isMobile) { echo "margin-left: 7.6vw; "; } ?>position: fixed; bottom: 0; background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 69%, rgba(0,0,0,0) 100%); pointer-events: none;">
+        </div>
     </div>
 </body>
 
