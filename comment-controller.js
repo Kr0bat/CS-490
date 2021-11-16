@@ -34,6 +34,7 @@ function openComment(id){
 function updateCommentSection(post, pfp, role, user, comment, fname){
     postElementId = "post_container_" + post;
     var postElement = document.getElementById(postElementId);
+    comment = richText(comment);
 
     commentHtml_1 = '<div class="col-12"><div class="col-1"><table class="bodyLight" style="width: 100%"><tbody><tr><td style="max-width: fit-content;"><span class="" style="width: 100%"><img src="assets/commentArrow.png" class="" style="border-width: 0px; border-radius: 0; height: 3.5ch; margin-left: 50%; transform: translate(-50%, 0);" /></span></td></tr></tbody></table></div><div class="col-10 bodyLight commentContainer" id="" style="margin: 0; padding: 0.5ch 1ch 0.5ch 1ch; border-radius: 0; font-style: normal; font-size: 18px;"><table class="bodyLight"><tbody><tr><td style="max-width: fit-content;"><a href="/~kg448/account.php?viewing=' + user + '&redirectFrom=feed" title="View ' + user + '\'s Profile" style="text-decoration: none;" class="bodyLight"><span class=""><img src="' + pfp + '" class="logoImg" style="border-width: 0.05px; border-radius: 100%; height: 2.5ch; width: 2.5ch; border-style: solid; border-color: rgba(255, 255, 255, 0.15); margin-top: 0.4ch;" /></span></a></td><td style="padding-left: 0.5ch; max-width: 10ch;"><div class="col-12" style="max-width: 10ch;"><a href="/~kg448/account.php?viewing=' + user + '&redirectFrom=feed" title="View ' + user + '\'s Profile" style="text-decoration: none;" class="bodyLight"><div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;';
 
@@ -59,4 +60,77 @@ function updateCommentSection(post, pfp, role, user, comment, fname){
     commentHtml_1 = commentHtml_1 + '</td></tr></tbody></table></div></div>';
 
     postElement.innerHTML = postElement.innerHTML + commentHtml_1;
+}
+
+/* Rich text functions start here */
+
+function richText(msg){
+    msg = bold(msg);
+    msg = italics(msg);
+    msg = underline(msg);
+
+    return msg;
+}
+
+function bold(msg){
+    const bold = /\~/;
+    for (let i = 0; i < msg.length - 1; i++){
+        var first = msg.charAt(i);
+        if(first == '~'){
+            //alert("First found at index: " + i);
+            for(let j = i+1; j < msg.length; j++){
+                var second = msg.charAt(j);
+                if (second == '~'){
+                    //alert("Second found at index: " + j);
+                    msg = msg.replace(bold, '<b>');
+                    msg = msg.replace(bold, '</b>');
+                    break;
+                }
+            }
+        }
+    }
+
+    return msg;
+}
+
+function italics(msg){
+    const italics = /\*/;
+    for (let i = 0; i < msg.length - 1; i++){
+        var first = msg.charAt(i);
+        if(first == '*'){
+            //alert("First found at index: " + i);
+            for(let j = i+1; j < msg.length; j++){
+                var second = msg.charAt(j);
+                if (second == '*'){
+                    //alert("Second found at index: " + j);
+                    msg = msg.replace(italics, '<i>');
+                    msg = msg.replace(italics, '</i>');
+                    break;
+                }
+            }
+        }
+    }
+
+    return msg;
+}
+
+function underline(msg){
+    const underline = /\_/;
+    for (let i = 0; i < msg.length - 1; i++){
+        var first = msg.charAt(i);
+        if(first == '_'){
+            //alert("First found at index: " + i);
+            for(let j = i+1; j < msg.length; j++){
+                var second = msg.charAt(j);
+                if (second == '_'){
+                    //alert("Second found at index: " + j);
+                    msg = msg.replace(underline, '<u>');
+                    msg = msg.replace(underline, '</u>');
+                    break;
+                }
+            }
+        }
+    }
+
+    return msg;
 }

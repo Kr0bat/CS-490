@@ -51,7 +51,7 @@ include("text-controller.php");
             $comments = [];
 
             foreach($rawComments as $comNum => $rawComment){
-                $comments[$comNum]["description"] = $rawComment["description"];
+                $comments[$comNum]["description"] = richText( $rawComment["description"] );
                 $comments[$comNum]["timestamp"] = $rawComment["timestamp"];
                 //$comments[$index]["commenter"] = $rawComment["creator"];
                 $comments[$comNum]["creator"] = $rawComment["commenter"];
