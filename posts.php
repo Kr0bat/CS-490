@@ -31,7 +31,7 @@
      require('databaseConnect.php');
        
     //make query
-    $q1 = " SELECT Title AS title, Description AS description, Link AS link, Creator AS creator, id as id FROM post WHERE id = '$id'";
+    $q1 = " SELECT Title AS title, Description AS description, Link AS link, Creator AS creator, id as id, custom_album_art FROM post WHERE id = '$id'";
     
     //execute query
     $r = @mysqli_query ($dbc, $q1);
@@ -75,7 +75,7 @@
      require('databaseConnect.php');
        
     //make query
-    $q1 = " SELECT Title AS title, Description AS description, Link AS link, Creator AS creator, id as id FROM post ORDER BY Timestamp";
+    $q1 = " SELECT Title AS title, Description AS description, Link AS link, Creator AS creator, id as id, custom_album_art FROM post ORDER BY Timestamp";
     
     //execute query
     $r = @mysqli_query ($dbc, $q1);
@@ -97,7 +97,7 @@
      require('databaseConnect.php');
      
      //make query
-     $q1 = "SELECT Title AS title, Description AS description, Link AS link, Creator AS creator, id AS id FROM post WHERE Title LIKE '%$TitleorDescription%' OR Description LIKE'%$TitleorDescription%' ";
+     $q1 = "SELECT Title AS title, Description AS description, Link AS link, Creator AS creator, id AS id, custom_album_art FROM post WHERE Title LIKE '%$TitleorDescription%' OR Description LIKE'%$TitleorDescription%' ";
      $r = @mysqli_query ($dbc, $q1); 
      
      // get list of users
@@ -126,7 +126,7 @@
      require('databaseConnect.php');
      
      //make query
-     $q1 = "SELECT Title AS title, Description AS description, Link AS link, Creator AS creator, id as id FROM post WHERE Creator = '$Creator'";
+     $q1 = "SELECT Title AS title, Description AS description, Link AS link, Creator AS creator, id as id, custom_album_art FROM post WHERE Creator = '$Creator'";
      $r = @mysqli_query ($dbc, $q1); 
      
      // get list of posts
@@ -255,7 +255,8 @@ function searchPostIdbyLiker($username)
     }
     
 }
- 
+
+
  ?>
  </body> 
  </html>
