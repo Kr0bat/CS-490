@@ -541,7 +541,7 @@ function closeDeleteConfirm(postID) {
                 </div>
             </div>
             <div class="col-12" style="margin-top: 1vh">
-                <div class="<?php if ($isMobile) { echo 'col12'; } else { echo 'col-10 push-1'; } ?>">
+                <div class="<?php if ($isMobile) { echo 'col-12'; } else { echo 'col-10 push-1'; } ?>">
 
                 <?php
                 $postIndex = 1;
