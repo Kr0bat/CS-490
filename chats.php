@@ -36,7 +36,7 @@ function allChats($recipient)
     require('databaseConnect.php');
     
     //make query
-    $q1 = " SELECT sender AS s, id FROM chat WHERE recipient = '$recipient'";
+    $q1 = " SELECT sender as s, recipient as r, time FROM chat WHERE sender = '$recipient' OR recipient = '$recipient' ORDER BY time DESC";
     
     $r = @mysqli_query ($dbc, $q1);
     
@@ -47,65 +47,43 @@ function allChats($recipient)
     
         while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
         {
-            if(in_array($row, $ids))
-            {
-                    continue;
-            }
-            else
-            {
-                    $ids[] = $row['id'];
-            }
+        
+            $usernames[] = $row;
         }    
         
-         
     }
     else
     {
         return 0;
     }
     
-    
-    //make query
-    $q2 = " SELECT recipient AS s, id FROM chat WHERE sender = '$recipient'";
-    $r = @mysqli_query ($dbc, $q2);
-    
-     while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
-     {
-            if(in_array($row, $ids))
+    foreach($usernames as $user)
+    {
+        if($user['s'] == $recipient)
+        {
+            if(in_array($user['r'], $users))
             {
-                    continue;
+                  continue;
             }
             else
             {
-                    $ids[] = $row['id'];
+                  $users[] = $user['r'];
             }
-     }    
+        }
+        if($user['r'] == $recipient)
+        {
+            if(in_array($user['s'], $users))
+            {
+                  continue;
+            }
+            else
+            {
+                  $users[] = $user['s'];
+            }
+        }
+    }
     
-   
-    
-    rsort($ids);
-    
-    foreach($ids as $id)
-    {
-          //make query
-          $q3 = " SELECT sender AS s FROM chat WHERE id = '$id' ";
-          $r = @mysqli_query ($dbc, $q3);
-          
-          $row = mysqli_fetch_array($r, MYSQLI_ASSOC);
-    
-          if(in_array($row['s'], $usernames))
-          {
-                continue;
-          }
-          else
-          {
-              $usernames[] = $row['s'];
-          }
-    
-          
-       }
-    
-    
+
     
     return $usernames;
 }
