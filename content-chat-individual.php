@@ -88,30 +88,30 @@
 .bubbleSendMobile:after {
     content: '';
     margin-top: 0ch;
-    right: 0;
+    right: 0.25ch;
     position: absolute;
     border: 0px solid;
     display: block;
-    width: 1ch;
-    height: 1ch;
+    width: 1.5ch;
+    height: 1.5ch;
     background-color: transparent;
     border-bottom-left-radius: 2ch;
     border-bottom-right-radius: 1.5ch;
-    box-shadow: -8px 2px 0px 2px #56b35e;
+    box-shadow: -9px 6px 0px 2px #56b35e;
 }
 .bubbleReceiveMobile:after {
     content: '';
     margin-top: 0ch;
-    left: 0;
+    left: 0.25ch;
     position: absolute;
     border: 0px solid;
     display: block;
-    width: 1ch;
-    height: 1ch;
+    width: 1.5ch;
+    height: 1.5ch;
     background-color: transparent;
     border-bottom-left-radius: 2ch;
     border-bottom-right-radius: 1.5ch;
-    box-shadow: 8px 2px 0px 2px #424242;
+    box-shadow: 9px 6px 0px 2px #424242;
 }
 </style>
 <?php
