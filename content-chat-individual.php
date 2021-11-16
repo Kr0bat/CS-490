@@ -258,7 +258,7 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
                                 if ($info['s'] == $_SESSION['chatWith']) {
                                     print('<div class="bubbleReceive');
                                     if ($isMobile) { echo "Mobile"; } 
-                                    print('bodyLight">'.$info['msg'].'</div>');
+                                    print(' bodyLight">'.$info['msg'].'</div>');
                                     print('<div class="subtitleLight" style="font-size: 14px; padding-left: 3.5ch; padding-top: 0.25ch;">'.$info['t'].'</div>');
                                 }
                                     
@@ -269,7 +269,7 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
                                 if ($info['s'] == $_SESSION['username']) {
                                     print('<div class="bubbleSend');
                                     if ($isMobile) { echo "Mobile"; } 
-                                    print('bodyLight">'.$info['msg'].'</div>');
+                                    print(' bodyLight">'.$info['msg'].'</div>');
                                     print('<div class="subtitleLight" style="font-size: 14px; padding-left: 1.5ch; padding-top: 0.25ch;">'.$info['t'].'</div>');
                                 }
                                     
