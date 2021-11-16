@@ -260,7 +260,7 @@ function closeDeleteConfirm(postID) {
                                             <span class="">
                                                 <img src="<?php echo $info['custom_album_art']; ?>" class="logoImg" style="background: rgb(19, 19, 19); font-size: 16px; border-width: 0px; border-radius: 1ch 1ch 0 0; width: clamp(100%, 100%, 25ch); border-style: solid; border-color: rgba(255, 255, 255, 0); margin-top: 0.5ch;" />
                                                 <div class="col-12 subtitleLight logoImg" style="font-size: 16px; background: rgb(19, 19, 19); border-radius: 0 0 1ch 1ch; padding: 0.5ch; overflow: hidden; text-overflow: ellipsis; word-break: break-word; margin-top: -0.5ch;">
-                                                    Song Title Here ↗
+                                                    Open Spotify ↗
                                                 </div>
                                             </span>
                                         </a>
@@ -284,7 +284,7 @@ function closeDeleteConfirm(postID) {
                                                 </span>
                                             </div>
                                         </div-->
-                                        <div class="col-12" style="overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 1ch; text-align: center;">
+                                        <div class="col-12" style="overflow: hidden; text-overflow: ellipsis; word-break: break-word; padding-top: 1.5ch; text-align: center;">
                                             <table style="margin: 0; width: 100%;">
                                                 <tbody>
                                                     <tr>
