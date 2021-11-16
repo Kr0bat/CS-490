@@ -17,6 +17,10 @@
     height: 75vh;
     padding: 3ch 5ch 0 5ch;
 }
+.chatBoxTopMobile {
+    height: 75vh;
+    padding: 3ch 0.25ch 0 0.25ch;
+}
 .chatTextEntry {
     background-color: #070707;
     height: 10vh;
@@ -197,7 +201,7 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
                     </div>
                 </div>
 
-                <div class="col-12 chatBoxTop" style="overflow: auto; width: 100%; flex-direction: column-reverse;">
+                <div class="col-12 chatBoxTop<?php if ($isMobile) { echo "Mobile"; } ?>" style="overflow: auto; width: 100%; flex-direction: column-reverse;">
                     <table id="chatTable" style="height: 73vh; width: 100%; border-spacing: 1ch;">
                         <tbody style="height: 73vh; overflow-y: scroll; width: 100%; display: table-footer-group;">
 
@@ -233,7 +237,7 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
 
             </div>
         </div>
-        <div style="width: 100vw; height: 32vh; margin-left: 7.6vw; position: fixed; bottom: 0; background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 69%, rgba(0,0,0,0) 100%); pointer-events: none;"></div>
+        <div style="width: 100vw; height: 32vh; <?php if ($isMobile) { echo "margin-left: 7.6vw; "; ?>position: fixed; bottom: 0; background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 69%, rgba(0,0,0,0) 100%); pointer-events: none;"></div>
     </div>
 </body>
 
