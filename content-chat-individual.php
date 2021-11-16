@@ -189,6 +189,7 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
             $msgList[$index]['t'] = date("l", $chatTime) . " at " . date("h:ia", $chatTime);
         }
         
+        $msgList[$index]['t'] = "";
         //print_r($Epoch);
     }
 
