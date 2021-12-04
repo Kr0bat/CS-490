@@ -294,8 +294,8 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
 
 <script>
     setInterval(function() { getChats("<?php echo $_SESSION['username'] ?>", "<?php echo $_SESSION['chatWith'] ?>", "<?php echo $_SESSION['username'] ?>") }, 1500);
-    //getChats("<?php echo $_SESSION['username'] ?>", "<?php echo $_SESSION['chatWith'] ?>")
-
+</script>
+<script>
     var input = document.getElementsByName("newdm_msg")[0];
     input.addEventListener("keyup", function(event) {
         if (event.keyCode === 13) {

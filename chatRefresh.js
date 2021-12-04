@@ -1,5 +1,5 @@
 var lastUpdated = null;
-var result = [];
+var chatResult = [];
 var needUpdate = false;
 var msg = "";
 
@@ -57,7 +57,29 @@ function updateChat(sender, user=null, message=null, timestamp=null){
     }
 }
 
-function getChats(recipient, sender, user){ 
+function processChatInfo(xhr, params){
+    return new Promise(function(resolve, reject){
+        var chatStuff = [];
+        xhr.send(params);
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                chatStuff = JSON.parse(xhr.responseText);
+                //alert(chatStuff[0]['msg']); //It works when this is uncommented
+
+    
+                //alert(chatResult);
+                resolve(chatStuff);
+            }
+            
+        }
+
+        //resolve("Failed resolve");
+
+    });
+}
+
+async function getChats(recipient, sender, user){ 
     if(lastUpdated == null){
         update(currentTime());
     } 
@@ -70,26 +92,45 @@ function getChats(recipient, sender, user){
 
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-    xhr.send(params);
+    //alert("An alert before");
+
+    /*
+    processChatInfo(xhr, params).then(function(response){
+        alert(response[0]['msg']);
+        if(response == undefined){
+            return;
+        }
+        alert(response[0]['msg']);
+        for (let i = 0; i < response.length; i++){
+            if (response[i]['s'] != user){
+                updateChat(response[i]['s'], user, response[i]['msg'], response[i]['t']);
+            }
+        }
+    }) */
+
+    response = await processChatInfo(xhr, params);
+    //alert(response[0]['msg']);
+
+    var needsUpdate = false;
+
+    for (let i = 0; i < response.length; i++){
+        if (response[i]['s'] != user){
+            updateChat(response[i]['s'], user, response[i]['msg'], response[i]['t']);
+            needsUpdate = true;
+        }
+    }
+
+    if(needsUpdate){
+        update(currentTime());
+        needsUpdate = false;
+    }
+    
 
     
 
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            var result = JSON.parse(xhr.responseText);
-            //alert(result[0]['msg']);
-            update(currentTime());
-        }
-    }
+    //chatResult = [];
 
-    if (result != null){
-        for (let i = 0; i < result.length; i++){
-            if (result[i]['s'] != user){
-                updateChat(result[i]['s'], user, result[i]['msg'], result[i]['t']);
-            }
-        }
-    }
-    result = [];
+    
 
 }
 
@@ -126,18 +167,28 @@ function checkUnreadChat(recipient){
             var result = JSON.parse(xhr.responseText);
 
             var onChat = false;
+            var onIndividualChat = false;
             var currPage = window.location.href.split('/')[4].split('?')[0]; //grab name of current page
             if (currPage == 'chat.php'){
+                onChat = true;
                 if (window.location.href.split('/')[4].split('?').length > 1){
-                    onChat = false;
+                    onIndividualChat = true;
                 }
-                else {
-                    onChat = true;
-                }
+
             }
 
-            if (result['unread'] && !onChat){
-                changeChatIcons();
+            //If you are not on the main chat page, change the sidebar chat icon color
+            if (onChat == onIndividualChat){
+                if(result['unread']){
+                    changeChatIcons("#dac798");
+                }
+                //Change the icon color to white or green depending on the current page
+                else if(onIndividualChat){
+                    unChangeChatIcons("#56b35e");
+                }
+                else{
+                    unChangeChatIcons("#FFFFFF")
+                }
             }
         }
     }
@@ -152,6 +203,17 @@ function changeChatIcons(){
 
     icon = document.getElementById("chat_new");
     icon.style['display'] = "block";
+}
+
+function unChangeChatIcons(color){
+    //var color = "#FFFFFF";
+    document.getElementById("chat_name").style['color']=color;
+
+    var path = document.getElementById("chat_path");
+    path.setAttribute("fill", color );
+
+    icon = document.getElementById("chat_new");
+    icon.style['display'] = "none";
 }
 
 function checkRefresh(chat, recipient){
