@@ -46,6 +46,7 @@ function updateChat(sender, user=null, message=null, timestamp=null){
         var message = document.getElementsByName("newdm_msg")[0].value;
         document.getElementsByName("newdm_msg")[0].value = "";
     }
+    message = richText(message);
 
     //append the message (in html format) to the div
     if (user == sender){  
@@ -92,24 +93,8 @@ async function getChats(recipient, sender, user){
 
     xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 
-    //alert("An alert before");
-
-    /*
-    processChatInfo(xhr, params).then(function(response){
-        alert(response[0]['msg']);
-        if(response == undefined){
-            return;
-        }
-        alert(response[0]['msg']);
-        for (let i = 0; i < response.length; i++){
-            if (response[i]['s'] != user){
-                updateChat(response[i]['s'], user, response[i]['msg'], response[i]['t']);
-            }
-        }
-    }) */
-
     response = await processChatInfo(xhr, params);
-    //alert(response[0]['msg']);
+
 
     var needsUpdate = false;
 
@@ -125,13 +110,6 @@ async function getChats(recipient, sender, user){
         needsUpdate = false;
     }
     
-
-    
-
-    //chatResult = [];
-
-    
-
 }
 
 function sendChat(sender, recipient){
@@ -232,7 +210,7 @@ function checkRefresh(chat, recipient){
             if (xhr.readyState == 4 && xhr.status == 200) {
                 var result = JSON.parse(xhr.responseText);
                 //alert("STARTING TO SET STUFF FOR: " + sender);
-                if(chat.getElementsByTagName("div")[3].innerText != result['msg']){
+                if(chat.getElementsByTagName("div")[3].innerHTML != richText(result['msg'])){
                     msg = result['msg'];
                     needUpdate = true;
 
@@ -262,11 +240,82 @@ async function refreshChatList(recipient){
                 chatList[i].getElementsByTagName("span")[0].style = "margin-left: 1.5ch;";
                 chatList[i].getElementsByTagName('div')[2].getElementsByTagName('span')[1].innerHTML = '<span style="color: #56b35e">(NEW)</span> ' + chatList[i].getElementsByTagName('div')[2].getElementsByTagName('span')[1].innerHTML;
             }
-            chatList[i].getElementsByTagName("div")[3].innerText = msg;
+            chatList[i].getElementsByTagName("div")[3].innerHTML = richText(msg);
             
         }
             
             
     }
         
+}
+
+function richText(msg){    
+    msg = bold(msg);
+    msg = italics(msg);
+    msg = underline(msg);
+
+    return msg;
+}
+
+function bold(msg){
+    const bold = /\~/;
+    for (let i = 0; i < msg.length - 1; i++){
+        var first = msg.charAt(i);
+        if(first == '~'){
+            //alert("First found at index: " + i);
+            for(let j = i+1; j < msg.length; j++){
+                var second = msg.charAt(j);
+                if (second == '~'){
+                    //alert("Second found at index: " + j);
+                    msg = msg.replace(bold, '<b>');
+                    msg = msg.replace(bold, '</b>');
+                    break;
+                }
+            }
+        }
+    }
+
+    return msg;
+}
+
+function italics(msg){
+    const italics = /\*/;
+    for (let i = 0; i < msg.length - 1; i++){
+        var first = msg.charAt(i);
+        if(first == '*'){
+            //alert("First found at index: " + i);
+            for(let j = i+1; j < msg.length; j++){
+                var second = msg.charAt(j);
+                if (second == '*'){
+                    //alert("Second found at index: " + j);
+                    msg = msg.replace(italics, '<i>');
+                    msg = msg.replace(italics, '</i>');
+                    break;
+                }
+            }
+        }
+    }
+
+    return msg;
+}
+
+function underline(msg){
+    const underline = /\_/;
+    for (let i = 0; i < msg.length - 1; i++){
+        var first = msg.charAt(i);
+        if(first == '_'){
+            //alert("First found at index: " + i);
+            for(let j = i+1; j < msg.length; j++){
+                var second = msg.charAt(j);
+                if (second == '_'){
+                    //alert("Second found at index: " + j);
+                    msg = msg.replace(underline, '<u>');
+                    msg = msg.replace(underline, '</u>');
+                    break;
+                }
+            }
+        }
+    }
+
+    return msg;
 }
