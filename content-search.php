@@ -634,16 +634,6 @@ function closeDeleteConfirm(postID) {
                                         </tbody>
                                     </table>
                                 </div>
-
-                                <!-- INSERT PREVIEW LINK CODE HERE -->
-                                <?php
-                                $previewLink = "https://p.scdn.co/mp3-preview/71e46124927f40489d15d9208b449262da6c1fa5?cid=cb8c3f7bb9d34c48914d0fecaea23458";
-                                ?>
-
-                                <div class="col-12" style="margin-top: 1ch;">
-                                    <audio src="<?php echo $previewLink ?>" controls="" style="width: 100%;">
-                                    </audio>
-                                </div>
                             </div>
                             <!-- Hidden Comment Section Until Button Clicked -->
                             <div class="col-12" id="comment_input_<?php echo $info['id'] ?>" style="display: none;">
@@ -880,6 +870,16 @@ function closeDeleteConfirm(postID) {
                                             </tr>
                                         </tbody>
                                     </table>
+                                </div>
+
+                                <!-- INSERT PREVIEW LINK CODE HERE -->
+                                <?php
+                                $previewLink = "https://p.scdn.co/mp3-preview/71e46124927f40489d15d9208b449262da6c1fa5?cid=cb8c3f7bb9d34c48914d0fecaea23458";
+                                ?>
+
+                                <div class="col-12" style="margin-top: 1ch;">
+                                    <audio src="<?php echo $previewLink ?>" controls="" style="width: 100%;">
+                                    </audio>
                                 </div>
                             </div>
 
