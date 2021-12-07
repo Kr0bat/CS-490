@@ -127,6 +127,7 @@ async function setPostsSongInfo(){
 		var album_year = postList[i].getElementsByTagName("div")[8] // "album - year"
 		var artist = postList[i].getElementsByTagName("div")[9]
 		var link = postList[i].getElementsByTagName("div")[2].getElementsByTagName('a')[0].href //returns the full link
+        var audio = postList[i].getElementsByTagName("audio")[0]
 
         var id = link.split('/')[4].split('?')[0]
         await getSongInfo(id);
@@ -137,6 +138,7 @@ async function setPostsSongInfo(){
         title.innerText = songInfo['name'];
         album_year.innerText = songInfo['album']['name'] + " - " + songInfo['album']['release_date'].split('-')[0];
         artist.innerText = songInfo['artists'][0]['name'];
+        audio.src = songInfo['preview_url'];
 
         //alert(songInfo['name']);
     }
