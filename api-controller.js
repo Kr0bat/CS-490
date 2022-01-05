@@ -1,7 +1,7 @@
 var expiration=null;
 var refreshToken=null;
 var accessToken=null;
-var auth="Basic Y2I4YzNmN2JiOWQzNGM0ODkxNGQwZmVjYWVhMjM0NTg6Mjc4YWViMjAwZjVjNGZlZDk2YWFlNDQ1MjljYjBiOGE=";
+var auth="REDACTED";
 var result = null;
 var freshTokens = null;
 var songInfo = null;
