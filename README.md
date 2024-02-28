@@ -1,4 +1,5 @@
-NJIT CS 490 Project - Currently on Beta
+Spotigram - NJIT CS 490 Project
+A toy social media website
 
 Karim Gueye
 Max Cohen
