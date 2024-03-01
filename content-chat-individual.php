@@ -17,6 +17,10 @@
     height: 75vh;
     padding: 3ch 5ch 0 5ch;
 }
+.chatBoxTopMobile {
+    height: 75vh;
+    padding: 3ch 0.25ch 0 0.25ch;
+}
 .chatTextEntry {
     background-color: #070707;
     height: 10vh;
@@ -28,13 +32,14 @@
     background-color: #424242;
     color: #fff;
     border-radius: 0.5ch 0.5ch 0.5ch 0;
-
+    word-break: break-word;
 }
 .bubbleSend {
     padding: 1ch 2.5ch 1ch 1ch;
     background-color: #56b35e;
     color: #fff;
     border-radius: 0.5ch 0.5ch 0 0.5ch;
+    word-break: break-word;
 }
 .bubbleSend:after {
     content: '';
@@ -64,6 +69,50 @@
     border-bottom-right-radius: 1ch;
     box-shadow: 21px 9px 0px 8px #424242;
 }
+
+
+.bubbleReceiveMobile {
+    padding: 1ch 1.5ch 1ch 1.5ch;
+    background-color: #424242;
+    color: #fff;
+    border-radius: 0.5ch 0.5ch 0.5ch 0;
+    word-break: break-word;
+}
+.bubbleSendMobile {
+    padding: 1ch 1.5ch 1ch 1.5ch;
+    background-color: #56b35e;
+    color: #fff;
+    border-radius: 0.5ch 0.5ch 0 0.5ch;
+    word-break: break-word;
+}
+.bubbleSendMobile:after {
+    content: '';
+    margin-top: -1ch;
+    right: 0.3ch;
+    position: absolute;
+    border: 0px solid;
+    display: block;
+    width: 1.5ch;
+    height: 1.5ch;
+    background-color: transparent;
+    border-bottom-left-radius: 2ch;
+    border-bottom-right-radius: 1.5ch;
+    box-shadow: -9px 6px 0px 2px #56b35e;
+}
+.bubbleReceiveMobile:after {
+    content: '';
+    margin-top: -1ch;
+    left: 0.3ch;
+    position: absolute;
+    border: 0px solid;
+    display: block;
+    width: 1.5ch;
+    height: 1.5ch;
+    background-color: transparent;
+    border-bottom-left-radius: 2ch;
+    border-bottom-right-radius: 1.5ch;
+    box-shadow: 9px 6px 0px 2px #424242;
+}
 </style>
 <?php
 
@@ -92,6 +141,11 @@ $msgList = [
 $sender = $_SESSION['chatWith'];
 $recipient = $_SESSION['username'];
 
+// CANNOT CHAT WITH BANNED USERS 
+if (isBlocked($sender) && !isAdmin($recipient)) {
+    header("Location: /~kg448/chat.php");
+}
+
 if ($_SERVER[HTTP_HOST] != "maxedward.com") {
 
     $msgList = getChat($recipient, $sender);
@@ -117,7 +171,9 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
         $currTime = time();
         $chatTime = strtotime($chat['t']);
         $chatAge = $currTime - $chatTime;
-
+        $msgList[$index]['msg'] = richText( $chat['msg'] );
+        //echo richText($chat['msg']);
+        //print_r($msgList[$index]['msg']);
         //print_r($chatAge);
 
         if($chatAge <= 60){ // One minute, print min without s
@@ -133,6 +189,7 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
             $msgList[$index]['t'] = date("l", $chatTime) . " at " . date("h:ia", $chatTime);
         }
         
+        $msgList[$index]['t'] = "";
         //print_r($Epoch);
     }
 
@@ -143,14 +200,14 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
 
 ?>
 <body>
-    <div class="col-12" style="font-size: 22.5px; <?php if (!$isMobile) { echo "padding-left: 10ch"; } ?>">
+    <div class="col-12" style="font-size: 22.5px; <?php if (!$isMobile) { echo "padding-left: 6ch"; } ?>">
         <div class="col-12" style="margin-top: 5vh; height: 10vh;">
             <div class="col-10 push-1 titleBold" style="font-size: min(40px, 5vh); z-index: 10;">
                 <table>
                     <tbody>
                         <tr>
                             <td style="width: 3ch">
-                                <a href="/~kg448/<?php if (isset($_GET['redirectFrom'])) { echo $_GET['redirectFrom']; } else { echo "chat"; } ?>.php" class="subtitleBold underlineOnHover" style="text-decoration: none; font-size: 18px">
+                                <a href="/~kg448/<?php if (isset($_GET['redirectFrom'])) { echo $_GET['redirectFrom'].'.php'; if ($_GET['redirectFrom'] == "search" && $_GET['searchKey'] != "") { echo '?search_msg='.$_GET['searchKey']; } } else { echo "chat.php"; } ?>" class="subtitleBold underlineOnHover" style="text-decoration: none; font-size: 18px">
                                     Back
                                 </a>
                             </td>
@@ -162,75 +219,66 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
                             </td>
                             <td style="padding-left: 0.35ch">
                                 <a href="/~kg448/account.php?viewing=<?php echo $_SESSION['chatWith']; ?>&redirectFrom=chat" class="titleBold underlineOnHover" style="text-decoration: none;" title="Go to <?php echo $_SESSION['chatWith']; ?>'s Profile">
-                                    <?php echo getProfile($_SESSION['chatWith'])["fname"].' '.getProfile($_SESSION['chatWith'])["lname"]; ?>
+                                    <div style="max-width: 40vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; <?php if (isAdmin($_SESSION['chatWith'])) { echo "color: rgb(175, 107, 72);"; } ?>">
+                                        <?php echo getProfile($_SESSION['chatWith'])["fname"].' '.getProfile($_SESSION['chatWith'])["lname"]; ?>
+                                    </div>
                                 </a>
-                                <?php
-                                if (isAdmin($_SESSION['chatWith'])) {
-                                    print('
-                                    <span class="subtitleLight" style="font-size: 30px; color: rgb(144, 85, 54); padding-left: 5px;">
-                                        Admin
-                                    </span>');
-                                }
-                                ?>
-                            </td>
-                            <td style="padding-left: 1ch; font-size: 20px; width: 15ch">        
-                                <div class="col-12">
-                                    <a href="">
-                                        <button type="submit" name="newdm_submit" style="width: 15ch; background-color: #545454; border-color: #262626; border-style: solid; color: #fff; border-radius: 0.75ch; font-size: 20px; margin-left: 50%; transform: translate(-50%, 0); padding: 1ch 0; margin-top: 0.55vh;">Refresh</button>
-                                    </a>
-                                </div>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-
-        <div class="col-10 push-1" style="height: 85vh; width: 75vw; left: 7.6vw;">
+ 
+        <div class="<?php if (!$isMobile) { echo "col-10 push-1"; } else { echo "col-12"; } ?>" style="height: 85vh; <?php if (!$isMobile) { echo "width: 75vw; left: 7.6vw;"; } else { echo "width: 100vw;"; } ?>">
             <div class="col-12 chatBoxBack">
                 
                 <div class="col-12 chatTextEntry">
                     <div class="col-10 push-1">
-                        <form method="post">
+                        
                             <div class="col-9">
                                 <input maxlength="240" type="text" name="newdm_msg" placeholder="Type something to <?php echo $_SESSION['chatWith']; ?>" value="" style="width: 100%; background-color: #000; border-color: #1e4e22; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px; word-break: break-word; height: 7vh; vertical-align: top; margin-top: 0.5vh;" required />
                             </div>
                             <div class="col-3">
-                                <button type="submit" name="newdm_submit" style="width: 80%; background-color: #1e4e22; border-color: #1e4e22; border-style: solid; color: #fff; border-radius: 0.75ch; font-size: 20px; margin-left: 50%; transform: translate(-50%, 0); padding: 1ch 0; margin-top: 0.55vh;">Send</button>
+                                <button type="button" onclick="sendChat('<?php echo $_SESSION[username] ?>', '<?php echo $_SESSION[chatWith] ?>')" name="newdm_submit" style="width: 80%; background-color: #1e4e22; border-color: #1e4e22; border-style: solid; color: #fff; border-radius: 0.75ch; font-size: 20px; margin-left: 50%; transform: translate(-50%, 0); padding: 1ch 0; margin-top: 0.55vh;">Send</button>
                             </div>
-                        </form>
+                        
                     </div>
                 </div>
 
-                <div class="col-12 chatBoxTop" style="overflow: auto; width: 100%; flex-direction: column-reverse;">
+                <div class="col-12 chatBoxTop<?php if ($isMobile) { echo "Mobile"; } ?>" style="overflow: auto; width: 100%; flex-direction: column-reverse;">
                     <table id="chatTable" style="height: 73vh; width: 100%; border-spacing: 1ch;">
                         <tbody style="height: 73vh; overflow-y: scroll; width: 100%; display: table-footer-group;">
 
-                        <?php
-                        foreach ($msgList as $index => $info) {
-                            print('
-                            <tr style="width: 100%;">
-                                <td style="width: 50%">');
-                                
-                            if ($info['s'] == $_SESSION['chatWith']) {
-                                print('<div class="bubbleReceive bodyLight">'.$info['msg'].'</div>');
-                                print('<div class="subtitleLight" style="font-size: 14px; padding-left: 3.5ch; padding-top: 0.25ch;">'.$info['t'].'</div>');
+                            <?php
+                            foreach ($msgList as $index => $info) {
+                                print('
+                                <tr style="width: 100%;">
+                                    <td style="width: 50%">');
+                                    
+                                if ($info['s'] == $_SESSION['chatWith']) {
+                                    print('<div class="bubbleReceive');
+                                    if ($isMobile) { echo "Mobile"; } 
+                                    print(' bodyLight">'.$info['msg'].'</div>');
+                                    print('<div class="subtitleLight" style="font-size: 14px; padding-left: 3.5ch; padding-top: 0.25ch;">'.$info['t'].'</div>');
+                                }
+                                    
+                                print('
+                                    </td>
+                                    <td style="width: 50%">');
+                                    
+                                if ($info['s'] == $_SESSION['username']) {
+                                    print('<div class="bubbleSend');
+                                    if ($isMobile) { echo "Mobile"; } 
+                                    print(' bodyLight">'.$info['msg'].'</div>');
+                                    print('<div class="subtitleLight" style="font-size: 14px; padding-left: 1.5ch; padding-top: 0.25ch;">'.$info['t'].'</div>');
+                                }
+                                    
+                                print('
+                                    </td>
+                                </tr>');
                             }
-                                
-                            print('
-                                </td>
-                                <td style="width: 50%">');
-                                
-                            if ($info['s'] == $_SESSION['username']) {
-                                print('<div class="bubbleSend bodyLight">'.$info['msg'].'</div>');
-                                print('<div class="subtitleLight" style="font-size: 14px; padding-left: 1.5ch; padding-top: 0.25ch;">'.$info['t'].'</div>');
-                            }
-                                
-                            print('
-                                </td>
-                            </tr>');
-                        }
-                        ?>
+                            ?>
 
                         </tbody>
                     </table>
@@ -238,7 +286,22 @@ if ($_SERVER[HTTP_HOST] != "maxedward.com") {
 
             </div>
         </div>
-        <div style="width: 75vw; height: 59vh; margin-left: 7.6vw; position: fixed; bottom: 0; background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 69%, rgba(0,0,0,0) 100%); pointer-events: none;"></div>
+
+        <div style="height: 32vh; <?php if (!$isMobile) { echo "margin-left: 7.6vw; width: 75vw; "; } else { echo "width: 100vw; "; } ?>position: fixed; bottom: 0; background: rgb(0,0,0); background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 69%, rgba(0,0,0,0) 100%); pointer-events: none;">
+        </div>
     </div>
 </body>
+
+<script>
+    setInterval(function() { getChats("<?php echo $_SESSION['username'] ?>", "<?php echo $_SESSION['chatWith'] ?>", "<?php echo $_SESSION['username'] ?>") }, 1500);
+</script>
+<script>
+    var input = document.getElementsByName("newdm_msg")[0];
+    input.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+            sendChat("<?php echo $_SESSION['username'] ?>", "<?php echo $_SESSION['chatWith'] ?>");
+        }
+    }); 
+</script>
+
 </html>

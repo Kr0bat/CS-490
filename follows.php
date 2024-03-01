@@ -22,6 +22,61 @@ function follow($follower, $username)
     mysqli_close($dbc);
  }
  
+ function unfollow($follower, $username)
+ {
+     //make database connection
+     require('databaseConnect.php');
+     
+       
+    //make query
+    $q1 = " DELETE FROM follows WHERE follower = '$follower' AND username = '$username' ";
+    
+    //execute query
+    $r = @mysqli_query ($dbc, $q1);
+    
+ 
+    //close database connection
+    mysqli_close($dbc);
+ }
+ 
+ function isFollowing($follower, $username)
+ {
+      //make database connection
+     require('databaseConnect.php');
+     
+     //make query
+     $q1 = "SELECT follower, username FROM follows WHERE follower = '$follower' AND username = '$username' ";
+     $r = @mysqli_query ($dbc, $q1); 
+     
+     // check if user follows 
+     if($r)
+     { 
+        
+        $row = mysqli_fetch_array($r, MYSQLI_ASSOC);
+        $followList[] = $row;
+        
+        
+        if($row == 0)
+        {
+           return 0;
+        }
+        else
+        {
+             return 1;
+        }
+     }
+     else
+     {
+          return 0;
+     }
+     
+    
+ 
+    //close database connection
+    mysqli_close($dbc);
+ 
+ }
+ 
  function SearchPostbyFollow($follower)
  {
      //make database connection
@@ -59,18 +114,17 @@ function follow($follower, $username)
     foreach($followList as $value)
     {
           //make query
-         $q2 = "SELECT Title AS title, Description AS description, Link AS link, Creator AS creator, id AS id FROM post WHERE Creator = '$value[username]'";
+         $q2 = "SELECT id FROM post WHERE Creator = '$value[username]'";
          $r = @mysqli_query ($dbc, $q2); 
      
-         // get list of posts
+         // get list of posts id
          if($r)
          { 
     
                 while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
                 {
            
-                 $posts[] = $row;
-            
+                 $posts[] = $row['id'];
                 }    
          }
          else
@@ -80,11 +134,89 @@ function follow($follower, $username)
     
     }
     
+    //make query
+         $q2 = "SELECT id FROM post WHERE Creator = '$follower'";
+         $r = @mysqli_query ($dbc, $q2); 
+     
+         // get list of posts id
+         if($r)
+         { 
+    
+                while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
+                {
+           
+                 $posts[] = $row['id'];
+                }    
+         }
+         else
+         {
+             return 0;
+         }
+    
+    rsort($posts);
     return $posts;
     
-    
 }
-  
+
+function grabAllfollowers($username)
+ {
+     //make database connection
+     require('databaseConnect.php');
+     
+       
+    //make query
+    $q1 = "SELECT follower FROM follows WHERE username = '$username'";
+    $r = @mysqli_query ($dbc, $q1); 
+    
+     if($r)
+     { 
+        while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
+        {
+           $follower[] = $row;
+        }    
+        
+        return $follower;
+        
+     }
+     else
+     {
+         return 0;
+     }
+    
+    //close database connection
+    mysqli_close($dbc);
+ }
+
+function grabAllfollowing($follower)
+ {
+     //make database connection
+     require('databaseConnect.php');
+     
+       
+    //make query
+    $q1 = "SELECT username FROM follows WHERE follower = '$follower'";
+    $r = @mysqli_query ($dbc, $q1); 
+    
+     if($r)
+     { 
+        while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
+        {
+           $followers[] = $row['username'];
+        }    
+        
+        return $followers;
+        
+     }
+     else
+     {
+         return 0;
+     }
+    
+    //close database connection
+    mysqli_close($dbc);
+ } 
+ 
+
  ?>
  </body> 
  </html>

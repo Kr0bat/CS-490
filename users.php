@@ -1,8 +1,4 @@
 <html>
-	<head>
-		<title>Sample PHP</title>
-	</head>
-	<body>
  <?php
 
 function getPass($username)
@@ -36,7 +32,7 @@ function getProfile($username)
   require('databaseConnect.php');
    
   //make query
-  $q1 = "SELECT first_name AS fname, last_name AS lname, pfp_url AS profile_picture, description AS profile_description  FROM user WHERE username = '$username' ";
+  $q1 = "SELECT first_name AS fname, last_name AS lname, pfp_url AS profile_picture, description AS profile_description, username  FROM user WHERE username = '$username' ";
   $r = @mysqli_query ($dbc, $q1); 
   
   //get user's info
@@ -112,7 +108,7 @@ function userSearch($username)
     
         while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
         {
-            echo $row[s];
+            //echo $row[s];
             $usernames[] = $row['s'];
             
         }    
@@ -205,6 +201,21 @@ function blockAccount($username)
     mysqli_close($dbc);  
 }
 
+function unblockAccount($username)
+{
+    //make database connection
+    require('databaseConnect.php');
+    
+    //make query
+    $q1 = "UPDATE user SET blocked_status = 0 WHERE username = '$username'";
+  
+    //execute query
+    $r = @mysqli_query ($dbc, $q1);
+    
+    //close database connection
+    mysqli_close($dbc);  
+}
+
 function isBlocked($username)
 {
   //make database connection
@@ -236,5 +247,4 @@ function isBlocked($username)
 }
 
  ?>
- </body>
  </html>

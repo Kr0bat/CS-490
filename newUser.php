@@ -66,17 +66,15 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
             $type = "basic";
         }
         
-        // UNCOMMENT THIS WHEN READY TO RUN:v
-        
         if ( is_null(getProfile($username)) ){
             createAccount($username, $password, $type, $firstName, $lastName);
-            header("Location: /~kg448/feed.php?successMsg=$username");
+            header("Location: /~kg448/feed.php?successMsgUser=$username");
         }
-        else{
+        else {
             print('
             <header>
                 <div class="headerText" style="width: 100%; margin: 0 0 2vh 0; padding: 2vh 0; text-align: center; font-size: max(1.35vw, 2.5vh); color: #eaeaea; background-color: #9c5151ff">
-                    Username already exists
+                    '.$username.' already exists
                 </div>
             </header>');
         }
@@ -120,7 +118,7 @@ button {
     <!--div class="col-12 subtitleBold" style="text-align: left; margin: max(1ch, 2vh) 0 0 max(2ch, 2vw)">
         <a href="/~kg448/feed.php" class="subtitleBold" style="text-decoration: none; font-size: 18px">Cancel</a>
     </div-->
-    <div class="col-12 titleBold" style="text-align: center; margin-top: 3ch;">
+    <div class="col-12 titleBold" style="text-align: center; margin-top: 3ch; margin-bottom: 5vh;">
         Add New User
     </div>
     <div class="col-8 push-2 colsm-12 pushsm-0 bodyLight newPostBackBox" style="text-align: left; margin-top: 3ch;">
@@ -136,10 +134,10 @@ button {
                 </div>
             </div>
             <div class="col-10 push-1" style="margin: 2ch 0 0.5ch 0;">
-                <div class="col-55 colsm-10 pushsm-1">
+                <div class="col-55 colsm-12 pushsm-0" style="margin-bottom: 2ch;">
                     <input maxlength="40" type="text" name="newuser_first" placeholder="First Name" value="" style="width: 100%; background-color: #000; border-color: #090909; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px;" required />
                 </div>
-                <div class="col-55 push-1 colsm-10 pushsm-1">
+                <div class="col-55 push-1 colsm-12 pushsm-0">
                     <input maxlength="40" type="text" name="newuser_last" placeholder="Last Name" value="" style="width: 100%; background-color: #000; border-color: #090909; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px;" required />
                 </div>
             </div>

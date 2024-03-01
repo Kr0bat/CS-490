@@ -145,7 +145,7 @@ $precursor = '/~kg448';
 $currPage = "feed";
 
 if ($url == $precursor.'/account' || $url == $precursor.'/account.php') {
-    if (isset($_GET['viewing'])) {
+    if (isset($_GET['viewing']) && strtolower($_GET['viewing']) != strtolower($_SESSION['username'])) {
         $currPage = "none";
     } else {
         $currPage = 'account';
@@ -252,7 +252,7 @@ if ($isMobile) {
                                 <img src="<?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["profile_picture"]; } else { echo "https://web.njit.edu/~kg448/assets/default-profile.png"; } ?>" class="imgFitMid logoImg" style="border-radius: 100%; height: 3ch; width: 3ch; border-style: solid; border-color: <?php if ($currPage == 'account') { print("#56b35e; border-width: 0.2ch;"); } else { print("rgba(255, 255, 255, 0.15)"); } ?>;" />
                             </a>
                         </div>
-                        <div style="margin-top: 0px; font-size: 18px; padding-left: 4px; width: 7.5ch; overflow: hidden; text-overflow: ellipsis;">
+                        <div style="margin-top: 0px; font-size: 18px; padding-left: 4px; width: 7.5ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
                             <a href="/~kg448/account.php" class="linkLight underlineOnHover" style="">
                                 <?php if ($_SERVER[HTTP_HOST] != "maxedward.com") { echo getProfile($_SESSION['username'])["fname"]; } else { echo "Max"; } ?>
                             </a>
@@ -284,11 +284,14 @@ if ($isMobile) {
                     <td style="text-align: center">
                         <div style="width: 3ch; margin-left: 50%; transform: translate(-50%, 0);">
                             <a href="/~kg448/chat.php" class="linkLight underlineOnHover" style="">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="<?php if ($currPage == 'chat') { print("#56b35e"); } else { print('#FFFFFF'); } ?>" d="M19,8H18V5a3,3,0,0,0-3-3H5A3,3,0,0,0,2,5V17a1,1,0,0,0,.62.92A.84.84,0,0,0,3,18a1,1,0,0,0,.71-.29l2.81-2.82H8v1.44a3,3,0,0,0,3,3h6.92l2.37,2.38A1,1,0,0,0,21,22a.84.84,0,0,0,.38-.08A1,1,0,0,0,22,21V11A3,3,0,0,0,19,8ZM8,11v1.89H6.11a1,1,0,0,0-.71.29L4,14.59V5A1,1,0,0,1,5,4H15a1,1,0,0,1,1,1V8H11A3,3,0,0,0,8,11Zm12,7.59-1-1a1,1,0,0,0-.71-.3H11a1,1,0,0,1-1-1V11a1,1,0,0,1,1-1h8a1,1,0,0,1,1,1Z"/></svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path id="chat_path" fill="<?php if ($currPage == 'chat') { print("#56b35e"); } else { print('#FFFFFF'); } ?>" d="M19,8H18V5a3,3,0,0,0-3-3H5A3,3,0,0,0,2,5V17a1,1,0,0,0,.62.92A.84.84,0,0,0,3,18a1,1,0,0,0,.71-.29l2.81-2.82H8v1.44a3,3,0,0,0,3,3h6.92l2.37,2.38A1,1,0,0,0,21,22a.84.84,0,0,0,.38-.08A1,1,0,0,0,22,21V11A3,3,0,0,0,19,8ZM8,11v1.89H6.11a1,1,0,0,0-.71.29L4,14.59V5A1,1,0,0,1,5,4H15a1,1,0,0,1,1,1V8H11A3,3,0,0,0,8,11Zm12,7.59-1-1a1,1,0,0,0-.71-.3H11a1,1,0,0,1-1-1V11a1,1,0,0,1,1-1h8a1,1,0,0,1,1,1Z"/>
+                                </svg>
+                                <div id="chat_new" style="display: none; width: 2.5ch; height: 2.5ch; content: url('data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9JzMwMHB4JyB3aWR0aD0nMzAwcHgnICBmaWxsPSIjZDRiNDYyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgOTAgOTAiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDkwIDkwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5zdDB7ZmlsbC1ydWxlOmV2ZW5vZGQ7Y2xpcC1ydWxlOmV2ZW5vZGQ7fQo8L3N0eWxlPjxwYXRoIGNsYXNzPSJzdDAiIGQ9Ik00NC45OTk5NzcxLDExLjU5MTYwMDRjLTE4LjQ1MDg3NjIsMC0zMy40MDg0MDE1LDE0Ljk1NzMwMDItMzMuNDA4NDAxNSwzMy40MDg0MDE1ICBjMCwxOC40NTA5MDEsMTQuOTU3NTIzMywzMy40MDg0MDE1LDMzLjQwODQwMTUsMzMuNDA4NDAxNWMxOC40NTEwMDAyLDAsMzMuNDA4NDAxNS0xNC45NTc1MDA1LDMzLjQwODQwMTUtMzMuNDA4NDAxNSAgQzc4LjQwODM3ODYsMjYuNTQ4OTAwNiw2My40NTA5NzczLDExLjU5MTYwMDQsNDQuOTk5OTc3MSwxMS41OTE2MDA0eiBNNDQuOTk5OTc3MSw2OS44MjgzMDA1ICBjLTIuOTQ1ODc3MSwwLTUuMzM0MjAxOC0yLjM4ODA5OTctNS4zMzQyMDE4LTUuMzM0MDk4OGMwLTIuOTQ2MDAzLDIuMzg4MzI0Ny01LjMzNDEwMjYsNS4zMzQyMDE4LTUuMzM0MTAyNiAgYzIuOTQ1OTk5MSwwLDUuMzM0MTk4LDIuMzg4MDk5Nyw1LjMzNDE5OCw1LjMzNDEwMjZDNTAuMzM0MTc1MSw2Ny40NDAyMDA4LDQ3Ljk0NTk3NjMsNjkuODI4MzAwNSw0NC45OTk5NzcxLDY5LjgyODMwMDV6ICAgTTQ3LjY5MzM3NDYsNTYuODU5Mjk4N2MtMC44NDM3OTk2LTAuMjk3Nzk4Mi0xLjc0NzU5NjctMC40NjgxOTY5LTIuNjkzMzk3NS0wLjQ2ODE5NjkgIGMtMC45NDU3MDE2LDAtMS44NDk2MDE3LDAuMTcwMzk4Ny0yLjY5MzQwMTMsMC40NjgxOTY5bC03Ljk1MTQ3NzEtMzMuODYzODk5MmMwLDAsMC40MzEyNzgyLTIuODIzOTAwMiwxMC42NDQ4Nzg0LTIuODIzOTAwMiAgYzEwLjIxMzY5OTMsMCwxMC42NDQ4OTc1LDIuODIzOTAwMiwxMC42NDQ4OTc1LDIuODIzOTAwMkw0Ny42OTMzNzQ2LDU2Ljg1OTI5ODd6Ij48L3BhdGg+PC9zdmc+');margin: -5.25ch 0 2.75ch 2ch;"></div>
                             </a>
                         </div>
                         <div style="margin-top: -20px; font-size: 18px;">
-                            <a href="/~kg448/chat.php" class="linkLight underlineOnHover" style="<?php if ($currPage == 'chat') { print("color: #56b35e;"); } ?>">
+                            <a href="/~kg448/chat.php" id="chat_name" class="linkLight underlineOnHover" style="<?php if ($currPage == 'chat') { print("color: #56b35e;"); } ?>">
                                 Chat
                             </a>
                         </div>
@@ -309,7 +312,7 @@ if ($isMobile) {
                         </div>
                     </td>
                 </tr>
-                <tr class="lightTableTrSpacerSmall"></tr>
+                <tr class="lightTableTrSpacerMini"></tr>
                 <tr class="lightTableTr">
                     <td style="text-align: center">
                         <div style="width: 3ch; margin-left: 50%; transform: translate(-50%, 0);">
@@ -317,9 +320,9 @@ if ($isMobile) {
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="<?php if ($currPage == 'newPost') { print("#56b35e"); } else { print('#FFFFFF'); } ?>" d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Zm4-9H13V8a1,1,0,0,0-2,0v3H8a1,1,0,0,0,0,2h3v3a1,1,0,0,0,2,0V13h3a1,1,0,0,0,0-2Z"/></svg>
                             </a>
                         </div>
-                        <div style="margin-top: -20px; font-size: 18px;">
+                        <div style="margin-top: -20px; font-size: 15px;">
                             <a href="/~kg448/newPost.php" class="linkLight underlineOnHover" style="<?php if ($currPage == 'newPost') { print("color: #56b35e;"); } ?>">
-                                + Post
+                                New Post
                             </a>
                         </div>
                     </td>
@@ -332,9 +335,9 @@ if ($isMobile) {
                                 <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24"><path fill="<?php if ($currPage == 'newUser') { print("#56b35e"); } else { print('#FFFFFF'); } ?>" d="M9,11a1,1,0,1,0-1-1A1,1,0,0,0,9,11Zm3-9A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm0,18a8,8,0,1,1,8-8A8,8,0,0,1,12,20Zm3-7H9a1,1,0,0,0-1,1,4,4,0,0,0,8,0A1,1,0,0,0,15,13Zm-3,3a2,2,0,0,1-1.73-1h3.46A2,2,0,0,1,12,16Zm3-7a1,1,0,1,0,1,1A1,1,0,0,0,15,9Z"/></svg>
                             </a>
                         </div>
-                        <div style="margin-top: -20px; font-size: 18px;">
+                        <div style="margin-top: -20px; font-size: 15px;">
                             <a href="/~kg448/newUser.php" class="linkLight underlineOnHover" style="<?php if ($currPage == 'newUser') { print("color: #56b35e;"); } ?>">
-                                + User
+                                New User
                             </a>
                         </div>
                     </td>
@@ -343,7 +346,10 @@ if ($isMobile) {
         </table>
     </div>
 </div>
-
+<script src="chatRefresh.js"></script>
+<script>
+    setInterval(function() { checkUnreadChat("<?php echo $_SESSION['username'] ?>") }, 500);
+</script>
 <?php
 
 }

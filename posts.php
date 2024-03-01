@@ -5,7 +5,7 @@
 	<body>
  <?php
  
- function insertPost($username, $title, $description, $link)
+ function insertPost($username, $title, $description, $link, $custom_album_art)
  {
      //make database connection
      require('databaseConnect.php');
@@ -15,7 +15,7 @@
      
        
     //make query
-    $q1 = " INSERT INTO post (Title, Description, Link, Creator) VALUES ('$new_title', '$new_description', '$link', '$username')";
+    $q1 = " INSERT INTO post (Title, Description, Link, Creator, custom_album_art) VALUES ('$new_title', '$new_description', '$link', '$username', '$custom_album_art')";
     
     //execute query
     $r = @mysqli_query ($dbc, $q1);
@@ -31,7 +31,7 @@
      require('databaseConnect.php');
        
     //make query
-    $q1 = " SELECT Title AS title, Description AS description, Link AS link, Creator AS creator, id as id FROM post WHERE id = '$id'";
+    $q1 = " SELECT Title AS title, Description AS description, Link AS link, Creator AS creator, id as id, custom_album_art FROM post WHERE id = '$id'";
     
     //execute query
     $r = @mysqli_query ($dbc, $q1);
@@ -50,19 +50,21 @@
      require('databaseConnect.php');
        
     //make query
-    $q1 = " SELECT id AS i FROM post";
+    $q1 = " SELECT id FROM post";
     
     //execute query
     $r = @mysqli_query ($dbc, $q1);
     
     while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
     {
-        $id[] = $row['i'];
+        $id[] = $row['id'];
     
     }
     
     //close database connection
     mysqli_close($dbc);
+    
+    rsort($id);
     
     return $id;
  }
@@ -73,7 +75,7 @@
      require('databaseConnect.php');
        
     //make query
-    $q1 = " SELECT Title AS title, Description AS description, Link AS link, Creator AS creator, id as id FROM post ORDER BY Timestamp";
+    $q1 = " SELECT Title AS title, Description AS description, Link AS link, Creator AS creator, id as id, custom_album_art FROM post ORDER BY Timestamp";
     
     //execute query
     $r = @mysqli_query ($dbc, $q1);
@@ -89,13 +91,13 @@
     return $posts;
  }
  
- function searchPostByT($Title)
+ function searchPostByTorD($TitleorDescription)
  {
      //make database connection
      require('databaseConnect.php');
      
      //make query
-     $q1 = "SELECT Title AS title, Description AS description, Link AS link, Creator AS creator, id AS id FROM post WHERE Title LIKE '%$Title%'";
+     $q1 = "SELECT Title AS title, Description AS description, Link AS link, Creator AS creator, id AS id, custom_album_art FROM post WHERE Title LIKE '%$TitleorDescription%' OR Description LIKE'%$TitleorDescription%' ";
      $r = @mysqli_query ($dbc, $q1); 
      
      // get list of users
@@ -105,10 +107,10 @@
         while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
         {
            
-            $posts[] = $row;
+            $posts[] = $row['id'];
             
         }    
-        
+        rsort($posts);
         return $posts; 
     }
     else
@@ -117,34 +119,6 @@
     }
  }
  
- function searchPostByD($Description)
- {
-     //make database connection
-     require('databaseConnect.php');
-     
-     //make query
-     $q1 = "SELECT Title AS title, Description AS description, Link AS link, Creator AS creator, id AS id FROM post WHERE Description LIKE
-     '%$Description%'";
-     $r = @mysqli_query ($dbc, $q1); 
-     
-     // get list of users
-     if($r)
-     { 
-    
-        while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
-        {
-           
-            $posts[] = $row;
-            
-        }    
-        
-        return $posts; 
-    }
-    else
-    {
-        return 0;
-    }
- } 
  
  function searchPostByC($Creator)
  {
@@ -152,7 +126,7 @@
      require('databaseConnect.php');
      
      //make query
-     $q1 = "SELECT Title AS title, Description AS description, Link AS link, Creator AS creator, id as id FROM post WHERE Creator = '$Creator'";
+     $q1 = "SELECT Title AS title, Description AS description, Link AS link, Creator AS creator, id as id, custom_album_art FROM post WHERE Creator = '$Creator'";
      $r = @mysqli_query ($dbc, $q1); 
      
      // get list of posts
@@ -236,6 +210,53 @@
     
  }
  
+ function removeLike($post_id, $liker)
+{
+     //make database connection
+     require('databaseConnect.php');
+       
+    //make query
+    $q1 = "DELETE FROM likes WHERE post_id = '$post_id' AND liker = '$liker' ";
+    
+    //execute query
+    $r = @mysqli_query ($dbc, $q1);
+    
+    //close database connection 
+    mysqli_close($dbc);
+
+}
+
+function searchPostIdbyLiker($username)
+{
+     //make database connection
+     require('databaseConnect.php');
+       
+    //make query
+    $q1 = " SELECT post_id FROM likes WHERE liker = '$username'";
+    
+    //execute query
+    $r = @mysqli_query ($dbc, $q1);
+    
+     // get list of post_id
+     if($r)
+     { 
+    
+        while($row = mysqli_fetch_array($r, MYSQLI_ASSOC))
+        {
+            $post_id[] = $row['post_id'];   
+        }
+    
+        return $post_id;
+        
+    }
+    else
+    {
+        return 0;
+    }
+    
+}
+
+
  ?>
  </body> 
  </html>

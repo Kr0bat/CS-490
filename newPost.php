@@ -64,10 +64,11 @@ if ($_SERVER[HTTP_HOST] == "maxedward.com") {
         $link = $_POST['newpost_link'];
         $description = $_POST['newpost_description'];
         $user = $_SESSION['username'];
+        $art = $_POST['newpost_album_cover'];
 
         $user = ucfirst($user);
-        insertPost($user, $title, $description, $link);
-        header("Location: /~kg448/feed.php");
+        insertPost($user, $title, $description, $link, $art);
+        header("Location: /~kg448/feed.php?successMsgPost=true");
     }
     // ^ ^ ^ ^ ^ ^ ^ ^ ^ ^ KARIM'S CODE ENDS HERE ^ ^ ^ ^ ^ ^ ^ ^ ^ ^
     //
@@ -102,28 +103,43 @@ button {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 </head>
+<script src="//js.nicedit.com/nicEdit-latest.js" type="text/javascript"></script>
+<script type="text/javascript">bkLib.onDomLoaded(nicEditors.allTextAreas);</script>
 
 <body style="background-color: #161616; font-family: 'Montserrat', sans-serif;">
     <!--div class="col-12 subtitleBold" style="text-align: left; margin: max(1ch, 2vh) 0 0 max(2ch, 2vw)">
         <a href="/~kg448/feed.php" class="subtitleBold" style="text-decoration: none; font-size: 18px">Cancel</a>
     </div-->
-    <div class="col-12 titleBold" style="text-align: center; margin-top: 3ch;">
+    <div class="col-12 titleBold" style="text-align: center; margin-top: 3ch; margin-bottom: 5vh;">
         New Post
     </div>
     <div class="col-8 push-2 colsm-12 pushsm-0 bodyLight newPostBackBox" style="text-align: left; margin-top: 3ch;">
         <form method="POST">
-            <div class="col-10 push-1" style="margin: 2ch 1ch 0.5ch 1ch;">
-                <div class="col-55 colsm-10 pushsm-1">
-                    <input maxlength="40" type="text" name="newpost_title" placeholder="Title of your post" value="" style="width: 100%; background-color: #000; border-color: #090909; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px;" required />
-                </div>
-                <div class="col-55 push-1 colsm-10 pushsm-1">
-                    <input maxlength="100" type="text" name="newpost_link" placeholder="Paste Spotify song link here" value="" style="width: 100%; background-color: #000; border-color: #090909; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px;" required />
-                </div>
+            <div class="col-10 push-1 bodyLight" style="margin-top: 2.5ch;">
+                Title of Post
             </div>
-            <div class="col-10 push-1" style="margin: 1ch 1ch 2ch 1ch;">
-                <input maxlength="240" type="text" name="newpost_description" placeholder="Add your own description here" value="" style="width: 100%; background-color: #000; border-color: #090909; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px; word-break: break-word; height: 7.5ch; vertical-align: top;" required />
+            <div class="col-10 push-1" style="margin: 0.5ch 0 2ch 0;">
+                <input maxlength="40" type="text" name="newpost_title" placeholder="Title of post" value="" style="width: 100%; background-color: #000; border-color: #090909; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px;" required />
             </div>
-            <div class="col-10 push-1" style="margin: 0.5ch 1ch 2ch 1ch;">
+            <div class="col-10 push-1 bodyLight" style="margin-top: 1.5ch;">
+                Description
+            </div>
+            <div class="col-10 push-1" style="margin: 0.5ch 0 2ch 0;">
+                <input maxlength="240" type="text" name="newpost_description" placeholder="Add a description to your post" value="" style="width: 100%; background-color: #000; border-color: #090909; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px; word-break: break-word; height: 7.5ch; vertical-align: top;" required />
+            </div>
+            <div class="col-10 push-1 bodyLight" style="margin-top: 1.5ch;">
+                Spotify Link
+            </div>
+            <div class="col-10 push-1" style="margin: 0.5ch 0 2ch 0;">
+                <input maxlength="100" type="text" name="newpost_link" placeholder="Paste Spotify link" value="" style="width: 100%; background-color: #000; border-color: #090909; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px;" required />
+            </div>
+            <div class="col-10 push-1 bodyLight" style="margin-top: 1.5ch;">
+                Alternate Album Cover (Optional)
+            </div>
+            <div class="col-10 push-1" style="margin: 0.5ch 0 2ch 0;">
+                <input maxlength="100" type="text" name="newpost_album_cover" placeholder="Paste link to picture" value="" style="width: 100%; background-color: #000; border-color: #090909; border-style: solid; color: #fff; padding: 1vh 1vw; border-radius: 0.75ch; font-size: 20px;" optional />
+            </div>
+            <div class="col-10 push-1" style="margin: 1.5ch 0 2ch 0;">
                 <button type="submit" name="newpost_submit" style="width: 50%; background-color: #2e7934; border-color: #2e7934; border-style: outset; color: #fff; border-radius: 0.75ch; font-size: 20px; margin-left: 50%; transform: translate(-50%, 0); padding: 0.5ch 0;">Post</button>
             </div>
         </form>

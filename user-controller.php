@@ -11,6 +11,7 @@
 </head>
 <body>
 <?php
+//include("users.php");
 /*
 session_start();
 #include("users.php"); TODO include backend functions
@@ -39,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     updateUser();
     header("Location: /~kg448/account.php");
 }
+
 ?>
 </body>
 </html>
